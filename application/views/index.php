@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sipenmaru | POLTEKKES KEMENKES PALEMBANG</title>
-    <link rel="stylesheet" href="<?= base_url(); ?>/assets/style/nav-style.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>/assets/style/index-style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/style/nav-style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/style/index-style.css">
 </head>
 <body>
     <header>
         <nav>
-            <img src="<?= base_url(); ?>/assets/img/logo.jpg" alt="logo">
+            <img src="<?= base_url() ?>/assets/img/logo.jpg" alt="logo">
             <div class="brand">
                 <h3>Penerimaan Mahasiswa Baru</h3>
                 <h3>Poltekkes Kemenkes Palembang</h3>

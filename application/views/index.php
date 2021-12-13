@@ -21,16 +21,22 @@
     <main>
         <h2>Pilih jalur Sipenmaru yang akan diikuti</h2>
         <div class="container">
-            <div class="card">
-                <!-- <img src="" alt=""> -->
-                <div class="img"></div>
-                <p>Jalur penelusuran minat dan prestasi (PMDP)</p>
-            </div>
-            <div class="card">
-                <!-- <img src="" alt=""> -->
-                <div class="img"></div>
-                <p>Jalur Keluarga Tidak Mampu secara Ekonomi (KTMSE) / Keluarga Miskin (GAKIN)</p>
-            </div>
+            <a href="<?= base_url(); ?>form-pendaftaran">
+                <div class="card">
+                    <div class="img">
+                        <img src="<?= base_url(); ?>/assets/img/login.png" alt="logo login">
+                    </div>
+                    <p>Jalur penelusuran minat dan prestasi (PMDP)</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="card">
+                    <div class="img">
+                        <img src="<?= base_url(); ?>/assets/img/login.png" alt="logo login">
+                    </div>
+                    <p>Jalur Keluarga Tidak Mampu secara Ekonomi (KTMSE) / Keluarga Miskin (GAKIN)</p>
+                </div>
+            </a>
         </div>
     </main>
     <footer>

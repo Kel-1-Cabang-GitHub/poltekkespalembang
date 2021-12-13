@@ -6,9 +6,6 @@ class Daftar_Controller extends CI_Controller
     public function pilih_jalur() {
         $this->load->view('index');
     }
-    public function form_pendaftaran(){
-        $this->load->view('form-pendaftaran');
-    }
 
     public function daftar() {
         // Data Pribadi

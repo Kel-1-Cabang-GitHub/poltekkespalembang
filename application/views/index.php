@@ -21,7 +21,7 @@
     <main>
         <h2>Pilih jalur Sipenmaru yang akan diikuti</h2>
         <div class="container">
-            <a href="<?= base_url(); ?>form-pendaftaran">
+            <a href="<?= base_url(); ?>form-pendaftaran?jalur=pmdp">
                 <div class="card">
                     <div class="img">
                         <img src="<?= base_url(); ?>/assets/img/login.png" alt="logo login">
@@ -29,7 +29,7 @@
                     <p>Jalur penelusuran minat dan prestasi (PMDP)</p>
                 </div>
             </a>
-            <a href="">
+            <a href="<?= base_url(); ?>form-pendaftaran?jalur=ktmse">
                 <div class="card">
                     <div class="img">
                         <img src="<?= base_url(); ?>/assets/img/login.png" alt="logo login">
@@ -39,8 +39,5 @@
             </a>
         </div>
     </main>
-    <footer>
-
-    </footer>
 </body>
 </html>

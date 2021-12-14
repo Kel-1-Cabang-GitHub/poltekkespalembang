@@ -16,6 +16,10 @@ div.data{
     text-align: center;
     line-height: 59px;
 }
+div.data:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
 div.data.active{
     background-color: #1F5BA7;
 }
@@ -50,9 +54,49 @@ div.form input.text{
 }
 div.form input.area{
     height: 133px;
-    vertical-align: text-top;
+    line-height: normal;
+}
+div.form input.radio.down{
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+div.form input.disabled{
+    background-color: #818181;
 }
 div.form span.radio{
     margin-right: 15px;
     margin-left: 5px;
+}
+div.table-form{
+    display: none;
+}
+div.table-form.active{
+    display: block;
+}
+div.btn{
+    padding: 15px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-end;
+}
+button a{
+    text-decoration: none;
+    color: white;
+}
+button.btn{
+    padding: 5px;
+    color: white;
+    width: 101px;
+    height: 30px;
+    background-color: #83A342;
+    border: none;
+    border-radius: 10px;
+}
+button.btn:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+button.btn-back{
+    background-color: #1F5BA7;
+    margin-right: 15px;
 }

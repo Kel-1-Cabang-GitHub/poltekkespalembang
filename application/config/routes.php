@@ -54,5 +54,5 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 // Daftar_Controller
-$route['pilih_jalur'] = 'Daftar_Controller/pilih_jalur';
+$route['pilih-jalur'] = 'Daftar_Controller/pilih_jalur';
 $route['form-pendaftaran'] = 'Daftar_Controller/form_pendaftaran';

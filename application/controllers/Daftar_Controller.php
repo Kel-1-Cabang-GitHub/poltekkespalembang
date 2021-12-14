@@ -28,7 +28,7 @@ class Daftar_Controller extends CI_Controller
             'required' => '{field} harus diisi!',
             'numeric' => '{field} harus berupa angka!'
         ]);
-        $this->form_valdiation->set_rules('nisn', 'NISN', 'required|trim|is_unique[data_pribadi.nisn]', [
+        $this->form_validation->set_rules('nisn', 'NISN', 'required|trim|is_unique[data_pribadi.nisn]', [
             'required' => '{field} harus diisi!',
             'is_unique' => '{field} sudah terdaftar!'
         ]);
@@ -59,45 +59,45 @@ class Daftar_Controller extends CI_Controller
         ]);
 
         // Data Sekolah
-        $this->form_validation->set_rules('jenis_pendidikan_menengah', 'Jenis Pendidikan Menengah', 'required|trim', [
-            'required' => '{field} harus diisi!'
-        ]);
-        $this->form_validation->set_rules('jurusan', 'Jurusan', 'required|trim', [
-            'required' => '{field} harus diisi!'
-        ]);
-        $this->form_validation->set_rules('nama_sekolah', 'Nama Sekolah', 'required|trim', [
-            'required' => '{field} harus diisi!'
-        ]);
-        $this->form_validation->set_rules('jenis_sekolah', 'Jenis Sekolah', 'required|trim', [
-            'required' => '{field} harus diisi!'
-        ]);
-        $this->form_validation->set_rules('provinsi_asal_sekolah', 'Provinsi Asal Sekolah', 'required|trim', [
-            'required' => '{field} harus diisi!'
-        ]);
-        $this->form_validation->set_rules('kota_kabupaten_asal_sekolah', 'Kota/Kabupaten Asal Sekolah', 'required|trim', [
-            'required' => '{field} harus diisi!'
-        ]);
-        $this->form_validation->set_rules('akreditasi_sekolah', 'Akreditasi Sekolah', 'required|trim|max_length[1]', [
-            'required' => '{field} harus diisi!',
-            'max_length' => '{field} hanya boleh 1 karakter!'
-        ]);
-        $this->form_validation->set_rules('tahun_lulus', 'Tahun Lulus', 'required|trim|numeric', [
-            'required' => '{field} harus diisi!',
-            'numeric' => '{field} harus berupa angka!'
-        ]);
-        $this->form_validation->set_rules('rekap_nilai_rapot', 'Rekap Nilai Rapot', 'required|trim', [
-            'required' => '{field} harus diisi!'
-        ]);
-        $this->form_validation->set_rules('rata_rata_nilai_rapot', 'Rata-Rata Nilai Rapot', 'required|trim', [
-            'required' => '{field} harus diisi!'
-        ]);
+        // $this->form_validation->set_rules('jenis_pendidikan_menengah', 'Jenis Pendidikan Menengah', 'required|trim', [
+        //     'required' => '{field} harus diisi!'
+        // ]);
+        // $this->form_validation->set_rules('jurusan', 'Jurusan', 'required|trim', [
+        //     'required' => '{field} harus diisi!'
+        // ]);
+        // $this->form_validation->set_rules('nama_sekolah', 'Nama Sekolah', 'required|trim', [
+        //     'required' => '{field} harus diisi!'
+        // ]);
+        // $this->form_validation->set_rules('jenis_sekolah', 'Jenis Sekolah', 'required|trim', [
+        //     'required' => '{field} harus diisi!'
+        // ]);
+        // $this->form_validation->set_rules('provinsi_asal_sekolah', 'Provinsi Asal Sekolah', 'required|trim', [
+        //     'required' => '{field} harus diisi!'
+        // ]);
+        // $this->form_validation->set_rules('kota_kabupaten_asal_sekolah', 'Kota/Kabupaten Asal Sekolah', 'required|trim', [
+        //     'required' => '{field} harus diisi!'
+        // ]);
+        // $this->form_validation->set_rules('akreditasi_sekolah', 'Akreditasi Sekolah', 'required|trim|max_length[1]', [
+        //     'required' => '{field} harus diisi!',
+        //     'max_length' => '{field} hanya boleh 1 karakter!'
+        // ]);
+        // $this->form_validation->set_rules('tahun_lulus', 'Tahun Lulus', 'required|trim|numeric', [
+        //     'required' => '{field} harus diisi!',
+        //     'numeric' => '{field} harus berupa angka!'
+        // ]);
+        // $this->form_validation->set_rules('rekap_nilai_rapot', 'Rekap Nilai Rapot', 'required|trim', [
+        //     'required' => '{field} harus diisi!'
+        // ]);
+        // $this->form_validation->set_rules('rata_rata_nilai_rapot', 'Rata-Rata Nilai Rapot', 'required|trim', [
+        //     'required' => '{field} harus diisi!'
+        // ]);
         // Peringkat
-        for ($i = 1; $i <= 5; $i++) {
-            $this->form_validation->set_rules('semester_' . $i, 'Peringkat Semester ' . $i, 'required|trim|numeric', [
-                'required' => '{field} harus diisi!',
-                'numeric' => '{field} harus berupa angka!'
-            ]);
-        }
+        // for ($i = 1; $i <= 5; $i++) {
+        //     $this->form_validation->set_rules('semester_' . $i, 'Peringkat Semester ' . $i, 'required|trim|numeric', [
+        //         'required' => '{field} harus diisi!',
+        //         'numeric' => '{field} harus berupa angka!'
+        //     ]);
+        // }
 
         if ($this->form_validation->run() == true) {
             // Jika data berhasil divalidasi, data dimasukkan ke database

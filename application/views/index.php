@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sipenmaru | POLTEKKES KEMENKES PALEMBANG</title>
+    <link rel="shortcut icon" href="<?= base_url(); ?>/assets/img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/style/nav-style.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/style/index-style.css">
 </head>

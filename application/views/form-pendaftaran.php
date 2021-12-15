@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Pendaftaran</title>
+    <link rel="shortcut icon" href="<?= base_url(); ?>/assets/img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/style/nav-style.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/style/form-style.css">
 </head>
@@ -37,7 +38,7 @@
                             </tr>
                             <tr>
                                 <td><label for="alamat">Alamat Sesuai KTP</label></td>
-                                <td><input type="text" class="text area" name="alamat" id="alamat" value="<?= set_value('alamat') ?>"></td>
+                                <td><textarea class="text area" name="alamat" id="alamat" value="<?= set_value('alamat') ?>"></textarea></td>
                             </tr>
                             <tr>
                                 <td><label for="kode_pos">Kode Pos</label></td>
@@ -54,8 +55,8 @@
                             <tr>
                                 <td><label for="jenis_kelamin">Jenis Kelamin</label></td>
                                 <td>
-                                    <input type="radio" value="Pria" name="jenis_kelamin" id="jenis_kelamin"><span class="radio">Pria</span>
-                                    <input type="radio" value="Wanita" name="jenis_kelamin"><span class="radio">Wanita</span>
+                                    <input type="radio" value="Pria" name="jenis_kelamin" id="jenis_kelamin rad-pria"><span class="radio"><label for="pria">Pria</label></span>
+                                    <input type="radio" value="Wanita" name="jenis_kelamin" id="jenis_kelamin rad-wanita"><span class="radio"><label for="rad-wanita">Wanita</label></span>
                                 </td>
                             </tr>
                             <tr>
@@ -64,7 +65,7 @@
                             </tr>
                             <tr>
                                 <td><label for="berat_badan">Berat Badan</label></td>
-                                <td><input type="text" min="0" class="text" name="berat_badan" id="berat_badan" value="<?= set_value('berat_badan') ?>"></td>
+                                <td><input type="number" min="0" class="text" name="berat_badan" id="berat_badan" value="<?= set_value('berat_badan') ?>"></td>
                             </tr>
                             <tr>
                                 <td><label for="tempat_lahir">Tempat Lahir</label></td>
@@ -76,7 +77,9 @@
                             </tr>
                             <tr>
                                 <td><label for="pas_foto">Pas Foto Terbaru</label></td>
-                                <td><input type="file" name="pas_foto" id="pas_foto" accept=".jpg, .jpeg, .png" value="<?= set_value('pas_foto') ?>"></td>
+                                <td>
+                                    <input type="file" name="pas_foto" id="pas_foto" accept=".jpg, .jpeg, .png" value="<?= set_value('pas_foto'); ?>">
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -85,26 +88,26 @@
                             <tr>
                                 <td><label for="jenis_pendidikan_menengah">Jenis Pendidikan Menengah</label></td>
                                 <td>
-                                    <input type="radio" class="radio down" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Sekolah Menengah Atas (SMA)">Sekolah Menengah Atas (SMA) <br>
-                                    <input type="radio" class="radio down" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Madrasah Aliyah (MA)">Madrasah Aliyah (MA) <br>
-                                    <input type="radio" class="radio down" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Sekolah Menengah Kejuruan (SMK)">Sekolah Menengah Kejuruan (SMK) <br>
-                                    <input type="radio" class="radio down" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Madrasah Aliyah Kejuruan (MAK)">Madrasah Aliyah Kejuruan (MAK) <br>
-                                    <input type="radio" class="radio down" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Kelompok Belajar Paket C">Kelompok Belajar Paket C <br>
-                                    <input type="radio" class="radio down" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah">Lainnya... <br>
-                                    <input type="text" class="text other_opt disabled" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="<?= set_value('jenis_pendidikan_menengah') ?>" disabled>
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Sekolah Menengah Atas (SMA)">Sekolah Menengah Atas (SMA) <br>
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Madrasah Aliyah (MA)">Madrasah Aliyah (MA) <br>
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Sekolah Menengah Kejuruan (SMK)">Sekolah Menengah Kejuruan (SMK) <br>
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Madrasah Aliyah Kejuruan (MAK)">Madrasah Aliyah Kejuruan (MAK) <br>
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Kelompok Belajar Paket C">Kelompok Belajar Paket C <br>
+                                    <input type="radio" class="radio down" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah lainnya1">Lainnya... <br>
+                                    <input type="text" class="text other_opt disabled" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah disabled" value="<?= set_value('jenis_pendidikan_menengah') ?>" disabled>
                                 </td>
                             </tr>
                             <tr>
                                 <td><label for="jurusan">Jurusan</label></td>
                                 <td>
-                                    <input type="radio" class="radio down" name="jurusan" id="jurusan" value="IPA">IPA <br>
-                                    <input type="radio" class="radio down" name="jurusan" id="jurusan" value="IPS">IPS <br>
-                                    <input type="radio" class="radio down" name="jurusan" id="jurusan" value="SMK Keperawatan">SMK Keperawatan <br>
-                                    <input type="radio" class="radio down" name="jurusan" id="jurusan" value="SMK Farmasi">SMK Farmasi <br>
-                                    <input type="radio" class="radio down" name="jurusan" id="jurusan" value="SMK Analisis Kesehatan">SMK Analisis Kesehatan<br>
-                                    <input type="radio" class="radio down" name="jurusan" id="jurusan" value="SMK Keperawatan Gigi">SMK Keperawatan Gigi<br>
-                                    <input type="radio" class="radio down" name="jurusan" id="jurusan">Lainnya... <br>
-                                    <input type="text" class="text other_opt disabled" name="jurusan" id="jurusan" value="<?= set_value('jurusan') ?>" disabled>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="IPA">IPA <br>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="IPS">IPS <br>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Keperawatan">SMK Keperawatan <br>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Farmasi">SMK Farmasi <br>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Analisis Kesehatan">SMK Analisis Kesehatan<br>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Keperawatan Gigi">SMK Keperawatan Gigi<br>
+                                    <input type="radio" class="radio down" name="jurusan" id="jurusan lainnya2">Lainnya... <br>
+                                    <input type="text" class="text other_opt disabled" name="jurusan" id="jurusan disabled" value="<?= set_value('jurusan') ?>" disabled>
                                 </td>
                             </tr>
                             <tr>
@@ -168,7 +171,7 @@
                         </table>
                     </div>
                     <div class="btn">
-                        <button class="btn btn-back"><a href="<?= base_url(); ?>">Kembali</a></button>
+                        <a href="<?= base_url(); ?>" class="btn btn-back">Kembali</a>
                         <button type="submit" class="btn">Simpan</button>
                     </div>
                 </form>

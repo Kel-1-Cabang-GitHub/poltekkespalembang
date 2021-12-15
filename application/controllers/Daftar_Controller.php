@@ -17,8 +17,8 @@ class Daftar_Controller extends CI_Controller
     public function form_pendaftaran()
     {
         $jalur_pendaftaran = $this->input->get('jalur');
-        // Check $jalur_pendaftaran = 'pmdp' atau 'ktmse'
-        if ($jalur_pendaftaran != 'pmdp' || $jalur_pendaftaran != 'ktmse') {
+        // Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp' atau 'ktmse', user akan di redirect() ke halaman utama
+        if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse') {
             redirect();
         }
 
@@ -30,18 +30,18 @@ class Daftar_Controller extends CI_Controller
         $this->form_validation->set_rules('alamat', 'Alamat Sesuai KTP', 'required|trim', [
             'required' => '{field} harus diisi!'
         ]);
-        $this->form_validation->set_rules('kode_pos', 'Kode Pos', 'required|trim|numeric', [
+        $this->form_validation->set_rules('kode_pos', 'Kode Pos', 'required|trim|regex_match[/^[1-9]\d{4}$/]', [
             'required' => '{field} harus diisi!',
-            'numeric' => '{field} harus berupa angka!'
+            'regex_match' => '{field} harus berupa angka dan terdiri dari 5 digit yang dimulai dari angka 1!'
         ]);
         $this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim|is_unique[data_pribadi.nisn]', [
             'required' => '{field} harus diisi!',
             'is_unique' => '{field} sudah terdaftar!'
         ]);
-        $this->form_validation->set_rules('no_telepon', 'No Telp/HP', 'required|trim|is_unique[data_pribadi.no_telepon]|numeric', [
+        $this->form_validation->set_rules('no_telepon', 'No. Telp/HP', 'required|trim|is_unique[data_pribadi.no_telepon]|regex_match[/^0\d{9,}$/]', [
             'required' => '{field} harus diisi!',
             'is_unique' => '{field} sudah terdaftar!',
-            'numeric' => '{field} harus berupa angka!'
+            'regex_match' => '{field} harus berupa angka dan dimulai dari angka 0!'
         ]);
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required', [
             'required' => '{field} harus diisi!'
@@ -80,22 +80,22 @@ class Daftar_Controller extends CI_Controller
         $this->form_validation->set_rules('kota_kabupaten_asal_sekolah', 'Kota/Kabupaten Asal Sekolah', 'required|trim', [
             'required' => '{field} harus diisi!'
         ]);
-        $this->form_validation->set_rules('akreditasi_sekolah', 'Akreditasi Sekolah', 'required|max_length[1]', [
+        $this->form_validation->set_rules('akreditasi_sekolah', 'Akreditasi Sekolah', 'required', [
             'required' => '{field} harus diisi!',
-            'max_length' => '{field} hanya boleh 1 karakter!'
         ]);
-        $this->form_validation->set_rules('tahun_lulus', 'Tahun Lulus/Tamat', 'required|trim|numeric', [
+        $this->form_validation->set_rules('tahun_lulus', 'Tahun Lulus/Tamat', 'required|trim|integer', [
             'required' => '{field} harus diisi!',
-            'numeric' => '{field} harus berupa angka!'
+            'integer' => '{field} harus berupa angka!'
         ]);
-        $this->form_validation->set_rules('rata_rata_nilai_rapot', 'Rata-Rata Nilai Rapot', 'required|trim', [
-            'required' => '{field} harus diisi!'
+        $this->form_validation->set_rules('rata_rata_nilai_rapot', 'Rata-Rata Nilai Rapot', 'required|trim|decimal', [
+            'required' => '{field} harus diisi!',
+            'decimal' => '{field} harus berupa angka desimal dengan 1 angka dibelakang koma!'
         ]);
         // Peringkat
         for ($i = 1; $i <= 5; $i++) {
-            $this->form_validation->set_rules('semester_' . $i, 'Peringkat Semester ' . $i, 'required|trim|numeric', [
+            $this->form_validation->set_rules('semester_' . $i, 'Peringkat Semester ' . $i, 'required|trim|integer', [
                 'required' => '{field} harus diisi!',
-                'numeric' => '{field} harus berupa angka!'
+                'integer' => '{field} harus berupa angka!'
             ]);
         }
 
@@ -117,6 +117,8 @@ class Daftar_Controller extends CI_Controller
                 // Pas Foto
                 $config['upload_path'] = 'uploads/img/pas_foto/';
                 $config['allowed_types'] = 'jpg|png|jpeg';
+                $config['file_name'] = 'pas_foto_' . $nisn;
+                $config['file_ext_tolower'] = true;
                 $config['max_size'] = '5000';
 
                 $this->upload->initialize($config);
@@ -146,6 +148,8 @@ class Daftar_Controller extends CI_Controller
                 // Rekap Nilai Rapot
                 $config['upload_path'] = 'uploads/pdf/rekap_nilai_rapot/';
                 $config['allowed_types'] = 'pdf';
+                $config['file_name'] = 'rekap_nilai_rapot_' . $nisn;
+                $config['file_ext_tolower'] = true;
                 $config['max_size'] = '5000';
 
                 $this->upload->initialize($config);
@@ -202,9 +206,7 @@ class Daftar_Controller extends CI_Controller
             redirect();
         } else {
             // Jika data gagal divalidasi, user dikembalikan ke halaman daftar
-            $this->load->view('form-pendaftaran', [
-                'error' => $this->upload->display_errors()
-            ]);
+            $this->load->view('form-pendaftaran');
         }
     }
 }

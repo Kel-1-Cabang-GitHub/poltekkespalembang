@@ -17,6 +17,11 @@ class Daftar_Controller extends CI_Controller
     public function form_pendaftaran()
     {
         $jalur_pendaftaran = $this->input->get('jalur');
+        // Check $jalur_pendaftaran = 'pmdp' atau 'ktmse'
+        if ($jalur_pendaftaran != 'pmdp' || $jalur_pendaftaran != 'ktmse') {
+            redirect();
+        }
+
         // Validasi data menggunakan form_validation
         // Data Pribadi
         $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim', [
@@ -108,14 +113,14 @@ class Daftar_Controller extends CI_Controller
             $tempat_lahir = $this->input->post('tempat_lahir');
             $tanggal_lahir = $this->input->post('tanggal_lahir');
 
-            if(!empty($_FILES['pas_foto']['name'])) {
+            if (!empty($_FILES['pas_foto']['name'])) {
                 // Pas Foto
                 $config['upload_path'] = 'uploads/img/pas_foto/';
                 $config['allowed_types'] = 'jpg|png|jpeg';
                 $config['max_size'] = '5000';
 
                 $this->upload->initialize($config);
-                if($this->upload->do_upload('pas_foto')) {
+                if ($this->upload->do_upload('pas_foto')) {
                     $pas_foto = $this->upload->data('file_name');
                 }
             }
@@ -137,14 +142,14 @@ class Daftar_Controller extends CI_Controller
             $semester_4 = $this->input->post('semester_4');
             $semester_5 = $this->input->post('semester_5');
 
-            if(!empty($_FILES['rekap_nilai_rapot']['name'])) {
+            if (!empty($_FILES['rekap_nilai_rapot']['name'])) {
                 // Rekap Nilai Rapot
                 $config['upload_path'] = 'uploads/pdf/rekap_nilai_rapot/';
                 $config['allowed_types'] = 'pdf';
                 $config['max_size'] = '5000';
 
                 $this->upload->initialize($config);
-                if($this->upload->do_upload('rekap_nilai_rapot')) {
+                if ($this->upload->do_upload('rekap_nilai_rapot')) {
                     $rekap_nilai_rapot = $this->upload->data('file_name');
                 }
             }

@@ -16,28 +16,29 @@ class Daftar_Controller extends CI_Controller
 
     public function form_pendaftaran()
     {
+        $jalur_pendaftaran = $this->input->get('jalur');
         // Validasi data menggunakan form_validation
         // Data Pribadi
         $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim', [
             'required' => '{field} harus diisi!'
         ]);
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim', [
+        $this->form_validation->set_rules('alamat', 'Alamat Sesuai KTP', 'required|trim', [
             'required' => '{field} harus diisi!'
         ]);
         $this->form_validation->set_rules('kode_pos', 'Kode Pos', 'required|trim|numeric', [
             'required' => '{field} harus diisi!',
             'numeric' => '{field} harus berupa angka!'
         ]);
-        $this->form_validation->set_rules('nisn', 'NISN', 'required|trim|is_unique[data_pribadi.nisn]', [
+        $this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim|is_unique[data_pribadi.nisn]', [
             'required' => '{field} harus diisi!',
             'is_unique' => '{field} sudah terdaftar!'
         ]);
-        $this->form_validation->set_rules('no_telepon', 'No Telepon', 'required|trim|is_unique[data_pribadi.no_telepon]|numeric', [
+        $this->form_validation->set_rules('no_telepon', 'No Telp/HP', 'required|trim|is_unique[data_pribadi.no_telepon]|numeric', [
             'required' => '{field} harus diisi!',
             'is_unique' => '{field} sudah terdaftar!',
             'numeric' => '{field} harus berupa angka!'
         ]);
-        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required|trim', [
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required', [
             'required' => '{field} harus diisi!'
         ]);
         $this->form_validation->set_rules('tinggi_badan', 'Tinggi Badan', 'required|trim|numeric', [
@@ -51,10 +52,7 @@ class Daftar_Controller extends CI_Controller
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim', [
             'required' => '{field} harus diisi!'
         ]);
-        $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required|trim', [
-            'required' => '{field} harus diisi!'
-        ]);
-        $this->form_validation->set_rules('pas_foto', 'Pas Foto', 'required|trim', [
+        $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required', [
             'required' => '{field} harus diisi!'
         ]);
 
@@ -68,7 +66,7 @@ class Daftar_Controller extends CI_Controller
         $this->form_validation->set_rules('nama_sekolah', 'Nama Sekolah', 'required|trim', [
             'required' => '{field} harus diisi!'
         ]);
-        $this->form_validation->set_rules('jenis_sekolah', 'Jenis Sekolah', 'required|trim', [
+        $this->form_validation->set_rules('jenis_sekolah', 'Jenis Sekolah', 'required', [
             'required' => '{field} harus diisi!'
         ]);
         $this->form_validation->set_rules('provinsi_asal_sekolah', 'Provinsi Asal Sekolah', 'required|trim', [
@@ -77,16 +75,13 @@ class Daftar_Controller extends CI_Controller
         $this->form_validation->set_rules('kota_kabupaten_asal_sekolah', 'Kota/Kabupaten Asal Sekolah', 'required|trim', [
             'required' => '{field} harus diisi!'
         ]);
-        $this->form_validation->set_rules('akreditasi_sekolah', 'Akreditasi Sekolah', 'required|trim|max_length[1]', [
+        $this->form_validation->set_rules('akreditasi_sekolah', 'Akreditasi Sekolah', 'required|max_length[1]', [
             'required' => '{field} harus diisi!',
             'max_length' => '{field} hanya boleh 1 karakter!'
         ]);
-        $this->form_validation->set_rules('tahun_lulus', 'Tahun Lulus', 'required|trim|numeric', [
+        $this->form_validation->set_rules('tahun_lulus', 'Tahun Lulus/Tamat', 'required|trim|numeric', [
             'required' => '{field} harus diisi!',
             'numeric' => '{field} harus berupa angka!'
-        ]);
-        $this->form_validation->set_rules('rekap_nilai_rapot', 'Rekap Nilai Rapot', 'required|trim', [
-            'required' => '{field} harus diisi!'
         ]);
         $this->form_validation->set_rules('rata_rata_nilai_rapot', 'Rata-Rata Nilai Rapot', 'required|trim', [
             'required' => '{field} harus diisi!'
@@ -112,17 +107,18 @@ class Daftar_Controller extends CI_Controller
             $berat_badan = $this->input->post('berat_badan');
             $tempat_lahir = $this->input->post('tempat_lahir');
             $tanggal_lahir = $this->input->post('tanggal_lahir');
-            $pas_foto = $_FILES['pas_foto']['name'];
-            $jalur_pendaftaran = $this->input->post('jalur_pendaftaran');
 
-            // Pas Foto
-            $config['upload_path'] = './uploads/img/pas_foto/';
-            $config['allowed_types'] = 'jpg|png|jpeg';
-            $config['max_size'] = '5000';
+            if(!empty($_FILES['pas_foto']['name'])) {
+                // Pas Foto
+                $config['upload_path'] = 'uploads/img/pas_foto/';
+                $config['allowed_types'] = 'jpg|png|jpeg';
+                $config['max_size'] = '5000';
 
-            $this->upload->initialize($config);
-            $this->upload->do_upload('pas_foto');
-            $pas_foto = $this->upload->data('file_name');
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('pas_foto')) {
+                    $pas_foto = $this->upload->data('file_name');
+                }
+            }
 
             // Data Sekolah
             $jenis_pendidikan_menengah = $this->input->post('jenis_pendidikan_menengah');
@@ -133,7 +129,6 @@ class Daftar_Controller extends CI_Controller
             $kota_kabupaten_asal_sekolah = $this->input->post('kota_kabupaten_asal_sekolah');
             $akreditasi_sekolah = $this->input->post('akreditasi_sekolah');
             $tahun_lulus = $this->input->post('tahun_lulus');
-            $rekap_nilai_rapot = $_FILES['rekap_nilai_rapot']['name'];
             $rata_rata_nilai_rapot = $this->input->post('rata_rata_nilai_rapot');
             // Peringkat
             $semester_1 = $this->input->post('semester_1');
@@ -142,21 +137,24 @@ class Daftar_Controller extends CI_Controller
             $semester_4 = $this->input->post('semester_4');
             $semester_5 = $this->input->post('semester_5');
 
-            // Rekap Nilai Rapot
-            $config['upload_path'] = './uploads/pdf/rekap_nilai_rapot/';
-            $config['allowed_types'] = 'pdf';
-            $config['max_size'] = '5000';
+            if(!empty($_FILES['rekap_nilai_rapot']['name'])) {
+                // Rekap Nilai Rapot
+                $config['upload_path'] = 'uploads/pdf/rekap_nilai_rapot/';
+                $config['allowed_types'] = 'pdf';
+                $config['max_size'] = '5000';
 
-            $this->upload->initialize($config);
-            $this->upload->do_upload('rekap_nilai_rapot');
-            $rekap_nilai_rapot = $this->upload->data('file_name');
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('rekap_nilai_rapot')) {
+                    $rekap_nilai_rapot = $this->upload->data('file_name');
+                }
+            }
 
             $data_pribadi = [
                 'nama_lengkap' => htmlspecialchars($nama_lengkap, true),
                 'alamat' => htmlspecialchars($alamat, true),
-                'kode_pos' => htmlspecialchars($kode_pos),
+                'kode_pos' => htmlspecialchars($kode_pos, true),
                 'nisn' => htmlspecialchars($nisn, true),
-                'no_telepon' => htmlspecialchars($no_telepon),
+                'no_telepon' => htmlspecialchars($no_telepon, true),
                 'jenis_kelamin' => $jenis_kelamin,
                 'tinggi_badan' => htmlspecialchars($tinggi_badan, true),
                 'berat_badan' => htmlspecialchars($berat_badan, true),
@@ -199,7 +197,9 @@ class Daftar_Controller extends CI_Controller
             redirect();
         } else {
             // Jika data gagal divalidasi, user dikembalikan ke halaman daftar
-            $this->load->view('form-pendaftaran');
+            $this->load->view('form-pendaftaran', [
+                'error' => $this->upload->display_errors()
+            ]);
         }
     }
 }

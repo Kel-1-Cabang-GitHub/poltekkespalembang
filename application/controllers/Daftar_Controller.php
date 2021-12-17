@@ -113,19 +113,13 @@ class Daftar_Controller extends CI_Controller
             $tempat_lahir = $this->input->post('tempat_lahir');
             $tanggal_lahir = $this->input->post('tanggal_lahir');
 
-            if (!empty($_FILES['pas_foto']['name'])) {
-                // Pas Foto
-                $config['upload_path'] = 'uploads/img/pas_foto/';
-                $config['allowed_types'] = 'jpg|png|jpeg';
-                $config['file_name'] = 'pas_foto_' . $nisn;
-                $config['file_ext_tolower'] = true;
-                $config['max_size'] = '5000';
-
-                $this->upload->initialize($config);
-                if ($this->upload->do_upload('pas_foto')) {
-                    $pas_foto = $this->upload->data('file_name');
-                }
-            }
+            // Pas Foto
+            $pas_foto = $this->upload_file(
+                'pas_foto', // $name_attr
+                'uploads/img/pas_foto/', // $upload_path
+                'jpg|png|jpeg', // $allowed_types
+                'pas_foto_' . $nisn, // $file_name
+            );
 
             // Data Sekolah
             $jenis_pendidikan_menengah = $this->input->post('jenis_pendidikan_menengah');
@@ -144,19 +138,13 @@ class Daftar_Controller extends CI_Controller
             $semester_4 = $this->input->post('semester_4');
             $semester_5 = $this->input->post('semester_5');
 
-            if (!empty($_FILES['rekap_nilai_rapot']['name'])) {
-                // Rekap Nilai Rapot
-                $config['upload_path'] = 'uploads/pdf/rekap_nilai_rapot/';
-                $config['allowed_types'] = 'pdf';
-                $config['file_name'] = 'rekap_nilai_rapot_' . $nisn;
-                $config['file_ext_tolower'] = true;
-                $config['max_size'] = '5000';
-
-                $this->upload->initialize($config);
-                if ($this->upload->do_upload('rekap_nilai_rapot')) {
-                    $rekap_nilai_rapot = $this->upload->data('file_name');
-                }
-            }
+            // Rekap Nilai Rapot
+            $rekap_nilai_rapot = $this->upload_file(
+                'rekap_nilai_rapot', // $name_attr
+                'uploads/pdf/rekap_nilai_rapot/', // $upload_path
+                'pdf', // $allowed_types
+                'rekap_nilai_rapot_' . $nisn, // $file_name
+            );
 
             $data_pribadi = [
                 'nama_lengkap' => htmlspecialchars($nama_lengkap, true),
@@ -207,6 +195,24 @@ class Daftar_Controller extends CI_Controller
         } else {
             // Jika data gagal divalidasi, user dikembalikan ke halaman daftar
             $this->load->view('form-pendaftaran');
+        }
+    }
+
+    private function upload_file($name_attr, $upload_path, $allowed_types, $file_name)
+    {
+        if (!empty($_FILES[$name_attr]['name'])) {
+            // Rekap Nilai Rapot
+            $config['upload_path'] = $upload_path;
+            $config['allowed_types'] = $allowed_types;
+            $config['file_name'] = $file_name;
+            $config['file_ext_tolower'] = true;
+            $config['overwrite'] = true;
+            $config['max_size'] = 5000;
+
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload($name_attr)) {
+                $rekap_nilai_rapot = $this->upload->data('file_name');
+            }
         }
     }
 }

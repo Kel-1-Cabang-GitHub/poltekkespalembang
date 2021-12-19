@@ -46,7 +46,7 @@
                             </tr>
                             <tr>
                                 <td><label for="kode_pos">Kode Pos</label></td>
-                                <td><input type="text" class="text" name="kode_pos" id="kode_pos" value="<?= set_value('kode_pos') ?>"></td>
+                                <td><input type="text" class="text" name="kode_pos" id="kode_pos" value="<?= set_value('kode_pos') ?>" placeholder="xxxxx"></td>
                                 <!-- <td><?= form_error('kode_pos') ?></td> -->
                             </tr>
                             <tr>
@@ -62,15 +62,9 @@
                             <tr>
                                 <td><label for="jenis_kelamin">Jenis Kelamin</label></td>
                                 <td>
-                                    <input type="radio" value="Pria" name="jenis_kelamin" id="jenis_kelamin rad-pria"
-                                    <?php if (set_value('jenis_kelamin') == 'Pria'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" value="Pria" name="jenis_kelamin" id="jenis_kelamin rad-pria" <?= set_radio('jenis_kelamin', 'Pria') ?> >
                                     <span class="radio"><label for="pria">Pria</label></span>
-                                    <input type="radio" value="Wanita" name="jenis_kelamin" id="jenis_kelamin rad-wanita"
-                                    <?php if (set_value('jenis_kelamin') == 'Wanita'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" value="Wanita" name="jenis_kelamin" id="jenis_kelamin rad-wanita" <?= set_radio('jenis_kelamin', 'Wanita') ?> >
                                     <span class="radio"><label for="rad-wanita">Wanita</label></span>
                                 </td>
                                 <!-- <td><?= form_error('jenis_kelamin') ?></td> -->
@@ -87,7 +81,28 @@
                             </tr>
                             <tr>
                                 <td><label for="tempat_lahir">Tempat Lahir</label></td>
-                                <td><input type="text" class="text" name="tempat_lahir" id="tempat_lahir" value="<?= set_value('tempat_lahir') ?>"></td>
+                                <td>
+                                    <input type="text" class="text" name="tempat_lahir" id="tempat_lahir" value="<?= set_value('tempat_lahir') ?>" list="daftar_tempat_lahir" placeholder="Mohon isi sendiri jika tidak ada!">
+                                    <datalist id="daftar_tempat_lahir">
+                                        <option value="Banyuasin">
+                                        <option value="Empat Lawang">
+                                        <option value="Lahat">
+                                        <option value="Muara Enim">
+                                        <option value="Musi Banyuasin">
+                                        <option value="Musi Rawas">
+                                        <option value="Musi Rawas Utara">
+                                        <option value="Ogan Ilir">
+                                        <option value="Ogan Komering Ilir">
+                                        <option value="Ogan Komering Ulu">
+                                        <option value="Ogan Komering Ulu Selatan">
+                                        <option value="Ogan Komering Ulu Timur">
+                                        <option value="Penukal Abab Lematang Ilir">
+                                        <option value="Lubuk Linggau">
+                                        <option value="Pagar Alam">
+                                        <option value="Palembang">
+                                        <option value="Prabumulih">
+                                    </datalist>
+                                </td>
                                 <!-- <td><?= form_error('tempat_lahir') ?></td> -->
                             </tr>
                             <tr>
@@ -109,30 +124,15 @@
                             <tr>
                                 <td><label for="jenis_pendidikan_menengah">Jenis Pendidikan Menengah</label></td>
                                 <td>
-                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Sekolah Menengah Atas (SMA)"
-                                    <?php if (set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Atas (SMA)'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Sekolah Menengah Atas (SMA)" <?= set_radio('jenis_pendidikan_menengah', 'Sekolah Menengah Atas (SMA)') ?> >
                                     Sekolah Menengah Atas (SMA) <br>
-                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Madrasah Aliyah (MA)"
-                                    <?php if (set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah (MA)'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Madrasah Aliyah (MA)" <?= set_radio('jenis_pendidikan_menengah', 'Madrasah Aliyah (MA)') ?> >
                                     Madrasah Aliyah (MA) <br>
-                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Sekolah Menengah Kejuruan (SMK)"
-                                    <?php if (set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Kejuruan (SMK)'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Sekolah Menengah Kejuruan (SMK)" <?= set_radio('jenis_pendidikan_menengah', 'Sekolah Menengah Kejuruan (SMK)') ?> >
                                     Sekolah Menengah Kejuruan (SMK) <br>
-                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Madrasah Aliyah Kejuruan (MAK)"
-                                    <?php if (set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah Kejuruan (MAK)'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Madrasah Aliyah Kejuruan (MAK)" <?= set_radio('jenis_pendidikan_menengah', 'Madrasah Aliyah Kejuruan (MAK)') ?> >
                                     Madrasah Aliyah Kejuruan (MAK) <br>
-                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Kelompok Belajar Paket C"
-                                    <?php if (set_value('jenis_pendidikan_menengah') == 'Kelompok Belajar Paket C'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Kelompok Belajar Paket C" <?= set_radio('jenis_pendidikan_menengah', 'Kelompok Belajar Paket C') ?> >
                                     Kelompok Belajar Paket C <br>
                                     <input type="radio" class="radio down" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah lainnya1"
                                     <?php if (set_value('jenis_pendidikan_menengah') == ''): ?>
@@ -178,35 +178,17 @@
                             <tr>
                                 <td><label for="jurusan">Jurusan</label></td>
                                 <td>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="IPA"
-                                    <?php if (set_value('jurusan') == 'IPA'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="IPA" <?= set_radio('jurusan', 'IPA') ?> >
                                     IPA <br>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="IPS"
-                                    <?php if (set_value('jurusan') == 'IPS'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="IPS" <?= set_radio('jurusan', 'IPS') ?> >
                                     IPS <br>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Keperawatan"
-                                    <?php if (set_value('jurusan') == 'SMK Keperawatan'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Keperawatan" <?= set_radio('jurusan', 'SMK Keperawatan') ?> >
                                     SMK Keperawatan <br>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Farmasi"
-                                    <?php if (set_value('jurusan') == 'SMK Farmasi'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Farmasi" <?= set_radio('jurusan', 'SMK Farmasi') ?> >
                                     SMK Farmasi <br>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Analisis Kesehatan"
-                                    <?php if (set_value('jurusan') == 'SMK Analisis Kesehatan'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Analisis Kesehatan" <?= set_radio('jurusan', 'SMK Analisis Kesehatan') ?> >
                                     SMK Analisis Kesehatan<br>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Keperawatan Gigi"
-                                    <?php if (set_value('jurusan') == 'SMK Keperawatan Gigi'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Keperawatan Gigi" <?= set_radio('jurusan', 'SMK Keperawatan Gigi') ?> >
                                     SMK Keperawatan Gigi<br>
                                     <input type="radio" class="radio down" name="jurusan" id="jurusan lainnya2"
                                     <?php if (set_value('jurusan') == ''): ?>
@@ -260,15 +242,9 @@
                             <tr>
                                 <td><label for="jenis_sekolah">Jenis Sekolah</label></td>
                                 <td>
-                                    <input type="radio" value="Negeri" name="jenis_sekolah" id="jenis_sekolah"
-                                    <?php if (set_value('jenis_sekolah') == 'Negeri'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" value="Negeri" name="jenis_sekolah" id="jenis_sekolah" <?= set_radio('jenis_sekolah', 'Negeri') ?> >
                                     <span class="radio">Negeri</span>
-                                    <input type="radio" value="Swasta" name="jenis_sekolah" id="jenis_sekolah"
-                                    <?php if (set_value('jenis_sekolah') == 'Swasta'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" value="Swasta" name="jenis_sekolah" id="jenis_sekolah" <?= set_radio('jenis_sekolah', 'Swasta') ?> >
                                     <span class="radio">Swasta</span>
                                 </td>
                                 <!-- <td><?= form_error('jenis_sekolah') ?></td> -->
@@ -286,22 +262,23 @@
                             <tr>
                                 <td><label for="akreditasi_sekolah">Akreditasi Sekolah</label></td>
                                 <td>
-                                    <input type="radio" value="A" name="akreditasi_sekolah" id="akreditasi_sekolah"
-                                    <?php if (set_value('akreditasi_sekolah') == 'A'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" value="A" name="akreditasi_sekolah" id="akreditasi_sekolah" <?= set_radio('akreditasi_sekolah', 'A') ?> >
                                     <span class="radio">A</span>
-                                    <input type="radio" value="B" name="akreditasi_sekolah" id="akreditasi_sekolah"
-                                    <?php if (set_value('akreditasi_sekolah') == 'B'): ?>
-                                        checked
-                                    <?php endif; ?> >
+                                    <input type="radio" value="B" name="akreditasi_sekolah" id="akreditasi_sekolah" <?= set_radio('akreditasi_sekolah', 'B') ?> >
                                     <span class="radio">B</span>
                                 </td>
                                 <!-- <td><?= form_error('akreditasi_sekolah') ?></td> -->
                             </tr>
                             <tr>
                                 <td><label for="tahun_lulus">Tahun Lulus/Tamat</label></td>
-                                <td><input type="number" min="2000" max="<?= date('Y') ?>" class="text" name="tahun_lulus" id="tahun_lulus" value="<?= set_value('tahun_lulus') ?>"></td>
+                                <td>
+                                    <input type="number" min="2000" max="<?= date('Y') ?>" list="daftar_tahun_lulus" name="tahun_lulus" id="tahun_lulus" class="text" value="<?= set_value('tahun_lulus') ?>" placeholder="Mohon isi sendiri jika tidak ada!">
+                                    <datalist id="daftar_tahun_lulus">
+                                        <?php for ($year = date('Y') - 5; $year <= date('Y'); $year++): ?>
+                                            <option value="<?= $year ?>">
+                                        <?php endfor; ?>
+                                    </datalist>
+                                </td>
                                 <!-- <td><?= form_error('tahun_lulus') ?></td> -->
                             </tr>
                             <tr>
@@ -311,7 +288,7 @@
                             </tr>
                             <tr>
                                 <td><label for="rata_rata_nilai_rapot">Rata-Rata Nilai Rapot</label></td>
-                                <td><input type="number" min="0" max="100" step="0.1" class="text" name="rata_rata_nilai_rapot" id="rata_rata_nilai_rapot" value="<?= set_value('rata_rata_nilai_rapot') ?>"></td>
+                                <td><input type="number" min="0" max="100" step="0.1" class="text" name="rata_rata_nilai_rapot" id="rata_rata_nilai_rapot" value="<?= set_value('rata_rata_nilai_rapot') ?>" placeholder="xx,x"></td>
                                 <!-- <td><?= form_error('rata_rata_nilai_rapot') ?></td> -->
                             </tr>
                             <tr>

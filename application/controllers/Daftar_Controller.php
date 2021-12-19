@@ -32,7 +32,7 @@ class Daftar_Controller extends CI_Controller
         ]);
         $this->form_validation->set_rules('kode_pos', 'Kode Pos', 'required|trim|regex_match[/^[1-9]\d{4}$/]', [
             'required' => '{field} harus diisi!',
-            'regex_match' => '{field} harus berupa angka dan terdiri dari 5 digit yang dimulai dari angka 1!'
+            'regex_match' => '{field} harus berupa angka dan terdiri dari 5 digit!'
         ]);
         $this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim|is_unique[data_pribadi.nisn]', [
             'required' => '{field} harus diisi!',
@@ -192,16 +192,15 @@ class Daftar_Controller extends CI_Controller
             $this->Daftar_Model->tambah_data('peringkat', $data_peringkat);
 
             redirect();
-        } else {
-            // Jika data gagal divalidasi, user dikembalikan ke halaman daftar
-            $this->load->view('form-pendaftaran');
         }
+
+        // Jika data gagal divalidasi, user dikembalikan ke halaman daftar
+        $this->load->view('form-pendaftaran');
     }
 
     private function upload_file($name_attr, $upload_path, $allowed_types, $file_name)
     {
         if (!empty($_FILES[$name_attr]['name'])) {
-            // Rekap Nilai Rapot
             $config['upload_path'] = $upload_path;
             $config['allowed_types'] = $allowed_types;
             $config['file_name'] = $file_name;
@@ -211,7 +210,7 @@ class Daftar_Controller extends CI_Controller
 
             $this->upload->initialize($config);
             if ($this->upload->do_upload($name_attr)) {
-                $rekap_nilai_rapot = $this->upload->data('file_name');
+                return $this->upload->data('file_name');
             }
         }
     }

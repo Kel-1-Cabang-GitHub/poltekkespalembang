@@ -63,9 +63,9 @@
                                 <td><label for="jenis_kelamin">Jenis Kelamin</label></td>
                                 <td>
                                     <input type="radio" value="Pria" name="jenis_kelamin" id="jenis_kelamin rad-pria" <?= set_radio('jenis_kelamin', 'Pria') ?> >
-                                    <span class="radio"><label for="pria">Pria</label></span>
+                                    <span class="radio"><label for="jenis_kelamin rad-pria">Pria</label></span>
                                     <input type="radio" value="Wanita" name="jenis_kelamin" id="jenis_kelamin rad-wanita" <?= set_radio('jenis_kelamin', 'Wanita') ?> >
-                                    <span class="radio"><label for="rad-wanita">Wanita</label></span>
+                                    <span class="radio"><label for="jenis_kelamin rad-wanita">Wanita</label></span>
                                 </td>
                                 <!-- <td><?= form_error('jenis_kelamin') ?></td> -->
                             </tr>
@@ -82,7 +82,7 @@
                             <tr>
                                 <td><label for="tempat_lahir">Tempat Lahir</label></td>
                                 <td>
-                                    <input type="text" class="text" name="tempat_lahir" id="tempat_lahir" value="<?= set_value('tempat_lahir') ?>" list="daftar_tempat_lahir" placeholder="Mohon isi sendiri jika tidak ada!">
+                                    <input type="text" class="text" name="tempat_lahir" id="tempat_lahir" value="<?= set_value('tempat_lahir') ?>" list="daftar_tempat_lahir" placeholder="*Mohon isi sendiri jika tidak ada!">
                                     <datalist id="daftar_tempat_lahir">
                                         <option value="Banyuasin">
                                         <option value="Empat Lawang">
@@ -242,10 +242,10 @@
                             <tr>
                                 <td><label for="jenis_sekolah">Jenis Sekolah</label></td>
                                 <td>
-                                    <input type="radio" value="Negeri" name="jenis_sekolah" id="jenis_sekolah" <?= set_radio('jenis_sekolah', 'Negeri') ?> >
-                                    <span class="radio">Negeri</span>
-                                    <input type="radio" value="Swasta" name="jenis_sekolah" id="jenis_sekolah" <?= set_radio('jenis_sekolah', 'Swasta') ?> >
-                                    <span class="radio">Swasta</span>
+                                    <input type="radio" value="Negeri" name="jenis_sekolah" id="jenis_sekolah negeri" <?= set_radio('jenis_sekolah', 'Negeri') ?> >
+                                    <span class="radio"><label for="jenis_sekolah negeri">Negeri</label></span>
+                                    <input type="radio" value="Swasta" name="jenis_sekolah" id="jenis_sekolah swasta" <?= set_radio('jenis_sekolah', 'Swasta') ?> >
+                                    <span class="radio"><label for="jenis_sekolah swasta">Swasta</label></span>
                                 </td>
                                 <!-- <td><?= form_error('jenis_sekolah') ?></td> -->
                             </tr>
@@ -262,17 +262,17 @@
                             <tr>
                                 <td><label for="akreditasi_sekolah">Akreditasi Sekolah</label></td>
                                 <td>
-                                    <input type="radio" value="A" name="akreditasi_sekolah" id="akreditasi_sekolah" <?= set_radio('akreditasi_sekolah', 'A') ?> >
-                                    <span class="radio">A</span>
-                                    <input type="radio" value="B" name="akreditasi_sekolah" id="akreditasi_sekolah" <?= set_radio('akreditasi_sekolah', 'B') ?> >
-                                    <span class="radio">B</span>
+                                    <input type="radio" value="A" name="akreditasi_sekolah" id="akreditasi_sekolah a" <?= set_radio('akreditasi_sekolah', 'A') ?> >
+                                    <span class="radio"><label for="akreditasi_sekolah a">A</label></span>
+                                    <input type="radio" value="B" name="akreditasi_sekolah" id="akreditasi_sekolah b" <?= set_radio('akreditasi_sekolah', 'B') ?> >
+                                    <span class="radio"><label for="akreditasi_sekolah b">B</label></span>
                                 </td>
                                 <!-- <td><?= form_error('akreditasi_sekolah') ?></td> -->
                             </tr>
                             <tr>
                                 <td><label for="tahun_lulus">Tahun Lulus/Tamat</label></td>
                                 <td>
-                                    <input type="number" min="2000" max="<?= date('Y') ?>" list="daftar_tahun_lulus" name="tahun_lulus" id="tahun_lulus" class="text" value="<?= set_value('tahun_lulus') ?>" placeholder="Mohon isi sendiri jika tidak ada!">
+                                    <input type="number" min="2000" max="<?= date('Y') ?>" list="daftar_tahun_lulus" name="tahun_lulus" id="tahun_lulus" class="text" value="<?= set_value('tahun_lulus') ?>" placeholder="*Mohon isi sendiri jika tidak ada!">
                                     <datalist id="daftar_tahun_lulus">
                                         <?php for ($year = date('Y') - 5; $year <= date('Y'); $year++): ?>
                                             <option value="<?= $year ?>">

@@ -57,6 +57,3 @@ radioLainnya_jurusan.addEventListener("click", () => {
 // document.getElementById("pas_foto").onchange = function(){
 //     document.getElementById("upload_file").value = this.value;
 // };
-
-
-//script radio-checked

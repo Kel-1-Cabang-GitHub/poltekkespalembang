@@ -9,6 +9,23 @@ class Daftar_Controller extends CI_Controller
         $this->load->model('Daftar_Model');
     }
 
+    private function upload_file($name_attr, $upload_path, $allowed_types, $file_name)
+    {
+        if (!empty($_FILES[$name_attr]['name'])) {
+            $config['upload_path'] = $upload_path;
+            $config['allowed_types'] = $allowed_types;
+            $config['file_name'] = $file_name;
+            $config['file_ext_tolower'] = true;
+            $config['overwrite'] = true;
+            $config['max_size'] = 5000;
+
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload($name_attr)) {
+                return $this->upload->data('file_name');
+            }
+        }
+    }
+
     public function pilih_jalur()
     {
         $this->load->view('index');
@@ -60,6 +77,11 @@ class Daftar_Controller extends CI_Controller
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required', [
             'required' => '{field} harus diisi!'
         ]);
+        if (empty($_FILES['pas_foto']['name'])) {
+            $this->form_validation->set_rules('pas_foto', 'Pas Foto Terbaru', 'required', [
+                'required' => '{field} harus diisi!'
+            ]);
+        }
 
         // Data Sekolah
         $this->form_validation->set_rules('jenis_pendidikan_menengah', 'Jenis Pendidikan Menengah', 'required|trim', [
@@ -87,6 +109,11 @@ class Daftar_Controller extends CI_Controller
             'required' => '{field} harus diisi!',
             'integer' => '{field} harus berupa angka!'
         ]);
+        if (empty($_FILES['rekap_nilai_rapot']['name'])) {
+            $this->form_validation->set_rules('rekap_nilai_rapot', 'Rekap Nilai Rapot', 'required', [
+                'required' => '{field} harus diisi!'
+            ]);
+        }
         $this->form_validation->set_rules('rata_rata_nilai_rapot', 'Rata-Rata Nilai Rapot', 'required|trim|decimal', [
             'required' => '{field} harus diisi!',
             'decimal' => '{field} harus berupa angka desimal dengan 1 angka dibelakang koma!'
@@ -198,20 +225,59 @@ class Daftar_Controller extends CI_Controller
         $this->load->view('form-pendaftaran');
     }
 
-    private function upload_file($name_attr, $upload_path, $allowed_types, $file_name)
+    public function form_pendaftaran_lanjut()
     {
-        if (!empty($_FILES[$name_attr]['name'])) {
-            $config['upload_path'] = $upload_path;
-            $config['allowed_types'] = $allowed_types;
-            $config['file_name'] = $file_name;
-            $config['file_ext_tolower'] = true;
-            $config['overwrite'] = true;
-            $config['max_size'] = 5000;
-
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload($name_attr)) {
-                return $this->upload->data('file_name');
-            }
+        $jalur_pendaftaran = $this->input->get('jalur');
+        // Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp' atau 'ktmse', user akan di redirect() ke halaman utama
+        if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse') {
+            redirect();
         }
+
+        // Validasi data menggunakan form_validation
+        // Program Studi
+        if (empty($_FILES['bukti_pembayaran']['name'])) {
+            $this->form_validation->set_rules('bukti_pembayaran', 'Bukti Pembayaran', 'required');
+        }
+        $this->form_validation->set_rules('pilihan_1', 'Program Studi Pilihan 1', 'required', [
+            'required' => '{field} harus diisi'
+        ]);
+        $this->form_validation->set_rules('pilihan_2', 'Program Studi Pilihan 2', 'required', [
+            'required' => '{field} harus diisi'
+        ]);
+
+        // Data Prestasi
+
+        if ($this->form_validation->run() == true) {
+            // Jika data berhasil divalidasi, data dimasukkan ke database
+            // Program Studi
+            // $bukti_pembayaran = $this->upload_file(
+            //     'bukti_pembayaran', // $name_attr
+            //     'uploads/img/bukti_pembayaran/', // $upload_path
+            //     'jpg|png|jpeg', // $allowed_types
+            //     'bukti_pembayaran_' . $nisn, // $file_name
+            // );
+            $pilihan_1 = $this->input->post('pilihan_1');
+            $pilihan_2 = $this->input->post('pilihan_2');
+
+            // Data Prestasi
+
+            $program_studi = [
+                // 'bukti_pembayaran' => $bukti_pembayaran,
+                'pilihan_1' => $pilihan_1,
+                'pilihan_2' => $pilihan_2,
+            ];
+
+            $data_prestasi = [];
+
+            // Program Studi
+            // $this->Daftar_Model->tambah_data();
+            // Data Prestasi
+            // $this->Daftar_Model->tambah_data();
+
+            redirect();
+        }
+
+        // Jika data gagal divalidasi, user dikembalikan ke halaman daftar
+        $this->load->view('form-pendaftaran-lanjut');
     }
 }

@@ -127,7 +127,7 @@
                             <tr>
                                 <td><label for="pas_foto">Pas Foto Terbaru</label></td>
                                 <td>
-                                    <input type="file" name="pas_foto" id="pas_foto" accept=".jpg, .jpeg, .png" required>
+                                    <input type="file" name="pas_foto" id="pas_foto" accept=".jpg, .jpeg, .png">
                                 </td>
                                 <!-- <td><?= form_error('pas_foto') ?></td> -->
                             </tr>
@@ -297,7 +297,7 @@
                             </tr>
                             <tr>
                                 <td><label for="rekap_nilai_rapot">Rekap Nilai Rapot</label></td>
-                                <td><input type="file" name="rekap_nilai_rapot" id="rekap_nilai_rapot" accept=".pdf" required></td>
+                                <td><input type="file" name="rekap_nilai_rapot" id="rekap_nilai_rapot" accept=".pdf"></td>
                                 <!-- <td><?= form_error('rekap_nilai_rapot') ?></td> -->
                             </tr>
                             <tr>

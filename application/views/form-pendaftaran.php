@@ -30,6 +30,20 @@
             <div class="form">
                 <form action="form-pendaftaran?jalur=<?= $this->input->get('jalur'); ?>" method="POST" enctype="multipart/form-data">
                     <!-- <?= validation_errors() ?> -->
+                    <div class="confirm-alert" id="confirm-alert">
+                        <div class="ca-head">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="46px" viewBox="0 0 24 24" width="46px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                            <h2>Konfirmasi</h2>
+                        </div>
+                        <div class="ca-body">
+                            <!-- <img src="<?= base_url(); ?>/assets/icons/" alt=""> -->
+                            <p>Pastikan data yang anda masukkan sudah sesuai. Apakah anda sudah yakin dengan data yang telah diinputkan? Pilih simpan untuk melanjutkan</p>
+                            <div class="ca-button">
+                                <button type="submit" class="btn btn-success">Simpan</button>
+                                <button class="btn btn-danger" id="ca-cancel">Batal</button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="table-form siswa active">
                         <table>
                             <tr>
@@ -124,16 +138,16 @@
                             <tr>
                                 <td><label for="jenis_pendidikan_menengah">Jenis Pendidikan Menengah</label></td>
                                 <td>
-                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Sekolah Menengah Atas (SMA)" <?= set_radio('jenis_pendidikan_menengah', 'Sekolah Menengah Atas (SMA)') ?> >
-                                    Sekolah Menengah Atas (SMA) <br>
-                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Madrasah Aliyah (MA)" <?= set_radio('jenis_pendidikan_menengah', 'Madrasah Aliyah (MA)') ?> >
-                                    Madrasah Aliyah (MA) <br>
-                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Sekolah Menengah Kejuruan (SMK)" <?= set_radio('jenis_pendidikan_menengah', 'Sekolah Menengah Kejuruan (SMK)') ?> >
-                                    Sekolah Menengah Kejuruan (SMK) <br>
-                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Madrasah Aliyah Kejuruan (MAK)" <?= set_radio('jenis_pendidikan_menengah', 'Madrasah Aliyah Kejuruan (MAK)') ?> >
-                                    Madrasah Aliyah Kejuruan (MAK) <br>
-                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="Kelompok Belajar Paket C" <?= set_radio('jenis_pendidikan_menengah', 'Kelompok Belajar Paket C') ?> >
-                                    Kelompok Belajar Paket C <br>
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah jpm-sma" value="Sekolah Menengah Atas (SMA)" <?= set_radio('jenis_pendidikan_menengah', 'Sekolah Menengah Atas (SMA)') ?> >
+                                    <label for="jenis_pendidikan_menengah jpm-sma">Sekolah Menengah Atas (SMA)</label><br>
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah jpm-ma" value="Madrasah Aliyah (MA)" <?= set_radio('jenis_pendidikan_menengah', 'Madrasah Aliyah (MA)') ?> >
+                                    <label for="jenis_pendidikan_menengah jpm-ma">Madrasah Aliyah (MA)</label> <br>
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah jpm-smk" value="Sekolah Menengah Kejuruan (SMK)" <?= set_radio('jenis_pendidikan_menengah', 'Sekolah Menengah Kejuruan (SMK)') ?> >
+                                    <label for="jenis_pendidikan_menengah jpm-smk">Sekolah Menengah Kejuruan (SMK)</label><br>
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah jpm-mak" value="Madrasah Aliyah Kejuruan (MAK)" <?= set_radio('jenis_pendidikan_menengah', 'Madrasah Aliyah Kejuruan (MAK)') ?> >
+                                    <label for="jenis_pendidikan_menengah jpm-mak">Madrasah Aliyah Kejuruan (MAK)</label><br>
+                                    <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah jpm-kbpc" value="Kelompok Belajar Paket C" <?= set_radio('jenis_pendidikan_menengah', 'Kelompok Belajar Paket C') ?> >
+                                    <label for="jenis_pendidikan_menengah jpm-kbpc">Kelompok Belajar Paket C</label><br>
                                     <input type="radio" class="radio down" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah lainnya1"
                                     <?php if (set_value('jenis_pendidikan_menengah') == ''): ?>
                                     <?php elseif (
@@ -145,7 +159,7 @@
                                     ): ?>
                                         checked
                                     <?php endif; ?> >
-                                    Lainnya... <br>
+                                    <label for="jenis_pendidikan_menengah lainnya1">Lainnya...</label><br>
                                     <input type="text" class="text other_opt
                                     <?php if (set_value('jenis_pendidikan_menengah') == ''): ?>
                                         disabled
@@ -178,18 +192,18 @@
                             <tr>
                                 <td><label for="jurusan">Jurusan</label></td>
                                 <td>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="IPA" <?= set_radio('jurusan', 'IPA') ?> >
-                                    IPA <br>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="IPS" <?= set_radio('jurusan', 'IPS') ?> >
-                                    IPS <br>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Keperawatan" <?= set_radio('jurusan', 'SMK Keperawatan') ?> >
-                                    SMK Keperawatan <br>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Farmasi" <?= set_radio('jurusan', 'SMK Farmasi') ?> >
-                                    SMK Farmasi <br>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Analisis Kesehatan" <?= set_radio('jurusan', 'SMK Analisis Kesehatan') ?> >
-                                    SMK Analisis Kesehatan<br>
-                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan" value="SMK Keperawatan Gigi" <?= set_radio('jurusan', 'SMK Keperawatan Gigi') ?> >
-                                    SMK Keperawatan Gigi<br>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan ipa" value="IPA" <?= set_radio('jurusan', 'IPA') ?> >
+                                    <label for="jurusan ipa">IPA</label><br>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan ips" value="IPS" <?= set_radio('jurusan', 'IPS') ?> >
+                                    <label for="jurusan ips">IPS</label> <br>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan SMKPer" value="SMK Keperawatan" <?= set_radio('jurusan', 'SMK Keperawatan') ?> >
+                                    <label for="jurusan SMKPer">SMK Keperawatan</label><br>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan SMKFar" value="SMK Farmasi" <?= set_radio('jurusan', 'SMK Farmasi') ?> >
+                                    <label for="jurusan SMKFar">SMK Farmasi</label><br>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan SMKAnkes" value="SMK Analisis Kesehatan" <?= set_radio('jurusan', 'SMK Analisis Kesehatan') ?> >
+                                    <label for="jurusan SMKAnkes">SMK Analisis Kesehatan</label><br>
+                                    <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan SMKPergi" value="SMK Keperawatan Gigi" <?= set_radio('jurusan', 'SMK Keperawatan Gigi') ?> >
+                                    <label for="jurusan SMKPergi">SMK Keperawatan Gigi</label><br>
                                     <input type="radio" class="radio down" name="jurusan" id="jurusan lainnya2"
                                     <?php if (set_value('jurusan') == ''): ?>
                                     <?php elseif (
@@ -202,7 +216,7 @@
                                     ): ?>
                                         checked
                                     <?php endif; ?> >
-                                    Lainnya... <br>
+                                    <label for="jurusan lainnya2">Lainnya...</label><br>
                                     <input type="text" class="text other_opt
                                     <?php if (set_value('jurusan') == ''): ?>
                                         disabled
@@ -319,8 +333,8 @@
                         </table>
                     </div>
                     <div class="btn">
-                        <a href="<?= base_url() ?>" class="btn btn-back">Kembali</a>
-                        <button type="submit" class="btn">Simpan</button>
+                        <a href="<?= base_url() ?>" class="btn btn-back btn-primary">Kembali</a>
+                        <button class="btn btn-success">Simpan</button>
                     </div>
                 </form>
             </div>

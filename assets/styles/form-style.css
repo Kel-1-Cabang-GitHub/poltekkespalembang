@@ -35,7 +35,7 @@ div.form{
     box-shadow: -12px 4px 21px 7px rgba(0, 0, 0, 0.25);
     border-radius: 0px 6px 6px 6px;
 }
-div.form label:hover, input[type="radio"]{
+div.form label:hover, input[type="radio"], input[type="file"]{
     cursor: pointer;
 }
 div.form table{
@@ -58,6 +58,7 @@ div.form input.text, textarea.text{
     border-bottom: 2px solid #CED4DA;
     border-radius: 4px 4px 0 0;
 }
+
 div.form input.text:focus , div.form textarea.text:focus{
     background-color: #e8f0fe;
     border-bottom: 2px solid #1F5BA7;
@@ -67,13 +68,6 @@ div.form textarea.text{
     resize: none;
     outline: none;
 }
-/* input[type="file"]{
-    border: 1px solid;
-    height: 30px;
-} */
-/* input#file-upload-button{
-    width: 100px;
-} */
 div.form input.radio.down{
     margin-bottom: 10px;
     margin-right: 5px;
@@ -102,7 +96,6 @@ button.btn, a.btn{
     color: white;
     width: 101px;
     height: 30px;
-    background-color: #83A342;
     border: none;
     border-radius: 10px;
 }
@@ -112,11 +105,82 @@ button.btn:hover{
 }
 a.btn-back{
     padding: 0px;
-    background-color: #1F5BA7;
     margin-right: 15px;
     text-decoration: none;
     color: white;
     text-align: center;
     font-size: 13.33px;
     line-height: 30px;
+}
+.btn-success{
+    background-color: #83A342;
+}
+.btn-danger{
+    background-color: #FF0000;
+}
+.btn-primary{
+    background-color: #1F5BA7;
+}
+div.confirm-alert{
+    width: 560px;
+    height: 200px;
+    position: absolute;
+    background-color: #CED4DA;
+    /* display: flex; */
+    flex-wrap: wrap;
+    overflow: hidden;
+    border-radius: 2px;
+    top: 50%;
+    left: 50%;
+    margin-top: -70px;
+    margin-left: -280px;
+    display: none;
+}
+div.ca-head{
+    padding: 10px 15px;
+    height: 60px;
+    width: 100%;
+    background-color: #2183FE;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+div.ca-head svg{
+    color: white;
+}
+div.ca-head h2{
+    display: inline-block;
+    margin-left: 5px;
+}
+div.ca-body{
+    padding: 10px 15px;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+}
+div.ca-button{
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-end;
+}
+div.ca-button button{
+    margin-right: 10px;
+}
+@media(max-width: 950px ){
+    div.form-data{
+        width: 90%;
+    }
+}
+@media(max-width: 650px){
+    main{
+        font-size: 12px;
+    }
+    div.form table{
+        width: 100%;
+    }
+    div.form td:first-child{
+        width: 50%;
+        padding: 7px;
+    }
 }

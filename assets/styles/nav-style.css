@@ -4,6 +4,9 @@
     box-sizing: border-box;
     font-family: "roboto";
 }
+header{
+    width: 100%;
+}
 nav{
     display: flex;
     padding: 15px;

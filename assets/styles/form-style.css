@@ -75,6 +75,12 @@ div.form input.text, textarea.text, div.form select{
     border-radius: 4px 4px 0 0;
     margin-bottom: 25px;
 }
+div.form select{
+    padding: 5px;
+}
+div.form select.select-hidden{
+    display: none;
+}
 div.radio-hz,div.radio-vr,input[type="file"]{
    width: 500px;
    margin-bottom: 25px;

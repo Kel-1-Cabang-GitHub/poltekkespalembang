@@ -214,8 +214,8 @@
                         <select name="provinsi_asal_sekolah" id="provinsi"></select>
                         <span class="label-input"><label class="form-label" for="kota_kabupaten_asal_sekolah">Kota/Kabupaten Asal Sekolah</label></span>
                         <select name="kota_kabupaten_asal_sekolah" id="kabupaten"></select>
-                        <select id="kecamatan"></select>
-                        <select id="kelurahan"></select>
+                        <select class="select-hidden" id="kecamatan"></select>
+                        <select class="select-hidden" id="kelurahan"></select>
                         <!-- <input type="text" class="text" name="kota_kabupaten_asal_sekolah" id="kota_kabupaten_asal_sekolah" value="<?= set_value('kota_kabupaten_asal_sekolah') ?>"> -->
                         <span class="label-input"><label class="form-label" for="akreditasi_sekolah">Akreditasi Sekolah</label></span>
                         <div class="radio-hz">

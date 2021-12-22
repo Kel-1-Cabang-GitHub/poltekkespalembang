@@ -52,6 +52,8 @@ radioLainnya_jurusan.addEventListener("click", () => {
     input_jurusan.focus();
 });
 
+// API Nama Daerah
+let render = createwidgetlokasi("provinsi", "kabupaten", "kecamatan", "kelurahan");
 
 //script input file
 // document.getElementById("pas_foto").onchange = function(){

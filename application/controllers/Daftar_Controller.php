@@ -280,4 +280,5 @@ class Daftar_Controller extends CI_Controller
         // Jika data gagal divalidasi, user dikembalikan ke halaman daftar
         $this->load->view('form-pendaftaran-lanjut');
     }
+
 }

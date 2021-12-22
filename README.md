@@ -10,3 +10,12 @@ git clone https://github.com/Kel-1-Cabang-GitHub/poltekkespalembang.git
 ```
 3. Gunakan branch `dev` setiap ingin mengubah kode
 4. Setiap ingin melakukan `git push`, lakukan `git pull` terlebih dahulu
+
+### Jika terdapat error pada console
+
+```
+Access to XMLHttpRequest at 'http://api.iksgroup.co.id/apilokasi/provinsi?t=1' from origin 'http://localhost:8080' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+```
+Tambahkan ekstensi CORS unblocker pada browser yang anda gunakan
+
+### Kel 1 Cabang Github

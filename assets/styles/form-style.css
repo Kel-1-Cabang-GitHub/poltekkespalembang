@@ -1,0 +1,211 @@
+:root{
+    --biru-muda: #2183FE;
+    --biru-tua: #1F5BA7;
+    --hijau: #83A342;
+    --merah: #FF0000;
+    --putih: #FFFFFF;
+    --putih-2: #E8F0FE;
+    --abu-abu:  #CED4DA;
+    --abu-abu-tua: #818181;
+}
+main{
+    display: flex;
+    justify-content: center;
+    padding: 80px 0px;
+}
+div.form-data{
+    display: flex;
+    flex-wrap: wrap;
+    width: 865px;
+}
+div.data{
+    width: 39%;
+    height: 59px;
+    background-color: var(--biru-muda);
+    color: var(--putih);
+    text-align: center;
+    line-height: 59px;
+}
+div.data:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+div.data.active{
+    background-color: var(--biru-tua);
+}
+div.data.pribadi{
+    border-radius: 6px 0px 0px 0px;
+}
+div.data.sekolah{
+    border-radius: 0px 6px 0px 0px;
+}
+div.form{
+    width: 100%;
+    /* padding: 30px; */
+    box-shadow: -12px 4px 21px 7px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 6px 6px 6px;
+}
+div.form label:hover, input[type="radio"], input[type="file"]{
+    cursor: pointer;
+}
+div.table-form{
+    padding: 25px;
+    flex-wrap: wrap;
+}
+div.table-form{
+    display: none;
+}
+div.table-form.active{
+    display: flex;
+}
+span.label-input{
+    width: 200px;
+    margin-right: 25px;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+div.form input.text, textarea.text, div.form select{
+    background-color: var(--putih);
+    border: none;
+    width: 500px;
+    height: 30px;
+    padding: 10px;
+    outline: none;
+    border-bottom: 2px solid var(--abu-abu);
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 25px;
+}
+div.form select{
+    padding: 5px;
+}
+div.form select.select-hidden{
+    display: none;
+}
+div.radio-hz,div.radio-vr,input[type="file"]{
+   width: 500px;
+   margin-bottom: 25px;
+   margin-left: 10px;
+}
+div.form input.text:focus , div.form textarea.text:focus{
+    background-color: var(--putih-2);
+    border-bottom: 2px solid var(--biru-tua);
+}
+div.form textarea.text{
+    height: 133px;
+    resize: none;
+    outline: none;
+}
+div.form input.radio.down{
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+div.form input.disabled{
+    background-color: var(--abu-abu-tua);
+}
+div.form span.radio{
+    margin-right: 15px;
+    margin-left: 5px;
+}
+div.btn{
+    padding: 15px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-end;
+}
+button.btn, a.btn{
+    padding: 5px;
+    color: var(--putih);
+    width: 101px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+}
+button.btn:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+a.btn-back{
+    padding: 0px;
+    margin-right: 15px;
+    text-decoration: none;
+    color: var(--putih);
+    text-align: center;
+    font-size: 13.33px;
+    line-height: 30px;
+}
+.btn-success{
+    background-color: var(--hijau);
+}
+.btn-danger{
+    background-color: var(--merah);
+}
+.btn-primary{
+    background-color: var(--biru-tua);
+}
+div.confirm-alert{
+    width: 560px;
+    height: 200px;
+    position: absolute;
+    background-color: var(--abu-abu);
+    /* display: flex; */
+    flex-wrap: wrap;
+    overflow: hidden;
+    border-radius: 2px;
+    top: 50%;
+    left: 50%;
+    margin-top: -70px;
+    margin-left: -280px;
+    display: none;
+}
+div.ca-head{
+    padding: 10px 15px;
+    height: 60px;
+    width: 100%;
+    background-color: var(--biru-muda);
+    color: var(--putih);
+    display: flex;
+    align-items: center;
+}
+div.ca-head svg{
+    color: var(--putih);
+}
+div.ca-head h2{
+    display: inline-block;
+    margin-left: 5px;
+}
+div.ca-body{
+    padding: 10px 15px;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+}
+div.ca-button{
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-end;
+}
+div.ca-button button{
+    margin-right: 10px;
+}
+@media(max-width: 950px ){
+    div.form-data{
+        width: 90%;
+    }
+}
+@media(max-width: 870px){
+    span.label-input{
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    input.text,textarea.text{
+        width: 70%;
+        margin-bottom: 25px;
+    }
+    textarea.text{
+        width: 75%;
+    }
+    div.radio-hz{
+        margin-bottom: 25px;
+    }
+}

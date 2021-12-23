@@ -246,6 +246,21 @@ div.scroll {
 div.scroll.show {
 	transform: translate(0px, 0px);
 }
+h3 a{
+	text-decoration: none;
+	color: black;
+}
+div.prodi-list,div.harga-list{
+	width: 100%;
+	padding: 10px;
+}
+div.prodi-list li, div.harga-list li{
+	margin-left: 20px;
+}
+div.harga-list{
+	margin-bottom: 50px;
+}
+
 @media (max-width: 950px) {
 	div.form-data {
 		width: 90%;

@@ -239,7 +239,38 @@
                         <input type="number" min="1" class="text" name="semester_5" id="semester_5" value="<?= set_value('semester_5') ?>">
                     </div>
                     <div class="table-form prodi">
-                        <h1>Maaf Form Belum Tersedia :(</h1>
+                        <h3>Prodi yang ada di Politeknik Kesehatan Palembang (Informasi masing-masing Prodi dapat dilihat di <a href="http://www.poltekkespalembang.ac.id">www.poltekkespalembang.ac.id</a>)</h3>
+                        <div class="prodi-list">
+                            <ol class="num-list">
+                                <li>Prodi DIII Keperawatan Palembang</li>
+                                <li>Prodi DIII Keperawatan Kampus Baturaja</li>
+                                <li>Prodi DIII Keperawatan Kampus Lubuk Linggau</li>
+                                <li>Prodi DIII Keperawatan Kampus Lahat</li>
+                                <li>Prodi DIII Gizi Palembang</li>
+                                <li>Prodi Gizi dan Dietika Program Sarjana Terapan (reguler)</li>
+                                <li>Prodi DIII Kebidanan Palembang</li>
+                                <li>Prodi DIII Kebidanan Kampus Muara Enim</li>
+                                <li>Prodi Kebidanan Sarjana Terapan (reguler)</li>
+                                <li>Prodi DIII Farmasi</li>
+                                <li>Prodi DIII Teknologi Laboratorium Medis (TLM)</li>
+                                <li>Prodi TLM Program Sarjana Terapan</li>
+                                <li>Prodi DIII Kesehatan Gigi</li>
+                                <li>Prodi DIII Sanitasi</li>
+                            </ol>
+                        </div>
+                        <div class="harga-list">
+                            <p>Besar Biaya Pendaftaran</p>
+                            <ul class="dot-list">
+                                <li>1 Pilihan Rp 100.000,-</li>
+                                <li>2 Pilihan Rp 125.000,-</li>
+                            </ul>
+                        </div>
+                        <span class="label-input"><label class="form-label" for="">Upload Bukti Pembayaran</label></span>
+                        <input type="file">
+                        <span class="label-input"><label for="" class="form-label">Program Studi Pilihan 1</label></span>
+                        <input type="text" class="text" placeholder="--Pilih program studi--">
+                        <span class="label-input"><label for="" class="form-label">Program Studi Pilihan 2</label></span>
+                        <input type="text" class="text" placeholder="--Lewati jika hanya membayar 1 pilihan--">
                     </div>
                     <div class="table-form prestasi">
                         <h1>Maaf Form Belum Tersedia :(</h1>

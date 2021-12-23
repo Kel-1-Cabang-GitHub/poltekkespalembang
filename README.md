@@ -28,5 +28,8 @@ Tambahkan ekstensi CORS unblocker pada browser yang anda gunakan
 
 ### Credits
 
+- [Poltekkes Kemenkes Palembang](https://poltekkespalembang.ac.id/)
+- [Google Fonts - Roboto](https://fonts.google.com/specimen/Roboto?query=roboto)
+- [Google Icons](https://fonts.google.com/icons)
 - [CORS Unblocker](https://add0n.com/access-control.html)
 - [API Lokasi Indonesia](http://api.iksgroup.co.id/lokasi/demolokasi)

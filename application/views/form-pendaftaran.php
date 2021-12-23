@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Form Pendaftaran | POLTEKKES KEMENKES PALEMBANG</title>
-        <link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
-        <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
-        <link rel="stylesheet" href="<?= base_url() ?>assets/styles/form-style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pendaftaran | POLTEKKES KEMENKES PALEMBANG</title>
+    <link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/styles/form-style.css">
+    <script defer src="<?= base_url() ?>assets/scripts/jquery-3.6.0.min.js"></script>
+    <!-- http://api.iksgroup.co.id/lokasi/demolokasi -->
+    <script defer src="<?= base_url() ?>assets/scripts/lokasiapi.js"></script>
+    <script defer src="<?= base_url() ?>assets/scripts/form-script.js"></script>
 </head>
 <body>
     <header>
@@ -69,23 +73,7 @@
                         <span class="label-input"><label class="form-label" for="tempat_lahir">Tempat Lahir</label></span>
                         <input type="text" class="text" name="tempat_lahir" id="tempat_lahir" value="<?= set_value('tempat_lahir') ?>" list="daftar_tempat_lahir" placeholder="*Mohon isi sendiri jika tidak ada!">
                         <datalist id="daftar_tempat_lahir">
-                            <option value="Banyuasin">
-                            <option value="Empat Lawang">
-                            <option value="Lahat">
-                            <option value="Muara Enim">
-                            <option value="Musi Banyuasin">
-                            <option value="Musi Rawas">
-                            <option value="Musi Rawas Utara">
-                            <option value="Ogan Ilir">
-                            <option value="Ogan Komering Ilir">
-                            <option value="Ogan Komering Ulu">
-                            <option value="Ogan Komering Ulu Selatan">
-                            <option value="Ogan Komering Ulu Timur">
-                            <option value="Penukal Abab Lematang Ilir">
-                            <option value="Lubuk Linggau">
-                            <option value="Pagar Alam">
-                            <option value="Palembang">
-                            <option value="Prabumulih">
+                            <?= daftar_tempat_lahir() ?>
                         </datalist>
                         <span class="label-input"><label class="form-label" for="tanggal_lahir">Tanggal Lahir</label></span>
                         <input type="date" class="text" name="tanggal_lahir" id="tanggal_lahir" value="<?= set_value('tanggal_lahir') ?>">
@@ -106,8 +94,8 @@
                             <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah jpm-kbpc" value="Kelompok Belajar Paket C" <?= set_radio('jenis_pendidikan_menengah', 'Kelompok Belajar Paket C') ?> >
                             <label for="jenis_pendidikan_menengah jpm-kbpc">Kelompok Belajar Paket C</label><br>
                             <input type="radio" class="radio down" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah lainnya1"
-                            <?php if (set_value('jenis_pendidikan_menengah') == ''): ?>
-                            <?php elseif (
+                            <?php if (
+                                set_value('jenis_pendidikan_menengah') != '' &&
                                 set_value('jenis_pendidikan_menengah') != 'Sekolah Menengah Atas (SMA)' &&
                                 set_value('jenis_pendidikan_menengah') != 'Madrasah Aliyah (MA)' &&
                                 set_value('jenis_pendidikan_menengah') != 'Sekolah Menengah Kejuruan (SMK)' &&
@@ -118,29 +106,29 @@
                             <?php endif; ?> >
                             <label for="jenis_pendidikan_menengah lainnya1">Lainnya...</label><br>
                             <input type="text" class="text other_opt
-                            <?php if (set_value('jenis_pendidikan_menengah') == ''): ?>
-                                disabled
-                            <?php elseif (
-                                set_value('jenis_pendidikan_menengah') != 'Sekolah Menengah Atas (SMA)' &&
-                                set_value('jenis_pendidikan_menengah') != 'Madrasah Aliyah (MA)' &&
-                                set_value('jenis_pendidikan_menengah') != 'Sekolah Menengah Kejuruan (SMK)' &&
-                                set_value('jenis_pendidikan_menengah') != 'Madrasah Aliyah Kejuruan (MAK)' &&
-                                set_value('jenis_pendidikan_menengah') != 'Kelompok Belajar Paket C'
+                            <?php if (
+                                set_value('jenis_pendidikan_menengah') == '' ||
+                                (
+                                    set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Atas (SMA)' &&
+                                    set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah (MA)' &&
+                                    set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Kejuruan (SMK)' &&
+                                    set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah Kejuruan (MAK)' &&
+                                    set_value('jenis_pendidikan_menengah') == 'Kelompok Belajar Paket C'
+                                )
                             ): ?>
-                            <?php else: ?>
                                 disabled
                             <?php endif; ?>"
                             name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah disabled" value="<?= set_value('jenis_pendidikan_menengah') ?>"
-                            <?php if (set_value('jenis_pendidikan_menengah') == ''): ?>
-                                disabled
-                            <?php elseif (
-                                set_value('jenis_pendidikan_menengah') != 'Sekolah Menengah Atas (SMA)' &&
-                                set_value('jenis_pendidikan_menengah') != 'Madrasah Aliyah (MA)' &&
-                                set_value('jenis_pendidikan_menengah') != 'Sekolah Menengah Kejuruan (SMK)' &&
-                                set_value('jenis_pendidikan_menengah') != 'Madrasah Aliyah Kejuruan (MAK)' &&
-                                set_value('jenis_pendidikan_menengah') != 'Kelompok Belajar Paket C'
+                            <?php if (
+                                set_value('jenis_pendidikan_menengah') == '' ||
+                                (
+                                    set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Atas (SMA)' &&
+                                    set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah (MA)' &&
+                                    set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Kejuruan (SMK)' &&
+                                    set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah Kejuruan (MAK)' &&
+                                    set_value('jenis_pendidikan_menengah') == 'Kelompok Belajar Paket C'
+                                )
                             ): ?>
-                            <?php else: ?>
                                 disabled
                             <?php endif; ?> >
                         </div>
@@ -159,8 +147,8 @@
                             <input type="radio" class="radio down jurusan_fixed" name="jurusan" id="jurusan SMKPergi" value="SMK Keperawatan Gigi" <?= set_radio('jurusan', 'SMK Keperawatan Gigi') ?> >
                             <label for="jurusan SMKPergi">SMK Keperawatan Gigi</label><br>
                             <input type="radio" class="radio down" name="jurusan" id="jurusan lainnya2"
-                            <?php if (set_value('jurusan') == ''): ?>
-                            <?php elseif (
+                            <?php if (
+                                set_value('jurusan') != '' &&
                                 set_value('jurusan') != 'IPA' &&
                                 set_value('jurusan') != 'IPS' &&
                                 set_value('jurusan') != 'SMK Keperawatan' &&
@@ -172,31 +160,31 @@
                             <?php endif; ?> >
                             <label for="jurusan lainnya2">Lainnya...</label><br>
                             <input type="text" class="text other_opt
-                            <?php if (set_value('jurusan') == ''): ?>
-                                disabled
-                            <?php elseif (
-                                set_value('jurusan') != 'IPA' &&
-                                set_value('jurusan') != 'IPS' &&
-                                set_value('jurusan') != 'SMK Keperawatan' &&
-                                set_value('jurusan') != 'SMK Farmasi' &&
-                                set_value('jurusan') != 'SMK Analisis Kesehatan' &&
-                                set_value('jurusan') != 'SMK Keperawatan Gigi'
+                            <?php if (
+                                set_value('jurusan') == '' ||
+                                (
+                                    set_value('jurusan') == 'IPA' &&
+                                    set_value('jurusan') == 'IPS' &&
+                                    set_value('jurusan') == 'SMK Keperawatan' &&
+                                    set_value('jurusan') == 'SMK Farmasi' &&
+                                    set_value('jurusan') == 'SMK Analisis Kesehatan' &&
+                                    set_value('jurusan') == 'SMK Keperawatan Gigi'
+                                )
                             ): ?>
-                            <?php else: ?>
                                 disabled
                             <?php endif; ?>
                             "name="jurusan" id="jurusan disabled" value="<?= set_value('jurusan') ?>"
-                            <?php if (set_value('jurusan') == ''): ?>
-                                disabled
-                            <?php elseif (
-                                set_value('jurusan') != 'IPA' &&
-                                set_value('jurusan') != 'IPS' &&
-                                set_value('jurusan') != 'SMK Keperawatan' &&
-                                set_value('jurusan') != 'SMK Farmasi' &&
-                                set_value('jurusan') != 'SMK Analisis Kesehatan' &&
-                                set_value('jurusan') != 'SMK Keperawatan Gigi'
+                            <?php if (
+                                set_value('jurusan') == '' ||
+                                (
+                                    set_value('jurusan') == 'IPA' &&
+                                    set_value('jurusan') == 'IPS' &&
+                                    set_value('jurusan') == 'SMK Keperawatan' &&
+                                    set_value('jurusan') == 'SMK Farmasi' &&
+                                    set_value('jurusan') == 'SMK Analisis Kesehatan' &&
+                                    set_value('jurusan') == 'SMK Keperawatan Gigi'
+                                )
                             ): ?>
-                            <?php else: ?>
                                 disabled
                             <?php endif; ?> >
                         </div>
@@ -210,13 +198,11 @@
                             <span class="radio"><label for="jenis_sekolah swasta">Swasta</label></span>
                         </div>
                         <span class="label-input"><label class="form-label" for="provinsi_asal_sekolah">Provinsi Asal Sekolah</label></span>
-                        <!-- <input type="text" class="text" name="provinsi_asal_sekolah" id="provinsi_asal_sekolah" value="<?= set_value('provinsi_asal_sekolah') ?>"> -->
-                        <select name="provinsi_asal_sekolah" id="provinsi"></select>
+                        <select name="provinsi_asal_sekolah" id="provinsi_asal_sekolah"></select>
                         <span class="label-input"><label class="form-label" for="kota_kabupaten_asal_sekolah">Kota/Kabupaten Asal Sekolah</label></span>
-                        <select name="kota_kabupaten_asal_sekolah" id="kabupaten"></select>
+                        <select name="kota_kabupaten_asal_sekolah" id="kota_kabupaten_asal_sekolah"></select>
                         <select class="select-hidden" id="kecamatan"></select>
                         <select class="select-hidden" id="kelurahan"></select>
-                        <!-- <input type="text" class="text" name="kota_kabupaten_asal_sekolah" id="kota_kabupaten_asal_sekolah" value="<?= set_value('kota_kabupaten_asal_sekolah') ?>"> -->
                         <span class="label-input"><label class="form-label" for="akreditasi_sekolah">Akreditasi Sekolah</label></span>
                         <div class="radio-hz">
                             <input type="radio" value="A" name="akreditasi_sekolah" id="akreditasi_sekolah a" <?= set_radio('akreditasi_sekolah', 'A') ?> >
@@ -227,9 +213,7 @@
                         <span class="label-input"><label class="form-label" for="tahun_lulus">Tahun Lulus/Tamat</label></span>
                         <input type="number" min="2000" max="<?= date('Y') ?>" list="daftar_tahun_lulus" name="tahun_lulus" id="tahun_lulus" class="text" value="<?= set_value('tahun_lulus') ?>" placeholder="*Mohon isi sendiri jika tidak ada!">
                         <datalist id="daftar_tahun_lulus">
-                        <?php for ($year = date('Y') - 5; $year <= date('Y'); $year++): ?>
-                            <option value="<?= $year ?>">
-                        <?php endfor; ?>
+                        <?= daftar_tahun_lulus(); ?>
                         </datalist>
                         <span class="label-input"><label class="form-label"for="rekap_nilai_rapot">Rekap Nilai Rapot</label></span>
                         <input type="file" name="rekap_nilai_rapot" id="rekap_nilai_rapot" accept=".pdf">
@@ -254,8 +238,5 @@
             </div>
         </div>
     </main>
-    <script src="<?= base_url() ?>assets/scripts/jquery-3.6.0.min.js"></script>
-    <script src="http://api.iksgroup.co.id/apijs/lokasiapi.js"></script>
-    <script src="<?= base_url() ?>assets/scripts/form-script.js"></script>
 </body>
 </html>

@@ -52,8 +52,14 @@ radioLainnya_jurusan.addEventListener("click", () => {
     input_jurusan.focus();
 });
 
-// API Nama Daerah
-let render = createwidgetlokasi("provinsi", "kabupaten", "kecamatan", "kelurahan");
+// API untuk Provinsi dan Kota/Kabupaten Asal Sekolah
+// http://api.iksgroup.co.id/lokasi/demolokasi
+const render = createwidgetlokasi(
+    "provinsi_asal_sekolah",
+    "kota_kabupaten_asal_sekolah",
+    "kecamatan_asal_sekolah",
+    "kelurahan_asal_sekolah"
+);
 
 //script input file
 // document.getElementById("pas_foto").onchange = function(){

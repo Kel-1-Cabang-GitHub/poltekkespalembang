@@ -1,22 +1,24 @@
-//Perpindahan form data pribadi ke form data sekolah
-const select_data_sekolah = document.querySelector("div.data.sekolah");
-const select_data_pribadi = document.querySelector("div.data.pribadi");
-const form_data_sekolah = document.querySelector("div.table-form.sekolah");
-const form_data_siswa = document.querySelector("div.table-form.siswa");
+//Perpindahan antar form
 
-select_data_pribadi.addEventListener('click', () => {
-    select_data_sekolah.classList.remove("active");
-    select_data_pribadi.classList.add("active");
-    form_data_sekolah.classList.remove("active");
-    form_data_siswa.classList.add("active");
-});
-select_data_sekolah.addEventListener('click', () => {
-    select_data_pribadi.classList.remove("active");
-    select_data_sekolah.classList.add("active");
-    form_data_siswa.classList.remove("active");
-    form_data_sekolah.classList.add("active");
-});
+const select_data = document.querySelectorAll("div.data");
+const form_data = document.querySelectorAll("div.table-form");
 
+select_data.forEach(el => {
+    el.addEventListener("click", () => {
+        let id = el.id;
+        select_data.forEach(elm => {
+            elm.classList.remove("active");
+        });
+        el.classList.add("active");
+        form_data.forEach(elm => {
+            if(elm.classList.contains(id)){
+                elm.classList.add("active");
+            }else{
+                elm.classList.remove("active");
+            }
+        });
+    });
+});
 
 //enable dan disable input text dari radio button lainnya
 const radio_jpm = document.querySelectorAll("input.jpm_fixed");
@@ -61,7 +63,39 @@ const render = createwidgetlokasi(
     "kelurahan_asal_sekolah"
 );
 
-//script input file
-// document.getElementById("pas_foto").onchange = function(){
-//     document.getElementById("upload_file").value = this.value;
-// };
+// Alert Konfirmasi simpan data
+const block = document.querySelector("div.block");
+const tombol_simpan = document.querySelector("a.simpan-data");
+const tombol_batal = document.querySelector("a.batal-simpan");
+const kotak_alert = document.querySelector("div.confirm-alert");
+
+tombol_simpan.addEventListener("click",() => {
+    block.classList.add("active");
+    kotak_alert.classList.add("active");
+});
+tombol_batal.addEventListener("click",() => {
+    kotak_alert.classList.remove("active");
+    block.classList.remove("active");
+});
+
+//scroll-atas
+$(window).scroll(function(){
+	let wscroll = $(this).scrollTop();
+	if(wscroll > 150){
+		$('div.scroll').addClass('show');
+	}else{
+		$('div.scroll').removeClass('show');
+	}
+});
+$('.scroll').on('click',function(){
+
+	let destination = $('div.data');
+	let destinationEl = $(destination);
+
+	$('html').animate({
+		scrollTop: destinationEl.offset().top - 50
+	},1000,'swing');
+
+	event.preventDefault();
+
+});

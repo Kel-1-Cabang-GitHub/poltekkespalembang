@@ -14,6 +14,8 @@
     <script defer src="<?= base_url() ?>assets/scripts/form-script.js"></script>
 </head>
 <body>
+    <div class="container">
+    <div class="block"></div>
     <header>
         <nav>
             <img src="<?= base_url() ?>assets/img/logo.jpg" alt="logo">
@@ -25,11 +27,17 @@
     </header>
     <main>
         <div class="form-data">
-            <div class="data pribadi active">
+            <div class="data pribadi active" id="siswa">
                 <h2>Data Pribadi</h2>
             </div>
-            <div class="data sekolah">
+            <div class="data sekolah" id="sekolah">
                 <h2>Data Sekolah</h2>
+            </div>
+            <div class="data prodi" id="prodi">
+                <h2>Program Studi</h2>
+            </div>
+            <div class="data prestasi" id="prestasi">
+                <h2>Data Prestasi</h2>
             </div>
             <div class="form">
                 <form action="form-pendaftaran?jalur=<?= $this->input->get('jalur'); ?>" method="POST" enctype="multipart/form-data">
@@ -44,7 +52,7 @@
                             <p>Pastikan data yang anda masukkan sudah sesuai. Apakah anda sudah yakin dengan data yang telah diinputkan? Pilih simpan untuk melanjutkan</p>
                             <div class="ca-button">
                                 <button type="submit" class="btn btn-success">Simpan</button>
-                                <button class="btn btn-danger" id="ca-cancel">Batal</button>
+                                <a class="a-btn btn-danger batal-simpan" id="ca-cancel">Batal</a>
                             </div>
                         </div>
                     </div>
@@ -81,7 +89,7 @@
                         <input type="file" name="pas_foto" id="pas_foto" accept=".jpg, .jpeg, .png">
                     </div>
                     <div class="table-form sekolah">
-                    <span class="label-input"><label class="form-label" for="jenis_pendidikan_menengah">Jenis Pendidikan Menengah</label></span>
+                        <span class="label-input"><label class="form-label" for="jenis_pendidikan_menengah">Jenis Pendidikan Menengah</label></span>
                         <div class="radio-vr">
                             <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah jpm-sma" value="Sekolah Menengah Atas (SMA)" <?= set_radio('jenis_pendidikan_menengah', 'Sekolah Menengah Atas (SMA)') ?> >
                             <label for="jenis_pendidikan_menengah jpm-sma">Sekolah Menengah Atas (SMA)</label><br>
@@ -201,8 +209,8 @@
                         <select name="provinsi_asal_sekolah" id="provinsi_asal_sekolah"></select>
                         <span class="label-input"><label class="form-label" for="kota_kabupaten_asal_sekolah">Kota/Kabupaten Asal Sekolah</label></span>
                         <select name="kota_kabupaten_asal_sekolah" id="kota_kabupaten_asal_sekolah"></select>
-                        <select class="select-hidden" id="kecamatan"></select>
-                        <select class="select-hidden" id="kelurahan"></select>
+                        <select class="select-hidden" id="kecamatan_asal_sekolah"></select>
+                        <select class="select-hidden" id="kelurahan_asal_sekolah"></select>
                         <span class="label-input"><label class="form-label" for="akreditasi_sekolah">Akreditasi Sekolah</label></span>
                         <div class="radio-hz">
                             <input type="radio" value="A" name="akreditasi_sekolah" id="akreditasi_sekolah a" <?= set_radio('akreditasi_sekolah', 'A') ?> >
@@ -230,13 +238,23 @@
                         <span class="label-input"><label class="form-label" for="semester_5">Peringkat Semester 5</label></span>
                         <input type="number" min="1" class="text" name="semester_5" id="semester_5" value="<?= set_value('semester_5') ?>">
                     </div>
+                    <div class="table-form prodi">
+                        <h1>Maaf Form Belum Tersedia :(</h1>
+                    </div>
+                    <div class="table-form prestasi">
+                        <h1>Maaf Form Belum Tersedia :(</h1>
+                    </div>
                     <div class="btn">
-                        <a href="<?= base_url() ?>" class="btn btn-back btn-primary">Kembali</a>
-                        <button class="btn btn-success">Simpan</button>
+                        <a href="<?= base_url() ?>" class="a-btn btn-back btn-primary">Kembali</a>
+                        <a class="a-btn btn-success simpan-data">Simpan</a>
                     </div>
                 </form>
             </div>
         </div>
+        <div class="scroll">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/></svg>
+        </div>
     </main>
+    </div>
 </body>
 </html>

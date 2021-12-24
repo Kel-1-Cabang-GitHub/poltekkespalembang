@@ -53,9 +53,10 @@ $route['default_controller'] = 'Daftar_Controller/pilih_jalur';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// Daftar_Controller
+// Daftar Controller
 $route['pilih-jalur'] = 'Daftar_Controller/pilih_jalur';
 $route['form-pendaftaran'] = 'Daftar_Controller/form_pendaftaran';
 
-$route['data-pribadi'] = 'Daftar_Controller/data_pribadi';
-$route['data-pribadi-excel'] = 'Daftar_Controller/data_pribadi_excel';
+// Admin Controller
+$route['data-pribadi'] = 'Admin_Controller/data_pribadi';
+$route['data-pribadi-excel'] = 'Admin_Controller/data_pribadi_excel';

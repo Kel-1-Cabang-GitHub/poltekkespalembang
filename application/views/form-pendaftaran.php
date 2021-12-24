@@ -63,10 +63,10 @@
                         <textarea class="text area" name="alamat" id="alamat"><?= set_value('alamat') ?></textarea>
                         <span class="label-input"><label class="form-label" for="kode_pos">Kode Pos</label></span>
                         <input type="text" class="text" name="kode_pos" id="kode_pos" value="<?= set_value('kode_pos') ?>" placeholder="xxxxx">
-                        <span class="label-input"><label class="form-label" for="no_telepon">No.Telp/HP</label></span>
-                        <input type="text" class="text" class="text" placeholder="*Disarankan memiliki whatsapp" name="no_telepon" id="no_telepon" value="<?= set_value('no_telepon') ?>">
                         <span class="label-input"><label class="form-label" for="nisn">Nomor Induk Siswa Nasional (NISN)</label></span>
                         <input type="text" class="text" name="nisn" id="nisn" value="<?= set_value('nisn') ?>">
+                        <span class="label-input"><label class="form-label" for="no_telepon">No.Telp/HP</label></span>
+                        <input type="text" class="text" class="text" placeholder="*Disarankan memiliki whatsapp" name="no_telepon" id="no_telepon" value="<?= set_value('no_telepon') ?>">
                         <span class="label-input"><label class="form-label" for="jenis_kelamin">Jenis Kelamin</label></span>
                         <div class="radio-hz">
                             <input type="radio" value="Pria" name="jenis_kelamin" id="jenis_kelamin rad-pria" <?= set_radio('jenis_kelamin', 'Pria') ?> >

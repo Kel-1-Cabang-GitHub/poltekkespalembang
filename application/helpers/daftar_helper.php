@@ -1,12 +1,15 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+// Import yang dibutuhkan untuk export ke excel
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 // Backend Logic Function
 
 if (!function_exists('upload_file')) {
 	function upload_file($name_attr, $upload_path, $allowed_types, $file_name)
 	{
-		// Get main CodeIgniter Object
 		$CI = &get_instance();
 
 		if (!empty($_FILES[$name_attr]['name'])) {
@@ -17,7 +20,6 @@ if (!function_exists('upload_file')) {
 			$config['overwrite'] = true;
 			$config['max_size'] = 5000;
 
-			// Load the upload library
 			$CI->load->library('upload', $config);
 
 			$CI->upload->initialize($config);
@@ -27,6 +29,71 @@ if (!function_exists('upload_file')) {
 		} else {
 			return 'No file uploaded';
 		}
+	}
+}
+
+if (!function_exists('str_to_title_case')) {
+	function str_to_title_case($str)
+	{
+		$str = str_replace('_', ' ',  $str);
+		$str = ucwords($str);
+		return  $str;
+	}
+}
+
+if (!function_exists('make_new_spreadsheet')) {
+	function make_new_spreadsheet($table_name)
+	{
+		$CI = &get_instance();
+
+		$CI->load->model('Daftar_Model');
+
+		// Membuat spreadsheet kosong untuk tiap tabel
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+		$sheet->setTitle(str_to_title_case($table_name));
+
+		return [$spreadsheet, $sheet];
+	}
+}
+
+if (!function_exists('make_header_cell')) {
+	function make_header_cell($sheet, ...$column_names)
+	{
+		$start_cell = 'A';
+		$sheet->setCellValue($start_cell . '1', 'No.');
+		foreach ($column_names as $column_name) {
+			if ($start_cell == 'Z') break;
+			$start_cell = chr(ord($start_cell) + 1);
+			$sheet->setCellValue($start_cell . '1', str_to_title_case($column_name));
+		}
+	}
+}
+
+if (!function_exists('insert_data_into_spreadsheet')) {
+	function insert_data_into_spreadsheet($sheet, $all_data, ...$column_names)
+	{
+		$rows = 2;
+		$counter = 1;
+		$start_cell = 'A';
+		$sheet->setCellValue($start_cell . $rows, $counter);
+		for ($column_index = 0; $column_index <= count($column_names); $column_index++) {
+			if ($start_cell == 'Z') break;
+			$start_cell = chr(ord($start_cell) + 1);
+			$sheet->setCellValue($start_cell . $rows, $all_data[$column_names[$column_index]]);
+			$rows++;
+			$counter++;
+		}
+	}
+}
+
+if (!function_exists('save_spreadsheet')) {
+	function save_spreadsheet($spreadsheet, $file_name)
+	{
+		$writer = new Xlsx($spreadsheet);
+		$writer->save("uploads/xlsx/" . $file_name);
+		header("Content-Type: application/vnd.ms-excel");
+		redirect(base_url() . "uploads/xlsx/" . $file_name);
 	}
 }
 

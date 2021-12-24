@@ -234,16 +234,16 @@
                         </span>
                         <span class="label-input"><label class="form-label" for="rata_rata_nilai_rapot">Rata-Rata Nilai Rapot</label></span>
                         <input type="number" min="0" max="100" step="0.1" class="text" name="rata_rata_nilai_rapot" id="rata_rata_nilai_rapot" value="<?= set_value('rata_rata_nilai_rapot') ?>" placeholder="xx,x">
-                        <span class="label-input"><label class="form-label" for="semester_1">Peringkat Semester 1</label></span>
-                        <input type="number" min="1" class="text" name="semester_1" id="semester_1" value="<?= set_value('semester_1') ?>">
-                        <span class="label-input"><label class="form-label" for="semester_2">Peringkat Semester 2</label></span>
-                        <input type="number" min="1" class="text" name="semester_2" id="semester_2" value="<?= set_value('semester_2') ?>">
-                        <span class="label-input"><label class="form-label"for="semester_3">Peringkat Semester 3</label></span>
-                        <input type="number" min="1" class="text" name="semester_3" id="semester_3" value="<?= set_value('semester_3') ?>">
-                        <span class="label-input"><label class="form-label" for="semester_4">Peringkat Semester 4</label></span>
-                        <input type="number" min="1" class="text" name="semester_4" id="semester_4" value="<?= set_value('semester_4') ?>">
-                        <span class="label-input"><label class="form-label" for="semester_5">Peringkat Semester 5</label></span>
-                        <input type="number" min="1" class="text" name="semester_5" id="semester_5" value="<?= set_value('semester_5') ?>">
+                        <span class="label-input"><label class="form-label" for="peringkat_semester_1">Peringkat Semester 1</label></span>
+                        <input type="number" min="1" class="text" name="peringkat_semester_1" id="peringkat_semester_1" value="<?= set_value('peringkat_semester_1') ?>">
+                        <span class="label-input"><label class="form-label" for="peringkat_semester_2">Peringkat Semester 2</label></span>
+                        <input type="number" min="1" class="text" name="peringkat_semester_2" id="peringkat_semester_2" value="<?= set_value('peringkat_semester_2') ?>">
+                        <span class="label-input"><label class="form-label"for="peringkat_semester_3">Peringkat Semester 3</label></span>
+                        <input type="number" min="1" class="text" name="peringkat_semester_3" id="peringkat_semester_3" value="<?= set_value('peringkat_semester_3') ?>">
+                        <span class="label-input"><label class="form-label" for="peringkat_semester_4">Peringkat Semester 4</label></span>
+                        <input type="number" min="1" class="text" name="peringkat_semester_4" id="peringkat_semester_4" value="<?= set_value('peringkat_semester_4') ?>">
+                        <span class="label-input"><label class="form-label" for="peringkat_semester_5">Peringkat Semester 5</label></span>
+                        <input type="number" min="1" class="text" name="peringkat_semester_5" id="peringkat_semester_5" value="<?= set_value('peringkat_semester_5') ?>">
                     </div>
                     <div class="table-form prodi">
                         <h3>Prodi yang ada di Politeknik Kesehatan Palembang (Informasi masing-masing Prodi dapat dilihat di <a href="http://www.poltekkespalembang.ac.id">www.poltekkespalembang.ac.id</a>)</h3>
@@ -265,15 +265,15 @@
                             <label class="input-file" for="bukti_pembayaran">Upload File</label>
                             <input type="text" class="text-file bukti_pembayaran" readonly>
                         </span>
-                        <span class="label-input"><label for="pilihan_1" class="form-label">Program Studi Pilihan 1</label></span>
-						<select name="pilihan_1" id="pilihan_1">
-							<option>--Pilih program studi--</option>
-							<?= daftar_program_studi('option', 'pilihan_1'); ?>
+                        <span class="label-input"><label for="program_studi_pilihan_1" class="form-label">Program Studi Pilihan 1</label></span>
+						<select name="program_studi_pilihan_1" id="program_studi_pilihan_1">
+							<option disabled selected>--Pilih program studi--</option>
+							<?= daftar_program_studi('option', 'program_studi_pilihan_1'); ?>
 						</select>
-                        <span class="label-input"><label for="pilihan_2" class="form-label">Program Studi Pilihan 2</label></span>
-						<select name="pilihan_2" id="pilihan_2">
-							<option>--Lewati jika hanya membayar 1 pilihan--</option>
-							<?= daftar_program_studi('option', 'pilihan_2'); ?>
+                        <span class="label-input"><label for="program_studi_pilihan_2" class="form-label">Program Studi Pilihan 2</label></span>
+						<select name="program_studi_pilihan_2" id="program_studi_pilihan_2">
+							<option value="<?= null ?>">--Lewati jika hanya membayar 1 pilihan--</option>
+							<?= daftar_program_studi('option', 'program_studi_pilihan_2'); ?>
 						</select>
                     </div>
                     <div class="table-form prestasi">

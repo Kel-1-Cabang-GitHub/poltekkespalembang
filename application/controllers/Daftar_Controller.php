@@ -102,9 +102,8 @@ class Daftar_Controller extends CI_Controller
 			'required' => '{field} harus diisi!',
 			'decimal' => '{field} harus berupa angka desimal dengan 1 angka dibelakang koma!'
 		]);
-		// Peringkat
 		for ($i = 1; $i <= 5; $i++) {
-			$this->form_validation->set_rules('semester_' . $i, 'Peringkat Semester ' . $i, 'required|trim|integer', [
+			$this->form_validation->set_rules('peringkat_semester_' . $i, 'Peringkat Semester ' . $i, 'required|trim|integer', [
 				'required' => '{field} harus diisi!',
 				'integer' => '{field} harus berupa angka!'
 			]);
@@ -117,7 +116,7 @@ class Daftar_Controller extends CI_Controller
 			]);
 		}
 		for ($i = 1; $i <= 2; $i++) {
-			$this->form_validation->set_rules('pilihan_' . $i, 'Program Studi Pilihan ' . $i, 'required', [
+			$this->form_validation->set_rules('program_studi_pilihan_' . $i, 'Program Studi Pilihan ' . $i, 'required', [
 				'required' => '{field} harus diisi!'
 			]);
 		}
@@ -168,19 +167,15 @@ class Daftar_Controller extends CI_Controller
 				'rekap_nilai_rapot' =>  upload_file(
 					'rekap_nilai_rapot', // $name_attr
 					'uploads/pdf/rekap_nilai_rapot/', // $upload_path
-					'pdf', // $allowed_types
+					'xls|xlsx', // $allowed_types
 					'rekap_nilai_rapot_' . $nisn, // $file_name
 				),
-				'rata_rata_nilai_rapot' => htmlspecialchars($this->input->post('rata_rata_nilai_rapot'), true)
-			];
-
-			$data_peringkat = [
-				'nisn' => $nisn,
-				'semester_1' => htmlspecialchars($this->input->post('semester_1'), true),
-				'semester_2' => htmlspecialchars($this->input->post('semester_2'), true),
-				'semester_3' => htmlspecialchars($this->input->post('semester_3'), true),
-				'semester_4' => htmlspecialchars($this->input->post('semester_4'), true),
-				'semester_5' => htmlspecialchars($this->input->post('semester_5'), true)
+				'rata_rata_nilai_rapot' => htmlspecialchars($this->input->post('rata_rata_nilai_rapot'), true),
+				'peringkat_semester_1' => htmlspecialchars($this->input->post('peringkat_semester_1'), true),
+				'peringkat_semester_2' => htmlspecialchars($this->input->post('peringkat_semester_2'), true),
+				'peringkat_semester_3' => htmlspecialchars($this->input->post('peringkat_semester_3'), true),
+				'peringkat_semester_4' => htmlspecialchars($this->input->post('peringkat_semester_4'), true),
+				'peringkat_semester_5' => htmlspecialchars($this->input->post('peringkat_semester_5'), true)
 			];
 
 			// Program Studi
@@ -192,8 +187,8 @@ class Daftar_Controller extends CI_Controller
 					'jpg|jpeg|png', // $allowed_types
 					'bukti_pembayaran_' . $nisn, // $file_name
 				),
-				'pilihan_1' => $this->input->post('pilihan_1'),
-				'pilihan_2' => $this->input->post('pilihan_2')
+				'program_studi_pilihan_1' => $this->input->post('program_studi_pilihan_1'),
+				'program_studi_pilihan_2' => $this->input->post('program_studi_pilihan_2')
 			];
 
 			// Data Prestasi
@@ -214,8 +209,6 @@ class Daftar_Controller extends CI_Controller
 			$this->Daftar_Model->insert_data('data_pribadi', $data_pribadi);
 			// Data Sekolah
 			$this->Daftar_Model->insert_data('data_sekolah', $data_sekolah);
-			// Data Peringkat
-			$this->Daftar_Model->insert_data('peringkat', $data_peringkat);
 			// Program Studi
 			$this->Daftar_Model->insert_data('program_studi', $program_studi);
 			// Data Prestasi

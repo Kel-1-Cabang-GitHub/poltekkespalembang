@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Pendaftaran | POLTEKKES KEMENKES PALEMBANG</title>
     <link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
@@ -269,12 +268,12 @@
                         <span class="label-input"><label for="pilihan_1" class="form-label">Program Studi Pilihan 1</label></span>
 						<select name="pilihan_1" id="pilihan_1">
 							<option>--Pilih program studi--</option>
-							<?= daftar_program_studi('option'); ?>
+							<?= daftar_program_studi('option', 'pilihan_1'); ?>
 						</select>
                         <span class="label-input"><label for="pilihan_2" class="form-label">Program Studi Pilihan 2</label></span>
 						<select name="pilihan_2" id="pilihan_2">
 							<option>--Lewati jika hanya membayar 1 pilihan--</option>
-							<?= daftar_program_studi('option'); ?>
+							<?= daftar_program_studi('option', 'pilihan_2'); ?>
 						</select>
                     </div>
                     <div class="table-form prestasi">

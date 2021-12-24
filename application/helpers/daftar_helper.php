@@ -44,11 +44,6 @@ if (!function_exists('str_to_title_case')) {
 if (!function_exists('make_new_spreadsheet')) {
 	function make_new_spreadsheet($table_name)
 	{
-		$CI = &get_instance();
-
-		$CI->load->model('Daftar_Model');
-
-		// Membuat spreadsheet kosong untuk tiap tabel
 		$spreadsheet = new Spreadsheet();
 		$sheet = $spreadsheet->getActiveSheet();
 		$sheet->setTitle(str_to_title_case($table_name));
@@ -60,12 +55,12 @@ if (!function_exists('make_new_spreadsheet')) {
 if (!function_exists('make_header_cell')) {
 	function make_header_cell($sheet, ...$column_names)
 	{
-		$start_cell = 'A';
-		$sheet->setCellValue($start_cell . '1', 'No.');
+		$current_cell = 'A';
+		$sheet->setCellValue($current_cell . '1', 'No.');
 		foreach ($column_names as $column_name) {
-			if ($start_cell == 'Z') break;
-			$start_cell = chr(ord($start_cell) + 1);
-			$sheet->setCellValue($start_cell . '1', str_to_title_case($column_name));
+			if ($current_cell == 'Z') break;
+			$current_cell = chr(ord($current_cell) + 1);
+			$sheet->setCellValue($current_cell . '1', str_to_title_case($column_name));
 		}
 	}
 }
@@ -75,12 +70,14 @@ if (!function_exists('insert_data_into_spreadsheet')) {
 	{
 		$rows = 2;
 		$counter = 1;
-		$start_cell = 'A';
-		$sheet->setCellValue($start_cell . $rows, $counter);
-		for ($column_index = 0; $column_index <= count($column_names); $column_index++) {
-			if ($start_cell == 'Z') break;
-			$start_cell = chr(ord($start_cell) + 1);
-			$sheet->setCellValue($start_cell . $rows, $all_data[$column_names[$column_index]]);
+		foreach ($all_data as $data_per_row) {
+			$current_cell = 'A';
+			$sheet->setCellValue($current_cell . $rows, $counter);
+			foreach ($column_names as $column_name) {
+				if ($current_cell == 'Z') break;
+				$current_cell = chr(ord($current_cell) + 1);
+				$sheet->setCellValue($current_cell . $rows, $data_per_row[$column_name]);
+			}
 			$rows++;
 			$counter++;
 		}
@@ -126,7 +123,7 @@ if (!function_exists('daftar_tahun_lulus')) {
 }
 
 if (!function_exists('daftar_program_studi')) {
-	function daftar_program_studi($tag)
+	function daftar_program_studi($tag, $name = "")
 	{
 		$daftar_program_studi = [
 			"DIII Keperawatan Palembang",
@@ -145,8 +142,14 @@ if (!function_exists('daftar_program_studi')) {
 			"DIII Sanitasi"
 		];
 
+		$res_str = "";
 		foreach ($daftar_program_studi as $program_studi) {
-			echo "<$tag value='$program_studi'>Prodi $program_studi</$tag>";
+			$res_str .= "<$tag";
+			if ($tag == "option") {
+				$res_str .= " value='$program_studi'" . set_select($name, $program_studi);
+			}
+			$res_str .= ">Prodi $program_studi</$tag>";
 		}
+		echo $res_str;
 	}
 }

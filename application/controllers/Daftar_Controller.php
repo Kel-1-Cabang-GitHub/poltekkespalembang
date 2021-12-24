@@ -152,7 +152,7 @@ class Daftar_Controller extends CI_Controller
 					'jpg|jpeg|png', // $allowed_types
 					'pas_foto_' . $nisn, // $file_name
 				),
-				'jalur_pendaftaran' => $jalur_pendaftaran
+				'jalur_pendaftaran' => strtoupper($jalur_pendaftaran)
 			];
 
 			$data_sekolah = [
@@ -239,19 +239,33 @@ class Daftar_Controller extends CI_Controller
 	// 	$this->load->view('form-ktmse-gakin');
 	// }
 
-	public function export_to_excel()
+	public function data_pribadi()
 	{
+		$this->load->view('data-pribadi', [
+			'data_pribadi' => $this->Daftar_Model->get_all_data('data_pribadi')
+		]);
+	}
+
+	public function data_pribadi_excel()
+	{
+		$data_pribadi_columns = [
+			'nama_lengkap', 'alamat', 'kode_pos', 'nisn',
+			'no_telepon', 'jenis_kelamin', 'tinggi_badan', 'berat_badan',
+			'tempat_lahir', 'tanggal_lahir', 'pas_foto', 'jalur_pendaftaran'
+		];
 		$all_data_pribadi = $this->Daftar_Model->get_all_data('data_pribadi');
 
 		[$data_pribadi_spreadsheet, $data_pribadi_sheet] = make_new_spreadsheet('data_pribadi');
 
 		make_header_cell(
 			$data_pribadi_sheet,
-			[
-				'nama_lengkap', 'alamat', 'kode_pos', 'no_telepon',
-				'nisn', 'jenis_kelamin', 'tinggi_badan', 'berat_badan',
-				'tempat_lahir', 'tanggal_lahir', 'pas_foto', 'jalur_pendaftaran'
-			]
+			...$data_pribadi_columns,
+		);
+
+		insert_data_into_spreadsheet(
+			$data_pribadi_sheet,
+			$all_data_pribadi,
+			...$data_pribadi_columns
 		);
 
 		save_spreadsheet($data_pribadi_spreadsheet, 'data_pribadi.xlsx');

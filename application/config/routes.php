@@ -56,3 +56,6 @@ $route['translate_uri_dashes'] = FALSE;
 // Daftar_Controller
 $route['pilih-jalur'] = 'Daftar_Controller/pilih_jalur';
 $route['form-pendaftaran'] = 'Daftar_Controller/form_pendaftaran';
+
+$route['data-pribadi'] = 'Daftar_Controller/data_pribadi';
+$route['data-pribadi-excel'] = 'Daftar_Controller/data_pribadi_excel';

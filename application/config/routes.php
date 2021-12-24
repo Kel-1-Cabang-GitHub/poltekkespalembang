@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -58,5 +58,10 @@ $route['pilih-jalur'] = 'Daftar_Controller/pilih_jalur';
 $route['form-pendaftaran'] = 'Daftar_Controller/form_pendaftaran';
 
 // Admin Controller
-$route['data-pribadi'] = 'Admin_Controller/data_pribadi';
+$route['register'] = 'Admin_Controller/register';
+$route['login'] = 'Admin_Controller/login';
+$route['logout'] = 'Admin_Controller/logout';
+$route['tabel-data'] = 'Admin_Controller/tabel_data';
 $route['data-pribadi-excel'] = 'Admin_Controller/data_pribadi_excel';
+$route['data-sekolah-excel'] = 'Admin_Controller/data_sekolah_excel';
+$route['program-studi-excel'] = 'Admin_Controller/program_studi_excel';

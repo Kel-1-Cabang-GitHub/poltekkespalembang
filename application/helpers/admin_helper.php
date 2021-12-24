@@ -15,25 +15,27 @@ if (!function_exists('str_to_title_case')) {
 }
 
 if (!function_exists('make_new_spreadsheet')) {
-	function make_new_spreadsheet($table_name)
+	function make_new_spreadsheet()
 	{
-		$spreadsheet = new Spreadsheet();
-		$sheet = $spreadsheet->getActiveSheet();
-		$sheet->setTitle(str_to_title_case($table_name));
+		return new Spreadsheet();
+	}
+}
 
-		return [$spreadsheet, $sheet];
+if (!function_exists('create_new_sheet')) {
+	function create_new_sheet($spreadsheet, $sheet_name)
+	{
+		return $spreadsheet->createSheet()->setTitle($sheet_name);
 	}
 }
 
 if (!function_exists('make_header_cell')) {
 	function make_header_cell($sheet, ...$column_names)
 	{
-		$current_cell = 'A';
-		$sheet->setCellValue($current_cell . '1', 'No.');
+		$columns = 1;
+		$sheet->setCellValueByColumnAndRow($columns, 1, 'No.');
 		foreach ($column_names as $column_name) {
-			if ($current_cell == 'Z') break;
-			$current_cell = chr(ord($current_cell) + 1);
-			$sheet->setCellValue($current_cell . '1', str_to_title_case($column_name));
+			$columns++;
+			$sheet->setCellValueByColumnAndRow($columns, 1, str_to_title_case($column_name));
 		}
 	}
 }
@@ -42,27 +44,26 @@ if (!function_exists('insert_data_into_spreadsheet')) {
 	function insert_data_into_spreadsheet($sheet, $all_data, ...$column_names)
 	{
 		$rows = 2;
-		$counter = 1;
+		$id_counter = 1;
 		foreach ($all_data as $data_per_row) {
-			$current_cell = 'A';
-			$sheet->setCellValue($current_cell . $rows, $counter);
+			$columns = 1;
+			$sheet->setCellValueByColumnAndRow($columns, $rows, $id_counter);
 			foreach ($column_names as $column_name) {
-				if ($current_cell == 'Z') break;
-				$current_cell = chr(ord($current_cell) + 1);
-				$sheet->setCellValue($current_cell . $rows, $data_per_row[$column_name]);
+				$columns++;
+				$sheet->setCellValueByColumnAndRow($columns, $rows, $data_per_row[$column_name]);
 			}
 			$rows++;
-			$counter++;
+			$id_counter++;
 		}
 	}
 }
 
 if (!function_exists('save_spreadsheet')) {
-	function save_spreadsheet($spreadsheet, $file_name)
+	function save_spreadsheet($spreadsheet)
 	{
 		$writer = new Xlsx($spreadsheet);
-		$writer->save("uploads/xlsx/" . $file_name);
+		$writer->save('exports/xlsx/data_pendaftar.xlsx');
 		header("Content-Type: application/vnd.ms-excel");
-		redirect(base_url() . "uploads/xlsx/" . $file_name);
+		redirect(base_url() . 'exports/xlsx/data_pendaftar.xlsx');
 	}
 }

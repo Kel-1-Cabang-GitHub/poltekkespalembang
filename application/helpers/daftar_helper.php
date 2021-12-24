@@ -12,22 +12,19 @@ if (!function_exists('upload_file')) {
 	{
 		$CI = &get_instance();
 
-		if (!empty($_FILES[$name_attr]['name'])) {
-			$config['upload_path'] = $upload_path;
-			$config['allowed_types'] = $allowed_types;
-			$config['file_name'] = $file_name;
-			$config['file_ext_tolower'] = true;
-			$config['overwrite'] = true;
-			$config['max_size'] = 5000;
+		if (empty($_FILES[$name_attr]['name'])) return 'No file uploaded!';
+		$config['upload_path'] = $upload_path;
+		$config['allowed_types'] = $allowed_types;
+		$config['file_name'] = $file_name;
+		$config['file_ext_tolower'] = true;
+		$config['overwrite'] = true;
+		$config['max_size'] = 5000;
 
-			$CI->load->library('upload', $config);
+		$CI->load->library('upload', $config);
 
-			$CI->upload->initialize($config);
-			if ($CI->upload->do_upload($name_attr)) {
-				return $CI->upload->data('file_name');
-			}
-		} else {
-			return 'No file uploaded';
+		$CI->upload->initialize($config);
+		if ($CI->upload->do_upload($name_attr)) {
+			return $CI->upload->data('file_name');
 		}
 	}
 }
@@ -84,7 +81,7 @@ if (!function_exists('daftar_program_studi')) {
 		foreach ($daftar_program_studi as $program_studi) {
 			$res_str .= "<$tag";
 			if ($tag == "option") {
-				$res_str .= " value='$program_studi'" . set_select($name, $program_studi);
+				$res_str .= " value='Prodi $program_studi'" . set_select($name, "Prodi $program_studi");
 			}
 			$res_str .= ">Prodi $program_studi</$tag>";
 		}

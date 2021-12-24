@@ -75,6 +75,33 @@ div.form select:hover,
 div.scroll:hover {
 	cursor: pointer;
 }
+span.input-file{
+	display: block;
+	width: 500px;
+	padding-left: 5px;
+	padding-top: 5px;
+	display: flex;
+}
+input[type="file"]{
+	display: none;
+}
+input.text-file{
+	width: calc(100% - 85.3px - 10px);
+	height: 30px;
+	outline: none;
+	border: none;
+	border-bottom: 2px solid var(--abu-abu);
+	margin-left: 10px;
+}
+label.input-file{
+	background-color: var(--biru-tua);
+	border-radius: 2px;
+	color: var(--putih);
+	padding: 5px;
+	font-size: 14px;
+	text-align: center;
+	height: fit-content;
+}
 div.table-form {
 	padding: 25px;
 	flex-wrap: wrap;
@@ -112,8 +139,7 @@ div.form select.select-hidden {
 	display: none;
 }
 div.radio-hz,
-div.radio-vr,
-input[type="file"] {
+div.radio-vr{
 	width: 500px;
 	margin-bottom: 25px;
 	margin-left: 10px;
@@ -183,7 +209,7 @@ div.confirm-alert {
 	width: 560px;
 	height: fit-content;
 	position: fixed;
-	background-color: var(--abu-abu);
+	background-color: var(--putih);
 	flex-wrap: wrap;
 	overflow: hidden;
 	border-radius: 2px;
@@ -266,13 +292,13 @@ div.harga-list{
 		width: 90%;
 	}
 }
-@media (max-width: 870px) {
+@media (max-width: 889px) {
 	span.label-input {
 		width: 100%;
 		margin-bottom: 5px;
 	}
 	div.form input.text,
-	textarea.text {
+	textarea.text,span.input-file {
 		width: 100%;
 		margin-bottom: 25px;
 	}

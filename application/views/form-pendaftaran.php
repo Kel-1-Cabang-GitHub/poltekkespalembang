@@ -87,6 +87,10 @@
                         <input type="date" class="text" name="tanggal_lahir" id="tanggal_lahir" value="<?= set_value('tanggal_lahir') ?>">
                         <span class="label-input"><label class="form-label" for="pas_foto">Pas Foto Terbaru</label></span>
                         <input type="file" name="pas_foto" id="pas_foto" accept=".jpg, .jpeg, .png">
+                        <span class="input-file">
+                            <label class="input-file" for="pas_foto">Upload Foto</label>
+                            <input type="text" class="text-file pas_foto" readonly>
+                        </span>
                     </div>
                     <div class="table-form sekolah">
                         <span class="label-input"><label class="form-label" for="jenis_pendidikan_menengah">Jenis Pendidikan Menengah</label></span>
@@ -225,6 +229,10 @@
                         </datalist>
                         <span class="label-input"><label class="form-label"for="rekap_nilai_rapot">Rekap Nilai Rapot</label></span>
                         <input type="file" name="rekap_nilai_rapot" id="rekap_nilai_rapot" accept=".pdf">
+                        <span class="input-file">
+                            <label class="input-file" for="rekap_nilai_rapot">Upload File</label>
+                            <input type="text" class="text-file rekap_nilai_rapot" readonly>
+                        </span>
                         <span class="label-input"><label class="form-label" for="rata_rata_nilai_rapot">Rata-Rata Nilai Rapot</label></span>
                         <input type="number" min="0" max="100" step="0.1" class="text" name="rata_rata_nilai_rapot" id="rata_rata_nilai_rapot" value="<?= set_value('rata_rata_nilai_rapot') ?>" placeholder="xx,x">
                         <span class="label-input"><label class="form-label" for="semester_1">Peringkat Semester 1</label></span>
@@ -254,6 +262,10 @@
                         </div>
                         <span class="label-input"><label class="form-label" for="bukti_pembayaran">Upload Bukti Pembayaran</label></span>
                         <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" accept=".jpg, .jpeg, .png">
+                        <span class="input-file">
+                            <label class="input-file" for="bukti_pembayaran">Upload File</label>
+                            <input type="text" class="text-file bukti_pembayaran" readonly>
+                        </span>
                         <span class="label-input"><label for="pilihan_1" class="form-label">Program Studi Pilihan 1</label></span>
 						<select name="pilihan_1" id="pilihan_1">
 							<option>--Pilih program studi--</option>

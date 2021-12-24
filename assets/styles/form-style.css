@@ -86,7 +86,7 @@ input[type="file"]{
 	display: none;
 }
 input.text-file{
-	width: calc(100% - 85.3px - 10px);
+	width: calc(100% - 120px - 10px);
 	height: 30px;
 	outline: none;
 	border: none;
@@ -95,18 +95,22 @@ input.text-file{
 }
 label.input-file{
 	background-color: var(--biru-tua);
-	border-radius: 2px;
+	border-radius: 4px;
 	color: var(--putih);
-	padding: 5px;
+	padding: 3px;
+	padding-left: 7px;
 	font-size: 14px;
 	text-align: center;
 	height: fit-content;
+	display: flex;
+	align-items: center;
+}
+label.input-file svg{
+	margin-left: 2px;
 }
 div.table-form {
 	padding: 25px;
 	flex-wrap: wrap;
-}
-div.table-form {
 	display: none;
 }
 div.table-form.active {
@@ -117,6 +121,7 @@ span.label-input {
 	margin-right: 25px;
 	padding: 5px;
 	margin-bottom: 25px;
+	height: fit-content;
 }
 div.form input.text,
 textarea.text,
@@ -131,6 +136,10 @@ div.form select {
 	border-radius: 4px 4px 0 0;
 	margin-bottom: 25px;
 	margin-left: 10px;
+	align-self: flex-end;
+}
+input[type="date"]:hover{
+	cursor: text;
 }
 div.form select {
 	padding: 5px;
@@ -166,11 +175,11 @@ div.form span.radio {
 	margin-right: 15px;
 	margin-left: 5px;
 }
-div.btn {
-	padding: 15px;
-	margin-top: 50px;
+div.btn-page{
+	width: 100%;
 	display: flex;
 	justify-content: flex-end;
+	margin-top: 100px;
 }
 button.btn,
 a.a-btn {
@@ -304,6 +313,7 @@ div.harga-list{
 	}
 	div.radio-hz {
 		margin-bottom: 25px;
+		margin-top: 10px;
 	}
 }
 @media (max-width: 560px) {

@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/index-style.css">
+    <script defer src="<?= base_url() ?>assets/scripts/nav-script.js"></script>
 </head>
 <body>
     <header>

@@ -1,23 +1,45 @@
 //Perpindahan antar form
 const select_data = document.querySelectorAll("div.data");
-const form_data = document.querySelectorAll("div.table-form");
+const tombol_halaman = document.querySelectorAll("a.btn-page");
 
 select_data.forEach((el) => {
 	el.addEventListener("click", () => {
-		let id = el.id;
-		select_data.forEach((elm) => {
-			elm.classList.remove("active");
-		});
+		disableform();
+		let form_data_target = document.querySelector(`div.table-form.${el.id}`);
 		el.classList.add("active");
-		form_data.forEach((elm) => {
-			if (elm.classList.contains(id)) {
-				elm.classList.add("active");
-			} else {
-				elm.classList.remove("active");
-			}
-		});
+		form_data_target.classList.add("active");
 	});
 });
+
+tombol_halaman.forEach(btn => {
+	btn.addEventListener("click",() => {
+		disableform();
+		let form_data_target = document.querySelector(`div.table-form#${btn.id}`);
+		let select_data_target = document.querySelector(`div.data#${btn.id}`);
+		form_data_target.classList.add("active");
+		select_data_target.classList.add("active");
+		
+		let destination = $("div.data");
+		let destinationEl = $(destination);
+
+		$("html").animate(
+			{
+				scrollTop: destinationEl.offset().top - 50,
+			},
+			0,
+			"swing"
+		);
+
+	});
+});
+
+   //function menghilangkan semua form
+const disableform = () => {
+	let select_data_active = document.querySelector("div.data.active");
+	let form_data_active = document.querySelector("div.table-form.active");
+	select_data_active.classList.remove("active");
+	form_data_active.classList.remove("active");
+}
 
 //enable dan disable input text dari radio button lainnya
 const radio_jpm = document.querySelectorAll("input.jpm_fixed");

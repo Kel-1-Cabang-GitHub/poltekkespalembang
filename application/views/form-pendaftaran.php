@@ -11,6 +11,7 @@
     <!-- http://api.iksgroup.co.id/lokasi/demolokasi -->
     <script defer src="<?= base_url() ?>assets/scripts/lokasiapi.js"></script>
     <script defer src="<?= base_url() ?>assets/scripts/form-script.js"></script>
+    <script defer src="<?= base_url() ?>assets/scripts/nav-script.js"></script>
 </head>
 <body>
     <div class="container">
@@ -55,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="table-form siswa active">
+                    <div class="table-form siswa active" id="siswa">
                         <span class="label-input"><label class="form-label" for="nama_lengkap">Nama Lengkap</label></span>
                         <input type="text" class="text" name="nama_lengkap" id="nama_lengkap" value="<?= set_value('nama_lengkap') ?>" autofocus>
                         <span class="label-input"><label class="form-label" for="alamat">Alamat Sesuai KTP</label></span>
@@ -87,11 +88,14 @@
                         <span class="label-input"><label class="form-label" for="pas_foto">Pas Foto Terbaru</label></span>
                         <input type="file" name="pas_foto" id="pas_foto" accept=".jpg, .jpeg, .png">
                         <span class="input-file">
-                            <label class="input-file" for="pas_foto">Upload Foto</label>
+                            <label class="input-file" for="pas_foto">Upload Foto<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
                             <input type="text" class="text-file pas_foto" readonly>
                         </span>
+                        <div class="btn-page">
+                            <a class="a-btn btn-success btn-page" id="sekolah">Selanjutnya</a>
+                        </div>
                     </div>
-                    <div class="table-form sekolah">
+                    <div class="table-form sekolah" id="sekolah">
                         <span class="label-input"><label class="form-label" for="jenis_pendidikan_menengah">Jenis Pendidikan Menengah</label></span>
                         <div class="radio-vr">
                             <input type="radio" class="radio down jpm_fixed" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah jpm-sma" value="Sekolah Menengah Atas (SMA)" <?= set_radio('jenis_pendidikan_menengah', 'Sekolah Menengah Atas (SMA)') ?> >
@@ -229,7 +233,7 @@
                         <span class="label-input"><label class="form-label"for="rekap_nilai_rapot">Rekap Nilai Rapot</label></span>
                         <input type="file" name="rekap_nilai_rapot" id="rekap_nilai_rapot" accept=".pdf">
                         <span class="input-file">
-                            <label class="input-file" for="rekap_nilai_rapot">Upload File</label>
+                            <label class="input-file" for="rekap_nilai_rapot">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
                             <input type="text" class="text-file rekap_nilai_rapot" readonly>
                         </span>
                         <span class="label-input"><label class="form-label" for="rata_rata_nilai_rapot">Rata-Rata Nilai Rapot</label></span>
@@ -244,8 +248,12 @@
                         <input type="number" min="1" class="text" name="semester_4" id="semester_4" value="<?= set_value('semester_4') ?>">
                         <span class="label-input"><label class="form-label" for="semester_5">Peringkat Semester 5</label></span>
                         <input type="number" min="1" class="text" name="semester_5" id="semester_5" value="<?= set_value('semester_5') ?>">
+                        <div class="btn-page">
+                            <a class="a-btn btn-primary btn-page" id="siswa">Sebelumnya</a>
+                            <a class="a-btn btn-success btn-page" id="prodi">Selanjutnya</a>
+                        </div>
                     </div>
-                    <div class="table-form prodi">
+                    <div class="table-form prodi" id="prodi">
                         <h3>Prodi yang ada di Politeknik Kesehatan Palembang (Informasi masing-masing Prodi dapat dilihat di <a href="http://www.poltekkespalembang.ac.id">www.poltekkespalembang.ac.id</a>)</h3>
                         <div class="prodi-list">
                             <ol class="num-list">
@@ -262,7 +270,7 @@
                         <span class="label-input"><label class="form-label" for="bukti_pembayaran">Upload Bukti Pembayaran</label></span>
                         <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" accept=".jpg, .jpeg, .png">
                         <span class="input-file">
-                            <label class="input-file" for="bukti_pembayaran">Upload File</label>
+                            <label class="input-file" for="bukti_pembayaran">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
                             <input type="text" class="text-file bukti_pembayaran" readonly>
                         </span>
                         <span class="label-input"><label for="pilihan_1" class="form-label">Program Studi Pilihan 1</label></span>
@@ -275,13 +283,17 @@
 							<option>--Lewati jika hanya membayar 1 pilihan--</option>
 							<?= daftar_program_studi('option', 'pilihan_2'); ?>
 						</select>
+                        <div class="btn-page">
+                            <a class="a-btn btn-primary btn-page" id="sekolah">Sebelumnya</a>
+                            <a class="a-btn btn-success btn-page" id="prestasi">Selanjutnya</a>
+                        </div>
                     </div>
-                    <div class="table-form prestasi">
+                    <div class="table-form prestasi" id="prestasi">
                         <h1>Maaf Form Belum Tersedia :(</h1>
-                    </div>
-                    <div class="btn">
-                        <a href="<?= base_url() ?>" class="a-btn btn-back btn-primary">Kembali</a>
-                        <a class="a-btn btn-success simpan-data">Simpan</a>
+                        <div class="btn-page">
+                            <a class="a-btn btn-primary btn-page" id="prodi">Sebelumnya</a>
+                            <a class="a-btn btn-success simpan-data">Simpan</a>
+                        </div>
                     </div>
                 </form>
             </div>

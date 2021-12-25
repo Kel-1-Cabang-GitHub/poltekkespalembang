@@ -56,8 +56,8 @@
 						<td><?= $data['pas_foto']; ?></td>
 						<td><?= $data['jalur_pendaftaran']; ?></td>
 					</tr>
-				<?php $counter++; ?>
-			<?php endforeach; ?>
+					<?php $counter++; ?>
+				<?php endforeach; ?>
 			<?php else: ?>
 				<tr>
 					<td colspan="13">No Records founds</td>
@@ -82,11 +82,9 @@
 				<th>Tahun Lulus/Tamat</th>
 				<th>Rekap Nilai Rapot</th>
 				<th>Rata-Rata Nilai Rapot</th>
-				<th>Peringkat Semester 1</th>
-				<th>Peringkat Semester 2</th>
-				<th>Peringkat Semester 3</th>
-				<th>Peringkat Semester 4</th>
-				<th>Peringkat Semester 5</th>
+				<?php for ($i = 1; $i <= 5; $i++): ?>
+					<th>Peringkat Semester <?= $i ?></th>
+				<?php endfor; ?>
 			</tr>
 		</thead>
 		<tbody>
@@ -106,17 +104,15 @@
 						<td><?= $data['tahun_lulus']; ?></td>
 						<td><?= $data['rekap_nilai_rapot']; ?></td>
 						<td><?= $data['rata_rata_nilai_rapot']; ?></td>
-						<td><?= $data['peringkat_semester_1']; ?></td>
-						<td><?= $data['peringkat_semester_2']; ?></td>
-						<td><?= $data['peringkat_semester_3']; ?></td>
-						<td><?= $data['peringkat_semester_4']; ?></td>
-						<td><?= $data['peringkat_semester_5']; ?></td>
+						<?php for ($i = 1; $i <= 5; $i++): ?>
+							<td><?= $data["peringkat_semester_$i"]; ?></td>
+						<?php endfor; ?>
 					</tr>
-				<?php $counter++; ?>
-			<?php endforeach; ?>
+					<?php $counter++; ?>
+				<?php endforeach; ?>
 			<?php else: ?>
 				<tr>
-					<td colspan="12">No Records founds</td>
+					<td colspan="17">No Records founds</td>
 				</tr>
 			<?php endif; ?>
 		</tbody>
@@ -144,11 +140,42 @@
 						<td><?= $data['program_studi_pilihan_1']; ?></td>
 						<td><?= $data['program_studi_pilihan_2']; ?></td>
 					</tr>
-				<?php $counter++; ?>
-			<?php endforeach; ?>
+					<?php $counter++; ?>
+				<?php endforeach; ?>
 			<?php else: ?>
 				<tr>
 					<td colspan="5">No Records founds</td>
+				</tr>
+			<?php endif; ?>
+		</tbody>
+	</table>
+	<hr>
+	<h1>Data Prestasi</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>No.</th>
+				<th>NISN</th>
+				<?php for ($i = 1; $i <= 5; $i++): ?>
+					<th>Prestasi <?= $i ?></th>
+				<?php endfor; ?>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $counter = 1; ?>
+			<?php if (isset($data_prestasi) && !empty($data_prestasi)): ?>
+				<?php foreach ($data_prestasi as $key => $data): ?>
+					<tr>
+						<td><?= $counter ?></td>
+						<td><?= $data['nisn'] ?></td>
+						<?php for ($i = 1; $i <= 5; $i++): ?>
+							<td><?= $data["prestasi_$i"] ?></td>
+						<?php endfor; ?>
+					</tr>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<tr>
+					<td colspan="7">No Records founds</td>
 				</tr>
 			<?php endif; ?>
 		</tbody>

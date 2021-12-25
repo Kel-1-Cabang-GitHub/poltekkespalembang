@@ -41,14 +41,13 @@
             </div>
             <div class="form">
                 <form action="form-pendaftaran?jalur=<?= $this->input->get('jalur'); ?>" method="POST" enctype="multipart/form-data">
-                    <!-- <?= validation_errors() ?> -->
+                    <?= validation_errors() ?>
                     <div class="confirm-alert" id="confirm-alert">
                         <div class="ca-head">
                             <svg xmlns="http://www.w3.org/2000/svg" height="46px" viewBox="0 0 24 24" width="46px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
                             <h2>Konfirmasi</h2>
                         </div>
                         <div class="ca-body">
-                            <!-- <img src="<?= base_url(); ?>/assets/icons/" alt=""> -->
                             <p>Pastikan data yang anda masukkan sudah sesuai. Apakah anda sudah yakin dengan data yang telah diinputkan? Pilih simpan untuk melanjutkan</p>
                             <div class="ca-button">
                                 <button type="submit" class="btn btn-success">Simpan</button>
@@ -231,7 +230,7 @@
                         <?= daftar_tahun_lulus(); ?>
                         </datalist>
                         <span class="label-input"><label class="form-label"for="rekap_nilai_rapot">Rekap Nilai Rapot</label></span>
-                        <input type="file" name="rekap_nilai_rapot" id="rekap_nilai_rapot" accept=".pdf">
+                        <input type="file" name="rekap_nilai_rapot" id="rekap_nilai_rapot" accept=".xls, .xlsx">
                         <span class="input-file">
                             <label class="input-file" for="rekap_nilai_rapot">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
                             <input type="text" class="text-file rekap_nilai_rapot" readonly>
@@ -309,24 +308,38 @@
                             </p>
                             <span class="space"></span>
                             <p>Jenis Prestasi yang pernah diraih I (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
-                            <input type="file" name="prestasi1" id="prestasi1" accept=".pdf">
+                            <input type="file" name="prestasi_1" id="prestasi_1" accept=".pdf">
                             <span class="input-file" id="prestasi">
-                                <label class="input-file" for="prestasi1">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
-                                <input type="text" class="text-file prestasi1" readonly>
+                                <label class="input-file" for="prestasi_1">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <input type="text" class="text-file prestasi_1" readonly>
                             </span>
                             <span class="space"></span>
                             <p>Jenis Prestasi yang pernah diraih II (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
-                            <input type="file" name="prestasi2" id="prestasi2" accept=".pdf">
+                            <input type="file" name="prestasi_2" id="prestasi_2" accept=".pdf">
                             <span class="input-file" id="prestasi">
-                                <label class="input-file" for="prestasi2">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
-                                <input type="text" class="text-file prestasi2" readonly>
+                                <label class="input-file" for="prestasi_2">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <input type="text" class="text-file prestasi_2" readonly>
                             </span>
                             <span class="space"></span>
                             <p>Jenis Prestasi yang pernah diraih III (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
-                            <input type="file" name="prestasi3" id="prestasi3" accept=".pdf">
+                            <input type="file" name="prestasi_3" id="prestasi_3" accept=".pdf">
                             <span class="input-file" id="prestasi">
-                                <label class="input-file" for="prestasi3">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
-                                <input type="text" class="text-file prestasi3" readonly>
+                                <label class="input-file" for="prestasi_3">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <input type="text" class="text-file prestasi_3" readonly>
+                            </span>
+                            <span class="space"></span>
+                            <p>Jenis Prestasi yang pernah diraih IV (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
+                            <input type="file" name="prestasi_4" id="prestasi_4" accept=".pdf">
+                            <span class="input-file" id="prestasi">
+                                <label class="input-file" for="prestasi_4">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <input type="text" class="text-file prestasi_4" readonly>
+                            </span>
+                            <span class="space"></span>
+                            <p>Jenis Prestasi yang pernah diraih V (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
+                            <input type="file" name="prestasi_5" id="prestasi_5" accept=".pdf">
+                            <span class="input-file" id="prestasi">
+                                <label class="input-file" for="prestasi_5">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <input type="text" class="text-file prestasi_5" readonly>
                             </span>
                         </div>
                         <div class="btn-page">

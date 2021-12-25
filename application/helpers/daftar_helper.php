@@ -12,7 +12,7 @@ if (!function_exists('upload_file')) {
 	{
 		$CI = &get_instance();
 
-		if (empty($_FILES[$name_attr]['name'])) return 'No file uploaded!';
+		if (empty($_FILES[$name_attr]['name'])) return null;
 		$config['upload_path'] = $upload_path;
 		$config['allowed_types'] = $allowed_types;
 		$config['file_name'] = $file_name;

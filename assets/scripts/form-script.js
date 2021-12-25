@@ -11,14 +11,14 @@ select_data.forEach((el) => {
 	});
 });
 
-tombol_halaman.forEach(btn => {
-	btn.addEventListener("click",() => {
+tombol_halaman.forEach((btn) => {
+	btn.addEventListener("click", () => {
 		disableform();
 		let form_data_target = document.querySelector(`div.table-form#${btn.id}`);
 		let select_data_target = document.querySelector(`div.data#${btn.id}`);
 		form_data_target.classList.add("active");
 		select_data_target.classList.add("active");
-		
+
 		let destination = $("div.data");
 		let destinationEl = $(destination);
 
@@ -29,17 +29,16 @@ tombol_halaman.forEach(btn => {
 			0,
 			"swing"
 		);
-
 	});
 });
 
-   //function menghilangkan semua form
+//function menghilangkan semua form
 const disableform = () => {
 	let select_data_active = document.querySelector("div.data.active");
 	let form_data_active = document.querySelector("div.table-form.active");
 	select_data_active.classList.remove("active");
 	form_data_active.classList.remove("active");
-}
+};
 
 //enable dan disable input text dari radio button lainnya
 const radio_jpm = document.querySelectorAll("input.jpm_fixed");
@@ -128,11 +127,11 @@ $(".scroll").on("click", function () {
 //Input File
 const tombol_upload = document.querySelectorAll('input[type="file"]');
 
-tombol_upload.forEach(e => {
+tombol_upload.forEach((e) => {
 	e.addEventListener("change", () => {
 		let input_target = document.querySelector(`input.text-file.${e.id}`);
 		let file = e.value.split("\\");
-		let file_name = file[file.length-1];
+		let file_name = file[file.length - 1];
 		input_target.value = file_name;
 	});
 });

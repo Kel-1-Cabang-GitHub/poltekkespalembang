@@ -103,7 +103,7 @@ class Daftar_Controller extends CI_Controller
 			'decimal' => '{field} harus berupa angka desimal dengan 1 angka dibelakang koma!'
 		]);
 		for ($i = 1; $i <= 5; $i++) {
-			$this->form_validation->set_rules('peringkat_semester_' . $i, 'Peringkat Semester ' . $i, 'required|trim|integer', [
+			$this->form_validation->set_rules("peringkat_semester_$i", "Peringkat Semester $i", 'required|trim|integer', [
 				'required' => '{field} harus diisi!',
 				'integer' => '{field} harus berupa angka!'
 			]);
@@ -115,20 +115,9 @@ class Daftar_Controller extends CI_Controller
 				'required' => '{field} harus diisi!'
 			]);
 		}
-		for ($i = 1; $i <= 2; $i++) {
-			$this->form_validation->set_rules('program_studi_pilihan_' . $i, 'Program Studi Pilihan ' . $i, 'required', [
-				'required' => '{field} harus diisi!'
-			]);
-		}
-
-		// Data Prestasi
-		// for ($i = 1; $i <= 5; $i++) {
-		// 	if (empty($_FILES['prestasi_' . $i]['name'])) {
-		// 		$this->form_validation->set_rules('prestasi_' . $i, 'Upload Prestasi ' . $i, 'required', [
-		// 			'required' => '{field} harus diisi!'
-		// 		]);
-		// 	}
-		// }
+		$this->form_validation->set_rules("program_studi_pilihan_1", "Program Studi Pilihan 1", 'required', [
+			'required' => '{field} harus diisi!'
+		]);
 
 		// Jika validasi berhasil, data di filter dan disimpan ke database
 		if ($this->form_validation->run() == true) {
@@ -149,7 +138,7 @@ class Daftar_Controller extends CI_Controller
 					'pas_foto', // $name_attr
 					'uploads/img/pas_foto/', // $upload_path
 					'jpg|jpeg|png', // $allowed_types
-					'pas_foto_' . $nisn, // $file_name
+					"pas_foto_$nisn", // $file_name
 				),
 				'jalur_pendaftaran' => strtoupper($jalur_pendaftaran)
 			];
@@ -166,17 +155,15 @@ class Daftar_Controller extends CI_Controller
 				'tahun_lulus' => htmlspecialchars($this->input->post('tahun_lulus'), true),
 				'rekap_nilai_rapot' =>  upload_file(
 					'rekap_nilai_rapot', // $name_attr
-					'uploads/pdf/rekap_nilai_rapot/', // $upload_path
+					'uploads/xlsx/rekap_nilai_rapot/', // $upload_path
 					'xls|xlsx', // $allowed_types
-					'rekap_nilai_rapot_' . $nisn, // $file_name
+					"rekap_nilai_rapot_$nisn", // $file_name
 				),
 				'rata_rata_nilai_rapot' => htmlspecialchars($this->input->post('rata_rata_nilai_rapot'), true),
-				'peringkat_semester_1' => htmlspecialchars($this->input->post('peringkat_semester_1'), true),
-				'peringkat_semester_2' => htmlspecialchars($this->input->post('peringkat_semester_2'), true),
-				'peringkat_semester_3' => htmlspecialchars($this->input->post('peringkat_semester_3'), true),
-				'peringkat_semester_4' => htmlspecialchars($this->input->post('peringkat_semester_4'), true),
-				'peringkat_semester_5' => htmlspecialchars($this->input->post('peringkat_semester_5'), true)
 			];
+			for ($i = 1; $i <= 5; $i++) {
+				$data_sekolah["peringkat_semester_$i"] = htmlspecialchars($this->input->post("peringkat_semester_$i"), true);
+			}
 
 			// Program Studi
 			$program_studi = [
@@ -185,25 +172,22 @@ class Daftar_Controller extends CI_Controller
 					'bukti_pembayaran', // $name_attr
 					'uploads/img/bukti_pembayaran/', // $upload_path
 					'jpg|jpeg|png', // $allowed_types
-					'bukti_pembayaran_' . $nisn, // $file_name
+					"bukti_pembayaran_$nisn", // $file_name
 				),
 				'program_studi_pilihan_1' => $this->input->post('program_studi_pilihan_1'),
 				'program_studi_pilihan_2' => $this->input->post('program_studi_pilihan_2')
 			];
 
 			// Data Prestasi
-			// $data_prestasi = [];
-			// for ($i = 1; $i <= 5; $i++) {
-			// 	array_push(
-			// 		$data_prestasi,
-			// 		upload_file(
-			// 			'prestasi_' . $i, // $name_attr
-			// 			'uploads/pdf/prestasi/', // $upload_path
-			// 			'pdf', // $allowed_types
-			// 			'prestasi_' . $i . '_' . $nisn, // $file_name
-			// 		)
-			// 	);
-			// }
+			$data_prestasi = ['nisn' => $nisn,];
+			for ($i = 1; $i <= 5; $i++) {
+				$data_prestasi["prestasi_$i"] = upload_file(
+					"prestasi_$i", // $name_attr
+					"uploads/pdf/prestasi_$i/", // $upload_path
+					'pdf', // $allowed_types
+					"prestasi_$i\_$nisn", // $file_name
+				);
+			}
 
 			// Data Pribadi
 			$this->Daftar_Model->insert_data('data_pribadi', $data_pribadi);
@@ -212,10 +196,13 @@ class Daftar_Controller extends CI_Controller
 			// Program Studi
 			$this->Daftar_Model->insert_data('program_studi', $program_studi);
 			// Data Prestasi
-			// $this->Daftar_Model->insert_data('data_prestasi', $data_prestasi);
+			$this->Daftar_Model->insert_data('data_prestasi', $data_prestasi);
 
 			// if ($jalur_pendaftaran == 'ktmse') {
 			// 	// Redirect ke Halaman Form Tambahan Untuk KTMSE/GAKIN
+					// $this->load->view('form-ktmse-gakin', [
+					// 	'nisn' => $nisn,
+					// ]);
 			// 	redirect('form-ktmse-gakin');
 			// }
 
@@ -229,6 +216,40 @@ class Daftar_Controller extends CI_Controller
 
 	// public function form_ktmse_gakin()
 	// {
-	// 	$this->load->view('form-ktmse-gakin');
+	// 	// Validasi data menggunakan form_validation
+	// 	// if (empty($_FILES['surat_keterangan_miskin']['name'])) {
+	// 	// 	$this->form_validation->set_rules('surat_keterangan_miskin', 'Upload Surat Keterangan Miskin', 'required', [
+	// 	// 		'required' => '{field} harus diisi!'
+	// 	// 	]);
+	// 	// }
+	// 	// if (empty($_FILES['surat_keterangan_penghasilan_keluarga']['name']) {
+	// 	// 	$this->form_validation->set_rules('surat_keterangan_penghasilan_keluarga', 'Upload Surat Keterangan Penghasilan Keluarga', 'required', [
+	// 	// 		'required' => '{field} harus diisi!'
+	// 	// 	]);
+	// 	// }
+	// 	// foto rumah depan, belakang, kanan, kiri
+
+	// 	// Jika validasi berhasil, data di filter dan disimpan ke database
+	// 	// if ($this->form_validation->run() == true) {
+	// 	// 	$berkas_ktmse_gakin = [
+	// 	// 		$nisn => $this->input->post('nisn'),
+	// 	// 		'surat_keterangan_miskin' => upload_file(
+	// 	// 			'surat_keterangan_miskin', // $name_attr
+	// 	// 			'uploads/img/surat_keterangan_miskin/', // $upload_path
+	// 	// 			'jpg|jpeg|png', // $allowed_types
+	// 	// 			"surat_keterangan_miskin_$nisn", // $file_name
+	// 	// 		),
+	// 	// 		'surat_keterangan_penghasilan_keluarga' => upload_file(
+	// 	// 			'surat_keterangan_penghasilan_keluarga', // $name_attr
+	// 	// 			'uploads/img/surat_keterangan_penghasilan_keluarga/', // $upload_path
+	// 	// 			'jpg|jpeg|png', // $allowed_types
+	// 	// 			"surat_keterangan_penghasilan_keluarga_$nisn", // $file_name
+	// 	// 		),
+	// 	// 		// foto rumah depan, belakang, kanan, kiri
+	// 	// 	];
+
+	// 	// 	// $this->Daftar_Model->insert_data('berkas_ktmse_gakin', $berkas_ktmse_gakin);
+	// 	// }
+	// 	// $this->load->view('form-ktmse-gakin');
 	// }
 }

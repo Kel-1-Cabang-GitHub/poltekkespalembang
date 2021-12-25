@@ -255,12 +255,12 @@
                     </div>
                     <div class="table-form prodi" id="prodi">
                         <h3>Prodi yang ada di Politeknik Kesehatan Palembang (Informasi masing-masing Prodi dapat dilihat di <a href="http://www.poltekkespalembang.ac.id">www.poltekkespalembang.ac.id</a>)</h3>
-                        <div class="prodi-list">
+                        <div class="list prodi">
                             <ol class="num-list">
 								<?= daftar_program_studi('li'); ?>
                             </ol>
                         </div>
-                        <div class="harga-list">
+                        <div class="list harga">
                             <p>Besar Biaya Pendaftaran</p>
                             <ul class="dot-list">
                                 <li>1 Pilihan Rp 100.000,-</li>
@@ -289,7 +289,46 @@
                         </div>
                     </div>
                     <div class="table-form prestasi" id="prestasi">
-                        <h1>Maaf Form Belum Tersedia :(</h1>
+                        <h3>Prestasi yang pernah diraih meliputi :</h3>
+                        <div class="paragraph">
+                            <h4>1. Prestasi Akademik</h4>
+                            <p><span class="indent-line">Prestasi</span> akademik misal sebagai pemenang kompetisi ilmu pengetahuan (bidang akademik) minimal pada tingkat kabupaten yang diperoleh selama berada pada jenjang SMA/MA (dibuktikan dengan setifikat, piagam, atau penghargaan yang dilegalisir oleh kepala sekolah</p>
+                            <span class="space"></span>
+                            <h4>2. Prestasi Non-Akademik</h4>
+                            <p>a. Prestasi Bahasa Inggris
+                                <span class="indent">Memiliki prestasi sebagai pemenang kompetisi bidang bahasa Inggris yang diraih minimal pada tingkat kabupaten selama berada pada jenjang SMA/MA sederajat (dibuktikan dengan sertifikat/piagam penghargaan dari instansi yang berwenang yang dilegalisir oleh kepala sekolah)</span>
+                            </p>
+                            <p>b. Prestasi Bidang keagamaan
+                                <span class="indent">Menyerahkan rekomendasi dari lembaga yang berwenang terkait dengan prestasinya</span>
+                            </p>
+                            <p>c. Prestasi Bidang Olahraga atau Seni
+                                <span class="indent">Memiliki prestasi sebagai pemenang kompetisi bidang Olahraga dan Seni yang diarih minimal pada tingkat kabupaten selama berada pada jenjang SMA/MA sederajat (dibuktikan dengan sertifikat atau piagam penghargaan dari instansi berwenang dilegalisir oleh kepala sekolah)</span>
+                            </p>
+                            <p>d. Prestasi Unggulan Lainnya
+                                <span class="indent">Memiliki prestasi sebagai pemenang kompetisi bidang Prestasi Unggulan lainnya diarih minimal pada tingkat kabupaten selama berada pada jenjang SMA/MA sederajat (dibuktikan dengan sertifikat atau piagam penghargaan dari instansi berwenang)</span>
+                            </p>
+                            <span class="space"></span>
+                            <p>Jenis Prestasi yang pernah diraih I (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
+                            <input type="file" name="prestasi1" id="prestasi1" accept=".pdf">
+                            <span class="input-file" id="prestasi">
+                                <label class="input-file" for="prestasi1">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <input type="text" class="text-file prestasi1" readonly>
+                            </span>
+                            <span class="space"></span>
+                            <p>Jenis Prestasi yang pernah diraih II (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
+                            <input type="file" name="prestasi2" id="prestasi2" accept=".pdf">
+                            <span class="input-file" id="prestasi">
+                                <label class="input-file" for="prestasi2">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <input type="text" class="text-file prestasi2" readonly>
+                            </span>
+                            <span class="space"></span>
+                            <p>Jenis Prestasi yang pernah diraih III (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
+                            <input type="file" name="prestasi3" id="prestasi3" accept=".pdf">
+                            <span class="input-file" id="prestasi">
+                                <label class="input-file" for="prestasi3">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <input type="text" class="text-file prestasi3" readonly>
+                            </span>
+                        </div>
                         <div class="btn-page">
                             <a class="a-btn btn-primary btn-page" id="prodi">Sebelumnya</a>
                             <a class="a-btn btn-success simpan-data">Simpan</a>

@@ -285,15 +285,41 @@ h3 a{
 	text-decoration: none;
 	color: black;
 }
-div.prodi-list,div.harga-list{
+div.list{
 	width: 100%;
 	padding: 10px;
 }
-div.prodi-list li, div.harga-list li{
+div.list li{
 	margin-left: 20px;
 }
-div.harga-list{
+div.list.harga{
 	margin-bottom: 50px;
+}
+div.paragraph{
+	margin-top: 50px;
+}
+div.paragraph h4{
+	margin-bottom: 10px;
+}
+div.paragraph p{
+	margin-left: 10px;
+}
+span.indent-line{
+	margin-left: 15px;
+}
+span.space{
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+span.indent{
+	display: block;
+	margin-left: 17px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+span.input-file#prestasi{
+	margin-top: 15px;
 }
 
 @media (max-width: 950px) {
@@ -310,6 +336,9 @@ div.harga-list{
 	textarea.text,span.input-file {
 		width: 100%;
 		margin-bottom: 25px;
+	}
+	div.form select{
+		width: 100%;
 	}
 	div.radio-hz {
 		margin-bottom: 25px;

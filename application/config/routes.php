@@ -50,16 +50,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'Daftar_Controller/pilih_jalur';
-$route['404_override'] = '';
+$route['404_override'] = 'Daftar_Controller/pilih_jalur';
 $route['translate_uri_dashes'] = FALSE;
 
 // Daftar Controller
 $route['pilih-jalur'] = 'Daftar_Controller/pilih_jalur';
 $route['form-pendaftaran'] = 'Daftar_Controller/form_pendaftaran';
+// $route['form-ktmse-gakin'] = 'Daftar_Controller/form_ktmse_gakin';
 
 // Admin Controller
-$route['register'] = 'Admin_Controller/register';
-$route['login'] = 'Admin_Controller/login';
-$route['logout'] = 'Admin_Controller/logout';
+// $route['register'] = 'Admin_Controller/register';
+// $route['login'] = 'Admin_Controller/login';
+// $route['logout'] = 'Admin_Controller/logout';
+// $route['profile'] = 'Admin_Controller/profile';
+// $route['update-profile'] = 'Admin_Controller/update_profile';
+// $route['change-password'] = 'Admin_Controller/change_password';
 $route['data-pendaftar'] = 'Admin_Controller/data_pendaftar';
 $route['export-to-excel'] = 'Admin_Controller/export_to_excel';

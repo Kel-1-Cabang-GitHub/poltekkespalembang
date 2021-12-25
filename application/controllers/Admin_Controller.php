@@ -7,23 +7,200 @@ class Admin_Controller extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->helper('admin');
+		$this->load->model('Admin_Model');
 		$this->load->model('Daftar_Model');
 	}
 
 	public function register()
 	{
+		// if ($this->session->userdata('username')) redirect();
+
+		// $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]', [
+		// 	'required' => '{field} harus diisi!',
+		// 	'is_unique' => '{field} sudah terdaftar!'
+		// ]);
+		// $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|matches[password2]', [
+		// 	'required' => '{field} harus diisi!',
+		// 	'min_length' => '{field} minimal {param} karakter!',
+		// 	'matches' => '{field} tidak cocok!'
+		// ]);
+		// $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password]', [
+		// 	'required' => '{field} harus diisi!',
+		// 	'matches' => '{field} tidak cocok!'
+		// ]);
+		// $this->form_validation->set_rules('full_name', 'Nama Lengkap', 'required|trim', [
+		// 	'required' => '{field} harus diisi!'
+		// ]);
+
+		// if ($this->form_validation->run() == true) {
+		// 	$data = [
+		// 		'username' => $this->input->post('username'),
+		// 		'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+		// 		'fullname' => $this->input->post('fullname'),
+		// 		'role' => 'admin',
+		// 		'image' => 'default.jpg',
+		// 		'created_at' => time(),
+		// 		'updated_at' => time()
+		// 	];
+
+		// 	$this->Admin_Model->add_new_user($data);
+
+		// 	redirect('login');
+		// }
+
+		// $this->load->view('register');
 	}
 
 	public function login()
 	{
+		// if ($this->session->userdata('username')) redirect();
+
+		// $this->form_validation->set_rules('username', 'Username', 'required|trim', [
+		// 	'required' => '{field} harus diisi!'
+		// ]);
+		// $this->form_validation->set_rules('password', 'Password', 'required|trim', [
+		// 	'required' => '{field} harus diisi!'
+		// ]);
+
+		// if ($this->form_validation->run() == true) {
+		// 	$username = $this->input->post('username');
+		// 	$password = $this->input->post('password');
+
+		// 	$user = $this->Admin_Model->get_user_data($username);
+
+		// 	// Username belum terdaftar
+		// 	if (!$user) redirect('login');
+		// 	// Password salah
+		// 	if (!password_verify($password, $user['password'])) redirect('login');
+
+		// 	$data = [
+		// 		'username' => $user['username'],
+		// 		'role' => $user['role']
+		// 	];
+
+		// 	$this->session->set_userdata($data);
+
+		// 	redirect('data-pendaftar');
+		// }
+
+		// $this->load->view('login');
 	}
 
 	public function logout()
 	{
+		// if ($this->session->userdata('username')) {
+		// 	$this->session->unset_userdata('username');
+		// 	$this->session->sess_destroy();
+
+		// 	redirect();
+		// }
+	}
+
+	public function profile()
+	{
+		// if (!$this->session->userdata('username')) redirect();
+
+		// $data['user'] = $this->Admin_Model->get_user_data($this->session->userdata('username'));
+
+		// $this->load->view('profile', $data);
+	}
+
+	public function update_profile()
+	{
+		// if ($this->session->userdata('username')) redirect();
+
+		// $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]', [
+		// 	'required' => '{field} harus diisi!',
+		// 	'is_unique' => '{field} sudah terdaftar!'
+		// ]);
+		// $this->form_validation->set_rules('full_name', 'Nama Lengkap', 'required|trim', [
+		// 	'required' => '{field} harus diisi!'
+		// ]);
+
+		// if ($this->form_validation->run() == false) redirect('profile');
+
+		// $user = $this->Admin_Model->get_user_data($this->session->userdata('username'));
+		// $username = $this->input->post('username');
+		// $full_name = $this->input->post('full_name');
+		// $image = $user['image'];
+
+		// $profile_image = $_FILES['profile_image']['name'];
+
+		// if ($profile_image) {
+		// 	$config['upload_path'] = 'uploads/img/profile/';
+		// 	$config['allowed_types'] = 'jpg|jpeg|png';
+		// 	$config['file_name'] = "profile_$username";
+		// 	$config['file_ext_tolower'] = true;
+		// 	$config['overwrite'] = true;
+		// 	$config['max_size'] = 5000;
+
+		// 	$this->upload->initialize($config);
+
+		// 	if ($this->upload->do_upload('profile_image')) {
+		// 		$old_profile_image = $user['image'];
+
+		// 		if ($old_profile_image != 'default.jpg') {
+		// 			unlink(FCPATH . 'uploads/img/profile/' . $old_profile_image);
+		// 		}
+
+		// 		$new_profile_image = $this->upload->data('file_name');
+		// 		$image = $new_profile_image;
+		// 	}
+
+		// 	$data = [
+		// 		'username' => $username,
+		// 		'fullname' => $full_name,
+		// 		'image' => $image,
+		// 		'updated_at' => time()
+		// 	];
+
+		// 	$this->Admin_Model->update_profile($this->session->userdata('username'), $data);
+
+		// 	redirect('profile');
+		// }
+	}
+
+	public function change_password()
+	{
+		// if (!$this->session->userdata('username')) redirect();
+
+		// $this->form_validation->set_rules('old_password', 'Password Lama', 'required|trim', [
+		// 	'required' => '{field} harus diisi!'
+		// ]);
+		// $this->form_validation->set_rules('new_password', 'Password Baru', 'required|trim|min_length[8]|matches[new_password2]', [
+		// 	'required' => '{field} harus diisi!',
+		// 	'min_length' => '{field} minimal {param} karakter!',
+		// 	'matches' => '{field} tidak cocok!'
+		// ]);
+		// $this->form_validation->set_rules('new_password2', 'Konfirmasi Password Baru', 'required|trim|matches[new_password]', [
+		// 	'required' => '{field} harus diisi!',
+		// 	'min_length' => '{field} tidak cocok!'
+		// ]);
+
+		// if ($this->form_validation->run() == false) redirect('profile');
+
+		// $user = $this->Admin_Model->get_user_data($this->session->userdata('username'));
+		// $old_password = $this->input->post('old_password');
+		// $new_password = $this->input->post('new_password');
+
+		// // Inputan password lama tidak sama dengan password yang ada di database
+		// if (!password_verify($old_password, $user['password'])) redirect('profile');
+		// // Password baru sama dengan password lama yang diinputkan
+		// if ($old_password == $new_password) redirect('profile');
+		// // Password baru sama dengan password lama yang ada di database
+		// if (!password_verify($new_password, $user['password'])) redirect('profile');
+
+		// $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+
+		// $this->Admin_Model->change_password($this->session->userdata('username'), $hashed_password);
+
+		// redirect('profile');
 	}
 
 	public function data_pendaftar()
 	{
+		// if (!$this->session->userdata('username')) redirect();
+
 		$data = [
 			'data_pribadi' => $this->Daftar_Model->get_all_data('data_pribadi'),
 			'data_sekolah' => $this->Daftar_Model->get_all_data('data_sekolah'),
@@ -36,6 +213,8 @@ class Admin_Controller extends CI_Controller
 
 	public function export_to_excel()
 	{
+		// if (!$this->session->userdata('username')) redirect();
+
 		$data_pribadi_columns = [
 			'nama_lengkap', 'alamat', 'kode_pos', 'nisn',
 			'no_telepon', 'jenis_kelamin', 'tinggi_badan', 'berat_badan',

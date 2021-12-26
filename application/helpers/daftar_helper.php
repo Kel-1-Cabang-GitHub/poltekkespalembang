@@ -1,10 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-// Import yang dibutuhkan untuk export ke excel
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
 // Backend Logic Function
 
 if (!function_exists('upload_file')) {
@@ -26,6 +22,19 @@ if (!function_exists('upload_file')) {
 		if ($CI->upload->do_upload($name_attr)) {
 			return $CI->upload->data('file_name');
 		}
+	}
+}
+
+if (!function_exists('prov_id_to_name')) {
+	function prov_id_to_name($prov_id)
+	{
+		return PROVINSI[(int) $prov_id];
+	}
+}
+
+if (!function_exists('kota_kab_id_to_name')) {
+	function kota_kab_id_to_name($kota_kab_id)
+	{
 	}
 }
 

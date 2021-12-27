@@ -207,49 +207,54 @@ class Daftar_Controller extends CI_Controller
 			// }
 
 			// jika jalur pendaftaran lewat pmdp
-			redirect();
+			redirect('terima-kasih');
 		}
 
 		// Jika data gagal divalidasi, user dikembalikan ke halaman daftar
 		$this->load->view('form-pendaftaran');
 	}
 
-	// public function form_ktmse_gakin()
-	// {
-	// 	// Validasi data menggunakan form_validation
-	// 	// if (empty($_FILES['surat_keterangan_miskin']['name'])) {
-	// 	// 	$this->form_validation->set_rules('surat_keterangan_miskin', 'Upload Surat Keterangan Miskin', 'required', [
-	// 	// 		'required' => '{field} harus diisi!'
-	// 	// 	]);
-	// 	// }
-	// 	// if (empty($_FILES['surat_keterangan_penghasilan_keluarga']['name']) {
-	// 	// 	$this->form_validation->set_rules('surat_keterangan_penghasilan_keluarga', 'Upload Surat Keterangan Penghasilan Keluarga', 'required', [
-	// 	// 		'required' => '{field} harus diisi!'
-	// 	// 	]);
-	// 	// }
-	// 	// foto rumah depan, belakang, kanan, kiri
+	public function form_ktmse_gakin()
+	{
+		// Validasi data menggunakan form_validation
+		// if (empty($_FILES['surat_keterangan_miskin']['name'])) {
+		// 	$this->form_validation->set_rules('surat_keterangan_miskin', 'Upload Surat Keterangan Miskin', 'required', [
+		// 		'required' => '{field} harus diisi!'
+		// 	]);
+		// }
+		// if (empty($_FILES['surat_keterangan_penghasilan_keluarga']['name']) {
+		// 	$this->form_validation->set_rules('surat_keterangan_penghasilan_keluarga', 'Upload Surat Keterangan Penghasilan Keluarga', 'required', [
+		// 		'required' => '{field} harus diisi!'
+		// 	]);
+		// }
+		// foto rumah depan, belakang, kanan, kiri
 
-	// 	// Jika validasi berhasil, data di filter dan disimpan ke database
-	// 	// if ($this->form_validation->run() == true) {
-	// 	// 	$berkas_ktmse_gakin = [
-	// 	// 		$nisn => $this->input->post('nisn'),
-	// 	// 		'surat_keterangan_miskin' => upload_file(
-	// 	// 			'surat_keterangan_miskin', // $name_attr
-	// 	// 			'uploads/img/surat_keterangan_miskin/', // $upload_path
-	// 	// 			'jpg|jpeg|png', // $allowed_types
-	// 	// 			"surat_keterangan_miskin_$nisn", // $file_name
-	// 	// 		),
-	// 	// 		'surat_keterangan_penghasilan_keluarga' => upload_file(
-	// 	// 			'surat_keterangan_penghasilan_keluarga', // $name_attr
-	// 	// 			'uploads/img/surat_keterangan_penghasilan_keluarga/', // $upload_path
-	// 	// 			'jpg|jpeg|png', // $allowed_types
-	// 	// 			"surat_keterangan_penghasilan_keluarga_$nisn", // $file_name
-	// 	// 		),
-	// 	// 		// foto rumah depan, belakang, kanan, kiri
-	// 	// 	];
+		// Jika validasi berhasil, data di filter dan disimpan ke database
+		// if ($this->form_validation->run() == true) {
+		// 	$berkas_ktmse_gakin = [
+		// 		$nisn => $this->input->post('nisn'),
+		// 		'surat_keterangan_miskin' => upload_file(
+		// 			'surat_keterangan_miskin', // $name_attr
+		// 			'uploads/img/surat_keterangan_miskin/', // $upload_path
+		// 			'jpg|jpeg|png', // $allowed_types
+		// 			"surat_keterangan_miskin_$nisn", // $file_name
+		// 		),
+		// 		'surat_keterangan_penghasilan_keluarga' => upload_file(
+		// 			'surat_keterangan_penghasilan_keluarga', // $name_attr
+		// 			'uploads/img/surat_keterangan_penghasilan_keluarga/', // $upload_path
+		// 			'jpg|jpeg|png', // $allowed_types
+		// 			"surat_keterangan_penghasilan_keluarga_$nisn", // $file_name
+		// 		),
+		// 		// foto rumah depan, belakang, kanan, kiri
+		// 	];
 
-	// 	// 	// $this->Daftar_Model->insert_data('berkas_ktmse_gakin', $berkas_ktmse_gakin);
-	// 	// }
-	// 	// $this->load->view('form-ktmse-gakin');
-	// }
+		// $this->Daftar_Model->insert_data('berkas_ktmse_gakin', $berkas_ktmse_gakin);
+		// redirect('terima-kasih');
+		// }
+		$this->load->view('form-ktmse-gakin');
+	}
+
+	public function terima_kasih() {
+		$this->load->view('terima-kasih');
+	}
 }

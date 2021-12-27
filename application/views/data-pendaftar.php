@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Data Pribadi | POLTEKKES KEMENKES PALEMBANG</title>
+	<title>Data Pendaftar | POLTEKKES KEMENKES PALEMBANG</title>
 	<link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
 </head>

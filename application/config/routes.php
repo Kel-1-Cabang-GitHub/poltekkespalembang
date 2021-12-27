@@ -56,7 +56,8 @@ $route['translate_uri_dashes'] = FALSE;
 // Daftar Controller
 $route['pilih-jalur'] = 'Daftar_Controller/pilih_jalur';
 $route['form-pendaftaran'] = 'Daftar_Controller/form_pendaftaran';
-// $route['form-ktmse-gakin'] = 'Daftar_Controller/form_ktmse_gakin';
+$route['form-ktmse-gakin'] = 'Daftar_Controller/form_ktmse_gakin';
+$route['terima-kasih'] = 'Daftar_Controller/terima_kasih';
 
 // Admin Controller
 // $route['register'] = 'Admin_Controller/register';

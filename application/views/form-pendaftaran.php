@@ -220,7 +220,9 @@
 							<?= daftar_provinsi(); ?>
 						</select>
                         <span class="label-input"><label class="form-label" for="kota_kabupaten_asal_sekolah">Kota/Kabupaten Asal Sekolah</label></span>
-                        <select name="kota_kabupaten_asal_sekolah" id="kota_kabupaten_asal_sekolah"></select>
+                        <select name="kota_kabupaten_asal_sekolah" id="kota_kabupaten_asal_sekolah">
+							<option disabled selected>--Pilih Kota/Kabupaten--</option>
+						</select>
                         <select class="select-hidden" id="kecamatan_asal_sekolah"></select>
                         <select class="select-hidden" id="kelurahan_asal_sekolah"></select>
                         <span class="label-input"><label class="form-label" for="akreditasi_sekolah">Akreditasi Sekolah</label></span>

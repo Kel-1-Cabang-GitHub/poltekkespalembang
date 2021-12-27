@@ -17,7 +17,7 @@ select_data.forEach((el) => {
 tombol_halaman.forEach((btn) => {
 	btn.addEventListener("click", () => {
 		disableform();
-		
+
 		let form_data_target = document.querySelector(`div.table-form#${btn.id}`);
 		let select_data_target = document.querySelector(`div.data#${btn.id}`);
 		form_data_target.classList.add("active");
@@ -48,10 +48,10 @@ if(tombol_halaman_lanjut_ktmse && tombol_halaman_kembali_ktmse){
 		console.log(select_data_ktmse);
 		let form_data_target = document.querySelector(`div.table-form#${tombol_halaman_lanjut_ktmse.id}`);
 		form_data_target.classList.add("active");
-	
+
 		let destination = $("div.data");
 		let destinationEl = $(destination);
-	
+
 		$("html").animate(
 			{
 				scrollTop: destinationEl.offset().top - 50,
@@ -59,7 +59,7 @@ if(tombol_halaman_lanjut_ktmse && tombol_halaman_kembali_ktmse){
 			0,
 			"swing"
 		);
-	
+
 	});
 
 	tombol_halaman_kembali_ktmse.addEventListener("click", () => {
@@ -85,9 +85,8 @@ if(tombol_halaman_lanjut_ktmse && tombol_halaman_kembali_ktmse){
 		);
 
 	});
-	
-}
 
+}
 
 //function menghilangkan semua form
 const disableform = () => {

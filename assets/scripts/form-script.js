@@ -1,6 +1,9 @@
 //Perpindahan antar form
 const select_data = document.querySelectorAll("div.data");
 const tombol_halaman = document.querySelectorAll("a.btn-page");
+const tombol_halaman_kembali_ktmse = document.querySelector("a.btn-page3");
+const tombol_halaman_lanjut_ktmse = document.querySelector("a.btn-page2");
+const select_data_ktmse = document.querySelector("div.data.type2");
 
 select_data.forEach((el) => {
 	el.addEventListener("click", () => {
@@ -14,6 +17,7 @@ select_data.forEach((el) => {
 tombol_halaman.forEach((btn) => {
 	btn.addEventListener("click", () => {
 		disableform();
+		
 		let form_data_target = document.querySelector(`div.table-form#${btn.id}`);
 		let select_data_target = document.querySelector(`div.data#${btn.id}`);
 		form_data_target.classList.add("active");
@@ -31,6 +35,59 @@ tombol_halaman.forEach((btn) => {
 		);
 	});
 });
+
+if(tombol_halaman_lanjut_ktmse && tombol_halaman_kembali_ktmse){
+	// console.log(tombol_halaman_lanjut_ktmse);
+	tombol_halaman_lanjut_ktmse.addEventListener("click", () => {
+		disableform();
+		select_data.forEach(el => {
+			el.style.display = "none";
+		});
+		select_data_ktmse.style.display = "block";
+		select_data_ktmse.classList.add("active");
+		console.log(select_data_ktmse);
+		let form_data_target = document.querySelector(`div.table-form#${tombol_halaman_lanjut_ktmse.id}`);
+		form_data_target.classList.add("active");
+	
+		let destination = $("div.data");
+		let destinationEl = $(destination);
+	
+		$("html").animate(
+			{
+				scrollTop: destinationEl.offset().top - 50,
+			},
+			0,
+			"swing"
+		);
+	
+	});
+
+	tombol_halaman_kembali_ktmse.addEventListener("click", () => {
+		disableform();
+		select_data.forEach(el => {
+			el.style.display = "flex";
+		});
+		select_data_ktmse.style.display = "none";
+		let form_data_target = document.querySelector(`div.table-form#${tombol_halaman_kembali_ktmse.id}`);
+		let select_data_target = document.querySelector(`div.data#${tombol_halaman_kembali_ktmse.id}`);
+		form_data_target.classList.add("active");
+		select_data_target.classList.add("active");
+
+		let destination = $("div.data");
+		let destinationEl = $(destination);
+
+		$("html").animate(
+			{
+				scrollTop: destinationEl.offset().top - 50,
+			},
+			0,
+			"swing"
+		);
+
+	});
+	
+}
+
 
 //function menghilangkan semua form
 const disableform = () => {

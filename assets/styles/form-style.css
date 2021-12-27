@@ -47,6 +47,11 @@ div.data {
 	align-items: center;
 	padding: 20px 10px;
 }
+div.data.type2{
+	width: 100%;
+	display: none;
+	border-radius: 6px 6px 0px 0px;
+}
 div.data h2 {
 	font-size: 18px;
 }
@@ -92,21 +97,6 @@ input.text-file{
 	border: none;
 	border-bottom: 2px solid var(--abu-abu);
 	margin-left: 10px;
-}
-label.input-file{
-	background-color: var(--biru-tua);
-	border-radius: 4px;
-	color: var(--putih);
-	padding: 3px;
-	padding-left: 7px;
-	font-size: 14px;
-	text-align: center;
-	height: fit-content;
-	display: flex;
-	align-items: center;
-}
-label.input-file svg{
-	margin-left: 2px;
 }
 div.table-form {
 	padding: 25px;
@@ -182,13 +172,22 @@ div.btn-page{
 	margin-top: 100px;
 }
 button.btn,
-a.a-btn {
+a.a-btn,label.input-file {
 	padding: 5px;
 	color: var(--putih);
 	width: 101px;
 	height: 30px;
 	border: none;
-	border-radius: 10px;
+	border-radius: 4px;
+}
+label.input-file{
+	background-color: var(--biru-tua);
+	color: var(--putih);
+	font-size: 13.33px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-left: 2px;
 }
 button.btn:hover,
 a.a-btn:hover {
@@ -291,6 +290,9 @@ div.list{
 }
 div.list li{
 	margin-left: 20px;
+}
+ol.alphabet li{
+	list-style: upper-alpha;
 }
 div.list.harga{
 	margin-bottom: 50px;

@@ -39,6 +39,9 @@
             <div class="data prestasi" id="prestasi">
                 <h2>Data Prestasi</h2>
             </div>
+            <div class="data type2 ktmse" id="berkas">
+                <h2>Upload Berkas</h2>
+            </div>
             <div class="form">
                 <form action="form-pendaftaran?jalur=<?= $this->input->get('jalur'); ?>" method="POST" enctype="multipart/form-data">
                     <?= validation_errors() ?>
@@ -87,7 +90,7 @@
                         <span class="label-input"><label class="form-label" for="pas_foto">Pas Foto Terbaru</label></span>
                         <input type="file" name="pas_foto" id="pas_foto" accept=".jpg, .jpeg, .png">
                         <span class="input-file">
-                            <label class="input-file" for="pas_foto">Upload Foto<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                            <label class="input-file" for="pas_foto"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
                             <input type="text" class="text-file pas_foto" readonly>
                         </span>
                         <div class="btn-page">
@@ -235,7 +238,7 @@
                         <span class="label-input"><label class="form-label"for="rekap_nilai_rapot">Rekap Nilai Rapot</label></span>
                         <input type="file" name="rekap_nilai_rapot" id="rekap_nilai_rapot" accept=".xls, .xlsx">
                         <span class="input-file">
-                            <label class="input-file" for="rekap_nilai_rapot">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                            <label class="input-file" for="rekap_nilai_rapot"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
                             <input type="text" class="text-file rekap_nilai_rapot" readonly>
                         </span>
                         <span class="label-input"><label class="form-label" for="rata_rata_nilai_rapot">Rata-Rata Nilai Rapot</label></span>
@@ -272,7 +275,7 @@
                         <span class="label-input"><label class="form-label" for="bukti_pembayaran">Upload Bukti Pembayaran</label></span>
                         <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" accept=".jpg, .jpeg, .png">
                         <span class="input-file">
-                            <label class="input-file" for="bukti_pembayaran">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                            <label class="input-file" for="bukti_pembayaran"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
                             <input type="text" class="text-file bukti_pembayaran" readonly>
                         </span>
                         <span class="label-input"><label for="program_studi_pilihan_1" class="form-label">Program Studi Pilihan 1</label></span>
@@ -313,43 +316,65 @@
                             <p>Jenis Prestasi yang pernah diraih I (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
                             <input type="file" name="prestasi_1" id="prestasi_1" accept=".pdf">
                             <span class="input-file" id="prestasi">
-                                <label class="input-file" for="prestasi_1">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <label class="input-file" for="prestasi_1"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
                                 <input type="text" class="text-file prestasi_1" readonly>
                             </span>
                             <span class="space"></span>
                             <p>Jenis Prestasi yang pernah diraih II (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
                             <input type="file" name="prestasi_2" id="prestasi_2" accept=".pdf">
                             <span class="input-file" id="prestasi">
-                                <label class="input-file" for="prestasi_2">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <label class="input-file" for="prestasi_2"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
                                 <input type="text" class="text-file prestasi_2" readonly>
                             </span>
                             <span class="space"></span>
                             <p>Jenis Prestasi yang pernah diraih III (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
                             <input type="file" name="prestasi_3" id="prestasi_3" accept=".pdf">
                             <span class="input-file" id="prestasi">
-                                <label class="input-file" for="prestasi_3">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <label class="input-file" for="prestasi_3"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
                                 <input type="text" class="text-file prestasi_3" readonly>
                             </span>
                             <span class="space"></span>
                             <p>Jenis Prestasi yang pernah diraih IV (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
                             <input type="file" name="prestasi_4" id="prestasi_4" accept=".pdf">
                             <span class="input-file" id="prestasi">
-                                <label class="input-file" for="prestasi_4">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <label class="input-file" for="prestasi_4"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
                                 <input type="text" class="text-file prestasi_4" readonly>
                             </span>
                             <span class="space"></span>
                             <p>Jenis Prestasi yang pernah diraih V (Lampirkan Penjelasan Singkat menggunakan softcopy Microsoft Word dan di upload serta Upload Bukti sertifikat/piagam/pengahargaan). Kosongkan bila tidak ada</p>
                             <input type="file" name="prestasi_5" id="prestasi_5" accept=".pdf">
                             <span class="input-file" id="prestasi">
-                                <label class="input-file" for="prestasi_5">Upload File<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg></label>
+                                <label class="input-file" for="prestasi_5"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
                                 <input type="text" class="text-file prestasi_5" readonly>
                             </span>
                         </div>
                         <div class="btn-page">
-                            <a class="a-btn btn-primary btn-page" id="prodi">Sebelumnya</a>
+                            <a class="a-btn btn-primary btn-page" id="prestasi">Sebelumnya</a>
+                            <?php if($_GET["jalur"] === "pmdp"): ?>
+                                <a class="a-btn btn-success simpan-data">Simpan</a>
+                            <?php elseif($_GET["jalur"] === "ktmse"): ?>
+                                <a class="a-btn btn-primary btn-page2" id="berkas">Selanjutnya</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <?php if($_GET["jalur"] === "ktmse"): ?>
+                    <div class="table-form ktmse" id="berkas">
+                        <h3>Peserta yang memilih jalur KTMSE/GAKIN. wajib mengupload berkas-berkas sebagai berikut</h3>
+                        <div class="list">
+                            <ol class="alphabet">
+                                <li>Surat Keterangan Miskin dari Kelurahan/Desa Tempat Tinggal yang Bersangkutan</li>
+                                <li>Surat Keterangan Penghasilan Keluarga dari Kelurahan/Desa</li>
+                                <li>Foto Rumah Tempat TInggal Orang Tua (Foto depan, Belakang, Kanan dan Kiri)</li>
+                            </ol>
+                        </div>
+                            <p>Peserta yang mendaftar pada Sipenmaru Jalur KTMSE/GAKIN Tidak diperbolehkan Mendaftar Pada
+            Sipenmaru Jalur PMDP ataupun sebaliknya.</p>
+                        <div class="btn-page">
+                            <a class="a-btn btn-primary btn-page3" id="prestasi">Sebelumnya</a>
                             <a class="a-btn btn-success simpan-data">Simpan</a>
                         </div>
                     </div>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>

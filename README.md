@@ -32,4 +32,4 @@ Tambahkan ekstensi CORS unblocker pada browser yang anda gunakan
 - [Google Fonts - Roboto](https://fonts.google.com/specimen/Roboto?query=roboto)
 - [Google Icons](https://fonts.google.com/icons)
 - [CORS Unblocker](https://add0n.com/access-control.html)
-- [API Lokasi Indonesia](http://api.iksgroup.co.id/lokasi/demolokasi)
+- [API Lokasi Indonesia](https://dev.farizdotid.com/api/daerahindonesia/)

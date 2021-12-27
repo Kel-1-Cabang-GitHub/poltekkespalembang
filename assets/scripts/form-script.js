@@ -210,7 +210,7 @@ tombol_batal.addEventListener("click", () => {
 	block.classList.remove("active");
 });
 
-// Scroll atas halaman
+// Scroll ke atas button
 $(window).scroll(function () {
 	let wscroll = $(this).scrollTop();
 	if (wscroll > 150) {

@@ -281,12 +281,12 @@
                             <input type="text" class="text-file bukti_pembayaran" readonly>
                         </span>
                         <span class="label-input"><label for="program_studi_pilihan_1" class="form-label">Program Studi Pilihan 1</label></span>
-						<select name="program_studi_pilihan_1" id="program_studi_pilihan_1">
+						<select name="program_studi_pilihan_1" class="program_studi_pilihan_1" id="program_studi_pilihan_1">
 							<option disabled selected>--Pilih program studi--</option>
 							<?= daftar_program_studi('option', 'program_studi_pilihan_1'); ?>
 						</select>
                         <span class="label-input"><label for="program_studi_pilihan_2" class="form-label">Program Studi Pilihan 2</label></span>
-						<select name="program_studi_pilihan_2" id="program_studi_pilihan_2">
+						<select name="program_studi_pilihan_2" class="program_studi_pilihan_2" id="program_studi_pilihan_2">
 							<option value="<?= null ?>">--Lewati jika hanya membayar 1 pilihan--</option>
 							<?= daftar_program_studi('option', 'program_studi_pilihan_2'); ?>
 						</select>

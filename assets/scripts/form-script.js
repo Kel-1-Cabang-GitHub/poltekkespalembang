@@ -156,7 +156,7 @@ tombol_batal.addEventListener("click", () => {
 	block.classList.remove("active");
 });
 
-//scroll-atas
+// Scroll atas halaman
 $(window).scroll(function () {
 	let wscroll = $(this).scrollTop();
 	if (wscroll > 150) {
@@ -180,7 +180,7 @@ $(".scroll").on("click", function () {
 	event.preventDefault();
 });
 
-//Input File
+// Masukkan nama file yang diupload di input file
 const tombol_upload = document.querySelectorAll('input[type="file"]');
 
 tombol_upload.forEach((e) => {
@@ -189,5 +189,20 @@ tombol_upload.forEach((e) => {
 		let file = e.value.split("\\");
 		let file_name = file[file.length - 1];
 		input_target.value = file_name;
+	});
+});
+
+// Hapus Prodi Pilihan 1 di Prodi Pilihan 2 jika Prodi Pilihan 1 sudah diisi
+const prodi_pilihan_1 = document.querySelector("select.program_studi_pilihan_1");
+const prodi_pilihan_2 = document.querySelector("select.program_studi_pilihan_2");
+
+prodi_pilihan_1.addEventListener("change", () => {
+	let prodi_pilihan_1_value = prodi_pilihan_1.value;
+	let prodi_pilihan_2_option = prodi_pilihan_2.querySelectorAll("option");
+
+	prodi_pilihan_2_option.forEach((el) => {
+		if (el.value == prodi_pilihan_1_value) {
+			el.remove();
+		}
 	});
 });

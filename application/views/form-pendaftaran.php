@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/form-style.css">
     <script defer src="<?= base_url() ?>assets/scripts/jquery-3.6.0.min.js"></script>
-    <!-- http://api.iksgroup.co.id/lokasi/demolokasi -->
-    <script defer src="<?= base_url() ?>assets/scripts/lokasiapi.js"></script>
     <script defer src="<?= base_url() ?>assets/scripts/form-script.js"></script>
     <script defer src="<?= base_url() ?>assets/scripts/nav-script.js"></script>
 </head>

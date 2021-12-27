@@ -36,17 +36,19 @@ tombol_halaman.forEach((btn) => {
 	});
 });
 
-if(tombol_halaman_lanjut_ktmse && tombol_halaman_kembali_ktmse){
+if (tombol_halaman_lanjut_ktmse && tombol_halaman_kembali_ktmse) {
 	// console.log(tombol_halaman_lanjut_ktmse);
 	tombol_halaman_lanjut_ktmse.addEventListener("click", () => {
 		disableform();
-		select_data.forEach(el => {
+		select_data.forEach((el) => {
 			el.style.display = "none";
 		});
 		select_data_ktmse.style.display = "block";
 		select_data_ktmse.classList.add("active");
 		console.log(select_data_ktmse);
-		let form_data_target = document.querySelector(`div.table-form#${tombol_halaman_lanjut_ktmse.id}`);
+		let form_data_target = document.querySelector(
+			`div.table-form#${tombol_halaman_lanjut_ktmse.id}`
+		);
 		form_data_target.classList.add("active");
 
 		let destination = $("div.data");
@@ -59,17 +61,20 @@ if(tombol_halaman_lanjut_ktmse && tombol_halaman_kembali_ktmse){
 			0,
 			"swing"
 		);
-
 	});
 
 	tombol_halaman_kembali_ktmse.addEventListener("click", () => {
 		disableform();
-		select_data.forEach(el => {
+		select_data.forEach((el) => {
 			el.style.display = "flex";
 		});
 		select_data_ktmse.style.display = "none";
-		let form_data_target = document.querySelector(`div.table-form#${tombol_halaman_kembali_ktmse.id}`);
-		let select_data_target = document.querySelector(`div.data#${tombol_halaman_kembali_ktmse.id}`);
+		let form_data_target = document.querySelector(
+			`div.table-form#${tombol_halaman_kembali_ktmse.id}`
+		);
+		let select_data_target = document.querySelector(
+			`div.data#${tombol_halaman_kembali_ktmse.id}`
+		);
 		form_data_target.classList.add("active");
 		select_data_target.classList.add("active");
 
@@ -83,9 +88,7 @@ if(tombol_halaman_lanjut_ktmse && tombol_halaman_kembali_ktmse){
 			0,
 			"swing"
 		);
-
 	});
-
 }
 
 //function menghilangkan semua form
@@ -132,14 +135,65 @@ radioLainnya_jurusan.addEventListener("click", () => {
 	input_jurusan.focus();
 });
 
-// API untuk Provinsi dan Kota/Kabupaten Asal Sekolah
-// http://api.iksgroup.co.id/lokasi/demolokasi
-const render = createwidgetlokasi(
-	"provinsi_asal_sekolah",
-	"kota_kabupaten_asal_sekolah",
-	"kecamatan_asal_sekolah",
-	"kelurahan_asal_sekolah"
+// Masukkan nama file yang diupload di input file
+const tombol_upload = document.querySelectorAll('input[type="file"]');
+
+tombol_upload.forEach((e) => {
+	e.addEventListener("change", () => {
+		let input_target = document.querySelector(`input.text-file.${e.id}`);
+		let file = e.value.split("\\");
+		let file_name = file[file.length - 1];
+		input_target.value = file_name;
+	});
+});
+
+// Tampilkan kota/kabupaten berdasarkan provinsi
+const LOKASI_API = "https://dev.farizdotid.com/api/daerahindonesia/";
+const provinsi = document.getElementById("provinsi_asal_sekolah");
+const kota_kabupaten = document.getElementById("kota_kabupaten_asal_sekolah");
+
+provinsi.addEventListener("change", function () {
+	let id_provinsi = this.value;
+	let url = `${LOKASI_API}kota?id_provinsi=${id_provinsi}`;
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
+	xhr.onload = function () {
+		let daftar_kota_kabupaten = JSON.parse(this.responseText);
+		let kota_kabupaten_arr = [];
+		Object.keys(daftar_kota_kabupaten).forEach((kota_kabupaten) => {
+			kota_kabupaten_arr.push(daftar_kota_kabupaten[kota_kabupaten]);
+		});
+		kota_kabupaten_arr = kota_kabupaten_arr[0].sort((a, b) => {
+			if (a.nama < b.nama) return -1;
+			if (a.nama > b.nama) return 1;
+			return 0;
+		});
+		kota_kabupaten.innerHTML = "";
+		for (let data_kota_kabupaten of kota_kabupaten_arr) {
+			kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}">${data_kota_kabupaten.nama}</option>`;
+		}
+	};
+	xhr.send();
+});
+
+// Hapus Prodi Pilihan 1 di Prodi Pilihan 2 jika Prodi Pilihan 1 sudah diisi
+const prodi_pilihan_1 = document.querySelector(
+	"select.program_studi_pilihan_1"
 );
+const prodi_pilihan_2 = document.querySelector(
+	"select.program_studi_pilihan_2"
+);
+
+prodi_pilihan_1.addEventListener("change", () => {
+	let prodi_pilihan_1_value = prodi_pilihan_1.value;
+	let prodi_pilihan_2_option = prodi_pilihan_2.querySelectorAll("option");
+
+	prodi_pilihan_2_option.forEach((el) => {
+		if (el.value == prodi_pilihan_1_value) {
+			el.remove();
+		}
+	});
+});
 
 // Alert Konfirmasi simpan data
 const block = document.querySelector("div.block");
@@ -178,31 +232,4 @@ $(".scroll").on("click", function () {
 	);
 
 	event.preventDefault();
-});
-
-// Masukkan nama file yang diupload di input file
-const tombol_upload = document.querySelectorAll('input[type="file"]');
-
-tombol_upload.forEach((e) => {
-	e.addEventListener("change", () => {
-		let input_target = document.querySelector(`input.text-file.${e.id}`);
-		let file = e.value.split("\\");
-		let file_name = file[file.length - 1];
-		input_target.value = file_name;
-	});
-});
-
-// Hapus Prodi Pilihan 1 di Prodi Pilihan 2 jika Prodi Pilihan 1 sudah diisi
-const prodi_pilihan_1 = document.querySelector("select.program_studi_pilihan_1");
-const prodi_pilihan_2 = document.querySelector("select.program_studi_pilihan_2");
-
-prodi_pilihan_1.addEventListener("change", () => {
-	let prodi_pilihan_1_value = prodi_pilihan_1.value;
-	let prodi_pilihan_2_option = prodi_pilihan_2.querySelectorAll("option");
-
-	prodi_pilihan_2_option.forEach((el) => {
-		if (el.value == prodi_pilihan_1_value) {
-			el.remove();
-		}
-	});
 });

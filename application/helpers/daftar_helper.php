@@ -25,19 +25,6 @@ if (!function_exists('upload_file')) {
 	}
 }
 
-if (!function_exists('prov_id_to_name')) {
-	function prov_id_to_name($prov_id)
-	{
-		return PROVINSI[(int) $prov_id];
-	}
-}
-
-if (!function_exists('kota_kab_id_to_name')) {
-	function kota_kab_id_to_name($kota_kab_id)
-	{
-	}
-}
-
 // Frontend Logic Function
 
 if (!function_exists('daftar_tempat_lahir')) {
@@ -62,6 +49,33 @@ if (!function_exists('daftar_tahun_lulus')) {
 	{
 		for ($year = date('Y') - 5; $year <= date('Y'); $year++) {
 			echo "<option value='$year'>$year</option>";
+		}
+	}
+}
+
+if (!function_exists('daftar_provinsi')) {
+	function daftar_provinsi()
+	{
+		$json_data = @file_get_contents(LOKASI_API . "provinsi");
+		$response_data = json_decode($json_data);
+		$daftar_provinsi = $response_data->provinsi;
+
+		foreach ($daftar_provinsi as $provinsi) {
+			echo "<option value=$provinsi->id" . set_select('provinsi_asal_sekolah', $provinsi->id) . ">$provinsi->nama</option>";
+		}
+	}
+}
+
+if (!function_exists('daftar_kota_kabupaten')) {
+	function daftar_kota_kabupaten($id_provinsi)
+	{
+		$id_provinsi = (int) $id_provinsi;
+		$json_data = @file_get_contents(LOKASI_API . "kota?id_provinsi=$id_provinsi");
+		$response_data = json_decode($json_data);
+		$daftar_kota_kabupaten = $response_data->kota_kabupaten;
+
+		foreach ($daftar_kota_kabupaten as $kota_kabupaten) {
+			echo "<option value=$kota_kabupaten->nama" . set_select('kota_kabupaten_asal_sekolah', $kota_kabupaten->nama) . ">$kota_kabupaten->nama</option>";
 		}
 	}
 }

@@ -212,7 +212,10 @@
                             <span class="radio"><label for="jenis_sekolah swasta">Swasta</label></span>
                         </div>
                         <span class="label-input"><label class="form-label" for="provinsi_asal_sekolah">Provinsi Asal Sekolah</label></span>
-                        <select name="provinsi_asal_sekolah" id="provinsi_asal_sekolah"></select>
+                        <select name="provinsi_asal_sekolah" id="provinsi_asal_sekolah">
+							<option disabled selected>--Pilih Provinsi--</option>
+							<?= daftar_provinsi(); ?>
+						</select>
                         <span class="label-input"><label class="form-label" for="kota_kabupaten_asal_sekolah">Kota/Kabupaten Asal Sekolah</label></span>
                         <select name="kota_kabupaten_asal_sekolah" id="kota_kabupaten_asal_sekolah"></select>
                         <select class="select-hidden" id="kecamatan_asal_sekolah"></select>

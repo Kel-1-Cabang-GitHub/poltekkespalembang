@@ -149,7 +149,7 @@ class Daftar_Controller extends CI_Controller
 				'jurusan' => htmlspecialchars($this->input->post('jurusan'), true),
 				'nama_sekolah' => htmlspecialchars($this->input->post('nama_sekolah'), true),
 				'jenis_sekolah' => $this->input->post('jenis_sekolah'),
-				'provinsi_asal_sekolah' => prov_id_to_name($this->input->post('provinsi_asal_sekolah')),
+				'provinsi_asal_sekolah' => $this->input->post('provinsi_asal_sekolah'),
 				'kota_kabupaten_asal_sekolah' => $this->input->post('kota_kabupaten_asal_sekolah'),
 				'akreditasi_sekolah' => $this->input->post('akreditasi_sekolah'),
 				'tahun_lulus' => htmlspecialchars($this->input->post('tahun_lulus'), true),
@@ -254,7 +254,8 @@ class Daftar_Controller extends CI_Controller
 		$this->load->view('form-ktmse-gakin');
 	}
 
-	public function terima_kasih() {
+	public function terima_kasih()
+	{
 		$this->load->view('terima-kasih');
 	}
 }

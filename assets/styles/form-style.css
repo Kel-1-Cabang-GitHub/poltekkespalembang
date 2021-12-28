@@ -320,8 +320,17 @@ span.indent{
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
-span.input-file#prestasi{
+span.input-file#prestasi,span.input-file#berkas{
 	margin-top: 15px;
+}
+div.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+div.center h2{
+    font-size: 4vw;
+    text-align: center;
 }
 
 @media (max-width: 950px) {

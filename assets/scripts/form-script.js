@@ -45,7 +45,6 @@ if (tombol_halaman_lanjut_ktmse && tombol_halaman_kembali_ktmse) {
 		});
 		select_data_ktmse.style.display = "block";
 		select_data_ktmse.classList.add("active");
-		console.log(select_data_ktmse);
 		let form_data_target = document.querySelector(
 			`div.table-form#${tombol_halaman_lanjut_ktmse.id}`
 		);

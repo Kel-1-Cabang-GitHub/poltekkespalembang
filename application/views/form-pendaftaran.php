@@ -349,16 +349,16 @@
                             </span>
                         </div>
                         <div class="btn-page">
-                            <a class="a-btn btn-primary btn-page" id="prestasi">Sebelumnya</a>
+                            <a class="a-btn btn-primary btn-page" id="prodi">Sebelumnya</a>
                             <?php if($_GET["jalur"] === "pmdp"): ?>
                                 <a class="a-btn btn-success simpan-data">Simpan</a>
                             <?php elseif($_GET["jalur"] === "ktmse"): ?>
-                                <a class="a-btn btn-primary btn-page2" id="berkas">Selanjutnya</a>
+                                <a class="a-btn btn-success btn-page2" id="berkas">Selanjutnya</a>
                             <?php endif; ?>
                         </div>
                     </div>
                     <?php if($_GET["jalur"] === "ktmse"): ?>
-                    <div class="table-form ktmse" id="berkas">
+                    <div class="table-form berkas" id="berkas">
                         <h3>Peserta yang memilih jalur KTMSE/GAKIN. wajib mengupload berkas-berkas sebagai berikut</h3>
                         <div class="list">
                             <ol class="alphabet">
@@ -367,8 +367,30 @@
                                 <li>Foto Rumah Tempat TInggal Orang Tua (Foto depan, Belakang, Kanan dan Kiri)</li>
                             </ol>
                         </div>
-                            <p>Peserta yang mendaftar pada Sipenmaru Jalur KTMSE/GAKIN Tidak diperbolehkan Mendaftar Pada
+                        <p>Peserta yang mendaftar pada Sipenmaru Jalur KTMSE/GAKIN Tidak diperbolehkan Mendaftar Pada
             Sipenmaru Jalur PMDP ataupun sebaliknya.</p>
+                        <div class="paragraph">
+                            <p>Upload Surat Keterangan Miskin dari Kelurahan /Desa Tempat Tinggal yang Bersangkutan</p>
+                            <input type="file" name="sktm" id="sktm" accept=".pdf">
+                            <span class="input-file" id="berkas">
+                                <label class="input-file" for="sktm"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
+                                <input type="text" class="text-file sktm" readonly>
+                            </span>
+                            <span class="space"></span>
+                            <p>Upload Surat Keterangan Penghasilan Keluarga dari Kelurahan/Desa</p>
+                            <input type="file" name="skpk" id="skpk" accept=".pdf">
+                            <span class="input-file" id="berkas">
+                                <label class="input-file" for="skpk"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
+                                <input type="text" class="text-file skpk" readonly>
+                            </span>
+                            <span class="space"></span>
+                            <p>Upload Foto Rumah Tempat Tinggal Orang Tua (Foto Depan, Belakang, Kanan dan Kiri)</p>
+                            <input type="file" name="foto_rumah" id="foto_rumah" accept=".pdf">
+                            <span class="input-file" id="berkas">
+                                <label class="input-file" for="foto_rumah"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
+                                <input type="text" class="text-file foto_rumah" readonly>
+                            </span>
+                        </div>
                         <div class="btn-page">
                             <a class="a-btn btn-primary btn-page3" id="prestasi">Sebelumnya</a>
                             <a class="a-btn btn-success simpan-data">Simpan</a>

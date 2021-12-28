@@ -120,21 +120,21 @@ class Daftar_Controller extends CI_Controller
 		]);
 
 		// Berkas KTMSE/GAKIN
-		// if (empty($_FILES['surat_keterangan_miskin']['name'])) {
-		// 	$this->form_validation->set_rules('surat_keterangan_miskin', 'Upload Surat Keterangan Miskin', 'required', [
-		// 		'required' => '{field} harus diisi!'
-		// 	]);
-		// }
-		// if (empty($_FILES['surat_keterangan_penghasilan_keluarga']['name'])) {
-		// 	$this->form_validation->set_rules('surat_keterangan_penghasilan_keluarga', 'Upload Surat Keterangan Penghasilan Keluarga', 'required', [
-		// 		'required' => '{field} harus diisi!'
-		// 	]);
-		// }
-		// if (empty($_FILES['foto_rumah']['name'])) {
-		// 	$this->form_validation->set_rules('foto_rumah', 'Upload Foto Rumah', 'required', [
-		// 		'required' => '{field} harus diisi!'
-		// 	]);
-		// }
+		if (empty($_FILES['surat_keterangan_miskin']['name'])) {
+			$this->form_validation->set_rules('surat_keterangan_miskin', 'Upload Surat Keterangan Miskin', 'required', [
+				'required' => '{field} harus diisi!'
+			]);
+		}
+		if (empty($_FILES['surat_keterangan_penghasilan_keluarga']['name'])) {
+			$this->form_validation->set_rules('surat_keterangan_penghasilan_keluarga', 'Upload Surat Keterangan Penghasilan Keluarga', 'required', [
+				'required' => '{field} harus diisi!'
+			]);
+		}
+		if (empty($_FILES['foto_rumah']['name'])) {
+			$this->form_validation->set_rules('foto_rumah', 'Upload Foto Rumah', 'required', [
+				'required' => '{field} harus diisi!'
+			]);
+		}
 
 		// Jika validasi berhasil, data di filter dan disimpan ke database
 		if ($this->form_validation->run() == true) {
@@ -206,27 +206,27 @@ class Daftar_Controller extends CI_Controller
 				);
 			}
 
-			// $berkas_ktmse_gakin = [
-			// 	$nisn => $this->input->post('nisn'),
-			// 	'surat_keterangan_miskin' => upload_file(
-			// 		'surat_keterangan_miskin', // $name_attr
-			// 		'uploads/pdf/surat_keterangan_miskin/', // $upload_path
-			// 		'pdf', // $allowed_types
-			// 		"surat_keterangan_miskin_$nisn", // $file_name
-			// 	),
-			// 	'surat_keterangan_penghasilan_keluarga' => upload_file(
-			// 		'surat_keterangan_penghasilan_keluarga', // $name_attr
-			// 		'uploads/pdf/surat_keterangan_penghasilan_keluarga/', // $upload_path
-			// 		'pdf', // $allowed_types
-			// 		"surat_keterangan_penghasilan_keluarga_$nisn", // $file_name
-			// 	),
-			// 	'foto_rumah' => upload_file(
-			// 		'foto_rumah', // $name_attr
-			// 		'uploads/pdf/foto_rumah/', // $upload_path
-			// 		'pdf', // $allowed_types
-			// 		"foto_rumah_$nisn", // $file_name
-			// 	),
-			// ];
+			$berkas_ktmse_gakin = [
+				$nisn => $this->input->post('nisn'),
+				'surat_keterangan_miskin' => upload_file(
+					'surat_keterangan_miskin', // $name_attr
+					'uploads/pdf/surat_keterangan_miskin/', // $upload_path
+					'pdf', // $allowed_types
+					"surat_keterangan_miskin_$nisn", // $file_name
+				),
+				'surat_keterangan_penghasilan_keluarga' => upload_file(
+					'surat_keterangan_penghasilan_keluarga', // $name_attr
+					'uploads/pdf/surat_keterangan_penghasilan_keluarga/', // $upload_path
+					'pdf', // $allowed_types
+					"surat_keterangan_penghasilan_keluarga_$nisn", // $file_name
+				),
+				'foto_rumah' => upload_file(
+					'foto_rumah', // $name_attr
+					'uploads/pdf/foto_rumah/', // $upload_path
+					'pdf', // $allowed_types
+					"foto_rumah_$nisn", // $file_name
+				),
+			];
 
 			// Data Pribadi
 			$this->Daftar_Model->insert_data('data_pribadi', $data_pribadi);
@@ -237,7 +237,7 @@ class Daftar_Controller extends CI_Controller
 			// Data Prestasi
 			$this->Daftar_Model->insert_data('data_prestasi', $data_prestasi);
 			// Berkas KTMSE Gakin
-			// $this->Daftar_Model->insert_data('berkas_ktmse_gakin', $berkas_ktmse_gakin);
+			$this->Daftar_Model->insert_data('berkas_ktmse_gakin', $berkas_ktmse_gakin);
 
 			// jika jalur pendaftaran lewat pmdp
 			redirect('terima-kasih');

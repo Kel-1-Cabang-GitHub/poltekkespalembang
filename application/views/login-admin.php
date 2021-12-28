@@ -22,7 +22,7 @@
     <main>
         <div class="form-login">
             <h1>Login Admin</h1>
-            <form action="<?= base_url(); ?>/Admin_Controller/login" method="POST">
+            <form action="login" method="POST">
                 <span class="input-text">
                     <label for="username">Username</label>
                     <input type="text" class="text" name="username" id="username">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Pendaftaran | POLTEKKES KEMENKES PALEMBANG</title>
+    <title>Login Admin | POLTEKKES KEMENKES PALEMBANG</title>
     <link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/form-style.css">
@@ -21,7 +21,7 @@
     </header>
     <main>
         <div class="form-login">
-            <h1>Log-In Admin</h1>
+            <h1>Login Admin</h1>
             <form action="<?= base_url(); ?>/Admin_Controller/login" method="POST">
                 <span class="input-text">
                     <label for="username">Username</label>
@@ -32,7 +32,7 @@
                     <input type="password" class="text" name="password" id="password">
                 </span>
                 <div class="btn-page">
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <button type="submit" class="btn btn-success">Login</button>
                 </div>
             </form>
         </div>

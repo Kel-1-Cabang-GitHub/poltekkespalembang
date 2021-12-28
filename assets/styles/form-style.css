@@ -47,7 +47,7 @@ div.data {
 	align-items: center;
 	padding: 20px 10px;
 }
-div.data.type2{
+div.data.type2 {
 	width: 100%;
 	display: none;
 	border-radius: 6px 6px 0px 0px;
@@ -80,17 +80,17 @@ div.form select:hover,
 div.scroll:hover {
 	cursor: pointer;
 }
-span.input-file{
+span.input-file {
 	display: block;
 	width: 500px;
 	padding-left: 5px;
 	padding-top: 5px;
 	display: flex;
 }
-input[type="file"]{
+input[type="file"] {
 	display: none;
 }
-input.text-file{
+input.text-file {
 	width: calc(100% - 120px - 10px);
 	height: 30px;
 	outline: none;
@@ -106,7 +106,7 @@ div.table-form {
 div.table-form.active {
 	display: flex;
 }
-div.table-form p.pesan-error{
+div.table-form p.pesan-error {
 	width: 100%;
 	color: var(--merah);
 	font-size: 12px;
@@ -137,7 +137,7 @@ div.form select {
 	margin-left: 10px;
 	align-self: flex-end;
 }
-input[type="date"]:hover{
+input[type="date"]:hover {
 	cursor: text;
 }
 div.form select {
@@ -147,7 +147,7 @@ div.form select.select-hidden {
 	display: none;
 }
 div.radio-hz,
-div.radio-vr{
+div.radio-vr {
 	width: 500px;
 	margin-bottom: 25px;
 	margin-left: 10px;
@@ -174,14 +174,15 @@ div.form span.radio {
 	margin-right: 15px;
 	margin-left: 5px;
 }
-div.btn-page{
+div.btn-page {
 	width: 100%;
 	display: flex;
 	justify-content: flex-end;
 	margin-top: 100px;
 }
 button.btn,
-a.a-btn,label.input-file {
+a.a-btn,
+label.input-file {
 	padding: 5px;
 	color: var(--putih);
 	width: 101px;
@@ -189,7 +190,7 @@ a.a-btn,label.input-file {
 	border: none;
 	border-radius: 4px;
 }
-label.input-file{
+label.input-file {
 	background-color: var(--biru-tua);
 	color: var(--putih);
 	font-size: 13.33px;
@@ -223,7 +224,8 @@ a.a-btn {
 	background-color: var(--biru-tua);
 }
 div.table-form input.input-error,
-div.table-form textarea.input-error{
+div.table-form textarea.input-error,
+div.table-form select.input-error {
 	border: 1px solid var(--merah);
 }
 div.confirm-alert {
@@ -293,59 +295,60 @@ div.scroll {
 div.scroll.show {
 	transform: translate(0px, 0px);
 }
-h3 a{
+h3 a {
 	text-decoration: none;
 	color: black;
 }
-div.list{
+div.list {
 	width: 100%;
 	padding: 10px;
 }
-div.list li{
+div.list li {
 	margin-left: 20px;
 }
-ol.alphabet li{
+ol.alphabet li {
 	list-style: upper-alpha;
 }
-div.list.harga{
+div.list.harga {
 	margin-bottom: 50px;
 }
-div.paragraph{
+div.paragraph {
 	margin-top: 50px;
 }
-div.paragraph h4{
+div.paragraph h4 {
 	margin-bottom: 10px;
 }
-div.paragraph p{
+div.paragraph p {
 	margin-left: 10px;
 }
-span.indent-line{
+span.indent-line {
 	margin-left: 15px;
 }
-span.space{
+span.space {
 	display: block;
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-span.indent{
+span.indent {
 	display: block;
 	margin-left: 17px;
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
-span.input-file#prestasi,span.input-file#berkas{
+span.input-file#prestasi,
+span.input-file#berkas {
 	margin-top: 15px;
 }
-div.center{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+div.center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
-div.center h2{
-    font-size: 4vw;
-    text-align: center;
+div.center h2 {
+	font-size: 4vw;
+	text-align: center;
 }
-div.form-login{
+div.form-login {
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
@@ -356,9 +359,8 @@ div.form-login{
 	min-height: 368px;
 	box-shadow: -5px 17px 61px 23px rgba(0, 0, 0, 0.14);
 	border-radius: 11px;
-	
 }
-div.form-login form{
+div.form-login form {
 	display: flex;
 	width: 100%;
 	height: 100%;
@@ -367,7 +369,7 @@ div.form-login form{
 	align-items: center;
 	margin-top: 20px;
 }
-div.form-login span.input-text{
+div.form-login span.input-text {
 	padding: 5px;
 	width: 100%;
 	max-width: 428px;
@@ -375,20 +377,20 @@ div.form-login span.input-text{
 	display: flex;
 	flex-wrap: wrap;
 }
-span.input-text label{
+span.input-text label {
 	display: inline-block;
 	width: 75px;
 	height: 30px;
 	line-height: 30px;
 	margin-right: 20px;
 }
-div.form-login input.text{
+div.form-login input.text {
 	width: 300px;
 	height: 30px;
 	padding: 5px;
 	outline: none;
 	border: none;
-	border-bottom: 2px solid #7A7A7A;
+	border-bottom: 2px solid #7a7a7a;
 }
 /* div.form-login div.btn-page{
 	margin-top: 50px;
@@ -405,11 +407,12 @@ div.form-login input.text{
 		margin-bottom: 5px;
 	}
 	div.form input.text,
-	textarea.text,span.input-file {
+	textarea.text,
+	span.input-file {
 		width: 100%;
 		margin-bottom: 25px;
 	}
-	div.form select{
+	div.form select {
 		width: 100%;
 	}
 	div.radio-hz {

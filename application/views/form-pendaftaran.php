@@ -94,7 +94,7 @@
 						<?= form_error('tempat_lahir', '<p class="pesan-error">', '</p>'); ?>
                         <span class="label-input"><label class="form-label" for="tanggal_lahir">Tanggal Lahir</label></span>
                         <input type="date" class="text <?= (form_error('tanggal_lahir')) ? 'input-error' : '' ?>" name="tanggal_lahir" id="tanggal_lahir" value="<?= set_value('tanggal_lahir') ?>">
-						<?php form_error('tanggal_lahir', '<p class="pesan-error">', '</p>'); ?>
+						<?= form_error('tanggal_lahir', '<p class="pesan-error">', '</p>'); ?>
 						<span class="label-input"><label class="form-label" for="pas_foto">Pas Foto Terbaru</label></span>
                         <input type="file" name="pas_foto" id="pas_foto" accept=".jpg, .jpeg, .png">
                         <span class="input-file">
@@ -228,13 +228,13 @@
                         </div>
 						<?= form_error('jenis_sekolah', '<p class="pesan-error">', '</p>'); ?>
                         <span class="label-input"><label class="form-label" for="provinsi_asal_sekolah">Provinsi Asal Sekolah</label></span>
-                        <select name="provinsi_asal_sekolah" id="provinsi_asal_sekolah">
+                        <select class="<?= (form_error('provinsi_asal_sekolah')) ? 'input-error' : '' ?>" name="provinsi_asal_sekolah" id="provinsi_asal_sekolah">
 							<option disabled selected>--Pilih Provinsi--</option>
 							<?= daftar_provinsi(); ?>
 						</select>
 						<?= form_error('provinsi_asal_sekolah', '<p class="pesan-error">', '</p>'); ?>
                         <span class="label-input"><label class="form-label" for="kota_kabupaten_asal_sekolah">Kota/Kabupaten Asal Sekolah</label></span>
-                        <select name="kota_kabupaten_asal_sekolah" id="kota_kabupaten_asal_sekolah">
+                        <select class="<?= (form_error('kota_kabupaten_asal_sekolah')) ? 'input-error' : '' ?>" name="kota_kabupaten_asal_sekolah" id="kota_kabupaten_asal_sekolah">
 							<option disabled selected>--Pilih Kota/Kabupaten--</option>
 						</select>
 						<?= form_error('kota_kabupaten_asal_sekolah', '<p class="pesan-error">', '</p>'); ?>
@@ -304,7 +304,7 @@
                         </span>
 						<?= form_error('bukti_pembayaran', '<p class="pesan-error">', '</p>'); ?>
                         <span class="label-input"><label for="program_studi_pilihan_1" class="form-label">Program Studi Pilihan 1</label></span>
-						<select name="program_studi_pilihan_1" class="program_studi_pilihan_1" id="program_studi_pilihan_1">
+						<select name="program_studi_pilihan_1" class="program_studi_pilihan_1 <?= (form_error('program_studi_pilihan_1')) ? 'input-error' : '' ?>" id="program_studi_pilihan_1">
 							<option disabled selected>--Pilih program studi--</option>
 							<?= daftar_program_studi('option', 'program_studi_pilihan_1'); ?>
 						</select>

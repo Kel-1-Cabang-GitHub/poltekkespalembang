@@ -53,47 +53,47 @@ class Admin_Controller extends CI_Controller
 
 	public function login()
 	{
-		// if ($this->session->userdata('username')) redirect();
+		if ($this->session->userdata('username')) redirect();
 
-		// $this->form_validation->set_rules('username', 'Username', 'required|trim', [
-		// 	'required' => '{field} harus diisi!'
-		// ]);
-		// $this->form_validation->set_rules('password', 'Password', 'required|trim', [
-		// 	'required' => '{field} harus diisi!'
-		// ]);
+		$this->form_validation->set_rules('username', 'Username', 'required|trim', [
+			'required' => '*{field} harus diisi!'
+		]);
+		$this->form_validation->set_rules('password', 'Password', 'required|trim', [
+			'required' => '*{field} harus diisi!'
+		]);
 
-		// if ($this->form_validation->run() == true) {
-		// 	$username = $this->input->post('username');
-		// 	$password = $this->input->post('password');
+		if ($this->form_validation->run() == true) {
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
 
-		// 	$user = $this->Admin_Model->get_user_data($username);
+			$user = $this->Admin_Model->get_user_data($username);
 
-		// 	// Username belum terdaftar
-		// 	if (!$user) redirect('login');
-		// 	// Password salah
-		// 	if (!password_verify($password, $user['password'])) redirect('login');
+			// Username belum terdaftar
+			if (!$user) redirect('login');
+			// Password salah
+			if (!password_verify($password, $user['password'])) redirect('login');
 
-		// 	$data = [
-		// 		'username' => $user['username'],
-		// 		'role' => $user['role']
-		// 	];
+			$data = [
+				'username' => $user['username'],
+				'role' => $user['role']
+			];
 
-		// 	$this->session->set_userdata($data);
+			$this->session->set_userdata($data);
 
-		// 	redirect('data-pendaftar');
-		// }
+			redirect('data-pendaftar');
+		}
 
-		// $this->load->view('login');
+		$this->load->view('login-admin');
 	}
 
 	public function logout()
 	{
-		// if ($this->session->userdata('username')) {
-		// 	$this->session->unset_userdata('username');
-		// 	$this->session->sess_destroy();
-
-		// 	redirect();
-		// }
+		if ($this->session->userdata('username')) {
+			$this->session->unset_userdata('username');
+			$this->session->sess_destroy();
+			redirect('login');
+		}
+		redirect();
 	}
 
 	public function profile()

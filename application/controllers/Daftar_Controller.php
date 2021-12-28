@@ -26,113 +26,113 @@ class Daftar_Controller extends CI_Controller
 		// Validasi data menggunakan form_validation
 		// Data Pribadi
 		$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 		$this->form_validation->set_rules('alamat', 'Alamat Sesuai KTP', 'required|trim', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 		$this->form_validation->set_rules('kode_pos', 'Kode Pos', 'required|regex_match[/^[1-9]\d{4}$/]', [
 			'required' => '{field} harus diisi!',
-			'regex_match' => '{field} harus berupa angka dan terdiri dari 5 digit!'
+			'regex_match' => '*{field} harus berupa angka dan terdiri dari 5 digit!'
 		]);
 		$this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim|is_unique[data_pribadi.nisn]', [
-			'required' => '{field} harus diisi!',
-			'is_unique' => '{field} sudah terdaftar!'
+			'required' => '*{field} harus diisi!',
+			'is_unique' => '*{field} sudah terdaftar!'
 		]);
 		$this->form_validation->set_rules('no_telepon', 'No. Telp/HP', 'required|is_unique[data_pribadi.no_telepon]|regex_match[/^0\d{9,}$/]', [
-			'required' => '{field} harus diisi!',
-			'is_unique' => '{field} sudah terdaftar!',
-			'regex_match' => '{field} harus berupa angka dan dimulai dari angka 0!'
+			'required' => '*{field} harus diisi!',
+			'is_unique' => '*{field} sudah terdaftar!',
+			'regex_match' => '*{field} harus berupa angka dan dimulai dari angka 0!'
 		]);
 		$this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 		$this->form_validation->set_rules('tinggi_badan', 'Tinggi Badan', 'required|trim|numeric', [
-			'required' => '{field} harus diisi!',
-			'numeric' => '{field} harus berupa angka!'
+			'required' => '*{field} harus diisi!',
+			'numeric' => '*{field} harus berupa angka!'
 		]);
 		$this->form_validation->set_rules('berat_badan', 'Berat Badan', 'required|trim|numeric', [
-			'required' => '{field} harus diisi!',
-			'numeric' => '{field} harus berupa angka!'
+			'required' => '*{field} harus diisi!',
+			'numeric' => '*{field} harus berupa angka!'
 		]);
 		$this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 		$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 		if (empty($_FILES['pas_foto']['name'])) {
 			$this->form_validation->set_rules('pas_foto', 'Pas Foto Terbaru', 'required', [
-				'required' => '{field} harus diisi!'
+				'required' => '*{field} harus diisi!'
 			]);
 		}
 
 		// Data Sekolah
 		$this->form_validation->set_rules('jenis_pendidikan_menengah', 'Jenis Pendidikan Menengah', 'required|trim', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 		$this->form_validation->set_rules('jurusan', 'Jurusan', 'required|trim', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 		$this->form_validation->set_rules('nama_sekolah', 'Nama Sekolah', 'required|trim', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 		$this->form_validation->set_rules('jenis_sekolah', 'Jenis Sekolah', 'required', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 		$this->form_validation->set_rules('provinsi_asal_sekolah', 'Provinsi Asal Sekolah', 'required', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 		$this->form_validation->set_rules('kota_kabupaten_asal_sekolah', 'Kota/Kabupaten Asal Sekolah', 'required', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 		$this->form_validation->set_rules('akreditasi_sekolah', 'Akreditasi Sekolah', 'required', [
-			'required' => '{field} harus diisi!',
+			'required' => '*{field} harus diisi!',
 		]);
 		$this->form_validation->set_rules('tahun_lulus', 'Tahun Lulus/Tamat', 'required|trim|integer', [
-			'required' => '{field} harus diisi!',
-			'integer' => '{field} harus berupa angka!'
+			'required' => '*{field} harus diisi!',
+			'integer' => '*{field} harus berupa angka!'
 		]);
 		if (empty($_FILES['rekap_nilai_rapot']['name'])) {
 			$this->form_validation->set_rules('rekap_nilai_rapot', 'Rekap Nilai Rapot', 'required', [
-				'required' => '{field} harus diisi!'
+				'required' => '*{field} harus diisi!'
 			]);
 		}
 		$this->form_validation->set_rules('rata_rata_nilai_rapot', 'Rata-Rata Nilai Rapot', 'required|trim|decimal', [
-			'required' => '{field} harus diisi!',
-			'decimal' => '{field} harus berupa angka desimal dengan 1 angka dibelakang koma!'
+			'required' => '*{field} harus diisi!',
+			'decimal' => '*{field} harus berupa angka desimal dengan 1 angka dibelakang koma!'
 		]);
 		for ($i = 1; $i <= 5; $i++) {
 			$this->form_validation->set_rules("peringkat_semester_$i", "Peringkat Semester $i", 'required|trim|integer', [
-				'required' => '{field} harus diisi!',
-				'integer' => '{field} harus berupa angka!'
+				'required' => '*{field} harus diisi!',
+				'integer' => '*{field} harus berupa angka!'
 			]);
 		}
 
 		// Program Studi
 		if (empty($_FILES['bukti_pembayaran']['name'])) {
 			$this->form_validation->set_rules('bukti_pembayaran', 'Upload Bukti Pembayaran', 'required', [
-				'required' => '{field} harus diisi!'
+				'required' => '*{field} harus diisi!'
 			]);
 		}
 		$this->form_validation->set_rules("program_studi_pilihan_1", "Program Studi Pilihan 1", 'required', [
-			'required' => '{field} harus diisi!'
+			'required' => '*{field} harus diisi!'
 		]);
 
 		// Berkas KTMSE/GAKIN
 		if (empty($_FILES['surat_keterangan_miskin']['name'])) {
 			$this->form_validation->set_rules('surat_keterangan_miskin', 'Upload Surat Keterangan Miskin', 'required', [
-				'required' => '{field} harus diisi!'
+				'required' => '*{field} harus diisi!'
 			]);
 		}
 		if (empty($_FILES['surat_keterangan_penghasilan_keluarga']['name'])) {
 			$this->form_validation->set_rules('surat_keterangan_penghasilan_keluarga', 'Upload Surat Keterangan Penghasilan Keluarga', 'required', [
-				'required' => '{field} harus diisi!'
+				'required' => '*{field} harus diisi!'
 			]);
 		}
 		if (empty($_FILES['foto_rumah']['name'])) {
 			$this->form_validation->set_rules('foto_rumah', 'Upload Foto Rumah', 'required', [
-				'required' => '{field} harus diisi!'
+				'required' => '*{field} harus diisi!'
 			]);
 		}
 

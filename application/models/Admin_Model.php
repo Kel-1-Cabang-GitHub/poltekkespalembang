@@ -3,42 +3,41 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin_Model extends CI_Model
 {
-	public function add_new_user($data)
+	public function add_new_admin($data)
 	{
-		// INSERT INTO user VALUES ($data);
-		$this->db->insert('user', $data);
+		// INSERT INTO admin VALUES ($data);
+		$this->db->insert('admin', $data);
 	}
 
 	public function check_username_exists($username)
 	{
-		// SELECT * FROM user WHERE username = $username;
-		return $this->db->get_where('user', ['username' => $username])->row_array();
+		// SELECT * FROM admin WHERE username = $username;
+		return $this->db->get_where('admin', ['username' => $username])->row_array();
 	}
 
-	public function get_user_data($username)
+	public function get_admin_data($username)
 	{
-		// SELECT * FROM user WHERE username = $username;
-		$this->db->where('username', $username);
-		return $this->db->get('user')->row_array();
+		// SELECT * FROM admin WHERE username = $username;
+		return $this->db->get_where('admin', ['username' => $username])->row_array();
 	}
 
 	public function update_profile($username, $data)
 	{
-		// UPDATE user SET $data WHERE username = $username;
+		// UPDATE admin SET $data WHERE username = $username;
 		$this->db->where('username', $username);
-		$this->db->update('user', $data);
+		$this->db->update('admin', $data);
 	}
 
 	public function change_password($username, $new_password)
 	{
-		// UPDATE user SET password = $data WHERE username = $username;
+		// UPDATE admin SET password = $data WHERE username = $username;
 		$this->db->where('username', $username);
-		$this->db->update('user', ['password' => $new_password, 'updated_at' => time()]);
+		$this->db->update('admin', ['password' => $new_password, 'updated_at' => time()]);
 	}
 
-	public function get_all_user()
+	public function get_all_admin()
 	{
-		// SELECT * FROM user;
-		return $this->db->get('user')->result_array();
+		// SELECT * FROM admin;
+		return $this->db->get('admin')->result_array();
 	}
 }

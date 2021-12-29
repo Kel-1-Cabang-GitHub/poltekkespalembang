@@ -25,11 +25,11 @@
             <form action="login" method="POST">
                 <span class="input-text">
                     <label for="username">Username</label>
-                    <input type="text" class="text" name="username" id="username">
+                    <input type="text" class="text" name="username" id="username" autofocus value="<?= set_value('username') ?>">
                 </span>
                 <span class="input-text">
                     <label for="password">Password</label>
-                    <input type="password" class="text" name="password" id="password">
+                    <input type="password" class="text" name="password" id="password" value="<?= set_value('password') ?>">
                 </span>
                 <div class="btn-page">
                     <button type="submit" class="btn btn-success">Login</button>

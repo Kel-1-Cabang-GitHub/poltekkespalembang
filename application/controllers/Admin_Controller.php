@@ -11,46 +11,6 @@ class Admin_Controller extends CI_Controller
 		$this->load->model('Daftar_Model');
 	}
 
-	public function register()
-	{
-		// if ($this->session->userdata('username')) redirect();
-
-		// $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]', [
-		// 	'required' => '{field} harus diisi!',
-		// 	'is_unique' => '{field} sudah terdaftar!'
-		// ]);
-		// $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|matches[password2]', [
-		// 	'required' => '{field} harus diisi!',
-		// 	'min_length' => '{field} minimal {param} karakter!',
-		// 	'matches' => '{field} tidak cocok!'
-		// ]);
-		// $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password]', [
-		// 	'required' => '{field} harus diisi!',
-		// 	'matches' => '{field} tidak cocok!'
-		// ]);
-		// $this->form_validation->set_rules('full_name', 'Nama Lengkap', 'required|trim', [
-		// 	'required' => '{field} harus diisi!'
-		// ]);
-
-		// if ($this->form_validation->run() == true) {
-		// 	$data = [
-		// 		'username' => $this->input->post('username'),
-		// 		'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-		// 		'fullname' => $this->input->post('fullname'),
-		// 		'role' => 'admin',
-		// 		'image' => 'default.jpg',
-		// 		'created_at' => time(),
-		// 		'updated_at' => time()
-		// 	];
-
-		// 	$this->Admin_Model->add_new_user($data);
-
-		// 	redirect('login');
-		// }
-
-		// $this->load->view('register');
-	}
-
 	public function login()
 	{
 		if ($this->session->userdata('username')) redirect();
@@ -66,16 +26,16 @@ class Admin_Controller extends CI_Controller
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 
-			$user = $this->Admin_Model->get_user_data($username);
+			$admin = $this->Admin_Model->get_admin_data($username);
 
 			// Username belum terdaftar
-			if (!$user) redirect('login');
+			if (!$admin) redirect('login');
 			// Password salah
-			if (!password_verify($password, $user['password'])) redirect('login');
+			if (hash('sha256', $password) != str_replace('\x', '', $admin['password'])) redirect('login');
 
 			$data = [
-				'username' => $user['username'],
-				'role' => $user['role']
+				'username' => $admin['username'],
+				'role' => $admin['role']
 			];
 
 			$this->session->set_userdata($data);
@@ -199,7 +159,7 @@ class Admin_Controller extends CI_Controller
 
 	public function data_pendaftar()
 	{
-		// if (!$this->session->userdata('username')) redirect();
+		if (!$this->session->userdata('username')) redirect();
 
 		$data = [
 			'data_pribadi' => $this->Daftar_Model->get_all_data('data_pribadi'),

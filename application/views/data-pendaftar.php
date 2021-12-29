@@ -35,6 +35,9 @@
 				<th>Tanggal Lahir</th>
 				<th>Pas Foto Terbaru</th>
 				<th>Jalur Pendaftaran</th>
+				<th>Detail</th>
+				<th>Edit Data</th>
+				<th>Delete Data</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -55,6 +58,9 @@
 						<td><?= $data['tanggal_lahir']; ?></td>
 						<td><?= $data['pas_foto']; ?></td>
 						<td><?= $data['jalur_pendaftaran']; ?></td>
+						<td><a href="">Detail <?= $data['id'] ?></a></td>
+						<td><a href="">Edit <?= $data['id'] ?></a></td>
+						<td><a href="">Hapus <?= $data['id'] ?></a></td>
 					</tr>
 					<?php $counter++; ?>
 				<?php endforeach; ?>
@@ -85,6 +91,9 @@
 				<?php for ($i = 1; $i <= 5; $i++): ?>
 					<th>Peringkat Semester <?= $i ?></th>
 				<?php endfor; ?>
+				<th>Detail</th>
+				<th>Edit Data</th>
+				<th>Delete Data</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -107,6 +116,9 @@
 						<?php for ($i = 1; $i <= 5; $i++): ?>
 							<td><?= $data["peringkat_semester_$i"]; ?></td>
 						<?php endfor; ?>
+						<td><a href="">Detail <?= $data['id'] ?></a></td>
+						<td><a href="">Edit <?= $data['id'] ?></a></td>
+						<td><a href="">Hapus <?= $data['id'] ?></a></td>
 					</tr>
 					<?php $counter++; ?>
 				<?php endforeach; ?>
@@ -127,6 +139,9 @@
 				<th>Bukti Pembayaran</th>
 				<th>Program Studi Pilihan 1</th>
 				<th>Program Studi Pilihan 2</th>
+				<th>Detail</th>
+				<th>Edit Data</th>
+				<th>Delete Data</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -139,6 +154,9 @@
 						<td><?= $data['bukti_pembayaran']; ?></td>
 						<td><?= $data['program_studi_pilihan_1']; ?></td>
 						<td><?= $data['program_studi_pilihan_2']; ?></td>
+						<td><a href="">Detail <?= $data['id'] ?></a></td>
+						<td><a href="">Edit <?= $data['id'] ?></a></td>
+						<td><a href="">Hapus <?= $data['id'] ?></a></td>
 					</tr>
 					<?php $counter++; ?>
 				<?php endforeach; ?>
@@ -159,6 +177,9 @@
 				<?php for ($i = 1; $i <= 5; $i++): ?>
 					<th>Prestasi <?= $i ?></th>
 				<?php endfor; ?>
+				<th>Detail</th>
+				<th>Edit Data</th>
+				<th>Delete Data</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -171,6 +192,9 @@
 						<?php for ($i = 1; $i <= 5; $i++): ?>
 							<td><?= $data["prestasi_$i"] ?></td>
 						<?php endfor; ?>
+						<td><a href="">Detail <?= $data['id'] ?></a></td>
+						<td><a href="">Edit <?= $data['id'] ?></a></td>
+						<td><a href="">Hapus <?= $data['id'] ?></a></td>
 					</tr>
 				<?php endforeach; ?>
 			<?php else: ?>

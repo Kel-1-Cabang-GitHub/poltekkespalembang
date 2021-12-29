@@ -11,6 +11,13 @@ class Admin_Controller extends CI_Controller
 		$this->load->model('Daftar_Model');
 	}
 
+	public function admin()
+	{
+		if (!$this->session->userdata('username')) redirect('login');
+
+		$this->load->view('index-admin');
+	}
+
 	public function login()
 	{
 		if ($this->session->userdata('username')) redirect();
@@ -40,7 +47,7 @@ class Admin_Controller extends CI_Controller
 
 			$this->session->set_userdata($data);
 
-			redirect('data-pendaftar');
+			redirect('admin');
 		}
 
 		$this->load->view('login-admin');
@@ -58,11 +65,11 @@ class Admin_Controller extends CI_Controller
 
 	public function profile()
 	{
-		// if (!$this->session->userdata('username')) redirect();
+		if (!$this->session->userdata('username')) redirect('login');
 
-		// $data['user'] = $this->Admin_Model->get_user_data($this->session->userdata('username'));
+		$data['user'] = $this->Admin_Model->get_admin_data($this->session->userdata('username'));
 
-		// $this->load->view('profile', $data);
+		$this->load->view('profile-admin', $data);
 	}
 
 	public function update_profile()
@@ -79,7 +86,7 @@ class Admin_Controller extends CI_Controller
 
 		// if ($this->form_validation->run() == false) redirect('profile');
 
-		// $user = $this->Admin_Model->get_user_data($this->session->userdata('username'));
+		// $user = $this->Admin_Model->get_admin_data($this->session->userdata('username'));
 		// $username = $this->input->post('username');
 		// $full_name = $this->input->post('full_name');
 		// $image = $user['image'];
@@ -139,7 +146,7 @@ class Admin_Controller extends CI_Controller
 
 		// if ($this->form_validation->run() == false) redirect('profile');
 
-		// $user = $this->Admin_Model->get_user_data($this->session->userdata('username'));
+		// $user = $this->Admin_Model->get_admin_data($this->session->userdata('username'));
 		// $old_password = $this->input->post('old_password');
 		// $new_password = $this->input->post('new_password');
 
@@ -159,7 +166,7 @@ class Admin_Controller extends CI_Controller
 
 	public function data_pendaftar()
 	{
-		if (!$this->session->userdata('username')) redirect();
+		// if (!$this->session->userdata('username')) redirect();
 
 		$data = [
 			'data_pribadi' => $this->Daftar_Model->get_all_data('data_pribadi'),
@@ -173,7 +180,7 @@ class Admin_Controller extends CI_Controller
 
 	public function export_to_excel()
 	{
-		// if (!$this->session->userdata('username')) redirect();
+		// if (!$this->session->userdata('username')) redirect('login');
 
 		$data_pribadi_columns = [
 			'nama_lengkap', 'alamat', 'kode_pos', 'nisn',
@@ -217,5 +224,19 @@ class Admin_Controller extends CI_Controller
 		insert_data_into_spreadsheet($data_prestasi_sheet, $all_data_prestasi, ...$data_prestasi_columns);
 
 		save_spreadsheet($spreadsheet);
+	}
+
+	public function detail_data_pendaftar()
+	{
+		// if (!$this->session->userdata('username')) redirect('login');
+
+		$this->load->view('detail-data-pendaftar');
+	}
+
+	public function update_data_pendaftar()
+	{
+		// if (!$this->session->userdata('username')) redirect('login');
+
+		$this->load->view('update-data-pendaftar');
 	}
 }

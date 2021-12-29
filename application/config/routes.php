@@ -59,10 +59,10 @@ $route['form-pendaftaran'] = 'Daftar_Controller/form_pendaftaran';
 $route['terima-kasih'] = 'Daftar_Controller/terima_kasih';
 
 // Admin Controller
-// $route['register'] = 'Admin_Controller/register';
+$route['admin'] = 'Admin_Controller/admin';
 $route['login'] = 'Admin_Controller/login';
 $route['logout'] = 'Admin_Controller/logout';
-// $route['profile'] = 'Admin_Controller/profile';
+$route['profile'] = 'Admin_Controller/profile';
 // $route['update-profile'] = 'Admin_Controller/update_profile';
 // $route['change-password'] = 'Admin_Controller/change_password';
 $route['data-pendaftar'] = 'Admin_Controller/data_pendaftar';

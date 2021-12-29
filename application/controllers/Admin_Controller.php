@@ -233,10 +233,10 @@ class Admin_Controller extends CI_Controller
 		$this->load->view('detail-data-pendaftar');
 	}
 
-	public function update_data_pendaftar()
+	public function ubah_data_pendaftar()
 	{
 		// if (!$this->session->userdata('username')) redirect('login');
 
-		$this->load->view('update-data-pendaftar');
+		$this->load->view('ubah-data-pendaftar');
 	}
 }

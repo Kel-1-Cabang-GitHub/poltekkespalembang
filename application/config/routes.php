@@ -67,3 +67,5 @@ $route['profile'] = 'Admin_Controller/profile';
 // $route['change-password'] = 'Admin_Controller/change_password';
 $route['data-pendaftar'] = 'Admin_Controller/data_pendaftar';
 $route['export-to-excel'] = 'Admin_Controller/export_to_excel';
+$route['detail-data-pendaftar'] = 'Admin_Controller/detail_data_pendaftar';
+$route['ubah-data-pendaftar'] = 'Admin_Controller/ubah_data_pendaftar';

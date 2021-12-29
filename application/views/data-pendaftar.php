@@ -36,8 +36,8 @@
 				<th>Pas Foto Terbaru</th>
 				<th>Jalur Pendaftaran</th>
 				<th>Detail</th>
-				<th>Edit Data</th>
-				<th>Delete Data</th>
+				<th>Ubah Data</th>
+				<th>Hapus Data</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -59,7 +59,7 @@
 						<td><?= $data['pas_foto']; ?></td>
 						<td><?= $data['jalur_pendaftaran']; ?></td>
 						<td><a href="">Detail <?= $data['id'] ?></a></td>
-						<td><a href="">Edit <?= $data['id'] ?></a></td>
+						<td><a href="">Ubah <?= $data['id'] ?></a></td>
 						<td><a href="">Hapus <?= $data['id'] ?></a></td>
 					</tr>
 					<?php $counter++; ?>
@@ -84,7 +84,7 @@
 				<th>Jenis Sekolah</th>
 				<th>Provinsi Asal Sekolah</th>
 				<th>Kota/Kabupaten Asal Sekolah</th>
-				<th>Akreditasi Sekolah</th>
+				<th>AkrUbahasi Sekolah</th>
 				<th>Tahun Lulus/Tamat</th>
 				<th>Rekap Nilai Rapot</th>
 				<th>Rata-Rata Nilai Rapot</th>
@@ -92,8 +92,8 @@
 					<th>Peringkat Semester <?= $i ?></th>
 				<?php endfor; ?>
 				<th>Detail</th>
-				<th>Edit Data</th>
-				<th>Delete Data</th>
+				<th>Ubah Data</th>
+				<th>Hapus Data</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -109,7 +109,7 @@
 						<td><?= $data['jenis_sekolah']; ?></td>
 						<td><?= $data['provinsi_asal_sekolah']; ?></td>
 						<td><?= $data['kota_kabupaten_asal_sekolah']; ?></td>
-						<td><?= $data['akreditasi_sekolah']; ?></td>
+						<td><?= $data['akrUbahasi_sekolah']; ?></td>
 						<td><?= $data['tahun_lulus']; ?></td>
 						<td><?= $data['rekap_nilai_rapot']; ?></td>
 						<td><?= $data['rata_rata_nilai_rapot']; ?></td>
@@ -117,7 +117,7 @@
 							<td><?= $data["peringkat_semester_$i"]; ?></td>
 						<?php endfor; ?>
 						<td><a href="">Detail <?= $data['id'] ?></a></td>
-						<td><a href="">Edit <?= $data['id'] ?></a></td>
+						<td><a href="">Ubah <?= $data['id'] ?></a></td>
 						<td><a href="">Hapus <?= $data['id'] ?></a></td>
 					</tr>
 					<?php $counter++; ?>
@@ -140,8 +140,8 @@
 				<th>Program Studi Pilihan 1</th>
 				<th>Program Studi Pilihan 2</th>
 				<th>Detail</th>
-				<th>Edit Data</th>
-				<th>Delete Data</th>
+				<th>Ubah Data</th>
+				<th>Hapus Data</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -155,7 +155,7 @@
 						<td><?= $data['program_studi_pilihan_1']; ?></td>
 						<td><?= $data['program_studi_pilihan_2']; ?></td>
 						<td><a href="">Detail <?= $data['id'] ?></a></td>
-						<td><a href="">Edit <?= $data['id'] ?></a></td>
+						<td><a href="">Ubah <?= $data['id'] ?></a></td>
 						<td><a href="">Hapus <?= $data['id'] ?></a></td>
 					</tr>
 					<?php $counter++; ?>
@@ -178,8 +178,8 @@
 					<th>Prestasi <?= $i ?></th>
 				<?php endfor; ?>
 				<th>Detail</th>
-				<th>Edit Data</th>
-				<th>Delete Data</th>
+				<th>Ubah Data</th>
+				<th>Hapus Data</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -193,7 +193,7 @@
 							<td><?= $data["prestasi_$i"] ?></td>
 						<?php endfor; ?>
 						<td><a href="">Detail <?= $data['id'] ?></a></td>
-						<td><a href="">Edit <?= $data['id'] ?></a></td>
+						<td><a href="">Ubah <?= $data['id'] ?></a></td>
 						<td><a href="">Hapus <?= $data['id'] ?></a></td>
 					</tr>
 				<?php endforeach; ?>

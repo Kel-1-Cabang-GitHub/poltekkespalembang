@@ -1,0 +1,87 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    padding-top: 50px;
+}
+div.actions{
+    width: 95%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+div.search{
+    max-width: 395px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+div.search form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 0px 4px 31px 5px rgba(0, 0, 0, 0.35);
+}
+div.search input{
+    width: calc(100% - 54px);
+    height: 54px;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+}
+div.search button{
+    width: 54px;
+    height: 54px;
+    background-color: white;
+    margin-left: -10px;
+    border: none;
+}
+div.search button:hover{
+    cursor: pointer;
+}
+a.btn{
+    text-decoration: none;
+    color: white;
+    padding: 7px;
+    padding-right: 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+a.btn:hover{
+    opacity: 0.8;
+}
+.btn-success{
+    background: #83A342;
+}
+div.data{
+    width: 100%;
+    padding: 15px;
+    overflow: auto;
+}
+div.data table{
+    border-spacing: 0;
+}
+div.data thead{
+    box-shadow: 0px 4px 66px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    height: 76px;
+}
+div.data thead th{
+    min-width: 150px;
+    white-space: nowrap;
+    padding: 10px;
+}
+div.data tbody{
+    margin-top: 20px;
+    box-shadow: 0px 4px 66px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    border: 2px solid black;
+}
+div.data td{
+    padding: 10px;
+    align-items: center;
+}

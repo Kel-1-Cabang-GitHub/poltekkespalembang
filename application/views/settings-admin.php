@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Admin Profile | POLTEKKES KEMENKES PALEMBANG</title>
+	<title>Admin Settings | POLTEKKES KEMENKES PALEMBANG</title>
 	<link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
     <script defer src="<?= base_url() ?>assets/scripts/nav-script.js"></script>
 </head>

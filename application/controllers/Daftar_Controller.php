@@ -19,9 +19,7 @@ class Daftar_Controller extends CI_Controller
 	{
 		$jalur_pendaftaran = $this->input->get('jalur');
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp' atau 'ktmse', user akan di redirect() ke halaman utama
-		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse') {
-			redirect();
-		}
+		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse') redirect();
 
 		// Validasi data menggunakan form_validation
 		// Data Pribadi

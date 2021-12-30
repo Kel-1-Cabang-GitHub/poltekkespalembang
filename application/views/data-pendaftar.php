@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Data Pendaftar | POLTEKKES KEMENKES PALEMBANG</title>
+	<title>Data Pendaftar <?= $jalur ?> | POLTEKKES KEMENKES PALEMBANG</title>
 	<link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
 </head>
@@ -17,7 +17,7 @@
             </div>
         </nav>
     </header>
-	<a href="export-to-excel">Export to Excel</a>
+	<a href="export-to-excel?jalur=<?= $this->input->get('jalur') ?>">Export to Excel</a>
 	<h1>Data Pribadi</h1>
 	<table>
 		<thead>
@@ -109,7 +109,7 @@
 						<td><?= $data['jenis_sekolah']; ?></td>
 						<td><?= $data['provinsi_asal_sekolah']; ?></td>
 						<td><?= $data['kota_kabupaten_asal_sekolah']; ?></td>
-						<td><?= $data['akrUbahasi_sekolah']; ?></td>
+						<td><?= $data['akreditasi_sekolah']; ?></td>
 						<td><?= $data['tahun_lulus']; ?></td>
 						<td><?= $data['rekap_nilai_rapot']; ?></td>
 						<td><?= $data['rata_rata_nilai_rapot']; ?></td>

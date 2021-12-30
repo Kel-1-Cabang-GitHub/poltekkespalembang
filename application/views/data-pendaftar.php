@@ -6,6 +6,7 @@
 	<title>Data Pendaftar <?= $jalur ?> | POLTEKKES KEMENKES PALEMBANG</title>
 	<link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
+    <script defer src="<?= base_url() ?>assets/scripts/nav-script.js"></script>
 </head>
 <body>
     <header>

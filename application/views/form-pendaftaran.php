@@ -133,27 +133,34 @@
                             <label for="jenis_pendidikan_menengah lainnya1">Lainnya...</label><br>
                             <input type="text" class="text other_opt
                             <?php if (
-                                set_value('jenis_pendidikan_menengah') == '' ||
-                                (
-                                    set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Atas (SMA)' &&
-                                    set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah (MA)' &&
-                                    set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Kejuruan (SMK)' &&
-                                    set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah Kejuruan (MAK)' &&
-                                    set_value('jenis_pendidikan_menengah') == 'Kelompok Belajar Paket C'
-                                )
+								set_value('jenis_pendidikan_menengah') == '' ||
+                                set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Atas (SMA)' ||
+                                set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah (MA)' ||
+                                set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Kejuruan (SMK)' ||
+                                set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah Kejuruan (MAK)' ||
+                                set_value('jenis_pendidikan_menengah') == 'Kelompok Belajar Paket C'
                             ): ?>
                                 disabled
                             <?php endif; ?>"
-                            name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah disabled" value="<?= set_value('jenis_pendidikan_menengah') ?>"
+                            name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah disabled" value="
+							<?php
+								if (
+									set_value('jenis_pendidikan_menengah') != 'Sekolah Menengah Atas (SMA)' &&
+                                	set_value('jenis_pendidikan_menengah') != 'Madrasah Aliyah (MA)' &&
+                                	set_value('jenis_pendidikan_menengah') != 'Sekolah Menengah Kejuruan (SMK)' &&
+                                	set_value('jenis_pendidikan_menengah') != 'Madrasah Aliyah Kejuruan (MAK)' &&
+                                	set_value('jenis_pendidikan_menengah') != 'Kelompok Belajar Paket C'
+								) {
+									set_value('jenis_pendidikan_menengah');
+								}
+							?>"
                             <?php if (
-                                set_value('jenis_pendidikan_menengah') == '' ||
-                                (
-                                    set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Atas (SMA)' &&
-                                    set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah (MA)' &&
-                                    set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Kejuruan (SMK)' &&
-                                    set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah Kejuruan (MAK)' &&
-                                    set_value('jenis_pendidikan_menengah') == 'Kelompok Belajar Paket C'
-                                )
+								set_value('jenis_pendidikan_menengah') == '' ||
+                                set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Atas (SMA)' ||
+                                set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah (MA)' ||
+                                set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Kejuruan (SMK)' ||
+                                set_value('jenis_pendidikan_menengah') == 'Madrasah Aliyah Kejuruan (MAK)' ||
+                                set_value('jenis_pendidikan_menengah') == 'Kelompok Belajar Paket C'
                             ): ?>
                                 disabled
                             <?php endif; ?> >
@@ -188,29 +195,37 @@
                             <label for="jurusan lainnya2">Lainnya...</label><br>
                             <input type="text" class="text other_opt
                             <?php if (
-                                set_value('jurusan') == '' ||
-                                (
-                                    set_value('jurusan') == 'IPA' &&
-                                    set_value('jurusan') == 'IPS' &&
-                                    set_value('jurusan') == 'SMK Keperawatan' &&
-                                    set_value('jurusan') == 'SMK Farmasi' &&
-                                    set_value('jurusan') == 'SMK Analisis Kesehatan' &&
-                                    set_value('jurusan') == 'SMK Keperawatan Gigi'
-                                )
+								set_value('jurusan') == '' ||
+                                set_value('jurusan') == 'IPA' ||
+                                set_value('jurusan') == 'IPS' ||
+                                set_value('jurusan') == 'SMK Keperawatan' ||
+                                set_value('jurusan') == 'SMK Farmasi' ||
+                                set_value('jurusan') == 'SMK Analisis Kesehatan' ||
+                                set_value('jurusan') == 'SMK Keperawatan Gigi'
                             ): ?>
                                 disabled
                             <?php endif; ?>
-                            "name="jurusan" id="jurusan disabled" value="<?= set_value('jurusan') ?>"
+                            "name="jurusan" id="jurusan disabled" value="
+							<?php
+								if (
+									set_value('jurusan') != 'IPA' &&
+									set_value('jurusan') != 'IPS' &&
+									set_value('jurusan') != 'SMK Keperawatan' &&
+									set_value('jurusan') != 'SMK Farmasi' &&
+									set_value('jurusan') != 'SMK Analisis Kesehatan' &&
+									set_value('jurusan') != 'SMK Keperawatan Gigi'
+								) {
+									set_value('jurusan');
+								}
+							?>"
                             <?php if (
-                                set_value('jurusan') == '' ||
-                                (
-                                    set_value('jurusan') == 'IPA' &&
-                                    set_value('jurusan') == 'IPS' &&
-                                    set_value('jurusan') == 'SMK Keperawatan' &&
-                                    set_value('jurusan') == 'SMK Farmasi' &&
-                                    set_value('jurusan') == 'SMK Analisis Kesehatan' &&
-                                    set_value('jurusan') == 'SMK Keperawatan Gigi'
-                                )
+								set_value('jurusan') == '' ||
+                                set_value('jurusan') == 'IPA' ||
+                                set_value('jurusan') == 'IPS' ||
+                                set_value('jurusan') == 'SMK Keperawatan' ||
+                                set_value('jurusan') == 'SMK Farmasi' ||
+                                set_value('jurusan') == 'SMK Analisis Kesehatan' ||
+                                set_value('jurusan') == 'SMK Keperawatan Gigi'
                             ): ?>
                                 disabled
                             <?php endif; ?> >

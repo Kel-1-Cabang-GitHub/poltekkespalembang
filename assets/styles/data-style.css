@@ -1,3 +1,13 @@
+:root {
+	--biru-muda: #2183fe;
+	--biru-tua: #1f5ba7;
+	--hijau: #83a342;
+	--merah: #ff5858;
+	--putih: #ffffff;
+	--putih-2: #e8f0fe;
+	--abu-abu: #ced4da;
+	--abu-abu-tua: #818181;
+}
 main{
     display: flex;
     flex-direction: column;
@@ -50,38 +60,67 @@ a.btn{
     border-radius: 4px;
     display: flex;
     align-items: center;
+    margin-bottom: 15px;
 }
 a.btn:hover{
     opacity: 0.8;
 }
 .btn-success{
-    background: #83A342;
+    background: var(--hijau);
+}
+.btn-primary{
+    background-color: var(--biru-muda);
+}
+.btn-danger{
+    background-color: var(--merah);
 }
 div.data{
     width: 100%;
     padding: 15px;
     overflow: auto;
 }
-div.data table{
+div.data table.table-head,table.table-body{
     border-spacing: 0;
-}
-div.data thead{
     box-shadow: 0px 4px 66px 6px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     height: 76px;
 }
-div.data thead th{
-    min-width: 150px;
-    white-space: nowrap;
+th, td{
     padding: 10px;
+    min-width: 200px;
 }
-div.data tbody{
-    margin-top: 20px;
+div.data table td.empty{
+    border: none;
+    border-top: 3px solid silver;
+    height: 150px;
+    padding-left: 20px;
+    /* text-align: center; */
+    color: var(--merah);
+}
+div.data table .mw-100{
+    min-width: 100px;
+    text-align: center;
+}
+div.data table .mw-150{
+    min-width: 200px;
+    text-align: center;
+}
+div.data table.table-body{
+    margin-top: 5px;
     box-shadow: 0px 4px 66px 6px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
-    border: 2px solid black;
 }
-div.data td{
+div.data table td{
     padding: 10px;
+    border: 1px solid silver;
     align-items: center;
+    height: 100px;
+}
+a.btn-action{
+    display: inline-block;
+    width: 137px;
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: white;
 }

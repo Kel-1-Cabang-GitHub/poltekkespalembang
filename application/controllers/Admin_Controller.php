@@ -182,7 +182,7 @@ class Admin_Controller extends CI_Controller
 			'data_prestasi' => $data_prestasi,
 		];
 
-		$this->load->view('data-pendaftar', $data);
+		$this->load->view('data-pendaftar2', $data);
 	}
 
 	public function export_to_excel()

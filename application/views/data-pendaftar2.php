@@ -1,3 +1,19 @@
+<?php 
+    $data_lengkap = [];
+    $data_pribadi_temp = [];
+    $data_sekolah_temp = [];
+    if (isset($data_pribadi) && !empty($data_pribadi) && isset($data_sekolah) && !empty($data_sekolah)){
+        foreach($data_pribadi as $key => $pribadi){
+            array_push($data_pribadi_temp, $pribadi);
+        }
+        foreach($data_sekolah as $key => $sekolah){
+            array_push($data_sekolah_temp, $sekolah);
+        }
+        for($i = 0; $i < count($data_pribadi_temp); $i++){
+            array_push($data_lengkap,array_merge($data_pribadi_temp[$i],$data_sekolah_temp[$i]));
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,64 +45,51 @@
                     </button>
                 </form>
             </div>
-            <a href="export-to-excel" class="btn btn-success">
+            <a href="export-to-excel?jalur=<?= $this->input->get("jalur");?>" class="btn btn-success">
                 <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><g><rect fill="none" height="24" width="24"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M17,11l-1.41-1.41L13,12.17V4h-2v8.17L8.41,9.59L7,11l5,5 L17,11z"/></g></svg>
                 Export ke Excel
             </a>
         </div>
-        <div class="data siswa">
-            <table>
+        <div class="data">
+            <table class="table-head">
                 <thead>
                     <tr>
-                        <th>No.</th>
+                        <th class="mw-100">No.</th>
                         <th>Nama Lengkap</th>
-                        <th>Alamat Sesuai KTP</th>
-                        <th>Kode Pos</th>
-                        <th>Nomor Induk Siswa Nasional (NISN)</th>
-                        <th>No.Telp/HP</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Tinggi Badan (cm)</th>
-                        <th>Berat Badan (kg)</th>
-                        <th>Tempat Lahir</th>
-                        <th>Tanggal Lahir</th>
-                        <th>Pas Foto Terbaru</th>
-                        <th>Jalur Pendaftaran</th>
-                        <th>Detail</th>
-                        <th>Ubah Data</th>
-                        <th>Hapus Data</th>
+                        <th class="mw-150">Nomor Induk Siswa Nasional (NISN)</th>
+                        <th>Asal Sekolah</th>
+                        <th class="mw-150">Jurusan</th>
+                        <th class="mw-150">Data Detail</th>
+                        <th class="mw-150">Ubah Data</th>
+                        <th class="mw-150">Hapus Data</th>
                     </tr>
                 </thead>
+                <?php $counter = 1; ?>
+                <?php if (isset($data_pribadi) && !empty($data_pribadi) && isset($data_sekolah) && !empty($data_sekolah)): ?>
+            </table>
+            <table class="table-body">
                 <tbody>
-                    <?php $counter = 1; ?>
-                    <?php if (isset($data_pribadi) && !empty($data_pribadi)): ?>
-                        <?php foreach ($data_pribadi as $key => $data): ?>
-                            <tr>
-                                <td><?= $counter; ?></td>
-                                <td><?= $data['nama_lengkap']; ?></td>
-                                <td><?= $data['alamat']; ?></td>
-                                <td><?= $data['kode_pos']; ?></td>
-                                <td><?= $data['nisn']; ?></td>
-                                <td><?= $data['no_telepon']; ?></td>
-                                <td><?= $data['jenis_kelamin']; ?></td>
-                                <td><?= $data['tinggi_badan']; ?></td>
-                                <td><?= $data['berat_badan']; ?></td>
-                                <td><?= $data['tempat_lahir']; ?></td>
-                                <td><?= $data['tanggal_lahir']; ?></td>
-                                <td><?= $data['pas_foto']; ?></td>
-                                <td><?= $data['jalur_pendaftaran']; ?></td>
-                                <td><a href="">Detail <?= $data['id'] ?></a></td>
-                                <td><a href="">Ubah <?= $data['id'] ?></a></td>
-                                <td><a href="">Hapus <?= $data['id'] ?></a></td>
-                            </tr>
-                            <?php $counter++; ?>
-                        <?php endforeach; ?>
-                    <?php else: ?>
+                    <?php foreach ($data_lengkap as $key => $data): ?>
                         <tr>
-                            <td colspan="13">No Records founds</td>
+                            <td class="mw-100"><?= $counter; ?></td>
+                            <td><?= $data['nama_lengkap']; ?></td>
+                            <td class="mw-150"><?= $data['nisn']; ?></td>
+                            <td><?= $data['nama_sekolah']; ?></td>
+                            <td class="mw-150"><?= $data['jurusan']; ?>
+                            <td class="mw-150"><a class="btn-action btn-primary" href="<?= $data['id'] ?>">Lihat Detail</a></td>
+                            <td class="mw-150"><a class="btn-action btn-primary" href="<?= $data['id'] ?>">Ubah</a></td>
+                            <td class="mw-150"><a class="btn-action btn-danger" href="<?= $data['id'] ?>">Hapus</a></td>
                         </tr>
-                    <?php endif; ?>
+                        <?php $counter++; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
+                <?php else: ?>
+                    <tr>
+                        <td class="empty" colspan="8">Data Tidak Ditemukan</td>
+                    </tr>
+            </table>
+                <?php endif; ?>
         </div>
     </main>
 </body>

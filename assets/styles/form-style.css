@@ -228,7 +228,10 @@ a.a-btn {
 }
 div.table-form input.input-error,
 div.table-form textarea.input-error,
-div.table-form select.input-error {
+div.table-form select.input-error,
+div.table-form input.input-error:focus,
+div.table-form textarea.input-error:focus,
+div.table-form select.input-error:focus {
 	border: 1px solid var(--merah);
 }
 div.confirm-alert {

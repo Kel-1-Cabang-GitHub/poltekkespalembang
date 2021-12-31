@@ -25,27 +25,78 @@ class Daftar_Model extends CI_Model
 
 	public function join_data_pribadi($table_name, $jalur_pendaftaran)
 	{
-		if ($this->count_rows($table_name) <= 0) return [];
 		// SELECT * FROM $table_name JOIN data_pribadi ON $table_name.nisn = data_pribadi.nisn
 		// WHERE $data_pribadi.jalur_pendaftaran=$jalur_pendaftaran;
-		return $this->db->select("$table_name.*")
+		$data = $this->db->select("$table_name.*")
 			->from($table_name)
 			->join('data_pribadi', "data_pribadi.nisn = $table_name.nisn")
 			->where(['data_pribadi.jalur_pendaftaran' => strtoupper($jalur_pendaftaran)])
 			->get()->result_array();
+
+		return $data;
 	}
 
-	public function update_data($table_nama, $data, $id)
+	public function join_two_tables($from, $to, $jalur_pendaftaran)
 	{
-		// UPDATE $table_nama SET $data WHERE id = $id;
-		$this->db->where('id', $id);
+		// SELECT * FROM $from JOIN $to ON $from.nisn = $to.nisn;
+		$data = $this->db->select("*")
+			->from($from)
+			->join($to, "$to.nisn = $from.nisn")
+			->get()->result_array();
+
+		if ($jalur_pendaftaran != 'pmdp-ktmse') {
+			// SELECT * FROM $from JOIN $to ON $from.nisn = $to.nisn
+			// WHERE $from.jalur_pendaftaran=$jalur_pendaftaran;
+			$data = $this->db->select("*")
+				->from($from)
+				->join($to, "$to.nisn = $from.nisn")
+				->where(["$from.jalur_pendaftaran" => strtoupper($jalur_pendaftaran)])
+				->get()->result_array();
+		}
+
+		return $data;
+	}
+
+	public function join_all_tables($jalur_pendaftaran)
+	{
+		if ($jalur_pendaftaran == 'ktmse') {
+			// SELECT * FROM data_pribadi JOIN data_sekolah ON data_pribadi.nisn = data_sekolah.nisn
+			// JOIN program_studi ON data_pribadi.nisn = program_studi.nisn
+			// JOIN data_prestasi ON data_pribadi.nisn = data_prestasi.nisn
+			// JOIN berkas_ktmse_gakin ON data_pribadi.nisn = berkas_ktmse_gakin.nisn
+			return $this->db->select("data_pribadi.*, data_sekolah.*, program_studi.*, data_prestasi.*, berkas_ktmse_gakin.*")
+				->from('data_pribadi')
+				->join('data_sekolah', "data_pribadi.nisn = data_sekolah.nisn")
+				->join('program_studi', "data_pribadi.nisn = program_studi.nisn")
+				->join('data_prestasi', "data_pribadi.nisn = data_prestasi.nisn")
+				->join('berkas_ktmse_gakin', "data_pribadi.nisn = berkas_ktmse_gakin.nisn")
+				->get()->result_array();
+		}
+		if ($jalur_pendaftaran = 'pmdp') {
+			// SELECT * FROM data_pribadi JOIN data_sekolah ON data_pribadi.nisn = data_sekolah.nisn
+			// JOIN program_studi ON data_pribadi.nisn = program_studi.nisn
+			// JOIN data_prestasi ON data_pribadi.nisn = data_prestasi.nisn
+
+			return $this->db->select("data_pribadi.*, data_sekolah.*, program_studi.*, data_prestasi.*")
+				->from('data_pribadi')
+				->join('data_sekolah', "data_pribadi.nisn = data_sekolah.nisn")
+				->join('program_studi', "data_pribadi.nisn = program_studi.nisn")
+				->join('data_prestasi', "data_pribadi.nisn = data_prestasi.nisn")
+				->get()->result_array();
+		}
+	}
+
+	public function update_data($table_nama, $data, $nisn)
+	{
+		// UPDATE $table_nama SET $data WHERE nisn = $nisn;
+		$this->db->where('nisn', $nisn);
 		$this->db->update($table_nama, $data);
 	}
 
-	public function delete_data($table_nama, $id)
+	public function delete_data($table_nama, $nisn)
 	{
-		// DELETE FROM $table_nama WHERE id = $id;
-		$this->db->where('id', $id);
+		// DELETE FROM $table_nama WHERE nisn = $nisn;
+		$this->db->where('nisn', $nisn);
 		$this->db->delete($table_nama);
 	}
 

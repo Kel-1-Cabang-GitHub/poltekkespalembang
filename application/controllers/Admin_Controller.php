@@ -172,17 +172,12 @@ class Admin_Controller extends CI_Controller
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
 		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
 
-		[$data_pribadi, $data_sekolah, $program_studi, $data_prestasi] = cek_jalur($jalur_pendaftaran);
-
 		$data = [
 			'jalur' => strtoupper($jalur_pendaftaran),
-			'data_pribadi' => $data_pribadi,
-			'data_sekolah' => $data_sekolah,
-			'program_studi' => $program_studi,
-			'data_prestasi' => $data_prestasi,
+			'data_pendaftar' => $this->Daftar_Model->join_two_tables('data_pribadi', 'data_sekolah', $jalur_pendaftaran)
 		];
 
-		$this->load->view('data-pendaftar2', $data);
+		$this->load->view('data-pendaftar', $data);
 	}
 
 	public function export_to_excel()
@@ -246,5 +241,10 @@ class Admin_Controller extends CI_Controller
 		// if (!$this->session->userdata('username')) redirect('login');
 
 		$this->load->view('ubah-data-pendaftar');
+	}
+
+	public function hapus_data_pendaftar()
+	{
+		// if (!$this->session->userdata('username')) redirect('login');
 	}
 }

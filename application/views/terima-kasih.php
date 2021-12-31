@@ -25,7 +25,7 @@
             <h2>Terima kasih telah mendaftar</h2>
             <h2>di Poltekkes Kemenkes Palembang</h2>
             <span class="space"></span>
-	        <a class="a-btn btn-primary" href="https://www.youtube.com/watch?v=chY9p-XLHHk">Kembali</a>
+	        <a class="a-btn btn-primary" href="pilih-jalur">Kembali</a>
         </div>
     </main>
 </body>

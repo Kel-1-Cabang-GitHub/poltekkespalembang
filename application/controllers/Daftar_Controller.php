@@ -205,7 +205,7 @@ class Daftar_Controller extends CI_Controller
 			}
 
 			$berkas_ktmse_gakin = [
-				$nisn => $this->input->post('nisn'),
+				'nisn' => $nisn,
 				'surat_keterangan_miskin' => upload_file(
 					'surat_keterangan_miskin', // $name_attr
 					'uploads/pdf/surat_keterangan_miskin/', // $upload_path
@@ -237,6 +237,8 @@ class Daftar_Controller extends CI_Controller
 			// Berkas KTMSE Gakin
 			$this->Daftar_Model->insert_data('berkas_ktmse_gakin', $berkas_ktmse_gakin);
 
+			$this->session->set_userdata('berhasil-daftar', true);
+
 			// jika jalur pendaftaran lewat pmdp
 			redirect('terima-kasih');
 		}
@@ -247,6 +249,9 @@ class Daftar_Controller extends CI_Controller
 
 	public function terima_kasih()
 	{
+		if (!$this->session->userdata('berhasil-daftar')) redirect();
+
+		$this->session->unset_userdata('berhasil-daftar');
 		$this->load->view('terima-kasih');
 	}
 }

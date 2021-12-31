@@ -142,18 +142,17 @@
                             ): ?>
                                 disabled
                             <?php endif; ?>"
-                            name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah disabled" value="
-							<?php
-								if (
+                            name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah disabled"
+							<?php if (
 									set_value('jenis_pendidikan_menengah') != 'Sekolah Menengah Atas (SMA)' &&
                                 	set_value('jenis_pendidikan_menengah') != 'Madrasah Aliyah (MA)' &&
                                 	set_value('jenis_pendidikan_menengah') != 'Sekolah Menengah Kejuruan (SMK)' &&
                                 	set_value('jenis_pendidikan_menengah') != 'Madrasah Aliyah Kejuruan (MAK)' &&
                                 	set_value('jenis_pendidikan_menengah') != 'Kelompok Belajar Paket C'
-								) {
-									set_value('jenis_pendidikan_menengah');
-								}
-							?>"
+							): ?>
+								value="<?= set_value('jenis_pendidikan_menengah') ?>"
+
+							<?php endif; ?>
                             <?php if (
 								set_value('jenis_pendidikan_menengah') == '' ||
                                 set_value('jenis_pendidikan_menengah') == 'Sekolah Menengah Atas (SMA)' ||
@@ -205,19 +204,17 @@
                             ): ?>
                                 disabled
                             <?php endif; ?>
-                            "name="jurusan" id="jurusan disabled" value="
-							<?php
-								if (
+                            "name="jurusan" id="jurusan disabled"
+							<?php if (
 									set_value('jurusan') != 'IPA' &&
 									set_value('jurusan') != 'IPS' &&
 									set_value('jurusan') != 'SMK Keperawatan' &&
 									set_value('jurusan') != 'SMK Farmasi' &&
 									set_value('jurusan') != 'SMK Analisis Kesehatan' &&
 									set_value('jurusan') != 'SMK Keperawatan Gigi'
-								) {
-									set_value('jurusan');
-								}
-							?>"
+							): ?>
+								value="<?= set_value('jurusan') ?>"
+							<?php endif; ?>
                             <?php if (
 								set_value('jurusan') == '' ||
                                 set_value('jurusan') == 'IPA' ||

@@ -41,8 +41,10 @@
                         <th class="mw-100">No.</th>
                         <th>Nama Lengkap</th>
                         <th class="mw-150">Nomor Induk Siswa Nasional (NISN)</th>
+						<th class="mw-150">Jenis Kelamin</th>
                         <th>Asal Sekolah</th>
                         <th class="mw-150">Jurusan</th>
+						<th class="mw-150">Jalur Pendaftaran</th>
                         <th class="mw-150">Data Detail</th>
                         <th class="mw-150">Ubah Data</th>
                         <th class="mw-150">Hapus Data</th>
@@ -58,8 +60,10 @@
                             <td class="mw-100"><?= $counter; ?></td>
                             <td><?= $data['nama_lengkap']; ?></td>
                             <td class="mw-150"><?= $data['nisn']; ?></td>
+							<td class="mw-150"><?= $data['jenis_kelamin']; ?></td>
                             <td><?= $data['nama_sekolah']; ?></td>
                             <td class="mw-150"><?= $data['jurusan']; ?>
+							<td class="mw-150"><?= $data['jalur_pendaftaran']; ?></td>
                             <td class="mw-150"><a class="btn-action btn-primary" href="detail-data-pendaftar?nisn=<?= $data['nisn'] ?>">Lihat Detail</a></td>
                             <td class="mw-150"><a class="btn-action btn-primary" href="ubah-data-pendaftar?nisn=<?= $data['nisn'] ?>">Ubah</a></td>
                             <td class="mw-150"><a class="btn-action btn-danger" href="hapus-data-pendaftar?nisn=<?= $data['nisn'] ?>">Hapus</a></td>
@@ -70,7 +74,7 @@
             </table>
                 <?php else: ?>
                     <tr>
-                        <td class="empty" colspan="8">Data Tidak Ditemukan</td>
+                        <td class="empty" colspan="10">Data Tidak Ditemukan</td>
                     </tr>
             </table>
                 <?php endif; ?>

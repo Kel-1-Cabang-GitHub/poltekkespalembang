@@ -300,7 +300,11 @@ div.scroll.show {
 }
 h3 a {
 	text-decoration: none;
-	color: black;
+	color: var(--biru-muda);
+}
+h3 a:hover, h3 a:active {
+	color: var(--biru-tua);
+	text-decoration: underline;
 }
 div.list {
 	width: 100%;

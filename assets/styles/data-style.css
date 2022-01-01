@@ -14,6 +14,7 @@ main{
     align-items: center;
     padding: 15px;
     padding-top: 50px;
+    min-height: 100vh;
 }
 div.actions{
     width: 95%;
@@ -39,6 +40,8 @@ div.search input{
     width: calc(100% - 54px);
     height: 54px;
     padding: 5px 10px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
     outline: none;
     border: none;
 }
@@ -62,7 +65,7 @@ a.btn{
     align-items: center;
     margin-bottom: 15px;
 }
-a.btn:hover{
+a.btn:hover, a.btn-action:hover{
     opacity: 0.8;
 }
 .btn-success{
@@ -75,15 +78,16 @@ a.btn:hover{
     background-color: var(--merah);
 }
 div.data{
-    width: 100%;
+    width: 98%;
     padding: 15px;
+    border-radius: 4px;
     overflow: auto;
 }
 div.data table.table-head,table.table-body{
     border-spacing: 0;
-    box-shadow: 0px 4px 66px 6px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     height: 76px;
+    box-shadow: 0px 5px 21px 6px rgba(0, 0, 0, 0.19);
 }
 th, td{
     padding: 10px;
@@ -94,7 +98,6 @@ div.data table td.empty{
     border-top: 3px solid silver;
     height: 150px;
     padding-left: 20px;
-    /* text-align: center; */
     color: var(--merah);
 }
 div.data table .mw-100{
@@ -107,8 +110,9 @@ div.data table .mw-150{
 }
 div.data table.table-body{
     margin-top: 5px;
-    box-shadow: 0px 4px 66px 6px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
+    border-collapse: collapse;
+    box-shadow: 0px 3px 21px 4px rgba(0, 0, 0, 0.25);
 }
 div.data table td{
     padding: 10px;
@@ -116,11 +120,35 @@ div.data table td{
     align-items: center;
     height: 100px;
 }
-a.btn-action{
+table.table-body tr:first-child td{
+    border-top:none;
+}
+table.table-body tr td:last-child{
+    border-right: none;
+}
+table.table-body tr td:first-child{
+    border-left: none;
+}
+table.table-body tr:last-child td{
+    border-bottom: none;
+}
+a.btn-action,a.a-btn{
     display: inline-block;
     width: 137px;
     padding: 5px;
     text-decoration: none;
     border-radius: 4px;
     color: white;
+}
+a.a-btn{
+	width: 101px;
+	height: 30px;
+    padding: 0px;
+	margin-right: 15px;
+	text-align: center;
+	font-size: 13.33px;
+	line-height: 30px;
+}
+a:hover{
+    cursor: pointer;
 }

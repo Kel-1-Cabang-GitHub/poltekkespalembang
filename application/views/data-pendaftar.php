@@ -7,78 +7,96 @@
 	<link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/data-style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/styles/alert-style.css">
     <script defer src="<?= base_url() ?>assets/scripts/nav-script.js"></script>
+    <script defer src="<?= base_url() ?>assets/scripts/admin-script.js"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <img src="<?= base_url() ?>assets/img/logo.jpg" alt="logo">
-            <div class="brand">
-                <h3>Penerimaan Mahasiswa Baru</h3>
-                <h3>Poltekkes Kemenkes Palembang</h3>
+    <div class="container">
+    <div class="block"></div>
+        <header>
+            <nav>
+                <img src="<?= base_url() ?>assets/img/logo.jpg" alt="logo">
+                <div class="brand" id="<?= base_url(); ?>admin">
+                    <h3>Penerimaan Mahasiswa Baru</h3>
+                    <h3>Poltekkes Kemenkes Palembang</h3>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="confirm-alert" id="confirm-alert">
+                <div class="ca-head danger">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="46px" viewBox="0 0 24 24" width="46px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    <h2>Konfirmasi</h2>
+                </div>
+                <div class="ca-body">
+                    <p>Anda yakin ingin menghapus data ini ? Data yang terhapus akan hilang secara permanen</p>
+                    <div class="ca-button">
+                        <a class="a-btn btn-danger hapus" id="ca-delete">Hapus</a>
+                        <a class="a-btn btn-primary batal" id="ca-cancel">Batal</a>
+                    </div>
+                </div>
             </div>
-        </nav>
-    </header>
-    <main>
-        <div class="actions">
-            <div class="search">
-                <form action="search" method="POST">
-                    <input type="text" class="search-text" placeholder="Cari data pendaftar ...">
-                    <button type="submit" class="btn-search">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#83A342"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                    </button>
-                </form>
+            <div class="actions">
+                <div class="search">
+                    <form action="search" method="POST">
+                        <input type="text" class="search-text" placeholder="Cari data pendaftar ...">
+                        <button type="submit" class="btn-search">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#83A342"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        </button>
+                    </form>
+                </div>
+                <a href="export-to-excel?jalur=<?= $this->input->get("jalur") ?>" class="btn btn-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><g><rect fill="none" height="24" width="24"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M17,11l-1.41-1.41L13,12.17V4h-2v8.17L8.41,9.59L7,11l5,5 L17,11z"/></g></svg>
+                    Export ke Excel
+                </a>
             </div>
-            <a href="export-to-excel?jalur=<?= $this->input->get("jalur") ?>" class="btn btn-success">
-                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><g><rect fill="none" height="24" width="24"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M17,11l-1.41-1.41L13,12.17V4h-2v8.17L8.41,9.59L7,11l5,5 L17,11z"/></g></svg>
-                Export ke Excel
-            </a>
-        </div>
-        <div class="data">
-            <table class="table-head">
-                <thead>
-                    <tr>
-                        <th class="mw-100">No.</th>
-                        <th>Nama Lengkap</th>
-                        <th class="mw-150">Nomor Induk Siswa Nasional (NISN)</th>
-						<th class="mw-150">Jenis Kelamin</th>
-                        <th>Asal Sekolah</th>
-                        <th class="mw-150">Jurusan</th>
-						<th class="mw-150">Jalur Pendaftaran</th>
-                        <th class="mw-150">Data Detail</th>
-                        <th class="mw-150">Ubah Data</th>
-                        <th class="mw-150">Hapus Data</th>
-                    </tr>
-                </thead>
-                <?php $counter = 1; ?>
-                <?php if (isset($data_pendaftar) && !empty($data_pendaftar)): ?>
-            </table>
-            <table class="table-body">
-                <tbody>
-                    <?php foreach ($data_pendaftar as $key => $data): ?>
+            <div class="data">
+                <table class="table-head">
+                    <thead>
                         <tr>
-                            <td class="mw-100"><?= $counter; ?></td>
-                            <td><?= $data['nama_lengkap']; ?></td>
-                            <td class="mw-150"><?= $data['nisn']; ?></td>
-							<td class="mw-150"><?= $data['jenis_kelamin']; ?></td>
-                            <td><?= $data['nama_sekolah']; ?></td>
-                            <td class="mw-150"><?= $data['jurusan']; ?>
-							<td class="mw-150"><?= $data['jalur_pendaftaran']; ?></td>
-                            <td class="mw-150"><a class="btn-action btn-primary" href="detail-data-pendaftar?nisn=<?= $data['nisn'] ?>">Lihat Detail</a></td>
-                            <td class="mw-150"><a class="btn-action btn-primary" href="ubah-data-pendaftar?nisn=<?= $data['nisn'] ?>">Ubah</a></td>
-                            <td class="mw-150"><a class="btn-action btn-danger" href="hapus-data-pendaftar?nisn=<?= $data['nisn'] ?>">Hapus</a></td>
+                            <th class="mw-100">No.</th>
+                            <th>Nama Lengkap</th>
+                            <th class="mw-150">NISN</th>
+                            <th class="mw-150">Jenis Kelamin</th>
+                            <th>Asal Sekolah</th>
+                            <th class="mw-150">Jurusan</th>
+                            <th class="mw-150">Jalur Pendaftaran</th>
+                            <th class="mw-150">Data Detail</th>
+                            <th class="mw-150">Ubah Data</th>
+                            <th class="mw-150">Hapus Data</th>
                         </tr>
-                        <?php $counter++; ?>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-                <?php else: ?>
-                    <tr>
-                        <td class="empty" colspan="10">Data Tidak Ditemukan</td>
-                    </tr>
-            </table>
-                <?php endif; ?>
-        </div>
-    </main>
+                    </thead>
+                    <?php $counter = 1; ?>
+                    <?php if (isset($data_pendaftar) && !empty($data_pendaftar)): ?>
+                </table>
+                <table class="table-body">
+                    <tbody>
+                        <?php foreach ($data_pendaftar as $key => $data): ?>
+                            <tr>
+                                <td class="mw-100"><?= $counter; ?></td>
+                                <td><?= $data['nama_lengkap']; ?></td>
+                                <td class="mw-150"><?= $data['nisn']; ?></td>
+                                <td class="mw-150"><?= $data['jenis_kelamin']; ?></td>
+                                <td><?= $data['nama_sekolah']; ?></td>
+                                <td class="mw-150"><?= $data['jurusan']; ?>
+                                <td class="mw-150"><?= $data['jalur_pendaftaran']; ?></td>
+                                <td class="mw-150"><a class="btn-action btn-primary" href="detail-data-pendaftar?nisn=<?= $data['nisn'] ?>">Lihat Detail</a></td>
+                                <td class="mw-150"><a class="btn-action btn-primary" href="ubah-data-pendaftar?nisn=<?= $data['nisn'] ?>">Ubah</a></td>
+                                <td class="mw-150"><a class="btn-action btn-danger hapus-data" id="<?= base_url(); ?>hapus-data-pendaftar?nisn=<?= $data['nisn'] ?>">Hapus</a></td>
+                            </tr>
+                            <?php $counter++; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                    <?php else: ?>
+                        <tr>
+                            <td class="empty" colspan="10">Data Tidak Ditemukan</td>
+                        </tr>
+                </table>
+                    <?php endif; ?>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

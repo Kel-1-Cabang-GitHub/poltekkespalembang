@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/form-style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/styles/alert-style.css">
     <script defer src="<?= base_url() ?>assets/scripts/jquery-3.6.0.min.js"></script>
     <script defer src="<?= base_url() ?>assets/scripts/form-script.js"></script>
     <script defer src="<?= base_url() ?>assets/scripts/nav-script.js"></script>
@@ -17,7 +18,7 @@
     <header>
         <nav>
             <img src="<?= base_url() ?>assets/img/logo.jpg" alt="logo">
-            <div class="brand">
+            <div class="brand" id="<?= base_url(); ?>">
                 <h3>Penerimaan Mahasiswa Baru</h3>
                 <h3>Poltekkes Kemenkes Palembang</h3>
             </div>
@@ -52,7 +53,7 @@
                             <p>Pastikan data yang anda masukkan sudah sesuai. Apakah anda sudah yakin dengan data yang telah diinputkan? Pilih simpan untuk melanjutkan</p>
                             <div class="ca-button">
                                 <button type="submit" class="btn btn-success">Simpan</button>
-                                <a class="a-btn btn-danger batal-simpan" id="ca-cancel">Batal</a>
+                                <a class="a-btn btn-danger batal" id="ca-cancel">Batal</a>
                             </div>
                         </div>
                     </div>

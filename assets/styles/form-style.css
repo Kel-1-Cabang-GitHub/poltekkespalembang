@@ -8,24 +8,6 @@
 	--abu-abu: #ced4da;
 	--abu-abu-tua: #818181;
 }
-div.container {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	min-height: 100vh;
-}
-div.block.active {
-	display: block;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-color: grey;
-	opacity: 0.5;
-}
-div.block {
-	display: none;
-	z-index: 1;
-}
 main {
 	display: flex;
 	justify-content: center;
@@ -217,15 +199,6 @@ a.a-btn {
 	font-size: 13.33px;
 	line-height: 30px;
 }
-.btn-success {
-	background-color: var(--hijau);
-}
-.btn-danger {
-	background-color: var(--merah);
-}
-.btn-primary {
-	background-color: var(--biru-tua);
-}
 div.table-form input.input-error,
 div.table-form textarea.input-error,
 div.table-form select.input-error,
@@ -233,55 +206,6 @@ div.table-form input.input-error:focus,
 div.table-form textarea.input-error:focus,
 div.table-form select.input-error:focus {
 	border: 1px solid var(--merah);
-}
-div.confirm-alert {
-	width: 560px;
-	height: fit-content;
-	position: fixed;
-	background-color: var(--putih);
-	flex-wrap: wrap;
-	overflow: hidden;
-	border-radius: 2px;
-	top: 50%;
-	left: 50%;
-	margin-top: -170px;
-	margin-left: -280px;
-	display: none;
-	z-index: 2;
-}
-div.confirm-alert.active {
-	display: flex;
-}
-div.ca-head {
-	padding: 10px 15px;
-	height: 60px;
-	width: 100%;
-	background-color: var(--biru-muda);
-	color: var(--putih);
-	display: flex;
-	align-items: center;
-}
-div.ca-head svg {
-	color: var(--putih);
-}
-div.ca-head h2 {
-	display: inline-block;
-	margin-left: 5px;
-}
-div.ca-body {
-	padding: 10px 15px;
-	height: fit-content;
-	display: flex;
-	flex-wrap: wrap;
-}
-div.ca-button {
-	width: 100%;
-	margin-top: 50px;
-	display: flex;
-	justify-content: flex-end;
-}
-div.ca-button button {
-	margin-right: 10px;
 }
 div.scroll {
 	display: flex;

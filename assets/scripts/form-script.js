@@ -196,7 +196,7 @@ prodi_pilihan_1.addEventListener("change", () => {
 // Alert Konfirmasi simpan data
 const block = document.querySelector("div.block");
 const tombol_simpan = document.querySelector("a.simpan-data");
-const tombol_batal = document.querySelector("a.batal-simpan");
+const tombol_batal = document.querySelector("a.batal");
 const kotak_alert = document.querySelector("div.confirm-alert");
 
 tombol_simpan.addEventListener("click", () => {

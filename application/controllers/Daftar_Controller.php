@@ -117,7 +117,7 @@ class Daftar_Controller extends CI_Controller
 			'required' => '*{field} harus diisi!'
 		]);
 
-		if ($jalur_pendaftaran = 'ktmse') {
+		if ($jalur_pendaftaran == 'ktmse') {
 			// Berkas KTMSE/GAKIN
 			if (empty($_FILES['surat_keterangan_miskin']['name'])) {
 				$this->form_validation->set_rules('surat_keterangan_miskin', 'Upload Surat Keterangan Miskin', 'required', [
@@ -206,7 +206,7 @@ class Daftar_Controller extends CI_Controller
 				);
 			}
 
-			if ($jalur_pendaftaran = 'ktmse') {
+			if ($jalur_pendaftaran == 'ktmse') {
 				// Berkas KTMSE/GAKIN
 				$berkas_ktmse_gakin = [
 					'nisn' => $nisn,
@@ -239,7 +239,7 @@ class Daftar_Controller extends CI_Controller
 			$this->Daftar_Model->insert_data('program_studi', $program_studi);
 			// Data Prestasi
 			$this->Daftar_Model->insert_data('data_prestasi', $data_prestasi);
-			if ($jalur_pendaftaran = 'ktmse') {
+			if ($jalur_pendaftaran == 'ktmse') {
 				// Berkas KTMSE/GAKIN
 				$this->Daftar_Model->insert_data('berkas_ktmse_gakin', $berkas_ktmse_gakin);
 			}

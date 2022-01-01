@@ -8,7 +8,15 @@ tombol_hapus1.forEach(el => {
     el.addEventListener("click", () => {
         block.classList.add("active");
 	    kotak_alert.classList.add("active");
-        ca_delete.href = el.id;
+        let id = el.id;
+        let nama_lengkap = id.split(" ").slice(1).join(" ");
+        let link = id.split(" ")[0];
+        let nisn = link.replace(/^.*\?nisn=/,"").split("&")[0];
+        let span_nama = document.querySelector("span#ubah-nama");
+        let span_nisn = document.querySelector("span#ubah-nisn");
+        span_nama.textContent = nama_lengkap;
+        span_nisn.textContent = nisn;
+        ca_delete.href = link;
     });
 });
 tombol_batal.addEventListener("click", () => {

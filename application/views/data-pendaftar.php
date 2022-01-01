@@ -30,7 +30,7 @@
                     <h2>Konfirmasi</h2>
                 </div>
                 <div class="ca-body">
-                    <p>Anda yakin ingin menghapus data ini ? Data yang terhapus akan hilang secara permanen</p>
+                    <p>Anda yakin ingin menghapus data <span id="ubah-nisn">nisn</span> - <span id="ubah-nama">nama</span> ? Data yang terhapus akan hilang secara permanen</p>
                     <div class="ca-button">
                         <a class="a-btn btn-danger hapus" id="ca-delete">Hapus</a>
                         <a class="a-btn btn-primary batal" id="ca-cancel">Batal</a>
@@ -107,7 +107,7 @@
                                 <td class="mw-150"><?= $data['jalur_pendaftaran']; ?></td>
                                 <td class="mw-150"><a class="btn-action btn-primary" href="detail-pendaftar?nisn=<?= $data['nisn'] ?>&jalur=<?= strtolower($data['jalur_pendaftaran']) ?>">Lihat Detail</a></td>
                                 <td class="mw-150"><a class="btn-action btn-primary" href="ubah-pendaftar?nisn=<?= $data['nisn'] ?>&jalur=<?= strtolower($data['jalur_pendaftaran']) ?>">Ubah</a></td>
-                                <td class="mw-150"><a class="btn-action btn-danger hapus-data" id="<?= base_url(); ?>hapus-pendaftar?nisn=<?= $data['nisn'] ?>&jalur=<?= $this->input->get('jalur'); ?>">Hapus</a></td>
+                                <td class="mw-150"><a class="btn-action btn-danger hapus-data" id="<?= base_url(); ?>hapus-pendaftar?nisn=<?= $data['nisn'] ?>&jalur=<?= $this->input->get('jalur'); ?> <?= $data['nama_lengkap'] ?>">Hapus</a></td>
                             </tr>
                             <?php $counter++; ?>
                         <?php endforeach; ?>

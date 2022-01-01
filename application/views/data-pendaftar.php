@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Data Pendaftar | POLTEKKES KEMENKES PALEMBANG</title>
+	<title>Data Pendaftar <?= $jalur ?> | POLTEKKES KEMENKES PALEMBANG</title>
 	<link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/data-style.css">
@@ -56,12 +56,36 @@
                     <thead>
                         <tr>
                             <th class="mw-100">No.</th>
-                            <th>Nama Lengkap</th>
-                            <th class="mw-150">NISN</th>
-                            <th class="mw-150">Jenis Kelamin</th>
-                            <th>Asal Sekolah</th>
-                            <th class="mw-150">Jurusan</th>
-                            <th class="mw-150">Jalur Pendaftaran</th>
+                            <th>
+								Nama Lengkap <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=nama-lengkap&sort=asc">Urut Nama Lengkap ASC</a> <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=nama-lengkap&sort=desc">Urut Nama Lengkap DESC</a>
+							</th>
+                            <th class="mw-150">
+								NISN <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=nisn&sort=asc">Urut NISN ASC</a> <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=nisn&sort=desc">Urut NISN DESC</a>
+							</th>
+                            <th class="mw-150">
+								Jenis Kelamin <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=jenis-kelamin&sort=asc">Urut Jenis Kelamin ASC</a> <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=jenis-kelamin&sort=desc">Urut Jenis Kelamin DESC</a>
+							</th>
+                            <th class="mw-150">
+								Asal Sekolah <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=nama-sekolah&sort=asc">Urut Asal Sekolah ASC</a> <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=nama-sekolah&sort=desc">Urut Asal Sekolah DESC</a>
+							</th>
+                            <th class="mw-150">
+								Jurusan <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=jurusan&sort=asc">Urut Jurusan ASC</a> <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=jurusan&sort=desc">Urut Jurusan DESC</a>
+							</th>
+                            <th class="mw-150">
+								Jalur Pendaftaran <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=jalur-pendaftaran&sort=asc">Urut Jalur Pendaftaran ASC</a> <br>
+								<a href="data-pendaftar?jalur=<?= $this->input->get('jalur'); ?>&field=jalur-pendaftaran&sort=desc">Urut Jalur Pendaftaran DESC</a>
+							</th>
                             <th class="mw-150">Data Detail</th>
                             <th class="mw-150">Ubah Data</th>
                             <th class="mw-150">Hapus Data</th>
@@ -81,9 +105,9 @@
                                 <td><?= $data['nama_sekolah']; ?></td>
                                 <td class="mw-150"><?= $data['jurusan']; ?>
                                 <td class="mw-150"><?= $data['jalur_pendaftaran']; ?></td>
-                                <td class="mw-150"><a class="btn-action btn-primary" href="detail-data-pendaftar?nisn=<?= $data['nisn'] ?>">Lihat Detail</a></td>
-                                <td class="mw-150"><a class="btn-action btn-primary" href="ubah-data-pendaftar?nisn=<?= $data['nisn'] ?>">Ubah</a></td>
-                                <td class="mw-150"><a class="btn-action btn-danger hapus-data" id="<?= base_url(); ?>hapus-data-pendaftar?nisn=<?= $data['nisn'] ?>">Hapus</a></td>
+                                <td class="mw-150"><a class="btn-action btn-primary" href="detail-pendaftar?nisn=<?= $data['nisn'] ?>&jalur=<?= strtolower($data['jalur_pendaftaran']) ?>">Lihat Detail</a></td>
+                                <td class="mw-150"><a class="btn-action btn-primary" href="ubah-pendaftar?jalur=<?= $data['nisn'] ?>&jalur=<?= strtolower($data['jalur_pendaftaran']) ?>">Ubah</a></td>
+                                <td class="mw-150"><a class="btn-action btn-danger hapus-data" id="<?= base_url(); ?>hapus-pendaftar?nisn=<?= $data['nisn'] ?>">Hapus</a></td>
                             </tr>
                             <?php $counter++; ?>
                         <?php endforeach; ?>

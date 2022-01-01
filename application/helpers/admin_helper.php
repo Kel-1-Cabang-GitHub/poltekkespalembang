@@ -5,24 +5,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-if (!function_exists('cek_jalur')) {
-	function cek_jalur($jalur_pendaftaran)
+if (!function_exists('kebab-to-snake')) {
+	function kebab_to_snake($string)
 	{
-		$CI = &get_instance();
-		$CI->load->model('Daftar_Model');
-
-		$data_pribadi = $CI->Daftar_Model->get_data_by_jalur('data_pribadi', $jalur_pendaftaran);
-		$data_sekolah = $CI->Daftar_Model->join_data_pribadi('data_sekolah', $jalur_pendaftaran);
-		$program_studi = $CI->Daftar_Model->join_data_pribadi('program_studi', $jalur_pendaftaran);
-		$data_prestasi = $CI->Daftar_Model->join_data_pribadi('data_prestasi', $jalur_pendaftaran);
-
-		if ($jalur_pendaftaran == 'pmdp-ktmse') {
-			$data_pribadi = $CI->Daftar_Model->get_all_data('data_pribadi');
-			$data_sekolah = $CI->Daftar_Model->get_all_data('data_sekolah');
-			$program_studi = $CI->Daftar_Model->get_all_data('program_studi');
-			$data_prestasi = $CI->Daftar_Model->get_all_data('data_prestasi');
-		}
-		return [$data_pribadi, $data_sekolah, $program_studi, $data_prestasi];
+		return strtolower(preg_replace('/[^A-Za-z0-9\.]/', '_', $string));
 	}
 }
 
@@ -39,13 +25,6 @@ if (!function_exists('make_new_spreadsheet')) {
 	function make_new_spreadsheet()
 	{
 		return new Spreadsheet();
-	}
-}
-
-if (!function_exists('create_new_sheet')) {
-	function create_new_sheet($spreadsheet, $sheet_name)
-	{
-		return $spreadsheet->createSheet()->setTitle($sheet_name);
 	}
 }
 

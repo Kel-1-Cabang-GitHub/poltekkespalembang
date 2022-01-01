@@ -147,12 +147,13 @@ tombol_upload.forEach((e) => {
 });
 
 // Tampilkan kota/kabupaten berdasarkan provinsi
+const LOKASI_API = "https://dev.farizdotid.com/api/daerahindonesia/";
 const provinsi = document.getElementById("provinsi_asal_sekolah");
 const kota_kabupaten = document.getElementById("kota_kabupaten_asal_sekolah");
 
 provinsi.addEventListener("change", function () {
 	let id_provinsi = this.value;
-	let url = `${"<?= LOKASI_API ?>"}kota?id_provinsi=${id_provinsi}`;
+	let url = `${LOKASI_API}kota?id_provinsi=${id_provinsi}`;
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
 	xhr.onload = function () {

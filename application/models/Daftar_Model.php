@@ -9,111 +9,158 @@ class Daftar_Model extends CI_Model
 		return $this->db->insert($table_name, $data);
 	}
 
-	public function get_all_data($table_name)
+	public function data_pendaftar_table($jalur_pendaftaran, $sort_field = 'data_pribadi.nisn', $sort_by = 'ASC')
 	{
-		if ($this->count_rows($table_name) <= 0) return [];
-		// SELECT * FROM $table_name;
-		return $this->db->get($table_name)->result_array();
+		/*
+		SELECT
+			"data_pribadi.nama_lengkap, data_pribadi.nisn, data_pribadi.jenis_kelamin,
+			data_sekolah.nama_sekolah, data_sekolah.jurusan, data_pribadi.jalur_pendaftaran
+		FROM data_pribadi
+		INNER JOIN data_sekolah ON data_pribadi.nisn = data_sekolah.nisn
+		if $jalur_pendaftaran != 'pmdp-ktmse' -> WHERE data_pribadi.jalur_pendaftaran = UPPER('$jalur_pendaftaran')
+		ORDER BY $sort_field $sort_by;
+		*/
+		$fields = "data_pribadi.nama_lengkap, data_pribadi.nisn, data_pribadi.jenis_kelamin,
+		data_sekolah.nama_sekolah, data_sekolah.jurusan, data_pribadi.jalur_pendaftaran";
+		$sort_by = strtoupper($sort_by);
+		$this->db->select($fields);
+		$this->db->from('data_pribadi');
+		$this->db->join('data_sekolah', 'data_pribadi.nisn = data_sekolah.nisn');
+		if ($jalur_pendaftaran != 'pmdp-ktmse') $this->db->where('data_pribadi.jalur_pendaftaran', strtoupper($jalur_pendaftaran));
+		$this->db->order_by($sort_field, $sort_by);
+		$query = $this->db->get();
+
+		if ($query->num_rows() <= 0) return [];
+		return $query->result_array();
 	}
 
-	public function get_data_by_jalur($table_name, $jalur_pendaftaran)
+	public function join_all_tables($jalur_pendaftaran, $sort_field = 'data_pribadi.nisn', $sort_by = 'ASC')
 	{
-		if ($this->count_rows($table_name) <= 0) return [];
-		// SELECT * FROM $table_name WHERE jalur = $jalur;
-		return $this->db->get_where($table_name, ['jalur_pendaftaran' => strtoupper($jalur_pendaftaran)])->result_array();
-	}
-
-	public function join_data_pribadi($table_name, $jalur_pendaftaran)
-	{
-		// SELECT * FROM $table_name JOIN data_pribadi ON $table_name.nisn = data_pribadi.nisn
-		// WHERE $data_pribadi.jalur_pendaftaran=$jalur_pendaftaran;
-		$data = $this->db->select("$table_name.*")
-			->from($table_name)
-			->join('data_pribadi', "data_pribadi.nisn = $table_name.nisn")
-			->where(['data_pribadi.jalur_pendaftaran' => strtoupper($jalur_pendaftaran)])
-			->get()->result_array();
-
-		return $data;
-	}
-
-	public function join_two_tables($from, $to, $jalur_pendaftaran)
-	{
-		if ($jalur_pendaftaran == 'pmdp-ktmse') {
-			// SELECT * FROM $from JOIN $to ON $from.nisn = $to.nisn;
-			return $this->db->select("*")
-				->from($from)
-				->join($to, "$to.nisn = $from.nisn")
-				->get()->result_array();
+		/*
+		SELECT
+			data_pribadi.nama_lengkap, data_pribadi.alamat, data_pribadi.kode_pos, data_pribadi.nisn,
+			data_pribadi.no_telepon, data_pribadi.jenis_kelamin, data_pribadi.tinggi_badan, data_pribadi.berat_badan,
+			data_pribadi.tempat_lahir, data_pribadi.tanggal_lahir, data_pribadi.pas_foto, data_pribadi.jalur_pendaftaran,
+			data_sekolah.jenis_pendidikan_menengah, data_sekolah.jurusan, data_sekolah.nama_sekolah,
+			data_sekolah.jenis_sekolah, data_sekolah.provinsi_asal_sekolah, data_sekolah.kota_kabupaten_asal_sekolah,
+			data_sekolah.akreditasi_sekolah, data_sekolah.tahun_lulus, data_sekolah.rekap_nilai_rapot, data_sekolah.rata_rata_nilai_rapot,
+			data_sekolah.peringkat_semester_1, data_sekolah.peringkat_semester_2, data_sekolah.peringkat_semester_3,
+			data_sekolah.peringkat_semester_4, data_sekolah.peringkat_semester_5,
+			program_studi.bukti_pembayaran, program_studi.program_studi_pilihan_1, program_studi.program_studi_pilihan_2,
+			data_prestasi.prestasi_1, data_prestasi.prestasi_2, data_prestasi.prestasi_3, data_prestasi.prestasi_4, data_prestasi.prestasi_5,
+			if $jalur_pendaftaran != 'pmdp' -> berkas_ktmse_gakin.surat_keterangan_miskin, berkas_ktmse_gakin.surat_keterangan_penghasilan_keluarga, berkas_ktmse_gakin.foto_rumah
+		FROM data_pribadi
+		INNER JOIN data_sekolah ON data_pribadi.nisn = data_sekolah.nisn
+		INNER JOIN program_studi ON data_pribadi.nisn = program_studi.nisn
+		INNER JOIN data_prestasi ON data_pribadi.nisn = data_prestasi.nisn
+		if $jalur_pendaftaran != 'pmdp' -> LEFT OUTER JOIN berkas_ktmse_gakin ON data_pribadi.nisn = berkas_ktmse_gakin.nisn
+		if $jalur_pendaftaran != 'pmdp-ktmse' -> WHERE data_pribadi.jalur_pendaftaran = UPPER('$jalur_pendaftaran')
+		ORDER BY $sort_field $sort_by;
+		*/
+		$fields = "data_pribadi.nama_lengkap, data_pribadi.alamat, data_pribadi.kode_pos, data_pribadi.nisn,
+		data_pribadi.no_telepon, data_pribadi.jenis_kelamin, data_pribadi.tinggi_badan, data_pribadi.berat_badan,
+		data_pribadi.tempat_lahir, data_pribadi.tanggal_lahir, data_pribadi.pas_foto, data_pribadi.jalur_pendaftaran,
+		data_sekolah.jenis_pendidikan_menengah, data_sekolah.jurusan, data_sekolah.nama_sekolah,
+		data_sekolah.jenis_sekolah, data_sekolah.provinsi_asal_sekolah, data_sekolah.kota_kabupaten_asal_sekolah,
+		data_sekolah.akreditasi_sekolah, data_sekolah.tahun_lulus, data_sekolah.rekap_nilai_rapot, data_sekolah.rata_rata_nilai_rapot,
+		data_sekolah.peringkat_semester_1, data_sekolah.peringkat_semester_2, data_sekolah.peringkat_semester_3,
+		data_sekolah.peringkat_semester_4, data_sekolah.peringkat_semester_5,
+		program_studi.bukti_pembayaran, program_studi.program_studi_pilihan_1, program_studi.program_studi_pilihan_2,
+		data_prestasi.prestasi_1, data_prestasi.prestasi_2, data_prestasi.prestasi_3, data_prestasi.prestasi_4, data_prestasi.prestasi_5";
+		if ($jalur_pendaftaran != 'pmdp') {
+			$fields .= ", berkas_ktmse_gakin.surat_keterangan_miskin, berkas_ktmse_gakin.surat_keterangan_penghasilan_keluarga, berkas_ktmse_gakin.foto_rumah";
 		}
-		// SELECT * FROM $from JOIN $to ON $from.nisn = $to.nisn
-		// WHERE $from.jalur_pendaftaran=$jalur_pendaftaran;
-		return $this->db->select("*")
-			->from($from)
-			->join($to, "$to.nisn = $from.nisn")
-			->where(["$from.jalur_pendaftaran" => strtoupper($jalur_pendaftaran)])
-			->get()->result_array();
+		$sort_by = strtoupper($sort_by);
+		$this->db->select($fields);
+		$this->db->from('data_pribadi');
+		$this->db->join('data_sekolah', 'data_sekolah.nisn = data_pribadi.nisn');
+		$this->db->join('program_studi', 'program_studi.nisn = data_pribadi.nisn');
+		$this->db->join('data_prestasi', 'data_prestasi.nisn = data_pribadi.nisn');
+		if ($jalur_pendaftaran != 'pmdp') $this->db->join('berkas_ktmse_gakin', 'berkas_ktmse_gakin.nisn = data_pribadi.nisn', 'left outer');
+		if ($jalur_pendaftaran != 'pmdp-ktmse') $this->db->where('data_pribadi.jalur_pendaftaran', strtoupper($jalur_pendaftaran));
+		$this->db->order_by($sort_field, $sort_by);
+		$query = $this->db->get();
+
+		if ($query->num_rows() <= 0) return [];
+		return $query->result_array();
 	}
 
-	public function join_all_tables($jalur_pendaftaran)
+	public function cek_nisn($nisn)
 	{
-		if ($jalur_pendaftaran = 'pmdp') {
-			// SELECT * FROM data_pribadi JOIN data_sekolah ON data_pribadi.nisn = data_sekolah.nisn
-			// JOIN program_studi ON data_pribadi.nisn = program_studi.nisn
-			// JOIN data_prestasi ON data_pribadi.nisn = data_prestasi.nisn
+		return $this->db->get_where('data_pribadi', ['nisn' => $nisn])->num_rows() > 0;
+	}
 
-			return $this->db->select("data_pribadi.*, data_sekolah.*, program_studi.*, data_prestasi.*")
-				->from('data_pribadi')
-				->join('data_sekolah', "data_pribadi.nisn = data_sekolah.nisn")
-				->join('program_studi', "data_pribadi.nisn = program_studi.nisn")
-				->join('data_prestasi', "data_pribadi.nisn = data_prestasi.nisn")
-				->get()->result_array();
-		}
+	public function get_pendaftar_by_nisn($nisn, $jalur_pendaftaran)
+	{
+		/*
+		SELECT
+			data_pribadi.nama_lengkap, data_pribadi.alamat, data_pribadi.kode_pos, data_pribadi.nisn,
+			data_pribadi.no_telepon, data_pribadi.jenis_kelamin, data_pribadi.tinggi_badan, data_pribadi.berat_badan,
+			data_pribadi.tempat_lahir, data_pribadi.tanggal_lahir, data_pribadi.pas_foto, data_pribadi.jalur_pendaftaran,
+			data_sekolah.jenis_pendidikan_menengah, data_sekolah.jurusan, data_sekolah.nama_sekolah,
+			data_sekolah.jenis_sekolah, data_sekolah.provinsi_asal_sekolah, data_sekolah.kota_kabupaten_asal_sekolah,
+			data_sekolah.akreditasi_sekolah, data_sekolah.tahun_lulus, data_sekolah.rekap_nilai_rapot, data_sekolah.rata_rata_nilai_rapot,
+			data_sekolah.peringkat_semester_1, data_sekolah.peringkat_semester_2, data_sekolah.peringkat_semester_3,
+			data_sekolah.peringkat_semester_4, data_sekolah.peringkat_semester_5,
+			program_studi.bukti_pembayaran, program_studi.program_studi_pilihan_1, program_studi.program_studi_pilihan_2,
+			data_prestasi.prestasi_1, data_prestasi.prestasi_2, data_prestasi.prestasi_3, data_prestasi.prestasi_4, data_prestasi.prestasi_5,
+			if $jalur_pendaftaran == 'pmdp' -> berkas_ktmse_gakin.surat_keterangan_miskin, berkas_ktmse_gakin.surat_keterangan_penghasilan_keluarga, berkas_ktmse_gakin.foto_rumah
+		FROM data_pribadi
+		INNER JOIN data_sekolah ON data_pribadi.nisn = data_sekolah.nisn
+		INNER JOIN program_studi ON data_pribadi.nisn = program_studi.nisn
+		INNER JOIN data_prestasi ON data_pribadi.nisn = data_prestasi.nisn
+		if $jalur_pendaftaran == 'pmdp' -> LEFT OUTER JOIN berkas_ktmse_gakin ON data_pribadi.nisn = berkas_ktmse_gakin.nisn
+		WHERE data_pribadi.nisn = $nisn;
+		*/
+		$fields = "data_pribadi.nama_lengkap, data_pribadi.alamat, data_pribadi.kode_pos, data_pribadi.nisn,
+		data_pribadi.no_telepon, data_pribadi.jenis_kelamin, data_pribadi.tinggi_badan, data_pribadi.berat_badan,
+		data_pribadi.tempat_lahir, data_pribadi.tanggal_lahir, data_pribadi.pas_foto, data_pribadi.jalur_pendaftaran,
+		data_sekolah.jenis_pendidikan_menengah, data_sekolah.jurusan, data_sekolah.nama_sekolah,
+		data_sekolah.jenis_sekolah, data_sekolah.provinsi_asal_sekolah, data_sekolah.kota_kabupaten_asal_sekolah,
+		data_sekolah.akreditasi_sekolah, data_sekolah.tahun_lulus, data_sekolah.rekap_nilai_rapot, data_sekolah.rata_rata_nilai_rapot,
+		data_sekolah.peringkat_semester_1, data_sekolah.peringkat_semester_2, data_sekolah.peringkat_semester_3,
+		data_sekolah.peringkat_semester_4, data_sekolah.peringkat_semester_5,
+		program_studi.bukti_pembayaran, program_studi.program_studi_pilihan_1, program_studi.program_studi_pilihan_2,
+		data_prestasi.prestasi_1, data_prestasi.prestasi_2, data_prestasi.prestasi_3, data_prestasi.prestasi_4, data_prestasi.prestasi_5";
 		if ($jalur_pendaftaran == 'ktmse') {
-			// SELECT * FROM data_pribadi JOIN data_sekolah ON data_pribadi.nisn = data_sekolah.nisn
-			// JOIN program_studi ON data_pribadi.nisn = program_studi.nisn
-			// JOIN data_prestasi ON data_pribadi.nisn = data_prestasi.nisn
-			// JOIN berkas_ktmse_gakin ON data_pribadi.nisn = berkas_ktmse_gakin.nisn
-			return $this->db->select("data_pribadi.*, data_sekolah.*, program_studi.*, data_prestasi.*, berkas_ktmse_gakin.*")
-				->from('data_pribadi')
-				->join('data_sekolah', "data_pribadi.nisn = data_sekolah.nisn")
-				->join('program_studi', "data_pribadi.nisn = program_studi.nisn")
-				->join('data_prestasi', "data_pribadi.nisn = data_prestasi.nisn")
-				->join('berkas_ktmse_gakin', "data_pribadi.nisn = berkas_ktmse_gakin.nisn")
-				->get()->result_array();
+			$fields .= ", berkas_ktmse_gakin.surat_keterangan_miskin, berkas_ktmse_gakin.surat_keterangan_penghasilan_keluarga, berkas_ktmse_gakin.foto_rumah";
 		}
-		// $jalur_pendaftaran = 'pmdp-ktmse';
-		// SELECT * FROM data_pribadi
-		// INNER JOIN data_sekolah ON data_pribadi.nisn = data_sekolah.nisn
-		// INNER JOIN program_studi ON data_pribadi.nisn = program_studi.nisn
-		// INNER JOIN data_prestasi ON data_pribadi.nisn = data_prestasi.nisn
-		// LEFT OUTER JOIN berkas_ktmse_gakin ON data_pribadi.nisn = berkas_ktmse_gakin.nisn;
-		return $this->db->select("data_pribadi.*, data_sekolah.*, program_studi.*, data_prestasi.*, berkas_ktmse_gakin.*")
-			->from('data_pribadi')
-			->join('data_sekolah', "data_pribadi.nisn = data_sekolah.nisn", 'inner')
-			->join('program_studi', "data_pribadi.nisn = program_studi.nisn", 'inner')
-			->join('data_prestasi', "data_pribadi.nisn = data_prestasi.nisn", 'inner')
-			->join('berkas_ktmse_gakin', "data_pribadi.nisn = berkas_ktmse_gakin.nisn", 'left outer')
-			->where(['data_pribadi.jalur_pendaftaran' => strtoupper($jalur_pendaftaran)])
-			->get()->result_array();
+		$this->db->select($fields);
+		$this->db->from('data_pribadi');
+		$this->db->join('data_sekolah', 'data_sekolah.nisn = data_pribadi.nisn');
+		$this->db->join('program_studi', 'program_studi.nisn = data_pribadi.nisn');
+		$this->db->join('data_prestasi', 'data_prestasi.nisn = data_pribadi.nisn');
+		if ($jalur_pendaftaran == 'ktmse') $this->db->join('berkas_ktmse_gakin', 'berkas_ktmse_gakin.nisn = data_pribadi.nisn', 'left outer');
+		$this->db->where('data_pribadi.nisn', $nisn);
+		$query = $this->db->get();
+
+		if ($query->num_rows() <= 0) return [];
+		return $query->row_array();
 	}
 
-	public function update_data_by_nisn($table_nama, $data, $nisn)
+	public function update_pendaftar_by_nisn($table_name, $data, $nisn)
 	{
 		// UPDATE $table_nama SET $data WHERE nisn = $nisn;
 		$this->db->where('nisn', $nisn);
-		$this->db->update($table_nama, $data);
+		$this->db->update($table_name, $data);
 	}
 
-	public function delete_data_by_nisn($table_nama, $nisn)
+	public function delete_pendaftar_by_nisn($nisn)
 	{
-		// DELETE FROM $table_nama WHERE nisn = $nisn;
+		// DELETE FROM data_pribadi WHERE nisn = $nisn;
 		$this->db->where('nisn', $nisn);
-		$this->db->delete($table_nama);
-	}
-
-	public function count_rows($table_name)
-	{
-		// SELECT COUNT(*) FROM $table_name;
-		return $this->db->get($table_name)->num_rows();
+		$this->db->delete('data_pribadi');
+		// DELETE FROM data_sekolah WHERE nisn = $nisn;
+		$this->db->where('nisn', $nisn);
+		$this->db->delete('data_sekolah');
+		// DELETE FROM program_studi WHERE nisn = $nisn;
+		$this->db->where('nisn', $nisn);
+		$this->db->delete('program_studi');
+		// DELETE FROM data_prestasi WHERE nisn = $nisn;
+		$this->db->where('nisn', $nisn);
+		$this->db->delete('data_prestasi');
+		// DELETE FROM berkas_ktmse_gakin WHERE nisn = $nisn;
+		$this->db->where('nisn', $nisn);
+		$this->db->delete('berkas_ktmse_gakin');
 	}
 }

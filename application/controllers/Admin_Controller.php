@@ -1,7 +1,5 @@
 <?php
 
-use PhpOffice\PhpSpreadsheet\Calculation\TextData\Replace;
-
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin_Controller extends CI_Controller
@@ -269,5 +267,12 @@ class Admin_Controller extends CI_Controller
 	public function hapus_pendaftar()
 	{
 		// if (!$this->session->userdata('username')) redirect('login');
+
+		$nisn = $this->input->get('nisn');
+		// Cek nilai nisn terdaftar atau tidak
+		if (!$this->Daftar_Model->cek_nisn($nisn)) redirect('admin');
+
+		$this->Daftar_Model->delete_pendaftar_by_nisn($nisn);
+		redirect('data-pendaftar?jalur');
 	}
 }

@@ -147,9 +147,6 @@ class Daftar_Model extends CI_Model
 
 	public function delete_pendaftar_by_nisn($nisn)
 	{
-		// DELETE FROM data_pribadi WHERE nisn = $nisn;
-		$this->db->where('nisn', $nisn);
-		$this->db->delete('data_pribadi');
 		// DELETE FROM data_sekolah WHERE nisn = $nisn;
 		$this->db->where('nisn', $nisn);
 		$this->db->delete('data_sekolah');
@@ -162,5 +159,8 @@ class Daftar_Model extends CI_Model
 		// DELETE FROM berkas_ktmse_gakin WHERE nisn = $nisn;
 		$this->db->where('nisn', $nisn);
 		$this->db->delete('berkas_ktmse_gakin');
+		// DELETE FROM data_pribadi WHERE nisn = $nisn;
+		$this->db->where('nisn', $nisn);
+		$this->db->delete('data_pribadi');
 	}
 }

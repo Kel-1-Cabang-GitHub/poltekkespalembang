@@ -107,7 +107,7 @@
                                 <td class="mw-150"><?= $data['jalur_pendaftaran']; ?></td>
                                 <td class="mw-150"><a class="btn-action btn-primary" href="detail-pendaftar?nisn=<?= $data['nisn'] ?>&jalur=<?= strtolower($data['jalur_pendaftaran']) ?>">Lihat Detail</a></td>
                                 <td class="mw-150"><a class="btn-action btn-primary" href="ubah-pendaftar?nisn=<?= $data['nisn'] ?>&jalur=<?= strtolower($data['jalur_pendaftaran']) ?>">Ubah</a></td>
-                                <td class="mw-150"><a class="btn-action btn-danger hapus-data" id="<?= base_url(); ?>hapus-pendaftar?nisn=<?= $data['nisn'] ?>&jalur=<?= strtolower($data['jalur_pendaftaran']) ?>">Hapus</a></td>
+                                <td class="mw-150"><a class="btn-action btn-danger hapus-data" id="<?= base_url(); ?>hapus-pendaftar?nisn=<?= $data['nisn'] ?>&jalur=<?= $this->input->get('jalur'); ?>">Hapus</a></td>
                             </tr>
                             <?php $counter++; ?>
                         <?php endforeach; ?>

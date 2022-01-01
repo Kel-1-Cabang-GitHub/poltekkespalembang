@@ -207,6 +207,7 @@ class Daftar_Controller extends CI_Controller
 			}
 
 			if ($jalur_pendaftaran = 'ktmse') {
+				// Berkas KTMSE/GAKIN
 				$berkas_ktmse_gakin = [
 					'nisn' => $nisn,
 					'surat_keterangan_miskin' => upload_file(
@@ -239,11 +240,10 @@ class Daftar_Controller extends CI_Controller
 			// Data Prestasi
 			$this->Daftar_Model->insert_data('data_prestasi', $data_prestasi);
 			if ($jalur_pendaftaran = 'ktmse') {
-
-				// Berkas KTMSE Gakin
+				// Berkas KTMSE/GAKIN
 				$this->Daftar_Model->insert_data('berkas_ktmse_gakin', $berkas_ktmse_gakin);
 			}
-			
+
 			$this->session->set_userdata('berhasil-daftar', true);
 
 			// jika jalur pendaftaran lewat pmdp

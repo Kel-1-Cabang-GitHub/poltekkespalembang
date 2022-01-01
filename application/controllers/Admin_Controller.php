@@ -269,10 +269,13 @@ class Admin_Controller extends CI_Controller
 		// if (!$this->session->userdata('username')) redirect('login');
 
 		$nisn = $this->input->get('nisn');
+		$jalur_pendaftaran = $this->input->get('jalur');
 		// Cek nilai nisn terdaftar atau tidak
 		if (!$this->Daftar_Model->cek_nisn($nisn)) redirect('admin');
+		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
+		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
 
 		$this->Daftar_Model->delete_pendaftar_by_nisn($nisn);
-		redirect('data-pendaftar?jalur');
+		redirect("data-pendaftar?jalur=$jalur_pendaftaran");
 	}
 }

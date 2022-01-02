@@ -5,10 +5,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-if (!function_exists('kebab-to-snake')) {
+if (!function_exists('kebab_to_snake')) {
 	function kebab_to_snake($string)
 	{
 		return strtolower(preg_replace('/[^A-Za-z0-9\.]/', '_', $string));
+	}
+}
+
+if (!function_exists('snake_to_kebab')) {
+	function snake_to_kebab($string)
+	{
+		return strtolower(preg_replace('/_/', '-', $string));
 	}
 }
 

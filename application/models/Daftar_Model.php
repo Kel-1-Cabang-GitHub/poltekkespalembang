@@ -9,7 +9,7 @@ class Daftar_Model extends CI_Model
 		return $this->db->insert($table_name, $data);
 	}
 
-	public function data_pendaftar_table($jalur_pendaftaran, $sort_field = 'data_pribadi.nisn', $sort_by = 'ASC')
+	public function data_pendaftar_table($jalur_pendaftaran, $sort_field = 'data_pribadi.nisn', $sort_by = 'ASC', $keyword = '')
 	{
 		/*
 		SELECT
@@ -17,7 +17,11 @@ class Daftar_Model extends CI_Model
 			data_sekolah.nama_sekolah, data_sekolah.jurusan, data_pribadi.jalur_pendaftaran
 		FROM data_pribadi
 		INNER JOIN data_sekolah ON data_pribadi.nisn = data_sekolah.nisn
-		if $jalur_pendaftaran != 'pmdp-ktmse' -> WHERE data_pribadi.jalur_pendaftaran = UPPER('$jalur_pendaftaran')
+		WHERE
+		data_pribadi.nama_lengkap LIKE '%$keyword%' OR data_pribadi.nisn LIKE '%$keyword%' OR
+		data_pribadi.jenis_kelamin LIKE '%$keyword%' OR data_sekolah.nama_sekolah LIKE '%$keyword%' OR
+		data_sekolah.jurusan LIKE '%$keyword%' OR data_pribadi.jalur_pendaftaran LIKE '%$keyword%'
+		if $jalur_pendaftaran != 'pmdp-ktmse' -> AND data_pribadi.jalur_pendaftaran = UPPER('$jalur_pendaftaran')
 		ORDER BY $sort_field $sort_by;
 		*/
 		$fields = "data_pribadi.nama_lengkap, data_pribadi.nisn, data_pribadi.jenis_kelamin,
@@ -26,7 +30,15 @@ class Daftar_Model extends CI_Model
 		$this->db->select($fields);
 		$this->db->from('data_pribadi');
 		$this->db->join('data_sekolah', 'data_pribadi.nisn = data_sekolah.nisn');
-		if ($jalur_pendaftaran != 'pmdp-ktmse') $this->db->where('data_pribadi.jalur_pendaftaran', strtoupper($jalur_pendaftaran));
+		if ($jalur_pendaftaran != 'pmdp-ktmse') {
+			$this->db->where('data_pribadi.jalur_pendaftaran', strtoupper($jalur_pendaftaran));
+		}
+		$this->db->where("LOWER(data_pribadi.nama_lengkap) LIKE LOWER('%$keyword%')");
+		$this->db->or_where("data_pribadi.nisn LIKE '%$keyword%'");
+		$this->db->or_where("LOWER(data_pribadi.jenis_kelamin) LIKE LOWER('%$keyword%')");
+		$this->db->or_where("LOWER(data_sekolah.nama_sekolah) LIKE LOWER('%$keyword%')");
+		$this->db->or_where("LOWER(data_sekolah.jurusan) LIKE LOWER('%$keyword%')");
+		$this->db->or_where("LOWER(data_pribadi.jalur_pendaftaran) LIKE LOWER('%$keyword%')");
 		$this->db->order_by($sort_field, $sort_by);
 		$query = $this->db->get();
 
@@ -90,7 +102,7 @@ class Daftar_Model extends CI_Model
 		return $this->db->get_where('data_pribadi', ['nisn' => $nisn])->num_rows() > 0;
 	}
 
-	public function get_pendaftar_by_nisn($nisn, $jalur_pendaftaran)
+	public function get_pendaftar_by_nisn($nisn)
 	{
 		/*
 		SELECT
@@ -121,16 +133,14 @@ class Daftar_Model extends CI_Model
 		data_sekolah.peringkat_semester_1, data_sekolah.peringkat_semester_2, data_sekolah.peringkat_semester_3,
 		data_sekolah.peringkat_semester_4, data_sekolah.peringkat_semester_5,
 		program_studi.bukti_pembayaran, program_studi.program_studi_pilihan_1, program_studi.program_studi_pilihan_2,
-		data_prestasi.prestasi_1, data_prestasi.prestasi_2, data_prestasi.prestasi_3, data_prestasi.prestasi_4, data_prestasi.prestasi_5";
-		if ($jalur_pendaftaran == 'ktmse') {
-			$fields .= ", berkas_ktmse_gakin.surat_keterangan_miskin, berkas_ktmse_gakin.surat_keterangan_penghasilan_keluarga, berkas_ktmse_gakin.foto_rumah";
-		}
+		data_prestasi.prestasi_1, data_prestasi.prestasi_2, data_prestasi.prestasi_3, data_prestasi.prestasi_4, data_prestasi.prestasi_5,
+		berkas_ktmse_gakin.surat_keterangan_miskin, berkas_ktmse_gakin.surat_keterangan_penghasilan_keluarga, berkas_ktmse_gakin.foto_rumah";
 		$this->db->select($fields);
 		$this->db->from('data_pribadi');
 		$this->db->join('data_sekolah', 'data_sekolah.nisn = data_pribadi.nisn');
 		$this->db->join('program_studi', 'program_studi.nisn = data_pribadi.nisn');
 		$this->db->join('data_prestasi', 'data_prestasi.nisn = data_pribadi.nisn');
-		if ($jalur_pendaftaran == 'ktmse') $this->db->join('berkas_ktmse_gakin', 'berkas_ktmse_gakin.nisn = data_pribadi.nisn', 'left outer');
+		$this->db->join('berkas_ktmse_gakin', 'berkas_ktmse_gakin.nisn = data_pribadi.nisn', 'left outer');
 		$this->db->where('data_pribadi.nisn', $nisn);
 		$query = $this->db->get();
 
@@ -162,5 +172,29 @@ class Daftar_Model extends CI_Model
 		// DELETE FROM data_pribadi WHERE nisn = $nisn;
 		$this->db->where('nisn', $nisn);
 		$this->db->delete('data_pribadi');
+
+		// Bukti Pembayaran
+		@unlink(FCPATH . "uploads/img/bukti_pembayaran/bukti_pembayaran_$nisn.jpg");
+		@unlink(FCPATH . "uploads/img/bukti_pembayaran/bukti_pembayaran_$nisn.jpeg");
+		@unlink(FCPATH . "uploads/img/bukti_pembayaran/bukti_pembayaran_$nisn.png");
+
+		// Pas Foto
+		@unlink(FCPATH . "uploads/img/pas_foto/pas_foto_$nisn.jpg");
+		@unlink(FCPATH . "uploads/img/pas_foto/pas_foto_$nisn.jpeg");
+		@unlink(FCPATH . "uploads/img/pas_foto/pas_foto_$nisn.png");
+
+		// Rekap Nilai Rapot
+		@unlink(FCPATH . "uploads/xlsx/rekap_nilai_rapot/rekap_nilai_rapot_$nisn.xls");
+		@unlink(FCPATH . "uploads/xlsx/rekap_nilai_rapot/rekap_nilai_rapot_$nisn.xlsx");
+
+		// Prestasi 1 - 5
+		for ($i = 1; $i <= 5; $i++) @unlink(FCPATH . "uploads/pdf/prestasi/prestasi_$i\_$nisn.pdf");
+
+		// Surat Keterangan Miskin
+		@unlink(FCPATH . "uploads/pdf/surat_keterangan_miskin/surat_keterangan_miskin_$nisn.pdf");
+		// Surat Keterangan Penghasilan Keluarga
+		@unlink(FCPATH . "uploads/pdf/surat_keterangan_penghasilan_keluarga/surat_keterangan_penghasilan_keluarga_$nisn.pdf");
+		// Foto Rumah
+		@unlink(FCPATH . "uploads/img/foto_rumah/foto_rumah_$nisn.jpg");
 	}
 }

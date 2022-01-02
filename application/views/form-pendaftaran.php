@@ -42,7 +42,7 @@
                 <h2>Upload Berkas</h2>
             </div>
             <div class="form">
-                <form action="form-pendaftaran?jalur=<?= $this->input->get('jalur'); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url() ?>Daftar_Controller/form_pendaftaran" method="POST" enctype="multipart/form-data">
                     <!-- <?= validation_errors() ?> -->
                     <div class="confirm-alert" id="confirm-alert">
                         <div class="ca-head">
@@ -389,15 +389,15 @@
                         </div>
                         <div class="btn-page">
                             <a class="a-btn btn-primary btn-page" id="prodi">Sebelumnya</a>
-                            <?php if($_GET["jalur"] === "pmdp"): ?>
+                            <?php if($this->uri->segment(2) === "pmdp"): ?>
                                 <a class="a-btn btn-success simpan-data">Simpan</a>
 							<?php endif; ?>
-                            <?php if($_GET["jalur"] === "ktmse"): ?>
+                            <?php if($this->uri->segment(2) === "ktmse"): ?>
                                 <a class="a-btn btn-success btn-page2" id="berkas">Selanjutnya</a>
                             <?php endif; ?>
                         </div>
                     </div>
-                    <?php if($_GET["jalur"] === "ktmse"): ?>
+                    <?php if($this->uri->segment(2) === "ktmse"): ?>
                     <div class="table-form berkas" id="berkas">
                         <h3>Peserta yang memilih jalur KTMSE/GAKIN. wajib mengupload berkas-berkas sebagai berikut</h3>
                         <div class="list">

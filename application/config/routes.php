@@ -55,19 +55,19 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Daftar Controller
 $route['pilih-jalur'] = 'Daftar_Controller/pilih_jalur';
-$route['form-pendaftaran'] = 'Daftar_Controller/form_pendaftaran';
+$route['form-pendaftaran/(pmdp|ktmse)'] = 'Daftar_Controller/form_pendaftaran';
 $route['terima-kasih'] = 'Daftar_Controller/terima_kasih';
 
 // Admin Controller
 $route['admin'] = 'Admin_Controller/admin';
-$route['login'] = 'Admin_Controller/login';
-$route['logout'] = 'Admin_Controller/logout';
-$route['settings'] = 'Admin_Controller/settings';
+$route['admin/login'] = 'Admin_Controller/login';
+$route['admin/logout'] = 'Admin_Controller/logout';
+$route['admin/settings'] = 'Admin_Controller/settings';
 // $route['update-profile'] = 'Admin_Controller/update_profile';
 // $route['change-password'] = 'Admin_Controller/change_password';
-$route['data-pendaftar/detail/:any'] = 'Admin_Controller/detail_pendaftar';
-$route['data-pendaftar/ubah/:any'] = 'Admin_Controller/ubah_pendaftar';
-$route['data-pendaftar/hapus/:any'] = 'Admin_Controller/hapus_pendaftar';
-$route['data-pendaftar'] = 'Admin_Controller/data_pendaftar';
-$route['cari-pendaftar'] = 'Admin_Controller/cari_pendaftar';
-$route['export-to-excel'] = 'Admin_Controller/export_to_excel';
+// use regex
+$route['admin/data-pendaftar/detail/:any'] = 'Admin_Controller/detail_pendaftar';
+$route['admin/data-pendaftar/ubah/:any'] = 'Admin_Controller/ubah_pendaftar';
+$route['admin/data-pendaftar/(pmdp|ktmse|pmdp-ktmse)/hapus/:any'] = 'Admin_Controller/hapus_pendaftar';
+$route['admin/data-pendaftar/(pmdp|ktmse|pmdp-ktmse)/export'] = 'Admin_Controller/export_to_excel';
+$route['admin/data-pendaftar/(pmdp|ktmse|pmdp-ktmse)'] = 'Admin_Controller/data_pendaftar';

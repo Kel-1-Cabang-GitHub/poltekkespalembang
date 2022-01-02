@@ -68,6 +68,7 @@ if (!function_exists('insert_data_into_spreadsheet')) {
 if (!function_exists('save_spreadsheet')) {
 	function save_spreadsheet($spreadsheet, $jalur_pendaftaran)
 	{
+		$jalur_pendaftaran = kebab_to_snake($jalur_pendaftaran);
 		$writer = new Xlsx($spreadsheet);
 		$writer->save("exports/xlsx/data_pendaftar_$jalur_pendaftaran.xlsx");
 		header("Content-Type: application/vnd.ms-excel");

@@ -14,13 +14,14 @@ class Admin_Controller extends CI_Controller
 
 	public function admin()
 	{
-		// if (!$this->session->userdata('username')) redirect('login');
+		// if (!$this->session->userdata('username')) redirect('admin/login');
+
 		$this->load->view('index-admin');
 	}
 
 	public function login()
 	{
-		if ($this->session->userdata('username')) redirect();
+		if ($this->session->userdata('username')) redirect('admin');
 
 		$this->form_validation->set_rules('username', 'Username', 'required|trim', [
 			'required' => '*{field} harus diisi!'
@@ -36,9 +37,9 @@ class Admin_Controller extends CI_Controller
 			$admin = $this->Admin_Model->get_admin_data($username);
 
 			// Username belum terdaftar
-			if (!$admin) redirect('login');
+			if (!$admin) redirect('admin/login');
 			// Password salah
-			if (hash('sha256', $password) != str_replace('\x', '', $admin['password'])) redirect('login');
+			if (hash('sha256', $password) != str_replace('\x', '', $admin['password'])) redirect('admin/login');
 
 			$data = [
 				'username' => $admin['username'],
@@ -58,14 +59,14 @@ class Admin_Controller extends CI_Controller
 		if ($this->session->userdata('username')) {
 			$this->session->unset_userdata('username');
 			$this->session->sess_destroy();
-			redirect('login');
+			redirect('admin/login');
 		}
-		redirect();
+		redirect('admin');
 	}
 
 	public function settings()
 	{
-		// if (!$this->session->userdata('username')) redirect('login');
+		// if (!$this->session->userdata('username')) redirect('admin/login');
 
 		$data['user'] = $this->Admin_Model->get_admin_data($this->session->userdata('username'));
 
@@ -74,7 +75,7 @@ class Admin_Controller extends CI_Controller
 
 	public function update_profile()
 	{
-		// if ($this->session->userdata('username')) redirect();
+		// if (!$this->session->userdata('username')) redirect('admin/login');
 
 		// $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]', [
 		// 	'required' => '{field} harus diisi!',
@@ -84,7 +85,7 @@ class Admin_Controller extends CI_Controller
 		// 	'required' => '{field} harus diisi!'
 		// ]);
 
-		// if ($this->form_validation->run() == false) redirect('profile');
+		// if ($this->form_validation->run() == false) redirect('admin/settings');
 
 		// $user = $this->Admin_Model->get_admin_data($this->session->userdata('username'));
 		// $username = $this->input->post('username');
@@ -123,13 +124,13 @@ class Admin_Controller extends CI_Controller
 
 		// 	$this->Admin_Model->update_profile($this->session->userdata('username'), $data);
 
-		// 	redirect('profile');
+		// 	redirect('admin/settings');
 		// }
 	}
 
 	public function change_password()
 	{
-		// if (!$this->session->userdata('username')) redirect();
+		// if (!$this->session->userdata('username')) redirect(admin/login);
 
 		// $this->form_validation->set_rules('old_password', 'Password Lama', 'required|trim', [
 		// 	'required' => '{field} harus diisi!'
@@ -144,40 +145,39 @@ class Admin_Controller extends CI_Controller
 		// 	'min_length' => '{field} tidak cocok!'
 		// ]);
 
-		// if ($this->form_validation->run() == false) redirect('profile');
+		// if ($this->form_validation->run() == false) redirect('admin/settings');
 
 		// $user = $this->Admin_Model->get_admin_data($this->session->userdata('username'));
 		// $old_password = $this->input->post('old_password');
 		// $new_password = $this->input->post('new_password');
 
 		// // Inputan password lama tidak sama dengan password yang ada di database
-		// if (!password_verify($old_password, $user['password'])) redirect('profile');
+		// if (!password_verify($old_password, $user['password'])) redirect('admin/settings');
 		// // Password baru sama dengan password lama yang diinputkan
-		// if ($old_password == $new_password) redirect('profile');
+		// if ($old_password == $new_password) redirect('admin/settings');
 		// // Password baru sama dengan password lama yang ada di database
-		// if (!password_verify($new_password, $user['password'])) redirect('profile');
+		// if (!password_verify($new_password, $user['password'])) redirect('admin/settings');
 
 		// $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
 		// $this->Admin_Model->change_password($this->session->userdata('username'), $hashed_password);
 
-		// redirect('profile');
+		// redirect('admin/settings');
 	}
 
 	public function data_pendaftar()
 	{
-		// if (!$this->session->userdata('username')) redirect();
+		// if (!$this->session->userdata('username')) redirect('admin/login');
 
-		$jalur_pendaftaran = $this->input->get('jalur');
+		$jalur_pendaftaran = $this->uri->segment(3);
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
 		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
 
-		$sort_field = 'data_pribadi.nisn';
-		$sort_by = 'ASC';
-		if ($this->input->get('field') && $this->input->get('sort')) {
-			$sort_field = kebab_to_snake($this->input->get('field'));
-			$sort_by = $this->input->get('sort');
-		}
+		$sort_field = 'nisn';
+		$sort_by = 'asc';
+
+		if ($this->input->get('field')) $sort_field = kebab_to_snake($this->input->get('field'));
+		if ($this->input->get('sort')) $sort_by = $this->input->get('sort');
 
 		if (
 			$sort_field != 'nama_lengkap' &&
@@ -186,36 +186,31 @@ class Admin_Controller extends CI_Controller
 			$sort_field != 'nama_sekolah' &&
 			$sort_field != 'jurusan' &&
 			$sort_field != 'jalur_pendaftaran'
-		) {
-			$sort_field = 'data_pribadi.nisn';
-		}
-		if ($sort_by != 'asc' && $sort_by != 'desc') $sort_by = 'ASC';
+		) $sort_field = 'nisn';
+		if ($sort_by != 'asc' && $sort_by != 'desc') $sort_by = 'asc';
 
 		$keyword = '';
-		if ($this->input->get('keyword')) $keyword = $this->input->get('keyword');
-
+		if ($this->input->get('q')) $keyword = $this->input->get('q');
 		$data = [
 			'jalur' => strtoupper($jalur_pendaftaran),
-			'data_pendaftar' => $this->Daftar_Model->data_pendaftar_table($jalur_pendaftaran, $sort_field, $sort_by, $keyword),
+			'data_pendaftar' => $this->Daftar_Model->data_pendaftar_table($jalur_pendaftaran, $sort_field, $sort_by, $keyword)
 		];
-
 		$this->load->view('data-pendaftar', $data);
 	}
 
 	public function cari_pendaftar()
 	{
-		// if (!$this->session->userdata('username')) redirect();
+		// if (!$this->session->userdata('username')) redirect('admin/login');
 
 		$jalur_pendaftaran = $this->input->get('search_jalur');
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
 		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
 
-		$sort_field = 'data_pribadi.nisn';
-		$sort_by = 'ASC';
-		if ($this->input->get('search_field') && $this->input->get('search_sort')) {
-			$sort_field = kebab_to_snake($this->input->get('search_field'));
-			$sort_by = $this->input->get('search_sort');
-		}
+		$sort_field = 'nisn';
+		$sort_by = 'asc';
+
+		if ($this->input->get('field')) $sort_field = kebab_to_snake($this->input->get('field'));
+		if ($this->input->get('sort')) $sort_by = $this->input->get('sort');
 
 		if (
 			$sort_field != 'nama_lengkap' &&
@@ -224,23 +219,25 @@ class Admin_Controller extends CI_Controller
 			$sort_field != 'nama_sekolah' &&
 			$sort_field != 'jurusan' &&
 			$sort_field != 'jalur_pendaftaran'
-		) {
-			$sort_field = 'data_pribadi.nisn';
-		}
-		if ($sort_by != 'asc' && $sort_by != 'desc') $sort_by = 'ASC';
+		) $sort_field = 'nisn';
+		if ($sort_by != 'asc' && $sort_by != 'desc') $sort_by = 'asc';
 
 		$keyword = $this->input->get('search_keyword');
 		if (preg_match('/^\s*$/', $keyword)) $keyword = '';
 		$keyword = trim($keyword);
 
-		redirect("data-pendaftar?jalur=$jalur_pendaftaran&field=$sort_field&sort=$sort_by&keyword=$keyword");
+		$redirect_path = "admin/data-pendaftar/$jalur_pendaftaran";
+		if ($sort_field != 'nisn') $redirect_path .= '?field=' . snake_to_kebab($sort_field);
+		$redirect_path .= (($sort_by != 'asc') ? ((($sort_field == 'nisn') ? '?' : '&') . "sort=$sort_by") : '');
+		$redirect_path .= (($keyword != '') ? ((($sort_field == 'nisn' &&  $sort_by == 'asc') ? '?' : '&') . "q=$keyword") : '');
+		redirect($redirect_path);
 	}
 
 	public function export_to_excel()
 	{
-		// if (!$this->session->userdata('username')) redirect('login');
+		// if (!$this->session->userdata('username')) redirect('admin/login');
 
-		$jalur_pendaftaran = $this->input->get('jalur');
+		$jalur_pendaftaran = $this->uri->segment(3);
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
 		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
 
@@ -270,9 +267,9 @@ class Admin_Controller extends CI_Controller
 
 	public function detail_pendaftar()
 	{
-		// if (!$this->session->userdata('username')) redirect('login');
+		// if (!$this->session->userdata('username')) redirect('admin/login');
 
-		$nisn = $this->uri->segment(3, 0);
+		$nisn = $this->uri->segment(4);
 		// Cek nisn terdaftar atau tidak
 		if (!$this->Daftar_Model->cek_nisn($nisn)) redirect('admin');
 
@@ -285,9 +282,9 @@ class Admin_Controller extends CI_Controller
 
 	public function ubah_pendaftar()
 	{
-		// if (!$this->session->userdata('username')) redirect('login');
+		// if (!$this->session->userdata('username')) redirect('admin/login');
 
-		$nisn = $this->uri->segment(3, 0);
+		$nisn = $this->uri->segment(4);
 		// Cek nilai nisn terdaftar atau tidak
 		if (!$this->Daftar_Model->cek_nisn($nisn)) redirect('admin');
 
@@ -296,16 +293,36 @@ class Admin_Controller extends CI_Controller
 
 	public function hapus_pendaftar()
 	{
-		// if (!$this->session->userdata('username')) redirect('login');
+		// if (!$this->session->userdata('username')) redirect('admin/login');
 
-		$nisn = $this->uri->segment(3, 0);
-		$jalur_pendaftaran = $this->input->get('jalur');
+		$nisn = $this->uri->segment(5);
+		$jalur_pendaftaran = $this->uri->segment(3);
 		// Cek nilai nisn terdaftar atau tidak
 		if (!$this->Daftar_Model->cek_nisn($nisn)) redirect('admin');
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
 		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
 
+		$sort_field = 'nisn';
+		$sort_by = 'asc';
+
+		if ($this->input->get('field')) $sort_field = kebab_to_snake($this->input->get('field'));
+		if ($this->input->get('sort')) $sort_by = $this->input->get('sort');
+
+		if (
+			$sort_field != 'nama_lengkap' &&
+			$sort_field != 'nisn' &&
+			$sort_field != 'jenis_kelamin' &&
+			$sort_field != 'nama_sekolah' &&
+			$sort_field != 'jurusan' &&
+			$sort_field != 'jalur_pendaftaran'
+		) $sort_field = 'nisn';
+		if ($sort_by != 'asc' && $sort_by != 'desc') $sort_by = 'asc';
+
+		$redirect_path = "admin/data-pendaftar/$jalur_pendaftaran";
+		if ($sort_field != 'nisn') $redirect_path .= '?field=' . snake_to_kebab($sort_field);
+		$redirect_path .= (($sort_by != 'asc') ? ((($sort_field == 'nisn') ? '?' : '&') . "sort=$sort_by") : '');
+
 		$this->Daftar_Model->delete_pendaftar_by_nisn($nisn);
-		redirect("data-pendaftar?jalur=$jalur_pendaftaran");
+		redirect($redirect_path);
 	}
 }

@@ -9,7 +9,7 @@ class Daftar_Model extends CI_Model
 		return $this->db->insert($table_name, $data);
 	}
 
-	public function data_pendaftar_table($jalur_pendaftaran, $sort_field = 'data_pribadi.nisn', $sort_by = 'ASC', $keyword = '')
+	public function data_pendaftar_table($jalur_pendaftaran, $sort_field = 'nisn', $sort_by = 'ASC', $keyword = '')
 	{
 		/*
 		SELECT
@@ -18,9 +18,9 @@ class Daftar_Model extends CI_Model
 		FROM data_pribadi
 		INNER JOIN data_sekolah ON data_pribadi.nisn = data_sekolah.nisn
 		WHERE
-		data_pribadi.nama_lengkap LIKE '%$keyword%' OR data_pribadi.nisn LIKE '%$keyword%' OR
-		data_pribadi.jenis_kelamin LIKE '%$keyword%' OR data_sekolah.nama_sekolah LIKE '%$keyword%' OR
-		data_sekolah.jurusan LIKE '%$keyword%' OR data_pribadi.jalur_pendaftaran LIKE '%$keyword%'
+		LOWER(data_pribadi.nama_lengkap) LIKE LOWER('%$keyword%') OR LOWER(data_pribadi.nisn) LIKE LOWER('%$keyword%') OR
+		LOWER(data_pribadi.jenis_kelamin) LIKE LOWER('%$keyword%') OR LOWER(data_sekolah.nama_sekolah) LIKE LOWER('%$keyword%') OR
+		LOWER(data_sekolah.jurusan) LIKE LOWER('%$keyword%') OR LOWER(data_pribadi.jalur_pendaftaran) LIKE LOWER('%$keyword%')
 		if $jalur_pendaftaran != 'pmdp-ktmse' -> AND data_pribadi.jalur_pendaftaran = UPPER('$jalur_pendaftaran')
 		ORDER BY $sort_field $sort_by;
 		*/
@@ -30,15 +30,15 @@ class Daftar_Model extends CI_Model
 		$this->db->select($fields);
 		$this->db->from('data_pribadi');
 		$this->db->join('data_sekolah', 'data_pribadi.nisn = data_sekolah.nisn');
-		if ($jalur_pendaftaran != 'pmdp-ktmse') {
-			$this->db->where('data_pribadi.jalur_pendaftaran', strtoupper($jalur_pendaftaran));
-		}
-		$this->db->where("LOWER(data_pribadi.nama_lengkap) LIKE LOWER('%$keyword%')");
-		$this->db->or_where("data_pribadi.nisn LIKE '%$keyword%'");
-		$this->db->or_where("LOWER(data_pribadi.jenis_kelamin) LIKE LOWER('%$keyword%')");
-		$this->db->or_where("LOWER(data_sekolah.nama_sekolah) LIKE LOWER('%$keyword%')");
-		$this->db->or_where("LOWER(data_sekolah.jurusan) LIKE LOWER('%$keyword%')");
-		$this->db->or_where("LOWER(data_pribadi.jalur_pendaftaran) LIKE LOWER('%$keyword%')");
+		$this->db->group_start();
+		$this->db->like('LOWER(data_pribadi.nama_lengkap)', strtolower($keyword));
+		$this->db->or_like('LOWER(data_pribadi.nisn)', strtolower($keyword));
+		$this->db->or_like('LOWER(data_pribadi.jenis_kelamin)', strtolower($keyword));
+		$this->db->or_like('LOWER(data_sekolah.nama_sekolah)', strtolower($keyword));
+		$this->db->or_like('LOWER(data_sekolah.jurusan)', strtolower($keyword));
+		$this->db->or_like('LOWER(data_pribadi.jalur_pendaftaran)', strtolower($keyword));
+		$this->db->group_end();
+		if ($jalur_pendaftaran != 'pmdp-ktmse') $this->db->where('data_pribadi.jalur_pendaftaran', strtoupper($jalur_pendaftaran));
 		$this->db->order_by($sort_field, $sort_by);
 		$query = $this->db->get();
 
@@ -46,7 +46,7 @@ class Daftar_Model extends CI_Model
 		return $query->result_array();
 	}
 
-	public function join_all_tables($jalur_pendaftaran, $sort_field = 'data_pribadi.nisn', $sort_by = 'ASC')
+	public function join_all_tables($jalur_pendaftaran, $sort_field = 'nisn', $sort_by = 'ASC')
 	{
 		/*
 		SELECT

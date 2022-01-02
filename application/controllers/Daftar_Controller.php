@@ -17,7 +17,7 @@ class Daftar_Controller extends CI_Controller
 
 	public function form_pendaftaran()
 	{
-		$jalur_pendaftaran = $this->input->get('jalur');
+		$jalur_pendaftaran = $this->uri->segment(2);
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp' atau 'ktmse', user akan di redirect() ke halaman utama
 		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse') redirect();
 
@@ -37,9 +37,10 @@ class Daftar_Controller extends CI_Controller
 			'required' => '*{field} harus diisi!',
 			'is_unique' => '*{field} sudah terdaftar!'
 		]);
-		$this->form_validation->set_rules('no_telepon', 'No. Telp/HP', 'required|is_unique[data_pribadi.no_telepon]|regex_match[/^0\d{9,}$/]', [
+		$this->form_validation->set_rules('no_telepon', 'No. Telp/HP', 'required|is_unique[data_pribadi.no_telepon]|min_length[10]|regex_match[/^0\d{9,}$/]', [
 			'required' => '*{field} harus diisi!',
 			'is_unique' => '*{field} sudah terdaftar!',
+			'min_length' => '*{field} minimal terdiri dari 10 angka!',
 			'regex_match' => '*{field} harus berupa angka dan dimulai dari angka 0!'
 		]);
 		$this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required', [

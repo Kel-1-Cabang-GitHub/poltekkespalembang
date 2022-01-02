@@ -26,7 +26,7 @@
             <h2>Terima kasih telah mendaftar</h2>
             <h2>di Poltekkes Kemenkes Palembang</h2>
             <span class="space"></span>
-	        <a class="a-btn btn-primary" href="pilih-jalur">Kembali</a>
+	        <a class="a-btn btn-primary" href="<?= base_url() ?>">Kembali</a>
         </div>
     </main>
 </body>

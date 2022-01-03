@@ -35,7 +35,7 @@
                 </div>
                 <h2>Detail Pendaftar</h2>
                 <div class="data-detail">
-                    <img id="detail-foto" src="<?= base_url()?>assets/img/people.png" alt="logo">
+                    <img id="detail-foto" src="<?= base_url()?>assets/img/people.png" alt="foto-pendaftar">
                     <div class="tabel-detail">
                         <table class="detail"></table>
                     </div>

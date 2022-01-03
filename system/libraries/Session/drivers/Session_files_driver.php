@@ -353,14 +353,15 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 	 * Deletes expired sessions
 	 *
 	 * @param	int 	$maxlifetime	Maximum lifetime of sessions
-	 * @return	bool
+	 * @return	int|false
 	 */
 	public function gc($maxlifetime)
 	{
 		if ( ! is_dir($this->_config['save_path']) OR ($directory = opendir($this->_config['save_path'])) === FALSE)
 		{
 			log_message('debug', "Session: Garbage collector couldn't list files under directory '".$this->_config['save_path']."'.");
-			return $this->_failure;
+			// return $this->_failure;
+			return 0;
 		}
 
 		$ts = time() - $maxlifetime;
@@ -390,7 +391,8 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 
 		closedir($directory);
 
-		return $this->_success;
+		// return $this->_success;
+		return 1;
 	}
 
 	// --------------------------------------------------------------------

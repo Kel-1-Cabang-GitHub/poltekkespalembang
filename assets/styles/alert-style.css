@@ -52,8 +52,8 @@ div.ca-head {
 	display: flex;
 	align-items: center;
 }
-div.ca-head.danger{
-    background-color: var(--merah);
+div.ca-head.danger {
+	background-color: var(--merah);
 }
 div.ca-head svg {
 	color: var(--putih);

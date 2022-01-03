@@ -4,7 +4,7 @@ main {
 	align-items: center;
 	padding: 50px 0px;
 }
-div#setting{
+div#setting {
 	display: flex;
 	width: 100%;
 	padding: 10px;
@@ -12,7 +12,7 @@ div#setting{
 	margin-top: -50px;
 	margin-bottom: 15px;
 }
-div#setting svg:hover{
+div#setting svg:hover {
 	fill: #83a342;
 }
 div.container {

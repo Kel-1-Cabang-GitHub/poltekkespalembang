@@ -89,7 +89,7 @@ div.data table.table-head,table.table-body{
     height: 76px;
     box-shadow: 0px 5px 21px 6px rgba(0, 0, 0, 0.19);
 }
-th, td{
+div.data th, div.data td{
     padding: 10px;
     min-width: 200px;
 }
@@ -152,4 +152,55 @@ a.a-btn{
 a:hover{
     cursor: pointer;
     opacity: 0.8;
+}
+div.detail-pendaftar{
+    display: none;
+    align-items: center;
+    padding: 15px;
+    flex-direction: column;
+    position: fixed;
+    overflow: auto;
+    background-color: white;
+    width: 95%;
+    max-width: 1000px;
+    height: 600px;
+    top: 50%;
+    margin-top: -300px;    
+    box-shadow: 15px 21px 65px 11px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    z-index: 2;
+}
+div.detail-pendaftar.active{
+    display: flex;
+}
+div.close-btn{
+    width: 100%;
+    display: flex;
+    position: absolute;
+    justify-content: flex-end;
+    margin-top: -10px;
+    margin-right: 15px;
+}
+div.close-btn svg{
+    fill: var(--merah);
+}
+div.detail-pendaftar h2{
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+div.data-detail{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+}
+div.detail-pendaftar img{
+    width: 230px;
+    height: 250px;
+    margin-right: 40px;
+    border: 1px solid;
+}
+table.detail td{
+    padding: 10px;
 }

@@ -25,7 +25,7 @@
             <a href="<?= base_url() ?>form-pendaftaran/pmdp">
                 <div class="card">
                     <div class="img">
-                        <img src="<?= base_url() ?>assets/img/login.png" alt="logo login">
+                        <img src="<?= base_url() ?>assets/img/daftar.png" alt="logo login">
                     </div>
                     <p>Jalur Penelusuran Minat dan Prestasi (PMDP)</p>
                 </div>
@@ -33,7 +33,7 @@
             <a href="<?= base_url() ?>form-pendaftaran/ktmse">
                 <div class="card">
                     <div class="img">
-                        <img src="<?= base_url() ?>assets/img/login.png" alt="logo login">
+                        <img src="<?= base_url() ?>assets/img/daftar.png" alt="logo login">
                     </div>
                     <p>Jalur Keluarga Tidak Mampu secara Ekonomi (KTMSE) / Keluarga Miskin (GAKIN)</p>
                 </div>

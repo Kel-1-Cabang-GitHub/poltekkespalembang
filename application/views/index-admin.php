@@ -30,7 +30,7 @@
             <a href="<?= base_url() ?>admin/data-pendaftar/pmdp">
                 <div class="card">
                     <div class="img">
-                        <img src="<?= base_url() ?>assets/img/login.png" alt="logo login">
+                        <img src="<?= base_url() ?>assets/img/people.png" alt="logo login">
                     </div>
                     <p>Jalur Penelusuran Minat dan Prestasi (PMDP)</p>
                 </div>
@@ -38,7 +38,7 @@
             <a href="<?= base_url() ?>admin/data-pendaftar/ktmse">
                 <div class="card">
                     <div class="img">
-                        <img src="<?= base_url() ?>assets/img/login.png" alt="logo login">
+                        <img src="<?= base_url() ?>assets/img/people.png" alt="logo login">
                     </div>
                     <p>Jalur Keluarga Tidak Mampu secara Ekonomi (KTMSE) / Keluarga Miskin (GAKIN)</p>
                 </div>
@@ -46,7 +46,7 @@
             <a href="<?= base_url() ?>admin/data-pendaftar/pmdp-ktmse">
                 <div class="card">
                     <div class="img">
-                        <img src="<?= base_url() ?>assets/img/login.png" alt="logo login">
+                        <img src="<?= base_url() ?>assets/img/people.png" alt="logo login">
                     </div>
                     <p>Semua Jalur (PMDP & KTMSE/GAKIN)</p>
                 </div>

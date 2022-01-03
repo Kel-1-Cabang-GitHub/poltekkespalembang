@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/alert-style.css">
     <script defer src="<?= base_url() ?>assets/scripts/nav-script.js"></script>
     <script defer src="<?= base_url() ?>assets/scripts/admin-script.js"></script>
+    <script>
+        let data_obj = {};
+        let get_arr_data;
+        let nisn;
+    </script>
 </head>
 <body>
     <div class="container">
@@ -24,6 +29,18 @@
             </nav>
         </header>
         <main>
+            <div class="detail-pendaftar">
+                <div class="close-btn">
+                    <a class="close detail"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></a>
+                </div>
+                <h2>Detail Pendaftar</h2>
+                <div class="data-detail">
+                    <img id="detail-foto" src="<?= base_url()?>assets/img/people.png" alt="logo">
+                    <div class="tabel-detail">
+                        <table class="detail"></table>
+                    </div>
+                </div>
+            </div>
             <div class="confirm-alert" id="confirm-alert">
                 <div class="ca-head danger">
                     <svg xmlns="http://www.w3.org/2000/svg" height="46px" viewBox="0 0 24 24" width="46px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
@@ -100,6 +117,11 @@
                 <table class="table-body">
                     <tbody>
                         <?php foreach ($data_pendaftar as $key => $data): ?>
+                            <script>
+                                get_arr_data = <?= json_encode($data); ?>;
+                                nisn = get_arr_data["nisn"];
+                                data_obj[nisn] = get_arr_data;
+                            </script>
                             <tr>
                                 <td class="mw-100"><?= $counter; ?></td>
                                 <td><?= $data['nama_lengkap']; ?></td>
@@ -108,7 +130,8 @@
                                 <td><?= $data['nama_sekolah']; ?></td>
                                 <td class="mw-150"><?= $data['jurusan']; ?>
                                 <td class="mw-150"><?= $data['jalur_pendaftaran']; ?></td>
-                                <td class="mw-150"><a class="btn-action btn-primary" href="<?= base_url() ?>admin/data-pendaftar/detail/<?= $data['nisn'] ?>">Lihat Detail</a></td>
+                                <!-- <td class="mw-150"><a class="btn-action btn-primary" href="<?= base_url() ?>admin/data-pendaftar/detail/<?= $data['nisn'] ?>">Lihat Detail</a></td> -->
+                                <td class="mw-150"><a class="btn-action btn-primary detail-data" id="<?= $data['nisn']; ?>">Lihat Detail</a></td>
                                 <td class="mw-150"><a class="btn-action btn-primary" href="<?= base_url() ?>admin/data-pendaftar/ubah/<?= $data['nisn'] ?>">Ubah</a></td>
 								<?php
 									$id_hapus = base_url() . 'admin/data-pendaftar/' . $this->uri->segment(3) . '/hapus/' . $data['nisn'];

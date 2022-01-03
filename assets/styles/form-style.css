@@ -286,12 +286,13 @@ div.center h2 {
 div.form-login {
 	display: flex;
 	flex-direction: column;
+	margin-top: 20px;
 	padding: 10px;
 	padding-top: 20px;
 	align-items: center;
 	width: 95%;
-	max-width: 631px;
-	min-height: 368px;
+	max-width: 500px;
+	min-height: 310px;
 	box-shadow: -5px 17px 61px 23px rgba(0, 0, 0, 0.14);
 	border-radius: 11px;
 }

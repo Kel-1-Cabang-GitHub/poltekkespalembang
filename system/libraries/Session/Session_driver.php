@@ -121,28 +121,10 @@ abstract class CI_Session_driver implements SessionHandlerInterface {
 	 */
 	public function php5_validate_id()
 	{
-		if (isset($this->_session_id))
+		if (isset($_COOKIE[$this->_config['cookie_name']]) && ! $this->validateSessionId($_COOKIE[$this->_config['cookie_name']]))
 		{
-			return;
+			unset($_COOKIE[$this->_config['cookie_name']]);
 		}
-
-		// Save this to a cookie too, if set
-		if (($cookie_id = $this->_config['cookie_id']) && isset($_COOKIE[$cookie_id]))
-		{
-			$this->_session_id = $_COOKIE[$cookie_id];
-		}
-		elseif ( ! isset($_COOKIE[$cookie_id]))
-		{
-			$this->_session_id = NULL;
-		}
-
-		// Is there an associated session?
-		if (empty($this->_session_id))
-		{
-			return;
-		}
-
-		$this->_session_id = str_replace(array('.', '-'), '', $this->_session_id);
 	}
 
 	// ------------------------------------------------------------------------

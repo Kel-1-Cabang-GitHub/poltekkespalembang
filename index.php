@@ -1,7 +1,5 @@
 <?php
 	ob_start();
-	@session_destroy();
-	// @session_start();
 /**
  * CodeIgniter
  *

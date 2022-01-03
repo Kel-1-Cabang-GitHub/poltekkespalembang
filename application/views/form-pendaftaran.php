@@ -1,3 +1,7 @@
+<?php
+	$segment = $this->uri->segment(2);
+	if ($segment != 'pmdp' && $segment != 'ktmse') $segment = $this->uri->segment(3);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +46,7 @@
                 <h2>Upload Berkas</h2>
             </div>
             <div class="form">
-                <form action="<?= base_url() ?>Daftar_Controller/form_pendaftaran" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url() ?>Daftar_Controller/form_pendaftaran/<?= $segment ?>" method="POST" enctype="multipart/form-data">
                     <!-- <?= validation_errors() ?> -->
                     <div class="confirm-alert" id="confirm-alert">
                         <div class="ca-head">
@@ -389,15 +393,15 @@
                         </div>
                         <div class="btn-page">
                             <a class="a-btn btn-primary btn-page" id="prodi">Sebelumnya</a>
-                            <?php if($this->uri->segment(2) === "pmdp"): ?>
+                            <?php if($segment == "pmdp"): ?>
                                 <a class="a-btn btn-success simpan-data">Simpan</a>
 							<?php endif; ?>
-                            <?php if($this->uri->segment(2) === "ktmse"): ?>
+                            <?php if($segment == "ktmse"): ?>
                                 <a class="a-btn btn-success btn-page2" id="berkas">Selanjutnya</a>
                             <?php endif; ?>
                         </div>
                     </div>
-                    <?php if($this->uri->segment(2) === "ktmse"): ?>
+                    <?php if($segment == "ktmse"): ?>
                     <div class="table-form berkas" id="berkas">
                         <h3>Peserta yang memilih jalur KTMSE/GAKIN. wajib mengupload berkas-berkas sebagai berikut</h3>
                         <div class="list">

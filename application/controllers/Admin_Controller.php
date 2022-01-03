@@ -6,7 +6,7 @@ class Admin_Controller extends CI_Controller
 {
 	public function __construct()
 	{
-		parent::__construct();
+		@parent::__construct();
 		$this->load->helper('admin');
 		$this->load->model('Admin_Model');
 		$this->load->model('Daftar_Model');
@@ -263,21 +263,6 @@ class Admin_Controller extends CI_Controller
 		make_header_cell($sheet, ...$data_pendaftar_arr);
 		insert_data_into_spreadsheet($sheet, $data_pendaftar, ...$data_pendaftar_arr);
 		save_spreadsheet($spreadsheet, $jalur_pendaftaran);
-	}
-
-	public function detail_pendaftar()
-	{
-		// if (!$this->session->userdata('username')) redirect('admin/login');
-
-		$nisn = $this->uri->segment(4);
-		// Cek nisn terdaftar atau tidak
-		if (!$this->Daftar_Model->cek_nisn($nisn)) redirect('admin');
-
-		$data = [
-			'detail_pendaftar' => $this->Daftar_Model->get_pendaftar_by_nisn($nisn)
-		];
-
-		$this->load->view('detail-pendaftar', $data);
 	}
 
 	public function ubah_pendaftar()

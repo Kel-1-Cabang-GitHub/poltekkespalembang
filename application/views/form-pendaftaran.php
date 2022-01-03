@@ -86,10 +86,10 @@
                         </div>
 						<?= form_error('jenis_kelamin', '<p class="pesan-error">', '</p>'); ?>
                         <span class="label-input"><label class="form-label" for="tinggi_badan">Tinggi Badan</label></span>
-                        <input type="number" min="0" class="text <?= (form_error('tinggi_badan')) ? 'input-error' : '' ?>" name="tinggi_badan" id="tinggi_badan" value="<?= set_value('tinggi_badan') ?>">
+                        <input type="number" min="0" class="text <?= (form_error('tinggi_badan')) ? 'input-error' : '' ?>" name="tinggi_badan" id="tinggi_badan" value="<?= set_value('tinggi_badan') ?>" placeholder="cm">
 						<?= form_error('tinggi_badan', '<p class="pesan-error">', '</p>'); ?>
 						<span class="label-input"><label class="form-label" for="berat_badan">Berat Badan</label></span>
-                        <input type="number" min="0" class="text <?= (form_error('berat_badan')) ? 'input-error' : '' ?>" name="berat_badan" id="berat_badan" value="<?= set_value('berat_badan') ?>">
+                        <input type="number" min="0" class="text <?= (form_error('berat_badan')) ? 'input-error' : '' ?>" name="berat_badan" id="berat_badan" value="<?= set_value('berat_badan') ?>" placeholder="kg">
 						<?= form_error('berat_badan', '<p class="pesan-error">', '</p>'); ?>
 						<span class="label-input"><label class="form-label" for="tempat_lahir">Tempat Lahir</label></span>
                         <input type="text" class="text <?= (form_error('tempat_lahir')) ? 'input-error' : '' ?>" name="tempat_lahir" id="tempat_lahir" value="<?= set_value('tempat_lahir') ?>" list="daftar_tempat_lahir" placeholder="*Mohon isi sendiri jika tidak ada!">

@@ -19,9 +19,8 @@ if (!function_exists('upload_file')) {
 		$CI->load->library('upload', $config);
 
 		$CI->upload->initialize($config);
-		if ($CI->upload->do_upload($name_attr)) {
-			return $CI->upload->data('file_name');
-		}
+		if ($CI->upload->do_upload($name_attr)) return $CI->upload->data('file_name');
+		return $CI->upload->display_errors();
 	}
 }
 

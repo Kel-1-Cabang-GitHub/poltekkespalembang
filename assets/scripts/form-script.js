@@ -152,18 +152,18 @@ const provinsi = document.getElementById("provinsi_asal_sekolah");
 const kota_kabupaten = document.getElementById("kota_kabupaten_asal_sekolah");
 
 provinsi.addEventListener("change", function () {
-	let id_provinsi = this.value;
-	let url = `${LOKASI_API}kota?id_provinsi=${id_provinsi}`;
+	const id_provinsi = this.value;
+	const url = `${LOKASI_API}kota?id_provinsi=${id_provinsi}`;
 	fetch(url)
 		.then(response => response.json())
 		.then(response => {
-			let kota_kabupaten_arr = response.kota_kabupaten.sort((a, b) => {
+			const kota_kabupaten_arr = response.kota_kabupaten.sort((a, b) => {
 				if (a.nama < b.nama) return -1;
 				if (a.nama > b.nama) return 1;
 				return 0;
 			})
 			kota_kabupaten.innerHTML = "<option disabled>--Pilih Kota/Kabupaten--</option>";
-			for (let data_kota_kabupaten of kota_kabupaten_arr) {
+			for (const data_kota_kabupaten of kota_kabupaten_arr) {
 				kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}">${data_kota_kabupaten.nama}</option>`;
 			}
 		});
@@ -174,7 +174,7 @@ const prodi_pilihan_1 = document.querySelector("select.program_studi_pilihan_1")
 const prodi_pilihan_2 = document.querySelector("select.program_studi_pilihan_2");
 
 prodi_pilihan_1.addEventListener("change", () => {
-	let prodi_pilihan_2_option = prodi_pilihan_2.querySelectorAll("option");
+	const prodi_pilihan_2_option = prodi_pilihan_2.querySelectorAll("option");
 	prodi_pilihan_2_option.forEach((el) => el.disabled = el.value == prodi_pilihan_1.value);
 });
 

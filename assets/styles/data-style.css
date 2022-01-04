@@ -162,8 +162,7 @@ div.detail-pendaftar {
 	align-items: center;
 	padding: 15px;
 	flex-direction: column;
-	position: fixed;
-	overflow: auto;
+	position: absolute;
 	background-color: white;
 	width: 95%;
 	max-width: 1000px;
@@ -189,22 +188,58 @@ div.close-btn svg {
 	fill: var(--merah);
 }
 div.detail-pendaftar h2 {
-	text-align: center;
 	padding: 10px;
+	margin-bottom: 5px;
+}
+div.detail-pendaftar section#sect1 h2{
+	text-align: center;
 	margin-bottom: 20px;
 }
 div.data-detail {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	width: 100%;
+	height: 100%;
 	padding: 10px;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	overflow: auto;
 }
-div.detail-pendaftar img {
-	width: 200px;
-	height: 250px;
-	margin-right: 40px;
+div.data-detail::-webkit-scrollbar{
+	display: none;
+}
+div.data-detail hr{
+	display: block;
+	width: 100%;
+	height: 4px;
+	background-color: #c4c4c4;
+	margin-bottom: 30px;
+}
+div.data-detail section#sect1 img {
+	max-width: 200px;
+	max-height: 250px;
+	width: 50%;
+	height: auto;
+	margin-right: 20px;
 	border: 1px solid;
 }
-table.detail td {
+div.data-detail section{
 	padding: 10px;
+	display: flex;
+	flex-direction: column;
+}
+div.data-detail section#sect1{
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+div.data-detail section table{
+	max-width: fit-content;
+}
+div.data-detail table td{
+	min-width: 150px;
+	padding: 5px;
+}
+div.data-detail table tr td:nth-child(2){
+	min-width: 50px;
+	text-align: center;
 }

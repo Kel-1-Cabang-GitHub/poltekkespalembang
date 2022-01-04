@@ -35,10 +35,197 @@
                 </div>
                 <h2>Detail Pendaftar</h2>
                 <div class="data-detail">
-                    <img id="detail-foto" src="<?= base_url()?>assets/img/people.png" alt="foto-pendaftar">
-                    <div class="tabel-detail">
-                        <table class="detail"></table>
-                    </div>
+                    <section id="sect1">
+                        <img id="detail-foto" src="<?= base_url(); ?>/uploads/img/pas_foto/" alt="pas foto">
+                        <div class="tabel-detail">
+                            <table>
+                                <tr>
+                                    <td>Nama</td>
+                                    <td>:</td>
+                                    <td><span class="detail" id="nama_lengkap">-</span></td>
+                                </tr>
+                                <tr>
+                                    <td>NISN</td>
+                                    <td>:</td>
+                                    <td><span class="detail" id="nisn">-</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Jalur Pendaftaran</td>
+                                    <td>:</td>
+                                    <td><span class="detail" id="jalur_pendaftaran">-</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Bukti Pembayaran</td>
+                                    <td>:</td>
+                                    <td><span id="bukti_pembayaran"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Program Studi Pilihan 1</td>
+                                    <td>:</td>
+                                    <td><span class="detail" id="program_studi_pilihan_1">-</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Program Studi Pilihan 2</td>
+                                    <td>:</td>
+                                    <td><span class="detail" id="program_studi_pilihan_2">-</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </section>
+                    <section id="sect2">
+                        <h2>Data Pribadi</h2>
+                        <hr>
+                        <table>
+                            <tr>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td><span class="detail" id="alamat">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kode Pos</td>
+                                <td>:</td>
+                                <td><span class="detail" id="kode_pos">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tempat Lahir</td>
+                                <td>:</td>
+                                <td><span class="detail" id="tempat_lahir">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Lahir</td>
+                                <td>:</td>
+                                <td><span class="detail" id="tanggal_lahir">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jenis Kelamin</td>
+                                <td>:</td>
+                                <td><span class="detail" id="jenis_kelamin">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tinggi Badan</td>
+                                <td>:</td>
+                                <td><span class="detail" id="tinggi_badan">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Berat Badan</td>
+                                <td>:</td>
+                                <td><span class="detail" id="berat_badan">-</span></td>
+                            </tr>
+                        </table>
+                    </section>
+                    <section id="sect3">
+                        <h2>Data Sekolah</h2>
+                        <hr>
+                        <table>
+                            <tr>
+                                <td>Nama Sekolah</td>
+                                <td>:</td>
+                                <td><span class="detail" id="nama_sekolah">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jenis Sekolah</td>
+                                <td>:</td>
+                                <td><span class="detail" id="jenis_sekolah">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jurusan</td>
+                                <td>:</td>
+                                <td><span class="detail" id="jurusan">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Provinsi Asal Sekolah</td>
+                                <td>:</td>
+                                <td><span class="detail" id="provinsi_asal_sekolah">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kota/Kabupaten Sekolah</td>
+                                <td>:</td>
+                                <td><span class="detail" id="kota_kabupaten_asal_sekolah">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Akreditasi Sekolah</td>
+                                <td>:</td>
+                                <td><span class="detail" id="akreditasi_sekolah">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tahun Lulus</td>
+                                <td>:</td>
+                                <td><span class="detail" id="tahun_lulus">-</span></td>
+                            </tr>
+                        </table>
+                    </section>
+                    <section id="sect4">
+                        <h2>Data Rapot</h2>
+                        <hr>
+                        <table>
+                            <tr>
+                                <td>Rekap Nilai Rapot</td>
+                                <td>:</td>
+                                <td><span class="detail" id="rekap_nilai_rapot">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Rata-rata Nilai Rapot</td>
+                                <td>:</td>
+                                <td><span class="detail" id="rata_rata_nilai_rapot">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Peringkat Semester 1</td>
+                                <td>:</td>
+                                <td><span class="detail" id="peringkat_semester_1">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Peringkat Semester 2</td>
+                                <td>:</td>
+                                <td><span class="detail" id="peringkat_semester_2">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Peringkat Semester 3</td>
+                                <td>:</td>
+                                <td><span class="detail" id="peringkat_semester_3">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Peringkat Semester 4</td>
+                                <td>:</td>
+                                <td><span class="detail" id="peringkat_semester_4">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Peringkat Semester 5</td>
+                                <td>:</td>
+                                <td><span class="detail" id="peringkat_semester_5">-</span></td>
+                            </tr>
+                        </table>
+                    </section>
+                    <section id="sect5">
+                        <h2>Data Prestasi</h2>
+                        <hr>
+                        <table>
+                            <tr>
+                                <td>Prestasi 1</td>
+                                <td>:</td>
+                                <td><span class="detail" id="prestasi_1">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Prestasi 2</td>
+                                <td>:</td>
+                                <td><span class="detail" id="prestasi_2">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Prestasi 3</td>
+                                <td>:</td>
+                                <td><span class="detail" id="prestasi_3">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Prestasi 4</td>
+                                <td>:</td>
+                                <td><span class="detail" id="prestasi_4">-</span></td>
+                            </tr>
+                            <tr>
+                                <td>Prestasi 5</td>
+                                <td>:</td>
+                                <td><span class="detail" id="prestasi_5">-</span></td>
+                            </tr>
+                        </table>
+                    </section>
                 </div>
             </div>
             <div class="confirm-alert" id="confirm-alert">

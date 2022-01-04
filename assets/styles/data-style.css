@@ -162,7 +162,7 @@ div.detail-pendaftar {
 	align-items: center;
 	padding: 15px;
 	flex-direction: column;
-	position: absolute;
+	position: fixed;
 	background-color: white;
 	width: 95%;
 	max-width: 1000px;

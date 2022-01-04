@@ -28,6 +28,7 @@ tombol_batal.addEventListener("click", () => {
 const tombol_detail = document.querySelectorAll("a.detail-data");
 const div_detail = document.querySelector("div.detail-pendaftar");
 let detail_img = document.querySelector("img#detail-foto");
+const div_data_detail = document.querySelector("div.data-detail");
 // const bukti_bayar = document.querySelector("a#bukti_pembayaran");
 // let href_awal = bukti_bayar.href;
 let src_awal = detail_img.src;
@@ -58,6 +59,7 @@ tombol_detail.forEach(el => {
 				if (value !== null) span_keys.textContent = value;
 			};
 		});
+		div_data_detail.scrollTop = 0;
 	});
 });
 

@@ -191,7 +191,7 @@ div.detail-pendaftar h2 {
 	padding: 10px;
 	margin-bottom: 5px;
 }
-div.detail-pendaftar section#sect1 h2{
+div.detail-pendaftar section#sect1 h2 {
 	text-align: center;
 	margin-bottom: 20px;
 }
@@ -205,10 +205,10 @@ div.data-detail {
 	scrollbar-width: none;
 	overflow: auto;
 }
-div.data-detail::-webkit-scrollbar{
+div.data-detail::-webkit-scrollbar {
 	display: none;
 }
-div.data-detail hr{
+div.data-detail hr {
 	display: block;
 	width: 100%;
 	height: 4px;
@@ -223,23 +223,23 @@ div.data-detail section#sect1 img {
 	margin-right: 20px;
 	border: 1px solid;
 }
-div.data-detail section{
+div.data-detail section {
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
 }
-div.data-detail section#sect1{
+div.data-detail section#sect1 {
 	flex-direction: row;
 	flex-wrap: wrap;
 }
-div.data-detail section table{
+div.data-detail section table {
 	max-width: fit-content;
 }
-div.data-detail table td{
+div.data-detail table td {
 	min-width: 150px;
 	padding: 5px;
 }
-div.data-detail table tr td:nth-child(2){
+div.data-detail table tr td:nth-child(2) {
 	min-width: 50px;
 	text-align: center;
 }

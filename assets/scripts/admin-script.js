@@ -42,24 +42,20 @@ tombol_detail.forEach(el => {
 		div_detail.classList.add("active");
 		let detail_data = data_obj[el.id];
 		Object.keys(detail_data).forEach(keys => {
-			if(keys === "pas_foto") {
+			if (keys === "pas_foto") {
 				let src = src_awal + detail_data[keys];
 				detail_img.src = src;
 			}
 			let span_keys = document.querySelector(`span#${keys}`);
-			if(span_keys){
+			if (span_keys) {
 				let value = detail_data[keys];
-				if(keys === "berat_badan"){
-					value = value + " kg";
+				if (keys === "berat_badan") value = value + " kg";
+				if (keys === "tinggi_badan") value = value + " cm";
+				if (keys === "tanggal_lahir") {
+					let [tahun, bulan, tanggal] = detail_data[keys].split("-");
+					value = `${tanggal} ${BULAN[bulan - 1]} ${tahun}`;
 				}
-				if(keys === "tinggi_badan"){
-					value = value + " cm";
-				}
-				if(keys === "tanggal_lahir"){
-					let [tahun,bulan,tanggal] = detail_data[keys].split("-");
-					value = `${tanggal} ${BULAN[bulan-1]} ${tahun}`;
-				}
-				if(value !== null) span_keys.textContent = value;
+				if (value !== null) span_keys.textContent = value;
 			};
 		});
 	});

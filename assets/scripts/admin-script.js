@@ -56,7 +56,12 @@ tombol_detail.forEach(el => {
 					let [tahun, bulan, tanggal] = detail_data[keys].split("-");
 					value = `${tanggal} ${BULAN[bulan - 1]} ${tahun}`;
 				}
-				if (value !== null) span_keys.textContent = value;
+				if (value !== null && value != "") {
+					console.log(value);
+					span_keys.textContent = value;
+				}else{
+					span_keys.textContent = "-";
+				}
 			};
 		});
 		div_data_detail.scrollTop = 0;

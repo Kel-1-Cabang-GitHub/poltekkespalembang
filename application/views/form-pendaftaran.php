@@ -9,12 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Pendaftaran | POLTEKKES KEMENKES PALEMBANG</title>
     <link rel="shortcut icon" href="<?= base_url() ?>assets/img/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/styles/nav-style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/styles/base-style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/form-style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/styles/alert-style.css">
     <script defer src="<?= base_url() ?>assets/scripts/jquery-3.6.0.min.js"></script>
+    <script defer src="<?= base_url() ?>assets/scripts/base-script.js"></script>
     <script defer src="<?= base_url() ?>assets/scripts/form-script.js"></script>
-    <script defer src="<?= base_url() ?>assets/scripts/nav-script.js"></script>
 </head>
 <body>
     <div class="container">

@@ -192,27 +192,3 @@ tombol_batal.addEventListener("click", () => {
 	kotak_alert.classList.remove("active");
 	block.classList.remove("active");
 });
-
-// Scroll ke atas button
-$(window).scroll(function () {
-	let wscroll = $(this).scrollTop();
-	if (wscroll > 150) {
-		$("div.scroll").addClass("show");
-	} else {
-		$("div.scroll").removeClass("show");
-	}
-});
-$(".scroll").on("click", function () {
-	let destination = $("div.data");
-	let destinationEl = $(destination);
-
-	$("html").animate(
-		{
-			scrollTop: destinationEl.offset().top - 50,
-		},
-		1000,
-		"swing"
-	);
-
-	event.preventDefault();
-});

@@ -29,10 +29,17 @@ const tombol_detail = document.querySelectorAll("a.detail-data");
 const div_detail = document.querySelector("div.detail-pendaftar");
 let detail_img = document.querySelector("img#detail-foto");
 const div_data_detail = document.querySelector("div.data-detail");
-// const bukti_bayar = document.querySelector("a#bukti_pembayaran");
-// let href_awal = bukti_bayar.href;
+const bukti_bayar = document.querySelector("a#bukti_pembayaran");
+let href_awal_bukti_bayar = bukti_bayar.href;
+const sktm = document.querySelector("a#surat_keterangan_miskin");
+let href_awal_sktm = sktm.href;
+const skpk = document.querySelector("a#surat_keterangan_penghasilan_keluarga");
+let href_awal_skpk = skpk.href;
+const foto_rumah = document.querySelector("a#foto_rumah");
+let href_awal_foto_rumah = foto_rumah.href;
 let src_awal = detail_img.src;
 const span_detail = document.querySelectorAll("span.detail");
+const section_opt = document.querySelector("section.optional");
 const BULAN = [
 	'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
 	'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
@@ -47,6 +54,22 @@ tombol_detail.forEach(el => {
 				let src = src_awal + detail_data[keys];
 				detail_img.src = src;
 			}
+			if(keys === "bukti_pembayaran"){
+				let newhref_bukti_bayar = detail_data[keys];
+				bukti_bayar.href = href_awal_bukti_bayar + newhref_bukti_bayar;
+			}
+			if(keys === "surat_keterangan_miskin"){
+				let newhref_sktm = detail_data[keys];
+				sktm.href = href_awal_sktm + newhref_sktm;
+			}
+			if(keys === "surat_keterangan_penghasilan_keluarga"){
+				let newhref_skpk = detail_data[keys];
+				skpk.href = href_awal_skpk + newhref_skpk;
+			}
+			if(keys === "foto_rumah"){
+				let newhref_foto_rumah = detail_data[keys];
+				foto_rumah.href = href_awal_foto_rumah + newhref_foto_rumah;
+			}
 			let span_keys = document.querySelector(`span#${keys}`);
 			if (span_keys) {
 				let value = detail_data[keys];
@@ -57,6 +80,9 @@ tombol_detail.forEach(el => {
 					value = `${tanggal} ${BULAN[bulan - 1]} ${tahun}`;
 				}
 				span_keys.textContent = (value) ? value : "-";
+				if(detail_data["jalur_pendaftaran"] === "KTMSE"){
+					section_opt.classList.add("active");
+				}
 			};
 		});
 		div_data_detail.scrollTop = 0;
@@ -68,4 +94,6 @@ const tombol_close = document.querySelector('div.close-btn a.detail');
 tombol_close.addEventListener("click", () => {
 	div_detail.classList.remove("active");
 	block.classList.remove("active");
+	detail_img.src = src_awal;
+	section_opt.classList.remove("active");
 });

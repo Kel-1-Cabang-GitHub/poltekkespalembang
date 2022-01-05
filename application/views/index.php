@@ -1,7 +1,7 @@
 <?php $this->load->view('templates/navbar', ['nav_link' => base_url()]) ?>
 <main>
     <h2>Pilih jalur Sipenmaru yang akan diikuti</h2>
-    <div class="container">
+    <div class="container ct-20">
         <a href="<?= base_url() ?>form-pendaftaran/pmdp">
             <div class="card">
                 <div class="img">

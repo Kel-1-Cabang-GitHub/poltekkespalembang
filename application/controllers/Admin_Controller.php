@@ -18,8 +18,8 @@ class Admin_Controller extends CI_Controller
 
 		$data = [
 			'page_title' => 'Admin Page - Sipenmaru | POLTEKKES KEMENKES PALEMBANG',
-			'styles' => ['index'],
-			'scripts' => []
+			'styles' => ['index','alert','data'],
+			'scripts' => ['index-admin']
 		];
 
 		$this->load->view('templates/header', $data);

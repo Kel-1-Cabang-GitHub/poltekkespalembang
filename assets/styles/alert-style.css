@@ -67,6 +67,7 @@ div.ca-body {
 	height: fit-content;
 	display: flex;
 	flex-wrap: wrap;
+	width: 100%;
 }
 div.ca-button {
 	width: 100%;

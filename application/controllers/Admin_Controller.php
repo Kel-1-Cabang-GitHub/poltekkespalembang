@@ -93,6 +93,7 @@ class Admin_Controller extends CI_Controller
 
 		$keyword = '';
 		if ($this->input->get('q')) $keyword = $this->input->get('q');
+		
 		$data = [
 			'jalur' => strtoupper($jalur_pendaftaran),
 			'data_pendaftar' => $this->Daftar_Model->data_pendaftar_table($jalur_pendaftaran, $sort_field, $sort_by, $keyword)

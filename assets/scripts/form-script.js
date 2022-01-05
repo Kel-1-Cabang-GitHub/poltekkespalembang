@@ -146,29 +146,6 @@ tombol_upload.forEach((e) => {
 	});
 });
 
-// Tampilkan kota/kabupaten berdasarkan provinsi
-const LOKASI_API = "https://dev.farizdotid.com/api/daerahindonesia/";
-const provinsi = document.getElementById("provinsi_asal_sekolah");
-const kota_kabupaten = document.getElementById("kota_kabupaten_asal_sekolah");
-
-provinsi.addEventListener("change", function () {
-	const id_provinsi = this.value;
-	const url = `${LOKASI_API}kota?id_provinsi=${id_provinsi}`;
-	fetch(url)
-		.then(response => response.json())
-		.then(response => {
-			const kota_kabupaten_arr = response.kota_kabupaten.sort((a, b) => {
-				if (a.nama < b.nama) return -1;
-				if (a.nama > b.nama) return 1;
-				return 0;
-			})
-			kota_kabupaten.innerHTML = "<option disabled>--Pilih Kota/Kabupaten--</option>";
-			for (const data_kota_kabupaten of kota_kabupaten_arr) {
-				kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}">${data_kota_kabupaten.nama}</option>`;
-			}
-		});
-});
-
 // Hapus Prodi Pilihan 1 di Prodi Pilihan 2 jika Prodi Pilihan 1 sudah diisi
 const prodi_pilihan_1 = document.querySelector("select.program_studi_pilihan_1");
 const prodi_pilihan_2 = document.querySelector("select.program_studi_pilihan_2");

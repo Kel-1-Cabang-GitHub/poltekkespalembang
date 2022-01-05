@@ -15,14 +15,14 @@ class Daftar_Controller extends CI_Controller
 		$data = [
 			'page_title' => 'Sipenmaru | POLTEKKES KEMENKES PALEMBANG',
 			'styles' => ['index'],
-			'scripts'=> [],
+			'scripts' => [],
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('index');
 		$this->load->view('templates/footer');
 	}
 
-	public function form_pendaftaran()
+	public function post_form_pendaftaran()
 	{
 		$jalur_pendaftaran = $this->uri->segment(3, $this->uri->segment(2));
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp' atau 'ktmse', user akan di redirect() ke halaman utama
@@ -189,7 +189,6 @@ class Daftar_Controller extends CI_Controller
 			for ($i = 1; $i <= 5; $i++) {
 				$data_sekolah["peringkat_semester_$i"] = htmlspecialchars($this->input->post("peringkat_semester_$i"), true);
 			}
-
 			// Program Studi
 			$program_studi = [
 				'nisn' => $nisn,
@@ -265,8 +264,26 @@ class Daftar_Controller extends CI_Controller
 		$data = [
 			'page_title' => 'Form Pendaftaran | POLTEKKES KEMENKES PALEMBANG',
 			'styles' => ['form', 'alert'],
-			'scripts'=> ['form'],
-			'segment' => $segment
+			'scripts' => ['form'],
+			'segment' => $segment,
+			'kota_kabupaten' => $this->input->post('kota_kabupaten_asal_sekolah')
+		];
+		$this->load->view('templates/header', $data);
+		$this->load->view('form-pendaftaran');
+		$this->load->view('templates/footer');
+	}
+
+	public function get_form_pendaftaran()
+	{
+		$segment = $this->uri->segment(2);
+		if ($segment != 'pmdp' && $segment != 'ktmse') $segment = $this->uri->segment(3);
+
+		// Jika data gagal divalidasi, user dikembalikan ke halaman daftar
+		$data = [
+			'page_title' => 'Form Pendaftaran | POLTEKKES KEMENKES PALEMBANG',
+			'styles' => ['form', 'alert'],
+			'scripts' => ['form'],
+			'segment' => $segment,
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('form-pendaftaran');
@@ -282,7 +299,7 @@ class Daftar_Controller extends CI_Controller
 		$data = [
 			'page_title' => 'Terima Kasih Telah Mendaftar',
 			'styles' => ['form', 'alert'],
-			'scripts'=> []
+			'scripts' => []
 		];
 
 		$this->load->view('templates/header', $data);

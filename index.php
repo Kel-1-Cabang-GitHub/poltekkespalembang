@@ -1,9 +1,4 @@
 <?php
-<<<<<<< HEAD
-	ob_start();
-=======
-
->>>>>>> b2db35e5cfe18f4a7d50e151c78b9bc890f7aecb
 /**
  * CodeIgniter
  *

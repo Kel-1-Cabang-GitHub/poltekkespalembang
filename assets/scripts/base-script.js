@@ -20,7 +20,7 @@ $(".scroll").on("click", function () {
 
 	$("html").animate(
 		{
-			scrollTop: destinationEl.offset().top - 50,
+			scrollTop: destinationEl.offset().top - 300,
 		},
 		1000,
 		"swing"

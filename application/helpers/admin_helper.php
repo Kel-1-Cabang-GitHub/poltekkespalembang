@@ -5,6 +5,32 @@ defined('BASEPATH') or exit('No direct script access allowed');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
+if (!function_exists('filter_sort_query')) {
+	function filter_sort_query()
+	{
+		$CI =& get_instance();
+		$sort_field = 'nisn';
+		$sort_by = 'asc';
+
+		if ($CI->input->get('field')) $sort_field = kebab_to_snake($CI->input->get('field'));
+		if ($CI->input->get('sort')) $sort_by = $CI->input->get('sort');
+
+		if (
+			$sort_field != 'nama_lengkap' &&
+			$sort_field != 'nisn' &&
+			$sort_field != 'jenis_kelamin' &&
+			$sort_field != 'nama_sekolah' &&
+			$sort_field != 'jurusan' &&
+			$sort_field != 'jalur_pendaftaran'
+		) $sort_field = 'nisn';
+		if ($sort_by != 'asc' && $sort_by != 'desc') $sort_by = 'asc';
+		return [$sort_field, $sort_by];
+	}
+}
+
+if (!function_exists('filter_data')) {
+}
+
 if (!function_exists('kebab_to_snake')) {
 	function kebab_to_snake($string)
 	{

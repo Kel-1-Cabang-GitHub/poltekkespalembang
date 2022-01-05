@@ -75,7 +75,9 @@ class Admin_Controller extends CI_Controller
 	{
 		if ($this->session->userdata('username')) {
 			$this->session->unset_userdata('username');
+			$this->session->unset_userdata('role');
 			$this->session->sess_destroy();
+
 			redirect('admin/login');
 		}
 		redirect('admin');
@@ -89,21 +91,7 @@ class Admin_Controller extends CI_Controller
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
 		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
 
-		$sort_field = 'nisn';
-		$sort_by = 'asc';
-
-		if ($this->input->get('field')) $sort_field = kebab_to_snake($this->input->get('field'));
-		if ($this->input->get('sort')) $sort_by = $this->input->get('sort');
-
-		if (
-			$sort_field != 'nama_lengkap' &&
-			$sort_field != 'nisn' &&
-			$sort_field != 'jenis_kelamin' &&
-			$sort_field != 'nama_sekolah' &&
-			$sort_field != 'jurusan' &&
-			$sort_field != 'jalur_pendaftaran'
-		) $sort_field = 'nisn';
-		if ($sort_by != 'asc' && $sort_by != 'desc') $sort_by = 'asc';
+		[$sort_field, $sort_by] = filter_sort_query();
 
 		$keyword = '';
 		if ($this->input->get('q')) $keyword = $this->input->get('q');
@@ -122,21 +110,7 @@ class Admin_Controller extends CI_Controller
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
 		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
 
-		$sort_field = 'nisn';
-		$sort_by = 'asc';
-
-		if ($this->input->get('field')) $sort_field = kebab_to_snake($this->input->get('field'));
-		if ($this->input->get('sort')) $sort_by = $this->input->get('sort');
-
-		if (
-			$sort_field != 'nama_lengkap' &&
-			$sort_field != 'nisn' &&
-			$sort_field != 'jenis_kelamin' &&
-			$sort_field != 'nama_sekolah' &&
-			$sort_field != 'jurusan' &&
-			$sort_field != 'jalur_pendaftaran'
-		) $sort_field = 'nisn';
-		if ($sort_by != 'asc' && $sort_by != 'desc') $sort_by = 'asc';
+		[$sort_field, $sort_by] = filter_sort_query();
 
 		$keyword = $this->input->get('search_keyword');
 		if (preg_match('/^\s*$/', $keyword)) $keyword = '';
@@ -203,21 +177,7 @@ class Admin_Controller extends CI_Controller
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
 		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
 
-		$sort_field = 'nisn';
-		$sort_by = 'asc';
-
-		if ($this->input->get('field')) $sort_field = kebab_to_snake($this->input->get('field'));
-		if ($this->input->get('sort')) $sort_by = $this->input->get('sort');
-
-		if (
-			$sort_field != 'nama_lengkap' &&
-			$sort_field != 'nisn' &&
-			$sort_field != 'jenis_kelamin' &&
-			$sort_field != 'nama_sekolah' &&
-			$sort_field != 'jurusan' &&
-			$sort_field != 'jalur_pendaftaran'
-		) $sort_field = 'nisn';
-		if ($sort_by != 'asc' && $sort_by != 'desc') $sort_by = 'asc';
+		[$sort_field, $sort_by] = filter_sort_query();
 
 		$redirect_path = "admin/data-pendaftar/$jalur_pendaftaran";
 		if ($sort_field != 'nisn') $redirect_path .= '?field=' . snake_to_kebab($sort_field);

@@ -77,10 +77,8 @@ class Admin_Controller extends CI_Controller
 			$this->session->unset_userdata('username');
 			$this->session->unset_userdata('role');
 			$this->session->sess_destroy();
-
-			redirect('admin/login');
 		}
-		redirect('admin');
+		redirect('admin/login');
 	}
 
 	public function data_pendaftar()

@@ -1,0 +1,64 @@
+:root {
+	--biru-muda: #2183fe;
+	--biru-tua: #1f5ba7;
+	--hijau: #83a342;
+	--merah: #ff5858;
+	--putih-biru: #e8f0fe;
+	--abu-abu: #ced4da;
+	--abu-abu-tua: #818181;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "roboto";
+}
+header {
+	width: 100%;
+}
+a.nav-link {
+	text-decoration: none;
+}
+nav {
+	display: flex;
+	padding: 15px;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--hijau);
+	color: white;
+}
+nav img {
+	margin-right: 10px;
+}
+nav img:hover,
+div.brand:hover {
+	cursor: pointer;
+}
+div.brand {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+div.scroll {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+	border-radius: 50%;
+	background-color: var(--hijau);
+	color: var(--putih);
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	transform: translate(100px, 0px);
+	box-shadow: 0px 0px 5px black;
+	transition: transform 1s;
+}
+div.scroll.show {
+	transform: translate(0px, 0px);
+}
+@font-face {
+	font-family: "roboto";
+	src: url("../fonts/Roboto-Regular.ttf");
+}

@@ -152,46 +152,30 @@ const provinsi = document.getElementById("provinsi_asal_sekolah");
 const kota_kabupaten = document.getElementById("kota_kabupaten_asal_sekolah");
 
 provinsi.addEventListener("change", function () {
-	let id_provinsi = this.value;
-	let url = `${LOKASI_API}kota?id_provinsi=${id_provinsi}`;
-	let xhr = new XMLHttpRequest();
-	xhr.open("GET", url, true);
-	xhr.onload = function () {
-		let daftar_kota_kabupaten = JSON.parse(this.responseText);
-		let kota_kabupaten_arr = [];
-		Object.keys(daftar_kota_kabupaten).forEach((kota_kabupaten) => {
-			kota_kabupaten_arr.push(daftar_kota_kabupaten[kota_kabupaten]);
+	const id_provinsi = this.value;
+	const url = `${LOKASI_API}kota?id_provinsi=${id_provinsi}`;
+	fetch(url)
+		.then(response => response.json())
+		.then(response => {
+			const kota_kabupaten_arr = response.kota_kabupaten.sort((a, b) => {
+				if (a.nama < b.nama) return -1;
+				if (a.nama > b.nama) return 1;
+				return 0;
+			})
+			kota_kabupaten.innerHTML = "<option disabled>--Pilih Kota/Kabupaten--</option>";
+			for (const data_kota_kabupaten of kota_kabupaten_arr) {
+				kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}">${data_kota_kabupaten.nama}</option>`;
+			}
 		});
-		kota_kabupaten_arr = kota_kabupaten_arr[0].sort((a, b) => {
-			if (a.nama < b.nama) return -1;
-			if (a.nama > b.nama) return 1;
-			return 0;
-		});
-		kota_kabupaten.innerHTML = "";
-		for (let data_kota_kabupaten of kota_kabupaten_arr) {
-			kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}">${data_kota_kabupaten.nama}</option>`;
-		}
-	};
-	xhr.send();
 });
 
 // Hapus Prodi Pilihan 1 di Prodi Pilihan 2 jika Prodi Pilihan 1 sudah diisi
-const prodi_pilihan_1 = document.querySelector(
-	"select.program_studi_pilihan_1"
-);
-const prodi_pilihan_2 = document.querySelector(
-	"select.program_studi_pilihan_2"
-);
+const prodi_pilihan_1 = document.querySelector("select.program_studi_pilihan_1");
+const prodi_pilihan_2 = document.querySelector("select.program_studi_pilihan_2");
 
 prodi_pilihan_1.addEventListener("change", () => {
-	let prodi_pilihan_1_value = prodi_pilihan_1.value;
-	let prodi_pilihan_2_option = prodi_pilihan_2.querySelectorAll("option");
-
-	prodi_pilihan_2_option.forEach((el) => {
-		if (el.value == prodi_pilihan_1_value) {
-			el.remove();
-		}
-	});
+	const prodi_pilihan_2_option = prodi_pilihan_2.querySelectorAll("option");
+	prodi_pilihan_2_option.forEach((el) => el.disabled = el.value == prodi_pilihan_1.value);
 });
 
 // Alert Konfirmasi simpan data
@@ -207,28 +191,4 @@ tombol_simpan.addEventListener("click", () => {
 tombol_batal.addEventListener("click", () => {
 	kotak_alert.classList.remove("active");
 	block.classList.remove("active");
-});
-
-// Scroll ke atas button
-$(window).scroll(function () {
-	let wscroll = $(this).scrollTop();
-	if (wscroll > 150) {
-		$("div.scroll").addClass("show");
-	} else {
-		$("div.scroll").removeClass("show");
-	}
-});
-$(".scroll").on("click", function () {
-	let destination = $("div.data");
-	let destinationEl = $(destination);
-
-	$("html").animate(
-		{
-			scrollTop: destinationEl.offset().top - 50,
-		},
-		1000,
-		"swing"
-	);
-
-	event.preventDefault();
 });

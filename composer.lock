@@ -8,6 +8,7 @@
     "packages": [
         {
             "name": "ezyang/htmlpurifier",
+<<<<<<< HEAD
             "version": "v4.13.0",
             "source": {
                 "type": "git",
@@ -18,14 +19,29 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
                 "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
+=======
+            "version": "v4.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "12ab42bd6e742c70c0a52f7b82477fcd44e64b75"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/12ab42bd6e742c70c0a52f7b82477fcd44e64b75",
+                "reference": "12ab42bd6e742c70c0a52f7b82477fcd44e64b75",
+>>>>>>> b2db35e5cfe18f4a7d50e151c78b9bc890f7aecb
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
             },
+<<<<<<< HEAD
             "require-dev": {
                 "simpletest/simpletest": "dev-master#72de02a7b80c6bb8864ef9bf66d41d2f58f826bd"
             },
+=======
+>>>>>>> b2db35e5cfe18f4a7d50e151c78b9bc890f7aecb
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -56,9 +72,15 @@
             ],
             "support": {
                 "issues": "https://github.com/ezyang/htmlpurifier/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/ezyang/htmlpurifier/tree/master"
             },
             "time": "2020-06-29T00:56:53+00:00"
+=======
+                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.14.0"
+            },
+            "time": "2021-12-25T01:21:49+00:00"
+>>>>>>> b2db35e5cfe18f4a7d50e151c78b9bc890f7aecb
         },
         {
             "name": "maennchen/zipstream-php",

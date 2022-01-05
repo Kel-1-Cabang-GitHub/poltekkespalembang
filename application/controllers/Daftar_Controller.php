@@ -12,7 +12,14 @@ class Daftar_Controller extends CI_Controller
 
 	public function pilih_jalur()
 	{
+		$data = [
+			'page_title' => 'Sipenmaru | POLTEKKES KEMENKES PALEMBANG',
+			'styles' => ['index'],
+			'scripts'=> [],
+		];
+		$this->load->view('templates/header', $data);
 		$this->load->view('index');
+		$this->load->view('templates/footer');
 	}
 
 	public function form_pendaftaran()
@@ -250,8 +257,20 @@ class Daftar_Controller extends CI_Controller
 			// jika jalur pendaftaran lewat pmdp
 			redirect('terima-kasih');
 		}
+
+		$segment = $this->uri->segment(2);
+		if ($segment != 'pmdp' && $segment != 'ktmse') $segment = $this->uri->segment(3);
+
 		// Jika data gagal divalidasi, user dikembalikan ke halaman daftar
+		$data = [
+			'page_title' => 'Form Pendaftaran | POLTEKKES KEMENKES PALEMBANG',
+			'styles' => ['form', 'alert'],
+			'scripts'=> ['form'],
+			'segment' => $segment
+		];
+		$this->load->view('templates/header', $data);
 		$this->load->view('form-pendaftaran');
+		$this->load->view('templates/footer');
 	}
 
 	public function terima_kasih()
@@ -259,6 +278,15 @@ class Daftar_Controller extends CI_Controller
 		if (!$this->session->userdata('berhasil-daftar')) redirect();
 
 		$this->session->unset_userdata('berhasil-daftar');
+
+		$data = [
+			'page_title' => 'Terima Kasih Telah Mendaftar',
+			'styles' => ['form', 'alert'],
+			'scripts'=> []
+		];
+
+		$this->load->view('templates/header', $data);
 		$this->load->view('terima-kasih');
+		$this->load->view('templates/footer');
 	}
 }

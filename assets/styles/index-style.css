@@ -13,7 +13,7 @@ div#setting {
 	margin-bottom: 15px;
 }
 div#setting svg:hover {
-	fill: #83a342;
+	fill: var(--hijau);
 }
 div.container {
 	display: flex;
@@ -61,7 +61,7 @@ a {
 	color: black;
 }
 div.card p:hover {
-	color: #83a342;
+	color: var(--hijau);
 }
 @media (max-width: 450px) {
 	div.img,

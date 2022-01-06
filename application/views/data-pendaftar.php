@@ -58,7 +58,11 @@
                                 <tr>
                                     <td>Bukti Pembayaran</td>
                                     <td>:</td>
-                                    <td><span id="bukti_pembayaran"></span></td>
+                                    <td>
+                                        <a target="_blank" id="bukti_pembayaran" class="link-file" href="<?= base_url(); ?>/uploads/img/bukti_pembayaran/">
+                                            <span id="bukti_pembayaran">-</span>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Program Studi Pilihan 1</td>
@@ -227,6 +231,39 @@
                             </tr>
                         </table>
                     </section>
+                    <section id="sect6" class="optional">
+                        <h2>Berkas KTMSE/GAKIN</h2>
+                        <hr>
+                        <table>
+                            <tr>
+                                <td>Surat Keterangan Miskin</td>
+                                <td>:</td>
+                                <td>
+                                    <a target="_blank" id="surat_keterangan_miskin" class="link-file" href="<?= base_url(); ?>/uploads/pdf/surat_keterangan_miskin/">
+                                        <span class="detail" id="surat_keterangan_miskin">-</span>
+                                    </a>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td>Surat Keterangan Penghasilan Keluarga</td>
+                                    <td>:</td>
+                                    <td>
+                                    <a target="_blank" id="surat_keterangan_penghasilan_keluarga" class="link-file" href="<?= base_url(); ?>/uploads/pdf/surat_keterangan_penghasilan_keluarga/">
+                                        <span class="detail" id="surat_keterangan_penghasilan_keluarga">-</span>
+                                    </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Foto Rumah</td>
+                                    <td>:</td>
+                                    <td>
+                                        <a target="_blank" id="foto_rumah" class="link-file" href="<?= base_url(); ?>/uploads/pdf/foto_rumah/">
+                                            <span class="detail" id="foto_rumah">-</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </section>
                 </div>
             </div>
             <div class="confirm-alert" id="confirm-alert">

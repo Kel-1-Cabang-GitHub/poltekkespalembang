@@ -15,12 +15,12 @@ $(window).scroll(function () {
 	(wscroll > 150) ? $("div.scroll").addClass("show") : $("div.scroll").removeClass("show");
 });
 $(".scroll").on("click", function () {
-	let destination = $("div.data");
+	let destination = $("header");
 	let destinationEl = $(destination);
 
 	$("html").animate(
 		{
-			scrollTop: destinationEl.offset().top - 300,
+			scrollTop: destinationEl.offset().top
 		},
 		1000,
 		"swing"

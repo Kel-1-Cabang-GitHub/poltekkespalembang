@@ -17,8 +17,8 @@ class Admin_Controller extends CI_Controller
 
 		$data = [
 			'page_title' => 'Admin Page - Sipenmaru | POLTEKKES KEMENKES PALEMBANG',
-			'styles' => ['index'],
-			'scripts' => []
+			'styles' => ['index', 'alert', 'data'],
+			'scripts' => ['index-admin']
 		];
 
 		$this->load->view('templates/header', $data);
@@ -76,10 +76,8 @@ class Admin_Controller extends CI_Controller
 			$this->session->unset_userdata('username');
 			$this->session->unset_userdata('role');
 			$this->session->sess_destroy();
-
-			redirect('admin/login');
 		}
-		redirect('admin');
+		redirect('admin/login');
 	}
 
 	public function data_pendaftar()
@@ -94,6 +92,7 @@ class Admin_Controller extends CI_Controller
 
 		$keyword = '';
 		if ($this->input->get('q')) $keyword = $this->input->get('q');
+		
 		$data = [
 			'jalur' => strtoupper($jalur_pendaftaran),
 			'data_pendaftar' => $this->Daftar_Model->data_pendaftar_table($jalur_pendaftaran, $sort_field, $sort_by, $keyword)
@@ -158,11 +157,14 @@ class Admin_Controller extends CI_Controller
 	{
 		// if (!$this->session->userdata('username')) redirect('admin/login');
 
-		$nisn = $this->uri->segment(4);
+		$nisn = $this->uri->segment(5);
+		$jalur_pendaftaran = $this->uri->segment(3);
 		// Cek nilai nisn terdaftar atau tidak
 		if (!$this->Daftar_Model->cek_nisn($nisn)) redirect('admin');
+		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
+		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
 
-		$this->load->view('ubah-pendaftar');
+		[$sort_field, $sort_by] = filter_sort_query();
 	}
 
 	public function hapus_pendaftar()

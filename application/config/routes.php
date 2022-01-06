@@ -55,16 +55,14 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Daftar Controller
 $route['pilih-jalur'] = 'Daftar_Controller/pilih_jalur';
-$route['form-pendaftaran/(pmdp|ktmse)'] = 'Daftar_Controller/form_pendaftaran';
+$route['form-pendaftaran/(pmdp|ktmse)']['GET'] = 'Daftar_Controller/get_form_pendaftaran';
+$route['form-pendaftaran/(pmdp|ktmse)']['POST'] = 'Daftar_Controller/post_form_pendaftaran';
 $route['terima-kasih'] = 'Daftar_Controller/terima_kasih';
 
 // Admin Controller
 $route['admin'] = 'Admin_Controller/admin';
 $route['admin/login'] = 'Admin_Controller/login';
 $route['admin/logout'] = 'Admin_Controller/logout';
-$route['admin/settings'] = 'Admin_Controller/settings';
-// $route['update-profile'] = 'Admin_Controller/update_profile';
-// $route['change-password'] = 'Admin_Controller/change_password';
 $route['admin/data-pendaftar/ubah/:any'] = 'Admin_Controller/ubah_pendaftar';
 $route['admin/data-pendaftar/(pmdp|ktmse|pmdp-ktmse)/hapus/:any'] = 'Admin_Controller/hapus_pendaftar';
 $route['admin/data-pendaftar/(pmdp|ktmse|pmdp-ktmse)/export'] = 'Admin_Controller/export_to_excel';

@@ -1,4 +1,4 @@
-<div class="container ct-luar">
+<div class="container">
 	<div class="block"></div>
 	<?php $this->load->view('templates/navbar', ['nav_link' => base_url() . 'admin']) ?>
 	<main>
@@ -21,7 +21,7 @@
 			</a>
 		</div>
 		<h2>Data Sipenmaru Berdasarkan Jalur</h2>
-		<div class="container ct-20">
+		<div class="container ct-20 admin">
 			<a href="<?= base_url() ?>admin/data-pendaftar/pmdp">
 				<div class="card">
 					<div class="img">

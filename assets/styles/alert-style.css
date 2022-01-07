@@ -26,7 +26,8 @@ div.block {
 	background-color: var(--biru-tua);
 }
 div.confirm-alert {
-	width: 560px;
+	max-width: 560px;
+	width: 90%;
 	height: fit-content;
 	position: fixed;
 	background-color: white;
@@ -77,4 +78,9 @@ div.ca-button {
 }
 div.ca-button button {
 	margin-right: 10px;
+}
+@media(max-width: 610px){
+	div.confirm-alert{
+		margin-left: -45%;
+	}
 }

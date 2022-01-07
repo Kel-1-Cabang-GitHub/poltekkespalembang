@@ -378,7 +378,7 @@
                                 <td class="mw-150"><a class="btn-action btn-primary detail-data" id="<?= $data['nisn']; ?>">Lihat Detail</a></td>
                                 <td class="mw-150"><a class="btn-action btn-primary" href="<?= base_url() ?>admin/data-pendaftar/ubah/<?= $data['nisn'] ?>">Ubah</a></td>
 								<?php
-									$id_hapus = base_url() . 'admin/data-pendaftar/' . $this->uri->segment(3) . '/' . $data['nisn'] . '/hapus';
+									$id_hapus = base_url() . 'admin/data-pendaftar/' . $this->uri->segment(3) . '/hapus/' . $data['nisn'];
 									if ($this->input->get('field')) $id_hapus .= '?field=' . $this->input->get('field');
 									$id_hapus .= (($this->input->get('sort')) ? (((!$this->input->get('field')) ? '?' : '&') . 'sort=' . $this->input->get('sort')) : '');
 								?>

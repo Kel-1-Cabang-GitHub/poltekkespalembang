@@ -23,6 +23,10 @@ div.container.ct-20{
 	width: 100%;
 	padding: 20px 0px;
 }
+div.container.ct-20.admin{
+	min-height: auto;
+	position: static;
+}
 div.card {
 	padding: 20px 15px;
 	width: 380px;

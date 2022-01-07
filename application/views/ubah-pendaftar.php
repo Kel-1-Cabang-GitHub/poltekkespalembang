@@ -79,11 +79,13 @@
 						<td><label for="tinggi_badan">Tinggi Badan</label></td>
 						<td>:</td>
 						<td><input type="number" min="0" name="tinggi_badan" id="tinggi_badan" value="<?= $data_pendaftar['tinggi_badan'] ?>"></td>
+						<td>cm</td>
 					</tr>
 					<tr>
 						<td><label for="berat_badan">Berat Badan</label></td>
 						<td>:</td>
 						<td><input type="number" min="0" name="berat_badan" id="berat_badan" value="<?= $data_pendaftar['berat_badan'] ?>"></td>
+						<td>kg</td>
 					</tr>
 				</table>
 			</section>

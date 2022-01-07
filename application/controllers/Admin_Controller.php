@@ -27,29 +27,32 @@ class Admin_Controller extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function login()
+	public function post_login()
 	{
 		if ($this->session->userdata('username')) redirect('admin');
 
-		$this->form_validation->set_rules('username', 'Username', 'required|trim', [
-			'required' => '*{field} harus diisi!'
-		]);
-		$this->form_validation->set_rules('password', 'Password', 'required|trim', [
-			'required' => '*{field} harus diisi!'
-		]);
+		$username_error = '';
+		$password_error = '';
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
 
-		if ($this->form_validation->run() == true) {
-			$username = $this->input->post('username');
-			$password = $this->input->post('password');
+		// Validasi Username
+		if (!$username) {
+			$username_error = '*Username harus diisi!';
+		} else if (!$this->Admin_Model->check_username_exists($username)) {
+			$username_error = '*Username belum terdaftar!';
+		}
 
-			// Username belum terdaftar
-			if (!$this->Admin_Model->check_username_exists($username)) redirect('admin/login');
+		$admin = $this->Admin_Model->get_admin_data($username);
 
-			$admin = $this->Admin_Model->get_admin_data($username);
+		// Validasi Password
+		if (!$password) {
+			$password_error = '*Password harus diisi!';
+		} else if (hash('sha256', $password) != @str_replace('\x', '', $admin['password'])) {
+			$password_error = '*Password anda salah!';
+		}
 
-			// Password salah
-			if (hash('sha256', $password) != str_replace('\x', '', $admin['password'])) redirect('admin/login');
-
+		if (hash('sha256', $password) == @str_replace('\x', '', $admin['password'])) {
 			$data = [
 				'username' => $admin['username'],
 				'role' => $admin['role']
@@ -59,6 +62,24 @@ class Admin_Controller extends CI_Controller
 
 			redirect('admin');
 		}
+
+		$data = [
+			'page_title' => 'Login Admin | POLTEKKES KEMENKES PALEMBANG',
+			'styles' => ['form', 'alert'],
+			'scripts' => [],
+			'username_error' => $username_error,
+			'password_error' => $password_error,
+			'username_value' => (!$username_error && $password_error)
+		];
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('login-admin');
+		$this->load->view('templates/footer');
+	}
+
+	public function get_login()
+	{
+		if ($this->session->userdata('username')) redirect('admin');
 
 		$data = [
 			'page_title' => 'Login Admin | POLTEKKES KEMENKES PALEMBANG',
@@ -93,7 +114,7 @@ class Admin_Controller extends CI_Controller
 
 		$keyword = '';
 		if ($this->input->get('q')) $keyword = $this->input->get('q');
-		
+
 		$data = [
 			'jalur' => strtoupper($jalur_pendaftaran),
 			'data_pendaftar' => $this->Daftar_Model->data_pendaftar_table($jalur_pendaftaran, $sort_field, $sort_by, $keyword)

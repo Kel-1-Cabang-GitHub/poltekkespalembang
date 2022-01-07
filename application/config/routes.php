@@ -61,7 +61,8 @@ $route['terima-kasih'] = 'Daftar_Controller/terima_kasih';
 
 // Admin Controller
 $route['admin'] = 'Admin_Controller/admin';
-$route['admin/login'] = 'Admin_Controller/login';
+$route['admin/login']['GET'] = 'Admin_Controller/get_login';
+$route['admin/login']['POST'] = 'Admin_Controller/post_login';
 $route['admin/logout'] = 'Admin_Controller/logout';
 $route['admin/data-pendaftar/ubah/:any'] = 'Admin_Controller/ubah_pendaftar';
 $route['admin/data-pendaftar/(pmdp|ktmse|pmdp-ktmse)/hapus/:any'] = 'Admin_Controller/hapus_pendaftar';

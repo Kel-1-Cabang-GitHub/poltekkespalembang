@@ -239,7 +239,7 @@
 						<span class="label-input"><label class="form-label" for="tahun_lulus">Tahun Lulus/Tamat</label></span>
 						<input type="number" min="2000" max="<?= date('Y') ?>" list="daftar_tahun_lulus" name="tahun_lulus" id="tahun_lulus" class="text <?= (form_error('tahun_lulus')) ? 'input-error' : '' ?>" value="<?= set_value('tahun_lulus') ?>" placeholder="*Mohon isi sendiri jika tidak ada!">
 						<datalist id="daftar_tahun_lulus">
-						<?= daftar_tahun_lulus(); ?>
+							<?= daftar_tahun_lulus(); ?>
 						</datalist>
 						<?= form_error('tahun_lulus', '<p class="pesan-error">', '</p>'); ?>
 						<span class="label-input"><label class="form-label"for="rekap_nilai_rapot">Rekap Nilai Rapot</label></span>

@@ -207,27 +207,47 @@
                             <tr>
                                 <td>Prestasi 1</td>
                                 <td>:</td>
-                                <td><span class="detail" id="prestasi_1">-</span></td>
+                                <td>
+                                    <a target="_blank" id="prestasi_1" class="link-file" href="<?= base_url(); ?>/uploads/pdf/prestasi_1/">
+                                        <span id="prestasi_1">-</span>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Prestasi 2</td>
                                 <td>:</td>
-                                <td><span class="detail" id="prestasi_2">-</span></td>
+                                <td>
+                                    <a target="_blank" id="prestasi_2" class="link-file" href="<?= base_url(); ?>/uploads/pdf/prestasi_2/">
+                                        <span id="prestasi_2">-</span>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Prestasi 3</td>
                                 <td>:</td>
-                                <td><span class="detail" id="prestasi_3">-</span></td>
+                                <td>
+                                    <a target="_blank" id="prestasi_3" class="link-file" href="<?= base_url(); ?>/uploads/pdf/prestasi_3/">
+                                        <span id="prestasi_3">-</span>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Prestasi 4</td>
                                 <td>:</td>
-                                <td><span class="detail" id="prestasi_4">-</span></td>
+                                <td>
+                                    <a target="_blank" id="prestasi_4" class="link-file" href="<?= base_url(); ?>/uploads/pdf/prestasi_4/">
+                                        <span id="prestasi_4">-</span>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Prestasi 5</td>
                                 <td>:</td>
-                                <td><span class="detail" id="prestasi_5">-</span></td>
+                                <td>
+                                    <a target="_blank" id="prestasi_5" class="link-file" href="<?= base_url(); ?>/uploads/pdf/prestasi_5/">
+                                        <span id="prestasi_5">-</span>
+                                    </a>
+                                </td>
                             </tr>
                         </table>
                     </section>
@@ -355,11 +375,10 @@
                                 <td><?= $data['nama_sekolah']; ?></td>
                                 <td class="mw-150"><?= $data['jurusan']; ?>
                                 <td class="mw-150"><?= $data['jalur_pendaftaran']; ?></td>
-                                <!-- <td class="mw-150"><a class="btn-action btn-primary" href="<?= base_url() ?>admin/data-pendaftar/detail/<?= $data['nisn'] ?>">Lihat Detail</a></td> -->
                                 <td class="mw-150"><a class="btn-action btn-primary detail-data" id="<?= $data['nisn']; ?>">Lihat Detail</a></td>
                                 <td class="mw-150"><a class="btn-action btn-primary" href="<?= base_url() ?>admin/data-pendaftar/ubah/<?= $data['nisn'] ?>">Ubah</a></td>
 								<?php
-									$id_hapus = base_url() . 'admin/data-pendaftar/' . $this->uri->segment(3) . '/hapus/' . $data['nisn'];
+									$id_hapus = base_url() . 'admin/data-pendaftar/' . $this->uri->segment(3) . '/' . $data['nisn'] . '/hapus';
 									if ($this->input->get('field')) $id_hapus .= '?field=' . $this->input->get('field');
 									$id_hapus .= (($this->input->get('sort')) ? (((!$this->input->get('field')) ? '?' : '&') . 'sort=' . $this->input->get('sort')) : '');
 								?>

@@ -11,7 +11,7 @@ tombol_hapus1.forEach(el => {
 		let id = el.id;
 		let nama_lengkap = id.split(" ").slice(1).join(" ");
 		let link = id.split(" ")[0];
-		let nisn = link.split('/')[link.split('/').length - 1].replace(/\D+/, '');
+		let nisn = link.split('/')[link.split('/').length - 2].replace(/\D+/, '');
 		let span_nama = document.querySelector("span#ubah-nama");
 		let span_nisn = document.querySelector("span#ubah-nisn");
 		span_nama.textContent = nama_lengkap;
@@ -37,6 +37,16 @@ const skpk = document.querySelector("a#surat_keterangan_penghasilan_keluarga");
 let href_awal_skpk = skpk.href;
 const foto_rumah = document.querySelector("a#foto_rumah");
 let href_awal_foto_rumah = foto_rumah.href;
+const prestasi_1 = document.querySelector("a#prestasi_1");
+let href_awal_prestasi1 = prestasi_1.href;
+const prestasi_2 = document.querySelector("a#prestasi_2");
+let href_awal_prestasi2 = prestasi_2.href;
+const prestasi_3 = document.querySelector("a#prestasi_3");
+let href_awal_prestasi3 = prestasi_3.href;
+const prestasi_4 = document.querySelector("a#prestasi_4");
+let href_awal_prestasi4 = prestasi_4.href;
+const prestasi_5 = document.querySelector("a#prestasi_5");
+let href_awal_prestasi5 = prestasi_5.href;
 let src_awal = detail_img.src;
 const span_detail = document.querySelectorAll("span.detail");
 const section_opt = document.querySelector("section.optional");
@@ -70,6 +80,43 @@ tombol_detail.forEach(el => {
 				let newhref_foto_rumah = detail_data[keys];
 				foto_rumah.href = href_awal_foto_rumah + newhref_foto_rumah;
 			}
+
+			if(keys === "prestasi_1"){
+				if(detail_data[keys] === null){
+					prestasi_1.removeAttribute("href");
+				}else{
+					prestasi_1.href = href_awal_prestasi1 + detail_data[keys];
+				}
+			}
+			if(keys === "prestasi_2"){
+				if(detail_data[keys] === null){
+					prestasi_2.removeAttribute("href");
+				}else{
+					prestasi_2.href = href_awal_prestasi2 + detail_data[keys];
+				}
+			}
+			if(keys === "prestasi_3"){
+				if(detail_data[keys] === null){
+					prestasi_3.removeAttribute("href");
+				}else{
+					prestasi_3.href = href_awal_prestasi3 + detail_data[keys];
+				}
+			}
+			if(keys === "prestasi_4"){
+				if(detail_data[keys] === null){
+					prestasi_4.removeAttribute("href");
+				}else{
+					prestasi_4.href = href_awal_prestasi4 + detail_data[keys];
+				}
+			}
+			if(keys === "prestasi_5"){
+				if(detail_data[keys] === null){
+					prestasi_5.removeAttribute("href");
+				}else{
+					prestasi_5.href = href_awal_prestasi5 + detail_data[keys];
+				}
+			}
+
 			let span_keys = document.querySelector(`span#${keys}`);
 			if (span_keys) {
 				let value = detail_data[keys];

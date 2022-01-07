@@ -78,18 +78,6 @@ div.table-form {
 div.table-form.active {
 	display: flex;
 }
-div.table-form p.pesan-error {
-	width: 100%;
-	color: var(--merah);
-	font-size: 12px;
-	padding: 5px;
-	margin-bottom: 25px;
-	position: relative;
-	top: -20px;
-}
-div.table-form.berkas p.pesan-error {
-	top: 0px;
-}
 span.label-input {
 	width: 200px;
 	margin-right: 25px;
@@ -188,14 +176,6 @@ a.a-btn {
 	text-align: center;
 	font-size: 13.33px;
 	line-height: 30px;
-}
-div.table-form input.input-error,
-div.table-form textarea.input-error,
-div.table-form select.input-error,
-div.table-form input.input-error:focus,
-div.table-form textarea.input-error:focus,
-div.table-form select.input-error:focus {
-	border: 1px solid var(--merah);
 }
 div.scroll {
 	display: flex;

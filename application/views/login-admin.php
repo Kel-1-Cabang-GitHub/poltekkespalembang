@@ -2,14 +2,24 @@
 <main>
     <div class="form-login">
         <h1>Login Admin</h1>
-        <form action="<?= base_url() ?>Admin_Controller/login" method="POST">
+        <form action="<?= base_url() ?>Admin_Controller/post_login" method="POST">
             <span class="input-text">
                 <label for="username">Username</label>
-                <input type="text" class="text" name="username" id="username" autofocus value="<?= set_value('username') ?>">
-            </span>
+				<?php if (isset($username_error)): ?>
+                	<input type="text" class="text <?= (form_error('username') || $username_error) ? 'input-error' : '' ?>" name="username" id="username" autofocus value="<?= ($username_value) ? set_value('username') : '' ?>">
+				<?php endif; ?>
+				<?php if (isset($username_error)): ?>
+					<p class="pesan-error login-error"><?= $username_error ?></p>
+				<?php endif; ?>
+			</span>
             <span class="input-text">
                 <label for="password">Password</label>
-                <input type="password" class="text" name="password" id="password" value="<?= set_value('password') ?>">
+				<?php  if (isset($password_error)): ?>
+                	<input type="password" class="text <?= (form_error('password') || $password_error) ? 'input-error' : '' ?>" name="password" id="password">
+				<?php endif; ?>
+				<?php if (isset($password_error)): ?>
+					<p class="pesan-error login-error"><?= $password_error; ?></p>
+				<?php endif; ?>
             </span>
             <div class="btn-page">
                 <button type="submit" class="btn btn-success">Login</button>

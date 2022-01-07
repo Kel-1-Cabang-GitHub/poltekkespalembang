@@ -40,6 +40,29 @@ div.brand {
 	flex-direction: column;
 	align-items: center;
 }
+p.pesan-error {
+	width: 100%;
+	color: var(--merah);
+	font-size: 12px;
+	padding: 5px;
+	margin-bottom: 25px;
+	position: relative;
+	top: -20px;
+}
+div.table-form.berkas p.pesan-error,
+div.form-login p.pesan-error {
+	top: 0px;
+}
+p.pesan-error .login-error {
+	margin-bottom: 10px;
+}
+div.table-form input.input-error,
+div.table-form input.text.input-error,
+div.table-form textarea.input-error,
+div.table-form select.input-error,
+div.form-login input.text.input-error {
+	border: 1px solid var(--merah);
+}
 div.scroll {
 	display: flex;
 	justify-content: center;

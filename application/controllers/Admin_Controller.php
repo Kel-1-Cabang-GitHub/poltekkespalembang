@@ -175,18 +175,31 @@ class Admin_Controller extends CI_Controller
 		save_spreadsheet($spreadsheet, $jalur_pendaftaran);
 	}
 
-	public function ubah_pendaftar()
+	public function post_ubah_pendaftar()
+	{
+	}
+
+	public function get_ubah_pendaftar()
 	{
 		// if (!$this->session->userdata('username')) redirect('admin/login');
 
-		$nisn = $this->uri->segment(5);
-		$jalur_pendaftaran = $this->uri->segment(3);
+		$nisn = $this->uri->segment(4);
+		$jalur_pendaftaran = $this->input->get('jalur');
 		// Cek nilai nisn terdaftar atau tidak
 		if (!$this->Daftar_Model->cek_nisn($nisn)) redirect('admin');
-		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
-		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
 
-		[$sort_field, $sort_by] = filter_sort_query();
+		$data_pendaftar = $this->Daftar_Model->get_pendaftar_by_nisn($nisn);
+
+		$data = [
+			'page_title' => $data_pendaftar['nisn'] . ' - ' . $data_pendaftar['nama_lengkap'],
+			'styles' => ['data', 'alert'],
+			'scripts' => ['edit'],
+			'data_pendaftar' => $data_pendaftar
+		];
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('ubah-pendaftar');
+		$this->load->view('templates/footer');
 	}
 
 	public function hapus_pendaftar()

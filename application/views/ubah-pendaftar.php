@@ -1,9 +1,6 @@
 <?php $this->load->view('templates/navbar', ['nav_link' => base_url() . 'admin']) ?>
 <main>
 	<div class="edit-pendaftar">
-		<div class="close-btn">
-			<a class="close edit"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></a>
-		</div>
 		<h2>Ubah Pendaftar</h2>
 		<div class="data-edit">
 			<section id="sect1">
@@ -11,19 +8,19 @@
 				<div class="tabel-edit">
 					<table>
 						<tr>
-							<td>Nama</td>
+							<td><label for="nama_lengkap">Nama Lengkap</label>
 							<td>:</td>
-							<td><span class="edit" id="nama_lengkap">-</span></td>
+							<td><input type="text" name="nama_lengkap" id="nama_lengkap" value="<?= $data_pendaftar['nama_lengkap'] ?>" autofocus></td>
 						</tr>
 						<tr>
-							<td>NISN</td>
+							<td><label for="nisn">Nomor Induk Siswa Nasional (NISN)</label></td>
 							<td>:</td>
-							<td><span class="edit" id="nisn">-</span></td>
+							<td><input type="text" name="nisn" id="nisn" value="<?= $data_pendaftar['nisn'] ?>"></td>
 						</tr>
 						<tr>
 							<td>Jalur Pendaftaran</td>
 							<td>:</td>
-							<td><span class="edit" id="jalur_pendaftaran">-</span></td>
+							<td><span class="edit" id="jalur_pendaftaran"><?= $data_pendaftar['jalur_pendaftaran'] ?></span></td>
 						</tr>
 						<tr>
 							<td>Bukti Pembayaran</td>
@@ -52,14 +49,16 @@
 				<hr>
 				<table>
 					<tr>
-						<td>Alamat</td>
+						<td><label for="alamat">Alamat Sesuai KTP</label></td>
 						<td>:</td>
-						<td><span class="edit" id="alamat">-</span></td>
+						<td>
+							<textarea name="alamat" id="alamat"><?= $data_pendaftar['alamat'] ?></textarea>
+						</td>
 					</tr>
 					<tr>
-						<td>Kode Pos</td>
+						<td><label for="kode_pos">Kode Pos</label></td>
 						<td>:</td>
-						<td><span class="edit" id="kode_pos">-</span></td>
+						<td><input type="text" name="kode_pos" id="kode_pos" value="<?= $data_pendaftar['kode_pos'] ?>"></td>
 					</tr>
 					<tr>
 						<td>Tempat Lahir</td>
@@ -77,14 +76,16 @@
 						<td><span class="edit" id="jenis_kelamin">-</span></td>
 					</tr>
 					<tr>
-						<td>Tinggi Badan</td>
+						<td><label for="tinggi_badan">Tinggi Badan</label></td>
 						<td>:</td>
-						<td><span class="edit" id="tinggi_badan">-</span></td>
+						<td><input type="number" min="0" name="tinggi_badan" id="tinggi_badan" value="<?= $data_pendaftar['tinggi_badan'] ?>"></td>
+						<td>cm</td>
 					</tr>
 					<tr>
-						<td>Berat Badan</td>
+						<td><label for="berat_badan">Berat Badan</label></td>
 						<td>:</td>
-						<td><span class="edit" id="berat_badan">-</span></td>
+						<td><input type="number" min="0" name="berat_badan" id="berat_badan" value="<?= $data_pendaftar['berat_badan'] ?>"></td>
+						<td>kg</td>
 					</tr>
 				</table>
 			</section>
@@ -93,9 +94,14 @@
 				<hr>
 				<table>
 					<tr>
-						<td>Nama Sekolah</td>
+						<td>Jenis Pendidikan Menengah</td>
 						<td>:</td>
-						<td><span class="edit" id="nama_sekolah">-</span></td>
+						<td><span class="edit" id="jenis_pendidikan_menengah">-</span></td>
+					</tr>
+					<tr>
+						<td><label for="nama_sekolah">Nama Sekolah</label></td>
+						<td>:</td>
+						<td><input type="text" name="nama_sekolah" id="nama_sekolah" value="<?= $data_pendaftar['nama_sekolah'] ?>"></td>
 					</tr>
 					<tr>
 						<td>Jenis Sekolah</td>
@@ -139,34 +145,36 @@
 						<td><span class="edit" id="rekap_nilai_rapot">-</span></td>
 					</tr>
 					<tr>
-						<td>Rata-rata Nilai Rapot</td>
+						<td><label for="rata_rata_nilai_rapot">Rata-Rata Nilai Rapot</label></td>
 						<td>:</td>
-						<td><span class="edit" id="rata_rata_nilai_rapot">-</span></td>
+						<td>
+							<input type="number" min="0" max="100" step="0.1" id="rata_rata_nilai_rapot" value="<?= $data_pendaftar['rata_rata_nilai_rapot'] ?>">
+						</td>
 					</tr>
 					<tr>
-						<td>Peringkat Semester 1</td>
+						<td><label for="peringkat_semester_1">Peringkat Semester 1</label></td>
 						<td>:</td>
-						<td><span class="edit" id="peringkat_semester_1">-</span></td>
+						<td><input type="number" min="1" name="peringkat_semester_1" id="peringkat_semester_1" value="<?= $data_pendaftar['peringkat_semester_1'] ?>"></td>
 					</tr>
 					<tr>
-						<td>Peringkat Semester 2</td>
+						<td><label for="peringkat_semester_2">Peringkat Semester 2</label></td>
 						<td>:</td>
-						<td><span class="edit" id="peringkat_semester_2">-</span></td>
+						<td><input type="number" min="1" name="peringkat_semester_2" id="peringkat_semester_2" value="<?= $data_pendaftar['peringkat_semester_2'] ?>"></td>
 					</tr>
 					<tr>
-						<td>Peringkat Semester 3</td>
+						<td><label for="peringkat_semester_3">Peringkat Semester 3</label></td>
 						<td>:</td>
-						<td><span class="edit" id="peringkat_semester_3">-</span></td>
+						<td><input type="number" min="1" name="peringkat_semester_3" id="peringkat_semester_3" value="<?= $data_pendaftar['peringkat_semester_3'] ?>"></td>
 					</tr>
 					<tr>
-						<td>Peringkat Semester 4</td>
+						<td><label for="peringkat_semester_4">Peringkat Semester 4</label></td>
 						<td>:</td>
-						<td><span class="edit" id="peringkat_semester_4">-</span></td>
+						<td><input type="number" min="1" name="peringkat_semester_4" id="peringkat_semester_4" value="<?= $data_pendaftar['peringkat_semester_4'] ?>"></td>
 					</tr>
 					<tr>
-						<td>Peringkat Semester 5</td>
+						<td><label for="peringkat_semester_5">Peringkat Semester 5</label></td>
 						<td>:</td>
-						<td><span class="edit" id="peringkat_semester_5">-</span></td>
+						<td><input type="number" min="1" name="peringkat_semester_5" id="peringkat_semester_5" value="<?= $data_pendaftar['peringkat_semester_5'] ?>"></td>
 					</tr>
 				</table>
 			</section>

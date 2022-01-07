@@ -321,35 +321,59 @@
                     <thead>
                         <tr>
                             <th class="mw-100">No.</th>
-                            <th>
-								Nama Lengkap <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=nama-lengkap&sort=asc">Urut Nama Lengkap ASC</a> <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=nama-lengkap&sort=desc">Urut Nama Lengkap DESC</a>
+                            <th class="fl">
+								<div class="keyword">
+                                   <p>Nama Lengkap</p>
+                                </div>
+                                <div class="sort">
+                                    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=nama-lengkap&sort=desc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+                                    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=nama-lengkap&sort=asc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/></svg></a>
+                                </div>
 							</th>
-                            <th class="mw-150">
-								NISN <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>">Urut NISN ASC</a> <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?sort=desc">Urut NISN DESC</a>
+                            <th class="mw-150 fl">
+                                <div class="keyword">
+                                    <p>NISN</p>
+                                </div>
+                                <div class="sort">
+                                    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?sort=desc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+                                    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/></svg></a>
+                                </div>
 							</th>
-                            <th class="mw-150">
-								Jenis Kelamin <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jenis-kelamin&sort=asc">Urut Jenis Kelamin ASC</a> <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jenis-kelamin&sort=desc">Urut Jenis Kelamin DESC</a>
+                            <th class="mw-150 fl">
+                                <div class="keyword">
+                                    <p>Jenis Kelamin</p>
+                                </div>
+                                <div class="sort">
+                                    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jenis-kelamin&sort=desc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+                                    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jenis-kelamin&sort=asc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/></svg></a>
+                                </div>
 							</th>
-                            <th class="mw-150">
-								Asal Sekolah <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=nama-sekolah&sort=asc">Urut Asal Sekolah ASC</a> <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=nama-sekolah&sort=desc">Urut Asal Sekolah DESC</a>
+                            <th class="mw-150 fl">
+                                <div class="keyword">
+                                    <p>Asal Sekolah</p>
+                                </div>
+                                <div class="sort">
+                                    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=nama-sekolah&sort=desc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+                                    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=nama-sekolah&sort=asc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/></svg></a>
+                                </div>
 							</th>
-                            <th class="mw-150">
-								Jurusan <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jurusan&sort=asc">Urut Jurusan ASC</a> <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jurusan&sort=desc">Urut Jurusan DESC</a>
+                            <th class="mw-150 fl">
+                                <div class="keyword">
+                                    <p>Jurusan</p>
+                                </div>
+                                <div class="sort">
+                                    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jurusan&sort=desc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+								    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jurusan&sort=asc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/></svg></a>
+                                </div>
 							</th>
-                            <th class="mw-150">
-								Jalur Pendaftaran <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jalur-pendaftaran&sort=asc">Urut Jalur Pendaftaran ASC</a> <br>
-								<a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jalur-pendaftaran&sort=desc">Urut Jalur Pendaftaran DESC</a>
+                            <th class="mw-150 fl">
+                                <div class="keyword">
+                                    <p>Jalur Pendaftaran</p>
+                                </div>
+                                <div class="sort">
+                                    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jalur-pendaftaran&sort=desc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+                                    <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=jalur-pendaftaran&sort=asc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/></svg></a>
+                                </div>
 							</th>
                             <th class="mw-150">Data Detail</th>
                             <th class="mw-150">Ubah Data</th>

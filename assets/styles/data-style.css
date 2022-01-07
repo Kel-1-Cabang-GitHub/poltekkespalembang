@@ -225,6 +225,15 @@ div.data-detail section#sect1 {
 div.data-detail section table {
 	max-width: fit-content;
 }
+th.fl div.sort{
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+div.sort a{
+	margin-left: 5px;
+	margin-right: 5px;
+}
 div.data-detail table td {
 	min-width: 150px;
 	padding: 5px;

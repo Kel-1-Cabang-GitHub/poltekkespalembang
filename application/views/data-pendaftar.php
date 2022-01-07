@@ -37,7 +37,7 @@
                 <h2>Detail Pendaftar</h2>
                 <div class="data-detail">
                     <section id="sect1">
-                        <img id="detail-foto" src="<?= base_url(); ?>/uploads/img/pas_foto/" alt="pas foto">
+                        <img id="detail-foto" src="<?= base_url(); ?>uploads/img/pas_foto/" alt="pas foto">
                         <div class="tabel-detail">
                             <table>
                                 <tr>
@@ -59,7 +59,7 @@
                                     <td>Bukti Pembayaran</td>
                                     <td>:</td>
                                     <td>
-                                        <a target="_blank" id="bukti_pembayaran" class="link-file" href="<?= base_url(); ?>/uploads/img/bukti_pembayaran/">
+                                        <a target="_blank" id="bukti_pembayaran" class="link-file" href="<?= base_url(); ?>uploads/img/bukti_pembayaran/">
                                             <span id="bukti_pembayaran">-</span>
                                         </a>
                                     </td>
@@ -208,7 +208,7 @@
                                 <td>Prestasi 1</td>
                                 <td>:</td>
                                 <td>
-                                    <a target="_blank" id="prestasi_1" class="link-file" href="<?= base_url(); ?>/uploads/pdf/prestasi_1/">
+                                    <a target="_blank" id="prestasi_1" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_1/">
                                         <span id="prestasi_1">-</span>
                                     </a>
                                 </td>
@@ -217,7 +217,7 @@
                                 <td>Prestasi 2</td>
                                 <td>:</td>
                                 <td>
-                                    <a target="_blank" id="prestasi_2" class="link-file" href="<?= base_url(); ?>/uploads/pdf/prestasi_2/">
+                                    <a target="_blank" id="prestasi_2" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_2/">
                                         <span id="prestasi_2">-</span>
                                     </a>
                                 </td>
@@ -226,7 +226,7 @@
                                 <td>Prestasi 3</td>
                                 <td>:</td>
                                 <td>
-                                    <a target="_blank" id="prestasi_3" class="link-file" href="<?= base_url(); ?>/uploads/pdf/prestasi_3/">
+                                    <a target="_blank" id="prestasi_3" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_3/">
                                         <span id="prestasi_3">-</span>
                                     </a>
                                 </td>
@@ -235,7 +235,7 @@
                                 <td>Prestasi 4</td>
                                 <td>:</td>
                                 <td>
-                                    <a target="_blank" id="prestasi_4" class="link-file" href="<?= base_url(); ?>/uploads/pdf/prestasi_4/">
+                                    <a target="_blank" id="prestasi_4" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_4/">
                                         <span id="prestasi_4">-</span>
                                     </a>
                                 </td>
@@ -244,7 +244,7 @@
                                 <td>Prestasi 5</td>
                                 <td>:</td>
                                 <td>
-                                    <a target="_blank" id="prestasi_5" class="link-file" href="<?= base_url(); ?>/uploads/pdf/prestasi_5/">
+                                    <a target="_blank" id="prestasi_5" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_5/">
                                         <span id="prestasi_5">-</span>
                                     </a>
                                 </td>
@@ -259,7 +259,7 @@
                                 <td>Surat Keterangan Miskin</td>
                                 <td>:</td>
                                 <td>
-                                    <a target="_blank" id="surat_keterangan_miskin" class="link-file" href="<?= base_url(); ?>/uploads/pdf/surat_keterangan_miskin/">
+                                    <a target="_blank" id="surat_keterangan_miskin" class="link-file" href="<?= base_url(); ?>uploads/pdf/surat_keterangan_miskin/">
                                         <span class="detail" id="surat_keterangan_miskin">-</span>
                                     </a>
                                 </td>
@@ -268,7 +268,7 @@
                                     <td>Surat Keterangan Penghasilan Keluarga</td>
                                     <td>:</td>
                                     <td>
-                                    <a target="_blank" id="surat_keterangan_penghasilan_keluarga" class="link-file" href="<?= base_url(); ?>/uploads/pdf/surat_keterangan_penghasilan_keluarga/">
+                                    <a target="_blank" id="surat_keterangan_penghasilan_keluarga" class="link-file" href="<?= base_url(); ?>uploads/pdf/surat_keterangan_penghasilan_keluarga/">
                                         <span class="detail" id="surat_keterangan_penghasilan_keluarga">-</span>
                                     </a>
                                     </td>
@@ -277,7 +277,7 @@
                                     <td>Foto Rumah</td>
                                     <td>:</td>
                                     <td>
-                                        <a target="_blank" id="foto_rumah" class="link-file" href="<?= base_url(); ?>/uploads/pdf/foto_rumah/">
+                                        <a target="_blank" id="foto_rumah" class="link-file" href="<?= base_url(); ?>uploads/pdf/foto_rumah/">
                                             <span class="detail" id="foto_rumah">-</span>
                                         </a>
                                     </td>

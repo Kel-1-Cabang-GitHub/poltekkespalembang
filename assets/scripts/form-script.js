@@ -147,12 +147,18 @@ tombol_upload.forEach((e) => {
 });
 
 // Hapus Prodi Pilihan 1 di Prodi Pilihan 2 jika Prodi Pilihan 1 sudah diisi
-const prodi_pilihan_1 = document.querySelector("select.program_studi_pilihan_1");
-const prodi_pilihan_2 = document.querySelector("select.program_studi_pilihan_2");
+const prodi_pilihan_1 = document.querySelector(
+	"select.program_studi_pilihan_1"
+);
+const prodi_pilihan_2 = document.querySelector(
+	"select.program_studi_pilihan_2"
+);
 
 prodi_pilihan_1.addEventListener("change", () => {
 	const prodi_pilihan_2_option = prodi_pilihan_2.querySelectorAll("option");
-	prodi_pilihan_2_option.forEach((el) => el.disabled = el.value == prodi_pilihan_1.value);
+	prodi_pilihan_2_option.forEach(
+		(el) => (el.disabled = el.value == prodi_pilihan_1.value)
+	);
 });
 
 // Alert Konfirmasi simpan data

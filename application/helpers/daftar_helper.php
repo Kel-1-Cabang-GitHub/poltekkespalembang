@@ -25,7 +25,8 @@ if (!function_exists('upload_file')) {
 }
 
 if (!function_exists('provinsi_id_to_name')) {
-	function provinsi_id_to_name($provinsi_id) {
+	function provinsi_id_to_name($provinsi_id)
+	{
 		return PROVINSI[(int) $provinsi_id];
 	}
 }
@@ -76,7 +77,7 @@ if (!function_exists('daftar_provinsi')) {
 }
 
 if (!function_exists('daftar_program_studi')) {
-	function daftar_program_studi($tag, $name = "")
+	function daftar_program_studi($tag, $name = "", $checker = "")
 	{
 		$daftar_program_studi = [
 			"DIII Keperawatan Palembang",
@@ -99,7 +100,12 @@ if (!function_exists('daftar_program_studi')) {
 		foreach ($daftar_program_studi as $program_studi) {
 			$res_str .= "<$tag";
 			if ($tag == "option") {
-				$res_str .= " value='Prodi $program_studi'" . set_select($name, "Prodi $program_studi");
+				$res_str .= " value='Prodi $program_studi'";
+				if ($checker) {
+					($checker == "Prodi $program_studi") ? $res_str .= " selected" : "";
+				} else {
+					$res_str .= set_select($name, "Prodi $program_studi");
+				}
 			}
 			$res_str .= ">Prodi $program_studi</$tag>";
 		}

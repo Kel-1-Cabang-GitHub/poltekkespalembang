@@ -139,12 +139,12 @@ class Daftar_Model extends CI_Model
 			data_sekolah.peringkat_semester_4, data_sekolah.peringkat_semester_5,
 			program_studi.bukti_pembayaran, program_studi.program_studi_pilihan_1, program_studi.program_studi_pilihan_2,
 			data_prestasi.prestasi_1, data_prestasi.prestasi_2, data_prestasi.prestasi_3, data_prestasi.prestasi_4, data_prestasi.prestasi_5,
-			if $jalur_pendaftaran != 'pmdp' -> berkas_ktmse_gakin.surat_keterangan_miskin, berkas_ktmse_gakin.surat_keterangan_penghasilan_keluarga, berkas_ktmse_gakin.foto_rumah
+			berkas_ktmse_gakin.surat_keterangan_miskin, berkas_ktmse_gakin.surat_keterangan_penghasilan_keluarga, berkas_ktmse_gakin.foto_rumah
 		FROM data_pribadi
 		INNER JOIN data_sekolah ON data_pribadi.nisn = data_sekolah.nisn
 		INNER JOIN program_studi ON data_pribadi.nisn = program_studi.nisn
 		INNER JOIN data_prestasi ON data_pribadi.nisn = data_prestasi.nisn
-		if $jalur_pendaftaran != 'pmdp' -> LEFT OUTER JOIN berkas_ktmse_gakin ON data_pribadi.nisn = berkas_ktmse_gakin.nisn
+		 LEFT OUTER JOIN berkas_ktmse_gakin ON data_pribadi.nisn = berkas_ktmse_gakin.nisn
 		WHERE data_pribadi.nisn = $nisn;
 		*/
 		$fields = "data_pribadi.nama_lengkap, data_pribadi.alamat, data_pribadi.kode_pos, data_pribadi.nisn,
@@ -156,7 +156,8 @@ class Daftar_Model extends CI_Model
 		data_sekolah.peringkat_semester_1, data_sekolah.peringkat_semester_2, data_sekolah.peringkat_semester_3,
 		data_sekolah.peringkat_semester_4, data_sekolah.peringkat_semester_5,
 		program_studi.bukti_pembayaran, program_studi.program_studi_pilihan_1, program_studi.program_studi_pilihan_2,
-		data_prestasi.prestasi_1, data_prestasi.prestasi_2, data_prestasi.prestasi_3, data_prestasi.prestasi_4, data_prestasi.prestasi_5";
+		data_prestasi.prestasi_1, data_prestasi.prestasi_2, data_prestasi.prestasi_3, data_prestasi.prestasi_4, data_prestasi.prestasi_5,
+		berkas_ktmse_gakin.surat_keterangan_miskin, berkas_ktmse_gakin.surat_keterangan_penghasilan_keluarga, berkas_ktmse_gakin.foto_rumah";
 		$this->db->select($fields);
 		$this->db->from('data_pribadi');
 		$this->db->join('data_sekolah', 'data_sekolah.nisn = data_pribadi.nisn');

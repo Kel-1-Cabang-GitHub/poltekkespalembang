@@ -8,14 +8,14 @@
 				<div class="tabel-edit">
 					<table>
 						<tr>
-							<td><label for="nama_lengkap">Nama Lengkap</label>
+							<td><label class="form-label" for="nama_lengkap">Nama Lengkap</label>
 							<td>:</td>
 							<td><input type="text" name="nama_lengkap" id="nama_lengkap" value="<?= $data_pendaftar['nama_lengkap'] ?>" autofocus></td>
 						</tr>
 						<tr>
-							<td><label for="nisn">Nomor Induk Siswa Nasional (NISN)</label></td>
+							<td><label class="form-label" for="nisn">Nomor Induk Siswa Nasional (NISN)</label></td>
 							<td>:</td>
-							<td><input type="text" name="nisn" id="nisn" value="<?= $data_pendaftar['nisn'] ?>"></td>
+							<td><input type="text" class="text" name="nisn" id="nisn" value="<?= $data_pendaftar['nisn'] ?>"></td>
 						</tr>
 						<tr>
 							<td>Jalur Pendaftaran</td>
@@ -23,23 +23,38 @@
 							<td><span class="edit" id="jalur_pendaftaran"><?= $data_pendaftar['jalur_pendaftaran'] ?></span></td>
 						</tr>
 						<tr>
-							<td>Bukti Pembayaran</td>
+							<td><label class="form-label" for="bukti_pembayaran">Upload Bukti Pembayaran</label></td>
 							<td>:</td>
 							<td>
-								<a target="_blank" id="bukti_pembayaran" class="link-file" href="<?= base_url(); ?>uploads/img/bukti_pembayaran/">
-									<span id="bukti_pembayaran">-</span>
-								</a>
+								<input type="file" name="bukti_pembayaran" id="bukti_pembayaran" accept=".jpg, .jpeg, .png">
+								<span class="input-file">
+									<label class="input-file" for="bukti_pembayaran"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
+									<input type="text" class="text-file bukti-pembayaran" readonly value="<?= $data_pendaftar['bukti_pembayaran'] ?>">
+									<a target="_blank" id="bukti_pembayaran" class="link-file" href="<?= base_url(); ?>uploads/img/bukti_pembayaran/">
+										<?= $data_pendaftar['bukti_pembayaran'] ?>
+									</a>
+								</span>
 							</td>
 						</tr>
 						<tr>
-							<td>Program Studi Pilihan 1</td>
+							<td><label class="form-label" for="program_studi_pilihan_1">Program Studi Pilihan 1</label></td>
 							<td>:</td>
-							<td><span class="edit" id="program_studi_pilihan_1">-</span></td>
+							<td>
+								<select name="program_studi_pilihan_1" class="program_studi_pilihan_1" id="program_studi_pilihan_1">
+									<option disabled>--Pilih program studi--</option>
+									<?= daftar_program_studi('option', 'program_studi_pilihan_1', $data_pendaftar['program_studi_pilihan_1']); ?>
+								</select>
+							</td>
 						</tr>
 						<tr>
-							<td>Program Studi Pilihan 2</td>
+							<td><label class="form-label" for="program_studi_pilihan_2">Program Studi Pilihan 2</label></td>
 							<td>:</td>
-							<td><span class="edit" id="program_studi_pilihan_2">-</span></td>
+							<td>
+								<select name="program_studi_pilihan_2" class="program_studi_pilihan_2" id="program_studi_pilihan_2">
+									<option value="<?= null ?>">--Lewati jika hanya membayar 1 pilihan--</option>
+									<?= daftar_program_studi('option', 'program_studi_pilihan_2', $data_pendaftar['program_studi_pilihan_2']); ?>
+								</select>
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -49,42 +64,56 @@
 				<hr>
 				<table>
 					<tr>
-						<td><label for="alamat">Alamat Sesuai KTP</label></td>
+						<td><label class="form-label" for="alamat">Alamat Sesuai KTP</label></td>
 						<td>:</td>
 						<td>
-							<textarea name="alamat" id="alamat"><?= $data_pendaftar['alamat'] ?></textarea>
+							<textarea class="text area" name="alamat" id="alamat"><?= $data_pendaftar['alamat'] ?></textarea>
 						</td>
 					</tr>
 					<tr>
-						<td><label for="kode_pos">Kode Pos</label></td>
+						<td><label class="form-label" for="kode_pos">Kode Pos</label></td>
 						<td>:</td>
-						<td><input type="text" name="kode_pos" id="kode_pos" value="<?= $data_pendaftar['kode_pos'] ?>"></td>
+						<td><input type="text" class="text" name="kode_pos" id="kode_pos" value="<?= $data_pendaftar['kode_pos'] ?>"></td>
 					</tr>
 					<tr>
-						<td>Tempat Lahir</td>
+						<td><label class="form-label" for="tempat_lahir">Tempat Lahir</label></td>
 						<td>:</td>
-						<td><span class="edit" id="tempat_lahir">-</span></td>
+						<td>
+							<input type="text" class="text" id="tempat_lahir" value="<?= $data_pendaftar['tempat_lahir'] ?>" list="daftar_tempat_lahir">
+							<datalist id="daftar_tempat_lahir">
+								<?= daftar_tempat_lahir() ?>
+							</datalist>
+						</td>
 					</tr>
 					<tr>
-						<td>Tanggal Lahir</td>
+						<td><label class="form-label" for="tanggal_lahir">Tanggal Lahir</label></td>
 						<td>:</td>
-						<td><span class="edit" id="tanggal_lahir">-</span></td>
+						<td>
+							<input type="date" class="text" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data_pendaftar['tanggal_lahir'] ?>">
+						</td>
 					</tr>
 					<tr>
-						<td>Jenis Kelamin</td>
+						<td><label class="form-label" for="jenis_kelamin">Jenis Kelamin</label></td>
 						<td>:</td>
-						<td><span class="edit" id="jenis_kelamin">-</span></td>
+						<td>
+							<div class="radio-hz">
+								<input type="radio" value="Pria" name="jenis_kelamin" id="jenis_kelamin rad-pria" <?= ($data_pendaftar['jenis_kelamin'] == 'Pria') ? 'checked' : '' ?>>
+								<span class="radio"><label for="jenis_kelamin rad-pria">Pria</label></span>
+								<input type="radio" value="Wanita" name="jenis_kelamin" id="jenis_kelamin rad-wanita" <?= ($data_pendaftar['jenis_kelamin'] == 'Wanita') ? 'checked' : '' ?>>
+								<span class="radio"><label for="jenis_kelamin rad-wanita">Wanita</label></span>
+							</div>
+						</td>
 					</tr>
 					<tr>
-						<td><label for="tinggi_badan">Tinggi Badan</label></td>
+						<td><label class="form_label" for="tinggi_badan">Tinggi Badan</label></td>
 						<td>:</td>
-						<td><input type="number" min="0" name="tinggi_badan" id="tinggi_badan" value="<?= $data_pendaftar['tinggi_badan'] ?>"></td>
+						<td><input type="number" class="text" min="0" name="tinggi_badan" id="tinggi_badan" value="<?= $data_pendaftar['tinggi_badan'] ?>"></td>
 						<td>cm</td>
 					</tr>
 					<tr>
-						<td><label for="berat_badan">Berat Badan</label></td>
+						<td><label class="form_label" for="berat_badan">Berat Badan</label></td>
 						<td>:</td>
-						<td><input type="number" min="0" name="berat_badan" id="berat_badan" value="<?= $data_pendaftar['berat_badan'] ?>"></td>
+						<td><input type="number" class="text" min="0" name="berat_badan" id="berat_badan" value="<?= $data_pendaftar['berat_badan'] ?>"></td>
 						<td>kg</td>
 					</tr>
 				</table>
@@ -94,44 +123,63 @@
 				<hr>
 				<table>
 					<tr>
-						<td>Jenis Pendidikan Menengah</td>
+						<td><label class="form-label" for="jenis_pendidikan_menengah">Jenis Pendidikan Menengah</label></td>
 						<td>:</td>
-						<td><span class="edit" id="jenis_pendidikan_menengah">-</span></td>
+						<td><input type="text" class="text" name="jenis_pendidikan_menengah" id="jenis_pendidikan_menengah" value="<?= $data_pendaftar['jenis_pendidikan_menengah'] ?>"></td>
 					</tr>
 					<tr>
-						<td><label for="nama_sekolah">Nama Sekolah</label></td>
+						<td><label class="form-label" for="nama_sekolah">Nama Sekolah</label></td>
 						<td>:</td>
-						<td><input type="text" name="nama_sekolah" id="nama_sekolah" value="<?= $data_pendaftar['nama_sekolah'] ?>"></td>
+						<td><input type="text" class="text" name="nama_sekolah" id="nama_sekolah" value="<?= $data_pendaftar['nama_sekolah'] ?>"></td>
 					</tr>
 					<tr>
-						<td>Jenis Sekolah</td>
+						<td><label class="form-label" for="jenis_sekolah">Jenis Sekolah</label></td>
 						<td>:</td>
-						<td><span class="edit" id="jenis_sekolah">-</span></td>
+						<td>
+							<div class="radio-hz">
+								<input type="radio" value="Negeri" name="jenis_sekolah" id="jenis_sekolah negeri" <?= ($data_pendaftar['jenis_sekolah'] == 'Negeri') ? 'checked' : '' ?>>
+								<span class="radio"><label for="jenis_sekolah negeri">Negeri</label></span>
+								<input type="radio" value="Swasta" name="jenis_sekolah" id="jenis_sekolah swasta" <?= ($data_pendaftar['jenis_sekolah'] == 'Swasta') ? 'checked' : '' ?>>
+								<span class="radio"><label for="jenis_sekolah swasta">Swasta</label></span>
+							</div>
+						</td>
 					</tr>
 					<tr>
-						<td>Jurusan</td>
+						<td><label class="form-label" for="jurusan">Jurusan</label></td>
 						<td>:</td>
-						<td><span class="edit" id="jurusan">-</span></td>
+						<td><input type="text" class="text" name="jurusan" id="jurusan" value="<?= $data_pendaftar['jurusan'] ?>"></td>
 					</tr>
 					<tr>
-						<td>Provinsi Asal Sekolah</td>
+						<td><label class="form-label" for="provinsi_asal_sekolah">Provinsi Asal Sekolah</label></td>
 						<td>:</td>
 						<td><span class="edit" id="provinsi_asal_sekolah">-</span></td>
 					</tr>
 					<tr>
-						<td>Kota/Kabupaten Sekolah</td>
+						<td><label class="form-label" for="kota_kabupaten_asal_sekolah">Kota/Kabupaten Asal Sekolah</label></td>
 						<td>:</td>
 						<td><span class="edit" id="kota_kabupaten_asal_sekolah">-</span></td>
 					</tr>
 					<tr>
-						<td>Akreditasi Sekolah</td>
+						<td><label class="form-label" for="akreditasi_sekolah">Akreditasi Sekolah</label></td>
 						<td>:</td>
-						<td><span class="edit" id="akreditasi_sekolah">-</span></td>
+						<td>
+							<div class="radio-hz">
+								<input type="radio" value="A" name="akreditasi_sekolah" id="akreditasi_sekolah a" <?= ($data_pendaftar['akreditasi_sekolah'] == 'A') ? 'checked' : '' ?>>
+								<span class="radio"><label for="akreditasi_sekolah a">A</label></span>
+								<input type="radio" value="B" name="akreditasi_sekolah" id="akreditasi_sekolah b" <?= ($data_pendaftar['akreditasi_sekolah'] == 'B') ? 'checked' : '' ?>>
+								<span class="radio"><label for="akreditasi_sekolah b">B</label></span>
+							</div>
+						</td>
 					</tr>
 					<tr>
-						<td>Tahun Lulus</td>
+						<td><label class="form-label" for="tahun_lulus">Tahun Lulus/Tamat</label></td>
 						<td>:</td>
-						<td><span class="edit" id="tahun_lulus">-</span></td>
+						<td>
+							<input type="number" min="2000" max="<?= date('Y') ?>" list="daftar_tahun_lulus" name="tahun_lulus" id="tahun_lulus" class="text" value="<?= $data_pendaftar['tahun_lulus'] ?>">
+							<datalist id="daftar_tahun_lulus">
+								<?= daftar_tahun_lulus(); ?>
+							</datalist>
+						</td>
 					</tr>
 				</table>
 			</section>
@@ -140,41 +188,50 @@
 				<hr>
 				<table>
 					<tr>
-						<td>Rekap Nilai Rapot</td>
-						<td>:</td>
-						<td><span class="edit" id="rekap_nilai_rapot">-</span></td>
-					</tr>
-					<tr>
-						<td><label for="rata_rata_nilai_rapot">Rata-Rata Nilai Rapot</label></td>
+						<td><label class="form-label"for="rekap_nilai_rapot">Rekap Nilai Rapot</label></td>
 						<td>:</td>
 						<td>
-							<input type="number" min="0" max="100" step="0.1" id="rata_rata_nilai_rapot" value="<?= $data_pendaftar['rata_rata_nilai_rapot'] ?>">
+							<input type="file" name="rekap_nilai_rapot" id="rekap_nilai_rapot" accept=".xls, .xlsx">
+							<span class="input-file">
+								<label class="input-file" for="rekap_nilai_rapot"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
+								<input type="text" class="text-file rekap_nilai_rapot" readonly value="<?= $data_pendaftar['rekap_nilai_rapot'] ?>">
+								<a target="_blank" id="rekap_nilai_rapot" class="link-file" href="<?= base_url(); ?>uploads/xlsx/rekap_nilai_rapot/">
+									<?= $data_pendaftar['rekap_nilai_rapot'] ?>
+								</a>
+							</span>
 						</td>
 					</tr>
 					<tr>
-						<td><label for="peringkat_semester_1">Peringkat Semester 1</label></td>
+						<td><label class="form-label" for="rata_rata_nilai_rapot">Rata-Rata Nilai Rapot</label></td>
 						<td>:</td>
-						<td><input type="number" min="1" name="peringkat_semester_1" id="peringkat_semester_1" value="<?= $data_pendaftar['peringkat_semester_1'] ?>"></td>
+						<td>
+							<input type="number" class="text" min="0" max="100" step="0.1" id="rata_rata_nilai_rapot" value="<?= $data_pendaftar['rata_rata_nilai_rapot'] ?>">
+						</td>
 					</tr>
 					<tr>
-						<td><label for="peringkat_semester_2">Peringkat Semester 2</label></td>
+						<td><label class="form-label" for="peringkat_semester_1">Peringkat Semester 1</label></td>
 						<td>:</td>
-						<td><input type="number" min="1" name="peringkat_semester_2" id="peringkat_semester_2" value="<?= $data_pendaftar['peringkat_semester_2'] ?>"></td>
+						<td><input type="number" class="text" min="1" name="peringkat_semester_1" id="peringkat_semester_1" value="<?= $data_pendaftar['peringkat_semester_1'] ?>"></td>
 					</tr>
 					<tr>
-						<td><label for="peringkat_semester_3">Peringkat Semester 3</label></td>
+						<td><label class="form-label" for="peringkat_semester_2">Peringkat Semester 2</label></td>
 						<td>:</td>
-						<td><input type="number" min="1" name="peringkat_semester_3" id="peringkat_semester_3" value="<?= $data_pendaftar['peringkat_semester_3'] ?>"></td>
+						<td><input type="number" class="text" min="1" name="peringkat_semester_2" id="peringkat_semester_2" value="<?= $data_pendaftar['peringkat_semester_2'] ?>"></td>
 					</tr>
 					<tr>
-						<td><label for="peringkat_semester_4">Peringkat Semester 4</label></td>
+						<td><label class="form-label" for="peringkat_semester_3">Peringkat Semester 3</label></td>
 						<td>:</td>
-						<td><input type="number" min="1" name="peringkat_semester_4" id="peringkat_semester_4" value="<?= $data_pendaftar['peringkat_semester_4'] ?>"></td>
+						<td><input type="number" class="text" min="1" name="peringkat_semester_3" id="peringkat_semester_3" value="<?= $data_pendaftar['peringkat_semester_3'] ?>"></td>
 					</tr>
 					<tr>
-						<td><label for="peringkat_semester_5">Peringkat Semester 5</label></td>
+						<td><label class="form-label" for="peringkat_semester_4">Peringkat Semester 4</label></td>
 						<td>:</td>
-						<td><input type="number" min="1" name="peringkat_semester_5" id="peringkat_semester_5" value="<?= $data_pendaftar['peringkat_semester_5'] ?>"></td>
+						<td><input type="number" class="text" min="1" name="peringkat_semester_4" id="peringkat_semester_4" value="<?= $data_pendaftar['peringkat_semester_4'] ?>"></td>
+					</tr>
+					<tr>
+						<td><label class="form-label" for="peringkat_semester_5">Peringkat Semester 5</label></td>
+						<td>:</td>
+						<td><input type="number" class="text" min="1" name="peringkat_semester_5" id="peringkat_semester_5" value="<?= $data_pendaftar['peringkat_semester_5'] ?>"></td>
 					</tr>
 				</table>
 			</section>
@@ -182,51 +239,22 @@
 				<h2>Data Prestasi</h2>
 				<hr>
 				<table>
-					<tr>
-						<td>Prestasi 1</td>
-						<td>:</td>
-						<td>
-							<a target="_blank" id="prestasi_1" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_1/">
-								<span id="prestasi_1">-</span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td>Prestasi 2</td>
-						<td>:</td>
-						<td>
-							<a target="_blank" id="prestasi_2" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_2/">
-								<span id="prestasi_2">-</span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td>Prestasi 3</td>
-						<td>:</td>
-						<td>
-							<a target="_blank" id="prestasi_3" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_3/">
-								<span id="prestasi_3">-</span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td>Prestasi 4</td>
-						<td>:</td>
-						<td>
-							<a target="_blank" id="prestasi_4" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_4/">
-								<span id="prestasi_4">-</span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td>Prestasi 5</td>
-						<td>:</td>
-						<td>
-							<a target="_blank" id="prestasi_5" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_5/">
-								<span id="prestasi_5">-</span>
-							</a>
-						</td>
-					</tr>
+					<?php for ($i = 1; $i <= 5; $i++): ?>
+						<tr>
+							<td><label class="form-label" for="prestasi_<?= $i ?>">Prestasi <?= $i ?></label></td>
+							<td>:</td>
+							<td>
+								<input type="file" name="prestasi_<?= $i ?>" id="prestasi_<?= $i ?>" accept=".pdf">
+								<span class="input-file" id="prestasi">
+									<label class="input-file" for="prestasi_<?= $i ?>"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
+									<input type="text" class="text-file prestasi_<?= $i ?>" readonly value="<?= $data_pendaftar["prestasi_$i"] ?>">
+								</span>
+								<a target="_blank" id="prestasi_<?= $i ?>" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_<?= $i ?>/">
+									<?= $data_pendaftar["prestasi_$i"] ?>
+								</a>
+							</td>
+						</tr>
+					<?php endfor; ?>
 				</table>
 			</section>
 			<section id="sect6" class="optional">
@@ -234,29 +262,44 @@
 				<hr>
 				<table>
 					<tr>
-						<td>Surat Keterangan Miskin</td>
+						<td><label class="form-label" for="surat_keterangan_miskin">Upload Surat Keterangan Miskin</label></td>
 						<td>:</td>
 						<td>
+							<input type="file" name="surat_keterangan_miskin" id="surat_keterangan_miskin" accept=".pdf">
+							<span class="input-file" id="berkas">
+								<label class="input-file" for="surat_keterangan_miskin"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
+								<input type="text" class="text-file surat_keterangan_miskin" readonly value="<?= $data_pendaftar['surat_keterangan_miskin'] ?>">
+							</span>
 							<a target="_blank" id="surat_keterangan_miskin" class="link-file" href="<?= base_url(); ?>uploads/pdf/surat_keterangan_miskin/">
-								<span class="edit" id="surat_keterangan_miskin">-</span>
+								<?= $data_pendaftar['surat_keterangan_miskin'] ?>
 							</a>
 						</td>
 					</tr>
 					<tr>
-						<td>Surat Keterangan Penghasilan Keluarga</td>
+						<td><label class="form-label" for="surat_keterangan_penghasilan_keluarga">Upload Surat Keterangan Penghasilan Keluarga</label></td>
 						<td>:</td>
 						<td>
-						<a target="_blank" id="surat_keterangan_penghasilan_keluarga" class="link-file" href="<?= base_url(); ?>uploads/pdf/surat_keterangan_penghasilan_keluarga/">
-							<span class="edit" id="surat_keterangan_penghasilan_keluarga">-</span>
-						</a>
+							<input type="file" name="surat_keterangan_penghasilan_keluarga" id="surat_keterangan_penghasilan_keluarga" accept=".pdf">
+							<span class="input-file" id="berkas">
+								<label class="input-file" for="surat_keterangan_penghasilan_keluarga"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
+								<input type="text" class="text-file" readonly value="<?= $data_pendaftar['surat_keterangan_penghasilan_keluarga'] ?>">
+							</span>
+							<a target="_blank" id="surat_keterangan_penghasilan_keluarga" class="link-file" href="<?= base_url(); ?>uploads/pdf/surat_keterangan_penghasilan_keluarga/">
+								<?= $data_pendaftar['surat_keterangan_penghasilan_keluarga'] ?>
+							</a>
 						</td>
 					</tr>
 					<tr>
-						<td>Foto Rumah</td>
+						<td><label class="form-label" for="foto_rumah">Upload Foto Rumah</label></td>
 						<td>:</td>
 						<td>
+							<input type="file" name="foto_rumah" id="foto_rumah" accept=".pdf">
+							<span class="input-file" id="berkas">
+								<label class="input-file" for="foto_rumah"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
+								<input type="text" class="text-file foto_rumah" readonly value="<?= $data_pendaftar['foto_rumah'] ?>">
+							</span>
 							<a target="_blank" id="foto_rumah" class="link-file" href="<?= base_url(); ?>uploads/pdf/foto_rumah/">
-								<span class="edit" id="foto_rumah">-</span>
+								<?= $data_pendaftar['foto_rumah'] ?>
 							</a>
 						</td>
 					</tr>
@@ -264,4 +307,82 @@
 			</section>
 		</div>
 	</div>
+	<div class="scroll">
+		<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff">
+			<path d="M0 0h24v24H0V0z" fill="none" />
+			<path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z" />
+		</svg>
+	</div>
 </main>
+
+<!-- <script>
+	const provinsi = document.getElementById("provinsi_asal_sekolah");
+	const kota_kabupaten = document.getElementById("kota_kabupaten_asal_sekolah");
+
+	const sort_kota_kabupaten = (kota_kabupaten) => {
+		return kota_kabupaten.sort((a, b) => {
+			if (a.nama < b.nama) return -1;
+			if (a.nama > b.nama) return 1;
+			return 0;
+		});
+	}
+</script>
+<?php if (isset($kota_kabupaten)) : ?>
+    <script>
+		const get_kota_kabupaten_on_change = function () {
+			const url = `${"<?= LOKASI_API ?>"}kota?id_provinsi=${this.value}`;
+			fetch(url)
+				.then(response => response.json())
+				.then(response => {
+					const kota_kabupaten_arr = sort_kota_kabupaten(response.kota_kabupaten);
+					kota_kabupaten.innerHTML = "<option disabled>--Pilih Kota/Kabupaten--</option>";
+					for (const data_kota_kabupaten of kota_kabupaten_arr) {
+						if (data_kota_kabupaten.nama === "<?= $kota_kabupaten ?>") {
+							kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}" selected>${data_kota_kabupaten.nama}</option>`;
+						} else {
+							kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}">${data_kota_kabupaten.nama}</option>`;
+						}
+					}
+				});
+		}
+
+		const get_kota_kabupaten = ()  => {
+			const url = `${"<?= LOKASI_API ?>"}kota?id_provinsi=${provinsi.value}`;
+			fetch(url)
+				.then(response => response.json())
+				.then(response => {
+					const kota_kabupaten_arr = sort_kota_kabupaten(response.kota_kabupaten);
+					kota_kabupaten.innerHTML = "<option disabled>--Pilih Kota/Kabupaten--</option>";
+					for (const data_kota_kabupaten of kota_kabupaten_arr) {
+						if (data_kota_kabupaten.nama === "<?= $kota_kabupaten ?>") {
+							kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}" selected>${data_kota_kabupaten.nama}</option>`;
+						} else {
+							kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}">${data_kota_kabupaten.nama}</option>`;
+						}
+					}
+				});
+		}
+
+		if (provinsi.value) {
+			get_kota_kabupaten();
+		}
+		if (provinsi.addEventListener("change", get_kota_kabupaten_on_change)) {
+			provinsi.addEventListener("change", get_kota_kabupaten_on_change);
+		};
+	</script>
+<?php else: ?>
+	<script>
+		provinsi.addEventListener("change", function () {
+			const url = `${"<?= LOKASI_API ?>"}kota?id_provinsi=${this.value}`;
+			fetch(url)
+				.then(response => response.json())
+				.then(response => {
+					const kota_kabupaten_arr = sort_kota_kabupaten(response.kota_kabupaten);
+					kota_kabupaten.innerHTML = "<option disabled>--Pilih Kota/Kabupaten--</option>";
+					for (const data_kota_kabupaten of kota_kabupaten_arr) {
+						kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}">${data_kota_kabupaten.nama}</option>`;
+					}
+				});
+		});
+	</script>
+<?php endif; ?> -->

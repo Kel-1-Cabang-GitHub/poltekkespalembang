@@ -406,7 +406,7 @@
 							<input type="file" name="foto_rumah" id="foto_rumah" accept=".pdf">
 							<span class="input-file" id="berkas">
 								<label class="input-file" for="foto_rumah"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
-								<input type="text" class="text-file foto_rumah  <?= (form_error('foto_rumah')) ? 'input-error' : '' ?>" readonly placeholder="*Hanya menerima file pdf">
+								<input type="text" class="text-file foto_rumah <?= (form_error('foto_rumah')) ? 'input-error' : '' ?>" readonly placeholder="*Hanya menerima file pdf">
 							</span>
 							<?= form_error('foto_rumah', '<p class="pesan-error">', '</p>'); ?>
 						</div>

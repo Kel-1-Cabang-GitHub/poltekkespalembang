@@ -180,7 +180,7 @@ class Admin_Controller extends CI_Controller
 	{
 		// if (!$this->session->userdata('username')) redirect('admin/login');
 
-		$nisn = $this->uri->segment(4);
+		$nisn = $this->input->post('hidden-nisn');
 		// Cek nilai nisn terdaftar atau tidak
 		if (!$this->Daftar_Model->cek_nisn($nisn)) redirect('admin');
 
@@ -206,13 +206,6 @@ class Admin_Controller extends CI_Controller
 				'regex_match' => '*{field} harus berupa angka dan terdiri dari 5 digit!'
 			]);
 			$data_pribadi['kode_pos'] = htmlspecialchars($this->input->post('kode_pos'), true);
-		}
-		if ($data_pendaftar['nisn'] !=  htmlspecialchars($this->input->post('nisn'), true)) {
-			$this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim|is_unique[data_pribadi.nisn]', [
-				'required' => '*{field} harus diisi!',
-				'is_unique' => '*{field} sudah terdaftar!'
-			]);
-			$data_pribadi['nisn'] = htmlspecialchars($this->input->post('nisn'), true);
 		}
 		if ($data_pendaftar['no_telepon'] !=  htmlspecialchars($this->input->post('no_telepon'), true)) {
 			$this->form_validation->set_rules('no_telepon', 'No. Telp/HP', 'required|is_unique[data_pribadi.no_telepon]|min_length[10]|regex_match[/^0\d{9,}$/]', [
@@ -294,7 +287,7 @@ class Admin_Controller extends CI_Controller
 			]);
 			$data_sekolah['jenis_sekolah'] = $this->input->post('jenis_sekolah');
 		}
-		if ($data_pendaftar['provinsi_asal_sekolah'] != $this->input->post('provinsi_asal_sekolah')) {
+		if ($data_pendaftar['provinsi_asal_sekolah'] != provinsi_id_to_name($this->input->post('provinsi_asal_sekolah'))) {
 			$this->form_validation->set_rules('provinsi_asal_sekolah', 'Provinsi Asal Sekolah', 'required', [
 				'required' => '*{field} harus diisi!'
 			]);
@@ -332,12 +325,12 @@ class Admin_Controller extends CI_Controller
 				"rekap_nilai_rapot_$nisn", // $file_name
 			);
 		}
-		if ($data_pendaftar['rata_rata_nilai_rapot'] != htmlspecialchars($this->input->post('rata_rata_nilai_rapot', true))) {
+		if ($data_pendaftar['rata_rata_nilai_rapot'] != sprintf('%.0f', htmlspecialchars($this->input->post('rata_rata_nilai_rapot'), true))) {
 			$this->form_validation->set_rules('rata_rata_nilai_rapot', 'Rata-Rata Nilai Rapot', 'required|trim|decimal', [
 				'required' => '*{field} harus diisi!',
 				'decimal' => '*{field} harus berupa angka desimal dengan 1 angka dibelakang koma!'
 			]);
-			$data_sekolah['rata_rata_nilai_rapot'] = htmlspecialchars($this->input->post('rata_rata_nilai_rapot', true), true);
+			$data_sekolah['rata_rata_nilai_rapot'] = sprintf('%.1f', htmlspecialchars($this->input->post('rata_rata_nilai_rapot'), true));
 		}
 		for ($i = 1; $i <= 5; $i++) {
 			if ($data_pendaftar["peringkat_semester_$i"] != htmlspecialchars($this->input->post("peringkat_semester_$i"), true)) {
@@ -345,8 +338,8 @@ class Admin_Controller extends CI_Controller
 					'required' => '*{field} harus diisi!',
 					'integer' => '*{field} harus berupa angka!'
 				]);
+				$data_sekolah["peringkat_semester_$i"] = htmlspecialchars($this->input->post("peringkat_semester_$i", true));
 			}
-			$data_sekolah["peringkat_semester_$i"] = htmlspecialchars($this->input->post("peringkat_semester_$i"), true);
 		}
 
 		// Program Studi
@@ -384,30 +377,6 @@ class Admin_Controller extends CI_Controller
 				);
 			}
 		}
-
-		// if ($data_pendaftar['jalur_pendaftaran'] == 'KTMSE') {
-		// 	// Berkas KTMSE/GAKIN
-		// 	$berkas_ktmse_gakin = [
-		// 		'surat_keterangan_miskin' => upload_file(
-		// 			'surat_keterangan_miskin', // $name_attr
-		// 			'uploads/pdf/surat_keterangan_miskin/', // $upload_path
-		// 			'pdf', // $allowed_types
-		// 			"surat_keterangan_miskin_$nisn", // $file_name
-		// 		),
-		// 		'surat_keterangan_penghasilan_keluarga' => upload_file(
-		// 			'surat_keterangan_penghasilan_keluarga', // $name_attr
-		// 			'uploads/pdf/surat_keterangan_penghasilan_keluarga/', // $upload_path
-		// 			'pdf', // $allowed_types
-		// 			"surat_keterangan_penghasilan_keluarga_$nisn", // $file_name
-		// 		),
-		// 		'foto_rumah' => upload_file(
-		// 			'foto_rumah', // $name_attr
-		// 			'uploads/pdf/foto_rumah/', // $upload_path
-		// 			'pdf', // $allowed_types
-		// 			"foto_rumah_$nisn", // $file_name
-		// 		),
-		// 	];
-		// }
 
 		if ($data_pendaftar['jalur_pendaftaran'] == 'KTMSE') {
 			// Berkas KTMSE/GAKIN
@@ -453,31 +422,36 @@ class Admin_Controller extends CI_Controller
 		}
 
 		// Jika validasi berhasil, data di filter dan disimpan ke database
-		if ($this->form_validation->run() == true) {
-			// Data Pribadi
+		if (isset($data_pribadi)) {
+			// // Data Pribadi
 			$this->Daftar_Model->update_pendaftar_by_nisn('data_pribadi', $data_pribadi, $nisn);
-			// Data Sekolah
+		}
+		if (isset($data_sekolah)) {
+			// // Data Sekolah
 			$this->Daftar_Model->update_pendaftar_by_nisn('data_sekolah', $data_sekolah, $nisn);
-			// Program Studi
+		}
+		if (isset($program_studi)) {
+			// // Program Studi
 			$this->Daftar_Model->update_pendaftar_by_nisn('program_studi', $program_studi, $nisn);
-			// Data Prestasi
+		}
+		// // Data Prestasi
+		if (isset($data_prestasi)) {
 			$this->Daftar_Model->update_pendaftar_by_nisn('data_prestasi', $data_prestasi, $nisn);
+		}
+		if (isset($berkas_ktmse_gakin)) {
 			if ($data_pendaftar['jalur_pendaftaran'] == 'KTMSE') {
 				// Berkas KTMSE/GAKIN
 				$this->Daftar_Model->insert_data('berkas_ktmse_gakin', $berkas_ktmse_gakin, $nisn);
 			}
-
-			// jika jalur pendaftaran lewat pmdp
-			redirect("admin/data-pendaftar/ubah/$nisn");
 		}
 
+		redirect("admin/data-pendaftar/ubah/$nisn");
 
 		// Jika data gagal divalidasi, user dikembalikan ke halaman daftar
-
 		$data = [
 			'page_title' => $data_pendaftar['nisn'] . ' - ' . $data_pendaftar['nama_lengkap'],
-			'styles' => ['data', 'alert'],
-			'scripts' => [],
+			'styles' => ['ubah', 'alert'],
+			'scripts' => ['form'],
 			'data_pendaftar' => $data_pendaftar,
 			'kota_kabupaten' => $this->input->post('kota_kabupaten_asal_sekolah')
 		];
@@ -500,7 +474,7 @@ class Admin_Controller extends CI_Controller
 		$data = [
 			'page_title' => $data_pendaftar['nisn'] . ' - ' . $data_pendaftar['nama_lengkap'],
 			'styles' => ['ubah', 'alert'],
-			'scripts' => ['textarea'],
+			'scripts' => ['form'],
 			'data_pendaftar' => $data_pendaftar
 		];
 

@@ -39,7 +39,7 @@
 						<input type="text" class="text <?= (form_error('nama_lengkap')) ? 'input-error' : '' ?>" name="nama_lengkap" id="nama_lengkap" value="<?= set_value('nama_lengkap') ?>" autofocus>
 						<?= form_error('nama_lengkap', '<p class="pesan-error">', '</p>'); ?>
 						<span class="label-input"><label class="form-label" for="alamat">Alamat Sesuai KTP</label></span>
-						<textarea class="text area <?= (form_error('alamat')) ? 'input-error' : '' ?>" name="alamat" id="alamat"><?= set_value('alamat') ?></textarea>
+						<textarea onkeyup="textAreaAdjust(this)" class="text area <?= (form_error('alamat')) ? 'input-error' : '' ?>" name="alamat" id="alamat"><?= set_value('alamat') ?></textarea>
 						<?= form_error('alamat', '<p class="pesan-error">', '</p>'); ?>
 						<span class="label-input"><label class="form-label" for="kode_pos">Kode Pos</label></span>
 						<input type="text" class="text <?= (form_error('kode_pos')) ? 'input-error' : '' ?>" name="kode_pos" id="kode_pos" value="<?= set_value('kode_pos') ?>" placeholder="xxxxx">
@@ -220,7 +220,7 @@
 						<span class="label-input"><label class="form-label" for="provinsi_asal_sekolah">Provinsi Asal Sekolah</label></span>
 						<select class="<?= (form_error('provinsi_asal_sekolah')) ? 'input-error' : '' ?>" name="provinsi_asal_sekolah" id="provinsi_asal_sekolah">
 							<option disabled selected>--Pilih Provinsi--</option>
-							<?= daftar_provinsi(); ?>
+							<?= daftar_provinsi($data_pendaftar['provinsi_asal_sekolah']); ?>
 						</select>
 						<?= form_error('provinsi_asal_sekolah', '<p class="pesan-error">', '</p>'); ?>
 						<span class="label-input"><label class="form-label" for="kota_kabupaten_asal_sekolah">Kota/Kabupaten Asal Sekolah</label></span>

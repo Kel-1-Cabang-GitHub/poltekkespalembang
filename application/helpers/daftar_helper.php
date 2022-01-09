@@ -60,7 +60,7 @@ if (!function_exists('daftar_tahun_lulus')) {
 }
 
 if (!function_exists('daftar_provinsi')) {
-	function daftar_provinsi()
+	function daftar_provinsi($checker = "")
 	{
 		$json_data = @file_get_contents(LOKASI_API . "provinsi");
 		$response_data = json_decode($json_data);
@@ -70,9 +70,17 @@ if (!function_exists('daftar_provinsi')) {
 			return strcmp($a->nama, $b->nama);
 		});
 
+		$res_str = "";
 		foreach ($daftar_provinsi as $provinsi) {
-			echo "<option value=$provinsi->id" . set_select('provinsi_asal_sekolah', $provinsi->id) . ">$provinsi->nama</option>";
+			$res_str .= "<option value=$provinsi->id";
+			if ($checker) {
+				$res_str .= ($provinsi->id == $checker) ? " selected" : "";
+			} else {
+				$res_str .= set_select('provinsi_asal_sekolah', $provinsi->id);
+			}
+			$res_str .= ">$provinsi->nama</option>";
 		}
+		echo $res_str;
 	}
 }
 

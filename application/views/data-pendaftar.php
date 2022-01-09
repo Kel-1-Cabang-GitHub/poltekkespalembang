@@ -41,12 +41,12 @@
                         <div class="tabel-detail">
                             <table>
                                 <tr>
-                                    <td>Nama</td>
+                                    <td>Nama Lengkap</td>
                                     <td>:</td>
                                     <td><span class="detail" id="nama_lengkap">-</span></td>
                                 </tr>
                                 <tr>
-                                    <td>NISN</td>
+                                    <td>Nomor Induk Siswa Nasional (NISN)</td>
                                     <td>:</td>
                                     <td><span class="detail" id="nisn">-</span></td>
                                 </tr>
@@ -81,8 +81,13 @@
                         <h2>Data Pribadi</h2>
                         <hr>
                         <table>
-                            <tr>
-                                <td>Alamat</td>
+							<tr>
+								<td>No. Telp/HP</td>
+								<td>:</td>
+								<td><span class="detail" id="no_telepon"></span></td>
+							</tr>
+							<tr>
+								<td>Alamat Sesuai KTP</td>
                                 <td>:</td>
                                 <td><span class="detail" id="alamat">-</span></td>
                             </tr>
@@ -122,6 +127,11 @@
                         <h2>Data Sekolah</h2>
                         <hr>
                         <table>
+							<tr>
+								<td>Jenis Pendidikan Menengah</td>
+								<td>:</td>
+								<td><span class="detail" id="jenis_pendidikan_menengah"></span></td>
+							</tr>
                             <tr>
                                 <td>Nama Sekolah</td>
                                 <td>:</td>
@@ -350,7 +360,7 @@
 							</th>
                             <th class="mw-150 fl">
                                 <div class="keyword">
-                                    <p>Asal Sekolah</p>
+                                    <p>Nama Sekolah</p>
                                 </div>
                                 <div class="sort">
                                     <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3); ?>?field=nama-sekolah&sort=desc"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>

@@ -9,6 +9,14 @@ nav_link.forEach((el) => {
 	});
 });
 
+// Hapus Prodi Pilihan 1 di Prodi Pilihan 2 jika Prodi Pilihan 1 sudah diisi
+const prodi_pilihan_1 = document.querySelector(
+	"select.program_studi_pilihan_1"
+);
+const prodi_pilihan_2 = document.querySelector(
+	"select.program_studi_pilihan_2"
+);
+
 // Scroll ke atas button
 $(window).scroll(function () {
 	let wscroll = $(this).scrollTop();

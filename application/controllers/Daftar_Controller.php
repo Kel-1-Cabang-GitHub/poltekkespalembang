@@ -253,7 +253,6 @@ class Daftar_Controller extends CI_Controller
 
 			$this->session->set_userdata('berhasil-daftar', true);
 
-			// jika jalur pendaftaran lewat pmdp
 			redirect('terima-kasih');
 		}
 
@@ -264,7 +263,7 @@ class Daftar_Controller extends CI_Controller
 		$data = [
 			'page_title' => 'Form Pendaftaran | POLTEKKES KEMENKES PALEMBANG',
 			'styles' => ['form', 'alert'],
-			'scripts' => ['form'],
+			'scripts' => ['daftar', 'form'],
 			'segment' => $segment,
 			'kota_kabupaten' => $this->input->post('kota_kabupaten_asal_sekolah')
 		];
@@ -282,7 +281,7 @@ class Daftar_Controller extends CI_Controller
 		$data = [
 			'page_title' => 'Form Pendaftaran | POLTEKKES KEMENKES PALEMBANG',
 			'styles' => ['form', 'alert'],
-			'scripts' => ['form'],
+			'scripts' => ['daftar', 'form'],
 			'segment' => $segment,
 		];
 		$this->load->view('templates/header', $data);

@@ -481,7 +481,7 @@ class Admin_Controller extends CI_Controller
 		$data = [
 			'page_title' => $data_pendaftar['nisn'] . ' - ' . $data_pendaftar['nama_lengkap'],
 			'styles' => ['ubah', 'alert'],
-			'scripts' => ['form'],
+			'scripts' => ['form','ubah'],
 			'data_pendaftar' => $data_pendaftar
 		];
 

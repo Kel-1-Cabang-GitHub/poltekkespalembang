@@ -15,7 +15,7 @@ class Admin_Controller extends CI_Controller
 
 	public function admin()
 	{
-		// if (!$this->session->userdata('username')) redirect('admin/login');
+		if (!$this->session->userdata('username')) redirect('admin/login');
 
 		$data = [
 			'page_title' => 'Admin Page - Sipenmaru | POLTEKKES KEMENKES PALEMBANG',
@@ -105,7 +105,7 @@ class Admin_Controller extends CI_Controller
 
 	public function data_pendaftar()
 	{
-		// if (!$this->session->userdata('username')) redirect('admin/login');
+		if (!$this->session->userdata('username')) redirect('admin/login');
 
 		$jalur_pendaftaran = $this->uri->segment(3);
 		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
@@ -123,62 +123,9 @@ class Admin_Controller extends CI_Controller
 		$this->load->view('data-pendaftar', $data);
 	}
 
-	public function cari_pendaftar()
-	{
-		// if (!$this->session->userdata('username')) redirect('admin/login');
-
-		$jalur_pendaftaran = $this->input->get('search_jalur');
-		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
-		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
-
-		[$sort_field, $sort_by] = filter_sort_query('search_field', 'search_sort');
-
-		$keyword = $this->input->get('search_keyword');
-		if (preg_match('/^\s*$/', $keyword)) $keyword = '';
-		$keyword = trim($keyword);
-
-		$redirect_path = "admin/data-pendaftar/$jalur_pendaftaran";
-		if ($sort_field != 'nisn') $redirect_path .= '?field=' . snake_to_kebab($sort_field);
-		$redirect_path .= (($sort_by != 'asc') ? ((($sort_field == 'nisn') ? '?' : '&') . "sort=$sort_by") : '');
-		$redirect_path .= (($keyword != '') ? ((($sort_field == 'nisn' &&  $sort_by == 'asc') ? '?' : '&') . "q=$keyword") : '');
-		redirect($redirect_path);
-	}
-
-	public function export_to_excel()
-	{
-		// if (!$this->session->userdata('username')) redirect('admin/login');
-
-		$jalur_pendaftaran = $this->uri->segment(3);
-		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
-		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
-
-		$data_pendaftar = $this->Daftar_Model->join_all_tables($jalur_pendaftaran);
-		$data_pendaftar_fields = "nama_lengkap, alamat, kode_pos, nisn,
-		no_telepon, jenis_kelamin, tinggi_badan, berat_badan,
-		tempat_lahir, tanggal_lahir, pas_foto, jalur_pendaftaran,
-		jenis_pendidikan_menengah, jurusan, nama_sekolah,
-		jenis_sekolah, provinsi_asal_sekolah, kota_kabupaten_asal_sekolah,
-		akreditasi_sekolah, tahun_lulus, rekap_nilai_rapot, rata_rata_nilai_rapot,
-		peringkat_semester_1, peringkat_semester_2, peringkat_semester_3,
-		peringkat_semester_4, peringkat_semester_5,
-		bukti_pembayaran, program_studi_pilihan_1, program_studi_pilihan_2,
-		prestasi_1, prestasi_2, prestasi_3, prestasi_4, prestasi_5";
-		if ($jalur_pendaftaran != 'pmdp') {
-			$data_pendaftar_fields .= ", surat_keterangan_miskin, surat_keterangan_penghasilan_keluarga, foto_rumah";
-		}
-		$data_pendaftar_fields = preg_replace('/\s+/', '', $data_pendaftar_fields);
-		$data_pendaftar_arr = explode(',', $data_pendaftar_fields);
-
-		$spreadsheet = make_new_spreadsheet();
-		$sheet = $spreadsheet->getActiveSheet()->setTitle('Data Pendaftar');
-		make_header_cell($sheet, ...$data_pendaftar_arr);
-		insert_data_into_spreadsheet($sheet, $data_pendaftar, ...$data_pendaftar_arr);
-		save_spreadsheet($spreadsheet, $jalur_pendaftaran);
-	}
-
 	public function post_ubah_pendaftar()
 	{
-		// if (!$this->session->userdata('username')) redirect('admin/login');
+		if (!$this->session->userdata('username')) redirect('admin/login');
 
 		$nisn = $this->input->post('hidden-nisn');
 		// Cek nilai nisn terdaftar atau tidak
@@ -470,7 +417,7 @@ class Admin_Controller extends CI_Controller
 
 	public function get_ubah_pendaftar()
 	{
-		// if (!$this->session->userdata('username')) redirect('admin/login');
+		if (!$this->session->userdata('username')) redirect('admin/login');
 
 		$nisn = $this->uri->segment(4);
 		// Cek nilai nisn terdaftar atau tidak
@@ -481,7 +428,7 @@ class Admin_Controller extends CI_Controller
 		$data = [
 			'page_title' => $data_pendaftar['nisn'] . ' - ' . $data_pendaftar['nama_lengkap'],
 			'styles' => ['ubah', 'alert'],
-			'scripts' => ['form','ubah'],
+			'scripts' => ['form', 'ubah'],
 			'data_pendaftar' => $data_pendaftar
 		];
 
@@ -492,7 +439,7 @@ class Admin_Controller extends CI_Controller
 
 	public function hapus_pendaftar()
 	{
-		// if (!$this->session->userdata('username')) redirect('admin/login');
+		if (!$this->session->userdata('username')) redirect('admin/login');
 
 		$jalur_pendaftaran = $this->uri->segment(3);
 		$nisn = $this->uri->segment(5);
@@ -509,5 +456,58 @@ class Admin_Controller extends CI_Controller
 
 		$this->Daftar_Model->delete_pendaftar_by_nisn($nisn);
 		redirect($redirect_path);
+	}
+
+	public function cari_pendaftar()
+	{
+		if (!$this->session->userdata('username')) redirect('admin/login');
+
+		$jalur_pendaftaran = $this->input->get('search_jalur');
+		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
+		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
+
+		[$sort_field, $sort_by] = filter_sort_query('search_field', 'search_sort');
+
+		$keyword = $this->input->get('search_keyword');
+		if (preg_match('/^\s*$/', $keyword)) $keyword = '';
+		$keyword = trim($keyword);
+
+		$redirect_path = "admin/data-pendaftar/$jalur_pendaftaran";
+		if ($sort_field != 'nisn') $redirect_path .= '?field=' . snake_to_kebab($sort_field);
+		$redirect_path .= (($sort_by != 'asc') ? ((($sort_field == 'nisn') ? '?' : '&') . "sort=$sort_by") : '');
+		$redirect_path .= (($keyword != '') ? ((($sort_field == 'nisn' &&  $sort_by == 'asc') ? '?' : '&') . "q=$keyword") : '');
+		redirect($redirect_path);
+	}
+
+	public function export_to_excel()
+	{
+		if (!$this->session->userdata('username')) redirect('admin/login');
+
+		$jalur_pendaftaran = $this->uri->segment(3);
+		// Cek nilai $jalur_pendaftaran dan jika nilainya bukan 'pmdp','ktmse', atau pmdp-ktmse user akan di redirect() ke halaman utama
+		if ($jalur_pendaftaran != 'pmdp' && $jalur_pendaftaran != 'ktmse' && $jalur_pendaftaran != 'pmdp-ktmse') redirect('admin');
+
+		$data_pendaftar = $this->Daftar_Model->join_all_tables($jalur_pendaftaran);
+		$data_pendaftar_fields = "nama_lengkap, alamat, kode_pos, nisn,
+		no_telepon, jenis_kelamin, tinggi_badan, berat_badan,
+		tempat_lahir, tanggal_lahir, pas_foto, jalur_pendaftaran,
+		jenis_pendidikan_menengah, jurusan, nama_sekolah,
+		jenis_sekolah, provinsi_asal_sekolah, kota_kabupaten_asal_sekolah,
+		akreditasi_sekolah, tahun_lulus, rekap_nilai_rapot, rata_rata_nilai_rapot,
+		peringkat_semester_1, peringkat_semester_2, peringkat_semester_3,
+		peringkat_semester_4, peringkat_semester_5,
+		bukti_pembayaran, program_studi_pilihan_1, program_studi_pilihan_2,
+		prestasi_1, prestasi_2, prestasi_3, prestasi_4, prestasi_5";
+		if ($jalur_pendaftaran != 'pmdp') {
+			$data_pendaftar_fields .= ", surat_keterangan_miskin, surat_keterangan_penghasilan_keluarga, foto_rumah";
+		}
+		$data_pendaftar_fields = preg_replace('/\s+/', '', $data_pendaftar_fields);
+		$data_pendaftar_arr = explode(',', $data_pendaftar_fields);
+
+		$spreadsheet = make_new_spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet()->setTitle('Data Pendaftar');
+		make_header_cell($sheet, ...$data_pendaftar_arr);
+		insert_data_into_spreadsheet($sheet, $data_pendaftar, ...$data_pendaftar_arr);
+		save_spreadsheet($spreadsheet, $jalur_pendaftaran);
 	}
 }

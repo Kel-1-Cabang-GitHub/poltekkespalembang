@@ -29,7 +29,7 @@ div.data-edit {
 div.data-edit::-webkit-scrollbar {
 	display: none;
 }
-div.edit-pendaftar h2 {
+div.edit-pendaftar h2#title {
 	margin-bottom: 40px;
 }
 div.data-edit section h2 {

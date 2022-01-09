@@ -4,7 +4,8 @@ main {
 	align-items: center;
 	padding: 50px 0px;
 }
-div#logout,div#login {
+div#logout,
+div#login {
 	display: flex;
 	width: 100%;
 	padding: 10px;
@@ -12,21 +13,22 @@ div#logout,div#login {
 	margin-top: -40px;
 	margin-bottom: 15px;
 }
-div#logout svg:hover, div#login svg:hover {
+div#logout svg:hover,
+div#login svg:hover {
 	fill: var(--merah);
 	cursor: pointer;
 }
-div#login svg:hover{
+div#login svg:hover {
 	fill: var(--hijau);
 }
-div.container.ct-20{
+div.container.ct-20 {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	width: 100%;
 	padding: 20px 0px;
 }
-div.container.ct-20.admin{
+div.container.ct-20.admin {
 	min-height: auto;
 	position: static;
 }

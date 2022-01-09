@@ -1,10 +1,9 @@
 const block = document.querySelector("div.block");
-const ca_logout = document.querySelector("a#ca-logout");
-const tombol_batal = document.querySelector("a#ca-cancel");
+const tombol_batal = document.querySelector("a.batal");
 const kotak_alert = document.querySelector("div.confirm-alert");
-const logout = document.querySelector("a#logout");
+const ubah = document.querySelector("a#ubah");
 
-logout.addEventListener("click", () => {
+ubah.addEventListener("click", () => {
 	block.classList.add("active");
 	kotak_alert.classList.add("active");
 });

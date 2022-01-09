@@ -3,17 +3,17 @@
 	<?php $this->load->view('templates/navbar', ['nav_link' => base_url() . 'admin']) ?>
 	<main>
 		<div class="confirm-alert" id="confirm-alert">
-					<div class="ca-head danger">
-						<svg xmlns="http://www.w3.org/2000/svg" height="46px" viewBox="0 0 24 24" width="46px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-						<h2>Konfirmasi</h2>
-					</div>
-					<div class="ca-body">
-						<p>Anda yakin ingin logout?</p>
-						<div class="ca-button">
-							<a class="a-btn btn-danger hapus" id="ca-logout" href="<?= base_url(); ?>admin/logout">Logout</a>
-							<a class="a-btn btn-primary batal" id="ca-cancel">Batal</a>
-						</div>
-					</div>
+			<div class="ca-head danger">
+				<svg xmlns="http://www.w3.org/2000/svg" height="46px" viewBox="0 0 24 24" width="46px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+				<h2>Konfirmasi</h2>
+			</div>
+			<div class="ca-body">
+				<p>Anda yakin ingin logout?</p>
+				<div class="ca-button">
+					<a class="a-btn btn-danger hapus" id="ca-logout" href="<?= base_url(); ?>admin/logout">Logout</a>
+					<a class="a-btn btn-primary batal" id="ca-cancel">Batal</a>
+				</div>
+			</div>
 		</div>
 		<div id="logout">
 			<a id="logout">

@@ -6,14 +6,14 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 if (!function_exists('filter_sort_query')) {
-	function filter_sort_query()
+	function filter_sort_query($name_sort_field, $name_sort_by)
 	{
 		$CI =& get_instance();
 		$sort_field = 'nisn';
 		$sort_by = 'asc';
 
-		if ($CI->input->get('field')) $sort_field = kebab_to_snake($CI->input->get('field'));
-		if ($CI->input->get('sort')) $sort_by = $CI->input->get('sort');
+		if ($CI->input->get($name_sort_field)) $sort_field = kebab_to_snake($CI->input->get($name_sort_field));
+		if ($CI->input->get($name_sort_by)) $sort_by = $CI->input->get($name_sort_by);
 
 		if (
 			$sort_field != 'nama_lengkap' &&

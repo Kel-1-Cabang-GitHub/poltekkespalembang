@@ -4,7 +4,7 @@ main {
 	align-items: center;
 	padding: 50px 0px;
 }
-div#logout {
+div#logout,div#login {
 	display: flex;
 	width: 100%;
 	padding: 10px;
@@ -12,9 +12,12 @@ div#logout {
 	margin-top: -40px;
 	margin-bottom: 15px;
 }
-div#logout svg:hover {
+div#logout svg:hover, div#login svg:hover {
 	fill: var(--merah);
 	cursor: pointer;
+}
+div#login svg:hover{
+	fill: var(--hijau);
 }
 div.container.ct-20{
 	display: flex;

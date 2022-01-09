@@ -39,7 +39,7 @@
 						<input type="text" class="text <?= (form_error('nama_lengkap')) ? 'input-error' : '' ?>" name="nama_lengkap" id="nama_lengkap" value="<?= set_value('nama_lengkap') ?>" autofocus>
 						<?= form_error('nama_lengkap', '<p class="pesan-error">', '</p>'); ?>
 						<span class="label-input"><label class="form-label" for="alamat">Alamat Sesuai KTP</label></span>
-						<textarea class="text area <?= (form_error('alamat')) ? 'input-error' : '' ?>" name="alamat" id="alamat"><?= set_value('alamat') ?></textarea>
+						<textarea onkeyup="textAreaAdjust(this)" class="text area <?= (form_error('alamat')) ? 'input-error' : '' ?>" name="alamat" id="alamat"><?= set_value('alamat') ?></textarea>
 						<?= form_error('alamat', '<p class="pesan-error">', '</p>'); ?>
 						<span class="label-input"><label class="form-label" for="kode_pos">Kode Pos</label></span>
 						<input type="text" class="text <?= (form_error('kode_pos')) ? 'input-error' : '' ?>" name="kode_pos" id="kode_pos" value="<?= set_value('kode_pos') ?>" placeholder="xxxxx">
@@ -220,7 +220,7 @@
 						<span class="label-input"><label class="form-label" for="provinsi_asal_sekolah">Provinsi Asal Sekolah</label></span>
 						<select class="<?= (form_error('provinsi_asal_sekolah')) ? 'input-error' : '' ?>" name="provinsi_asal_sekolah" id="provinsi_asal_sekolah">
 							<option disabled selected>--Pilih Provinsi--</option>
-							<?= daftar_provinsi(); ?>
+							<?= daftar_provinsi($data_pendaftar['provinsi_asal_sekolah']); ?>
 						</select>
 						<?= form_error('provinsi_asal_sekolah', '<p class="pesan-error">', '</p>'); ?>
 						<span class="label-input"><label class="form-label" for="kota_kabupaten_asal_sekolah">Kota/Kabupaten Asal Sekolah</label></span>
@@ -239,7 +239,7 @@
 						<span class="label-input"><label class="form-label" for="tahun_lulus">Tahun Lulus/Tamat</label></span>
 						<input type="number" min="2000" max="<?= date('Y') ?>" list="daftar_tahun_lulus" name="tahun_lulus" id="tahun_lulus" class="text <?= (form_error('tahun_lulus')) ? 'input-error' : '' ?>" value="<?= set_value('tahun_lulus') ?>" placeholder="*Mohon isi sendiri jika tidak ada!">
 						<datalist id="daftar_tahun_lulus">
-						<?= daftar_tahun_lulus(); ?>
+							<?= daftar_tahun_lulus(); ?>
 						</datalist>
 						<?= form_error('tahun_lulus', '<p class="pesan-error">', '</p>'); ?>
 						<span class="label-input"><label class="form-label"for="rekap_nilai_rapot">Rekap Nilai Rapot</label></span>
@@ -406,7 +406,7 @@
 							<input type="file" name="foto_rumah" id="foto_rumah" accept=".pdf">
 							<span class="input-file" id="berkas">
 								<label class="input-file" for="foto_rumah"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
-								<input type="text" class="text-file foto_rumah  <?= (form_error('foto_rumah')) ? 'input-error' : '' ?>" readonly placeholder="*Hanya menerima file pdf">
+								<input type="text" class="text-file foto_rumah <?= (form_error('foto_rumah')) ? 'input-error' : '' ?>" readonly placeholder="*Hanya menerima file pdf">
 							</span>
 							<?= form_error('foto_rumah', '<p class="pesan-error">', '</p>'); ?>
 						</div>

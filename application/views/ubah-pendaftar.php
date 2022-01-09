@@ -2,6 +2,7 @@
 <main>
 	<div class="edit-pendaftar">
 		<h2>Ubah Pendaftar</h2>
+		<form action="" method="POST">
 		<div class="data-edit">
 			<section id="sect1">
 				<img id="edit-foto" src="<?= base_url(); ?>uploads/img/pas_foto/<?= $data_pendaftar['pas_foto'] ?>" alt="pas foto">
@@ -64,7 +65,7 @@
 						<td class="va-top"><label class="form-label" for="alamat">Alamat Sesuai KTP</label></td>
 						<td class="va-top">:</td>
 						<td>
-							<textarea onkeyup="textAreaAdjust(this)" class="text area" name="alamat" id="alamat">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum ducimus praesentium recusandae autem quisquam, minus beatae aliquam atque maxime! Nostrum, nemo consequuntur. Deleniti quasi ducimus a perferendis cum. Dicta, nihil! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt quis, quod quas reprehenderit aperiam culpa dolor illum, sed cumque distinctio vitae nisi id facilis fuga soluta rem? Voluptatem, harum doloremque.<?= $data_pendaftar['alamat'] ?></textarea>
+							<textarea onkeyup="textAreaAdjust(this)" class="text area" name="alamat" id="alamat"><?= $data_pendaftar['alamat'] ?></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -285,7 +286,12 @@
 					</tr>
 				</table>
 			</section>
+			<section id="sect7">
+				<a href="<?= base_url() ?>admin/data-pendaftar/<?= strtolower($data_pendaftar["jalur_pendaftaran"]); ?>" class="btn btn-danger">Batal</a>
+				<button type="submit" class="btn btn-success simpan-data">Simpan</button>
+			</section>
 		</div>
+		</form>
 	</div>
 	<div class="scroll">
 		<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff">

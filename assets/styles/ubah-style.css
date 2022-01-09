@@ -6,6 +6,7 @@ main,div.edit-pendaftar{
 }
 main{
     padding-top: 30px;
+    padding-bottom: 50px;
 }
 div.edit-pendaftar{
     padding-top: 20px;
@@ -13,6 +14,9 @@ div.edit-pendaftar{
     max-width: 1300px;
     box-shadow: 15px 21px 65px 11px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+}
+form{
+    width: 100%;
 }
 div.data-edit{
     width: 100%;
@@ -24,8 +28,11 @@ div.data-edit{
 div.data-edit::-webkit-scrollbar {
 	display: none;
 }
-div.data-edit h2{
-    margin-bottom: 20px;
+div.edit-pendaftar h2{
+    margin-bottom: 40px;
+}
+div.data-edit section h2{
+    margin-bottom: 10px;
 }
 div.data-edit hr {
 	display: block;
@@ -115,4 +122,30 @@ span.input-file input.text-file{
     border: none;
     outline: none;
     border-bottom: 2px solid var(--abu-abu);
+}
+section#sect7{
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    padding-top: 50px;
+}
+button{
+    border: none;
+}
+a.btn,button.btn{
+    display: inline-block;
+	text-decoration: none;
+	border-radius: 4px;
+	color: white;
+    width: 101px;
+	height: 30px;
+	padding: 0px;
+	margin-right: 15px;
+	text-align: center;
+	font-size: 13.33px;
+	line-height: 30px;
+}
+a:hover,button:hover {
+	cursor: pointer;
+	opacity: 0.8;
 }

@@ -225,12 +225,12 @@ div.data-detail section#sect1 {
 div.data-detail section table {
 	max-width: fit-content;
 }
-th.fl div.sort{
+th.fl div.sort {
 	display: flex;
 	justify-content: center;
 	margin-top: 10px;
 }
-div.sort a{
+div.sort a {
 	margin-left: 5px;
 	margin-right: 5px;
 }
@@ -242,18 +242,18 @@ div.data-detail table tr td:nth-child(2) {
 	min-width: 50px;
 	text-align: center;
 }
-div.data-detail a{
+div.data-detail a {
 	text-decoration: none;
 	color: var(--biru-muda);
 }
-div.data-detail a:hover{
+div.data-detail a:hover {
 	cursor: pointer;
 	text-decoration: underline;
 	color: var(--biru-tua);
 }
-div.data-detail section.optional{
+div.data-detail section.optional {
 	display: none;
 }
-div.data-detail section.optional.active{
+div.data-detail section.optional.active {
 	display: flex;
 }

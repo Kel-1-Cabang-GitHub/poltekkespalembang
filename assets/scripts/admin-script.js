@@ -4,14 +4,14 @@ const tombol_batal = document.querySelector("a.batal");
 const kotak_alert = document.querySelector("div.confirm-alert");
 const tombol_hapus1 = document.querySelectorAll("a.hapus-data");
 
-tombol_hapus1.forEach(el => {
+tombol_hapus1.forEach((el) => {
 	el.addEventListener("click", () => {
 		block.classList.add("active");
 		kotak_alert.classList.add("active");
 		let id = el.id;
 		let nama_lengkap = id.split(" ").slice(1).join(" ");
 		let link = id.split(" ")[0];
-		let nisn = link.split('/')[link.split('/').length - 1].replace(/\D+/, '');
+		let nisn = link.split("/")[link.split("/").length - 1].replace(/\D+/, "");
 		let span_nama = document.querySelector("span#ubah-nama");
 		let span_nisn = document.querySelector("span#ubah-nisn");
 		span_nama.textContent = nama_lengkap;
@@ -51,68 +51,78 @@ let src_awal = detail_img.src;
 const span_detail = document.querySelectorAll("span.detail");
 const section_opt = document.querySelector("section.optional");
 const BULAN = [
-	'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-	'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+	"Januari",
+	"Februari",
+	"Maret",
+	"April",
+	"Mei",
+	"Juni",
+	"Juli",
+	"Agustus",
+	"September",
+	"Oktober",
+	"November",
+	"Desember",
 ];
-tombol_detail.forEach(el => {
+tombol_detail.forEach((el) => {
 	el.addEventListener("click", () => {
 		block.classList.add("active");
 		div_detail.classList.add("active");
 		let detail_data = data_obj[el.id];
-		Object.keys(detail_data).forEach(keys => {
+		Object.keys(detail_data).forEach((keys) => {
 			if (keys === "pas_foto") {
 				let src = src_awal + detail_data[keys];
 				detail_img.src = src;
 			}
-			if(keys === "bukti_pembayaran"){
+			if (keys === "bukti_pembayaran") {
 				let newhref_bukti_bayar = detail_data[keys];
 				bukti_bayar.href = href_awal_bukti_bayar + newhref_bukti_bayar;
 			}
-			if(keys === "surat_keterangan_miskin"){
+			if (keys === "surat_keterangan_miskin") {
 				let newhref_sktm = detail_data[keys];
 				sktm.href = href_awal_sktm + newhref_sktm;
 			}
-			if(keys === "surat_keterangan_penghasilan_keluarga"){
+			if (keys === "surat_keterangan_penghasilan_keluarga") {
 				let newhref_skpk = detail_data[keys];
 				skpk.href = href_awal_skpk + newhref_skpk;
 			}
-			if(keys === "foto_rumah"){
+			if (keys === "foto_rumah") {
 				let newhref_foto_rumah = detail_data[keys];
 				foto_rumah.href = href_awal_foto_rumah + newhref_foto_rumah;
 			}
 
-			if(keys === "prestasi_1"){
-				if(detail_data[keys] === null){
+			if (keys === "prestasi_1") {
+				if (detail_data[keys] === null) {
 					prestasi_1.removeAttribute("href");
-				}else{
+				} else {
 					prestasi_1.href = href_awal_prestasi1 + detail_data[keys];
 				}
 			}
-			if(keys === "prestasi_2"){
-				if(detail_data[keys] === null){
+			if (keys === "prestasi_2") {
+				if (detail_data[keys] === null) {
 					prestasi_2.removeAttribute("href");
-				}else{
+				} else {
 					prestasi_2.href = href_awal_prestasi2 + detail_data[keys];
 				}
 			}
-			if(keys === "prestasi_3"){
-				if(detail_data[keys] === null){
+			if (keys === "prestasi_3") {
+				if (detail_data[keys] === null) {
 					prestasi_3.removeAttribute("href");
-				}else{
+				} else {
 					prestasi_3.href = href_awal_prestasi3 + detail_data[keys];
 				}
 			}
-			if(keys === "prestasi_4"){
-				if(detail_data[keys] === null){
+			if (keys === "prestasi_4") {
+				if (detail_data[keys] === null) {
 					prestasi_4.removeAttribute("href");
-				}else{
+				} else {
 					prestasi_4.href = href_awal_prestasi4 + detail_data[keys];
 				}
 			}
-			if(keys === "prestasi_5"){
-				if(detail_data[keys] === null){
+			if (keys === "prestasi_5") {
+				if (detail_data[keys] === null) {
 					prestasi_5.removeAttribute("href");
-				}else{
+				} else {
 					prestasi_5.href = href_awal_prestasi5 + detail_data[keys];
 				}
 			}
@@ -126,18 +136,18 @@ tombol_detail.forEach(el => {
 					let [tahun, bulan, tanggal] = detail_data[keys].split("-");
 					value = `${tanggal} ${BULAN[bulan - 1]} ${tahun}`;
 				}
-				span_keys.textContent = (value) ? value : "-";
-				if(detail_data["jalur_pendaftaran"] === "KTMSE"){
+				span_keys.textContent = value ? value : "-";
+				if (detail_data["jalur_pendaftaran"] === "KTMSE") {
 					section_opt.classList.add("active");
 				}
-			};
+			}
 		});
 		div_data_detail.scrollTop = 0;
 	});
 });
 
 //Tutup Modal
-const tombol_close = document.querySelector('div.close-btn a.detail');
+const tombol_close = document.querySelector("div.close-btn a.detail");
 tombol_close.addEventListener("click", () => {
 	div_detail.classList.remove("active");
 	block.classList.remove("active");

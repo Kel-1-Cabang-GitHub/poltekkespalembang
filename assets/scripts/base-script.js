@@ -20,7 +20,9 @@ const prodi_pilihan_2 = document.querySelector(
 // Scroll ke atas button
 $(window).scroll(function () {
 	let wscroll = $(this).scrollTop();
-	(wscroll > 150) ? $("div.scroll").addClass("show") : $("div.scroll").removeClass("show");
+	wscroll > 150
+		? $("div.scroll").addClass("show")
+		: $("div.scroll").removeClass("show");
 });
 $(".scroll").on("click", function () {
 	let destination = $("header");
@@ -28,7 +30,7 @@ $(".scroll").on("click", function () {
 
 	$("html").animate(
 		{
-			scrollTop: destinationEl.offset().top
+			scrollTop: destinationEl.offset().top,
 		},
 		1000,
 		"swing"

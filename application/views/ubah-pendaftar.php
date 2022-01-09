@@ -332,6 +332,7 @@
 		</div>
 	</main>
 </div>
+
 <script>
 	const provinsi = document.getElementById("provinsi_asal_sekolah");
 	const kota_kabupaten = document.getElementById("kota_kabupaten_asal_sekolah");

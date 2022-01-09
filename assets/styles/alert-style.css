@@ -79,8 +79,8 @@ div.ca-button {
 div.ca-button button {
 	margin-right: 10px;
 }
-@media(max-width: 610px){
-	div.confirm-alert{
+@media (max-width: 610px) {
+	div.confirm-alert {
 		margin-left: -45%;
 	}
 }

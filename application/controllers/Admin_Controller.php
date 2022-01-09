@@ -444,8 +444,15 @@ class Admin_Controller extends CI_Controller
 				$this->Daftar_Model->insert_data('berkas_ktmse_gakin', $berkas_ktmse_gakin, $nisn);
 			}
 		}
-
-		redirect("admin/data-pendaftar/ubah/$nisn");
+		if (
+			isset($data_pribadi) ||
+			isset($data_sekolah) ||
+			isset($program_studi) ||
+			isset($data_prestasi) ||
+			isset($berkas_ktmse_gakin)
+		) {
+			redirect("admin/data-pendaftar/ubah/$nisn");
+		}
 
 		// Jika data gagal divalidasi, user dikembalikan ke halaman daftar
 		$data = [

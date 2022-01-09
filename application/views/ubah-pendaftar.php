@@ -10,7 +10,7 @@
 						<tr>
 							<td><label class="form-label" for="nama_lengkap">Nama Lengkap</label>
 							<td>:</td>
-							<td><input type="text" name="nama_lengkap" id="nama_lengkap" value="<?= $data_pendaftar['nama_lengkap'] ?>" autofocus></td>
+							<td><input class="text" type="text" name="nama_lengkap" id="nama_lengkap" value="<?= $data_pendaftar['nama_lengkap'] ?>" autofocus></td>
 						</tr>
 						<tr>
 							<td><label class="form-label" for="nisn">Nomor Induk Siswa Nasional (NISN)</label></td>
@@ -30,9 +30,6 @@
 								<span class="input-file">
 									<label class="input-file" for="bukti_pembayaran"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
 									<input type="text" class="text-file bukti-pembayaran" readonly value="<?= $data_pendaftar['bukti_pembayaran'] ?>">
-									<a target="_blank" id="bukti_pembayaran" class="link-file" href="<?= base_url(); ?>uploads/img/bukti_pembayaran/">
-										<?= $data_pendaftar['bukti_pembayaran'] ?>
-									</a>
 								</span>
 							</td>
 						</tr>
@@ -64,10 +61,10 @@
 				<hr>
 				<table>
 					<tr>
-						<td><label class="form-label" for="alamat">Alamat Sesuai KTP</label></td>
-						<td>:</td>
+						<td class="va-top"><label class="form-label" for="alamat">Alamat Sesuai KTP</label></td>
+						<td class="va-top">:</td>
 						<td>
-							<textarea class="text area" name="alamat" id="alamat"><?= $data_pendaftar['alamat'] ?></textarea>
+							<textarea onkeyup="textAreaAdjust(this)" class="text area" name="alamat" id="alamat">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum ducimus praesentium recusandae autem quisquam, minus beatae aliquam atque maxime! Nostrum, nemo consequuntur. Deleniti quasi ducimus a perferendis cum. Dicta, nihil! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt quis, quod quas reprehenderit aperiam culpa dolor illum, sed cumque distinctio vitae nisi id facilis fuga soluta rem? Voluptatem, harum doloremque.<?= $data_pendaftar['alamat'] ?></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -107,14 +104,12 @@
 					<tr>
 						<td><label class="form_label" for="tinggi_badan">Tinggi Badan</label></td>
 						<td>:</td>
-						<td><input type="number" class="text" min="0" name="tinggi_badan" id="tinggi_badan" value="<?= $data_pendaftar['tinggi_badan'] ?>"></td>
-						<td>cm</td>
+						<td><input type="number" class="text" min="0" name="tinggi_badan" id="tinggi_badan" value="<?= $data_pendaftar['tinggi_badan'] ?>"> cm</td>
 					</tr>
 					<tr>
 						<td><label class="form_label" for="berat_badan">Berat Badan</label></td>
 						<td>:</td>
-						<td><input type="number" class="text" min="0" name="berat_badan" id="berat_badan" value="<?= $data_pendaftar['berat_badan'] ?>"></td>
-						<td>kg</td>
+						<td><input type="number" class="text" min="0" name="berat_badan" id="berat_badan" value="<?= $data_pendaftar['berat_badan'] ?>"> kg</td>
 					</tr>
 				</table>
 			</section>
@@ -195,9 +190,6 @@
 							<span class="input-file">
 								<label class="input-file" for="rekap_nilai_rapot"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
 								<input type="text" class="text-file rekap_nilai_rapot" readonly value="<?= $data_pendaftar['rekap_nilai_rapot'] ?>">
-								<a target="_blank" id="rekap_nilai_rapot" class="link-file" href="<?= base_url(); ?>uploads/xlsx/rekap_nilai_rapot/">
-									<?= $data_pendaftar['rekap_nilai_rapot'] ?>
-								</a>
 							</span>
 						</td>
 					</tr>
@@ -249,9 +241,6 @@
 									<label class="input-file" for="prestasi_<?= $i ?>"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
 									<input type="text" class="text-file prestasi_<?= $i ?>" readonly value="<?= $data_pendaftar["prestasi_$i"] ?>">
 								</span>
-								<a target="_blank" id="prestasi_<?= $i ?>" class="link-file" href="<?= base_url(); ?>uploads/pdf/prestasi_<?= $i ?>/">
-									<?= $data_pendaftar["prestasi_$i"] ?>
-								</a>
 							</td>
 						</tr>
 					<?php endfor; ?>
@@ -270,9 +259,6 @@
 								<label class="input-file" for="surat_keterangan_miskin"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
 								<input type="text" class="text-file surat_keterangan_miskin" readonly value="<?= $data_pendaftar['surat_keterangan_miskin'] ?>">
 							</span>
-							<a target="_blank" id="surat_keterangan_miskin" class="link-file" href="<?= base_url(); ?>uploads/pdf/surat_keterangan_miskin/">
-								<?= $data_pendaftar['surat_keterangan_miskin'] ?>
-							</a>
 						</td>
 					</tr>
 					<tr>
@@ -284,9 +270,6 @@
 								<label class="input-file" for="surat_keterangan_penghasilan_keluarga"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
 								<input type="text" class="text-file" readonly value="<?= $data_pendaftar['surat_keterangan_penghasilan_keluarga'] ?>">
 							</span>
-							<a target="_blank" id="surat_keterangan_penghasilan_keluarga" class="link-file" href="<?= base_url(); ?>uploads/pdf/surat_keterangan_penghasilan_keluarga/">
-								<?= $data_pendaftar['surat_keterangan_penghasilan_keluarga'] ?>
-							</a>
 						</td>
 					</tr>
 					<tr>
@@ -298,9 +281,6 @@
 								<label class="input-file" for="foto_rumah"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><g><rect fill="none" height="10" width="10"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></g></svg>Upload</label>
 								<input type="text" class="text-file foto_rumah" readonly value="<?= $data_pendaftar['foto_rumah'] ?>">
 							</span>
-							<a target="_blank" id="foto_rumah" class="link-file" href="<?= base_url(); ?>uploads/pdf/foto_rumah/">
-								<?= $data_pendaftar['foto_rumah'] ?>
-							</a>
 						</td>
 					</tr>
 				</table>

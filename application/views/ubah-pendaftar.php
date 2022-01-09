@@ -81,7 +81,7 @@
 							<td><label class="form-label" for="tempat_lahir">Tempat Lahir</label></td>
 							<td>:</td>
 							<td>
-								<input type="text" class="text" id="tempat_lahir" value="<?= $data_pendaftar['tempat_lahir'] ?>" list="daftar_tempat_lahir">
+								<input type="text" class="text" id="tempat_lahir" name="tempat_lahir" value="<?= $data_pendaftar['tempat_lahir'] ?>" list="daftar_tempat_lahir">
 								<datalist id="daftar_tempat_lahir">
 									<?= daftar_tempat_lahir() ?>
 								</datalist>

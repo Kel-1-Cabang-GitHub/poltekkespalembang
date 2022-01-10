@@ -4,7 +4,8 @@ div.container {
 	height: 100%;
 	min-height: 100vh;
 }
-div.block.active {
+div.block.active,
+div.block-info.active {
 	display: block;
 	position: absolute;
 	width: 100%;
@@ -12,7 +13,8 @@ div.block.active {
 	background-color: grey;
 	opacity: 0.5;
 }
-div.block {
+div.block,
+div.block-info {
 	display: none;
 	z-index: 1;
 }
@@ -41,8 +43,40 @@ div.confirm-alert {
 	display: none;
 	z-index: 2;
 }
-div.confirm-alert.active {
+div.info-alert {
+	max-width: 450px;
+	width: 90%;
+	height: 115px;
+	padding: 15px;
+	color: white;
+	position: fixed;
 	display: flex;
+	border-radius: 2px;
+	align-items: center;
+	display: none;
+	z-index: 2;
+	box-shadow: -8px 11px 60px rgba(0, 0, 0, 0.25);
+}
+div.info-alert.success {
+	background-color: var(--hijau);
+}
+div.info-alert.error {
+	background-color: var(--merah);
+}
+div.message {
+	margin-left: 15px;
+}
+div.message h2 {
+	margin-bottom: 5px;
+}
+div.confirm-alert.active,
+div.info-alert.active {
+	display: flex;
+}
+div.close-info {
+	position: absolute;
+	top: -3px;
+	right: 3px;
 }
 div.ca-head {
 	padding: 10px 15px;

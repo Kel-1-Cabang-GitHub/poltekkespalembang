@@ -1,8 +1,11 @@
 const block = document.querySelector("div.block");
+const block_info = document.querySelector("div.block-info");
 const ca_delete = document.querySelector("a#ca-delete");
 const tombol_batal = document.querySelector("a.batal");
+const close_info = document.querySelector("a#close-info");
 const kotak_alert = document.querySelector("div.confirm-alert");
 const tombol_hapus1 = document.querySelectorAll("a.hapus-data");
+const kotak_alert_info = document.querySelector("div.info-alert");
 
 tombol_hapus1.forEach((el) => {
 	el.addEventListener("click", () => {
@@ -22,6 +25,10 @@ tombol_hapus1.forEach((el) => {
 tombol_batal.addEventListener("click", () => {
 	kotak_alert.classList.remove("active");
 	block.classList.remove("active");
+});
+close_info.addEventListener("click", () => {
+	kotak_alert_info.classList.remove("active");
+	block_info.classList.remove("active");
 });
 
 // Modal Detail Data

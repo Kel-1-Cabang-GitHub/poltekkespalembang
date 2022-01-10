@@ -391,6 +391,7 @@ class Admin_Controller extends CI_Controller
 				$this->Daftar_Model->insert_data('berkas_ktmse_gakin', $berkas_ktmse_gakin, $nisn);
 			}
 		}
+
 		if (
 			isset($data_pribadi) ||
 			isset($data_sekolah) ||
@@ -398,6 +399,8 @@ class Admin_Controller extends CI_Controller
 			isset($data_prestasi) ||
 			isset($berkas_ktmse_gakin)
 		) {
+			$this->session->set_flashdata('sukses_ubah_data', true);
+
 			redirect("admin/data-pendaftar/ubah/$nisn");
 		}
 
@@ -455,6 +458,7 @@ class Admin_Controller extends CI_Controller
 		$redirect_path .= (($sort_by != 'asc') ? ((($sort_field == 'nisn') ? '?' : '&') . "sort=$sort_by") : '');
 
 		$this->Daftar_Model->delete_pendaftar_by_nisn($nisn);
+		$this->session->set_flashdata('sukses_hapus_data', true);
 		redirect($redirect_path);
 	}
 

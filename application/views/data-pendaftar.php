@@ -20,8 +20,10 @@
 <body>
     <div class="container">
     <div class="block"></div>
-    <div class="block block-info active"></div>
-        <header>
+	<?php if($this->session->flashdata('sukses_hapus_data')): ?>
+    	<div class="block block-info active"></div>
+    <?php endif; ?>
+		<header>
             <nav>
                 <img src="<?= base_url() ?>assets/img/logo.jpg" alt="logo">
                 <div class="brand" id="<?= base_url(); ?>admin">
@@ -31,18 +33,19 @@
             </nav>
         </header>
         <main>
-            <!-- Jika flash_data sukses dihapus di tampilkan : -->
-            <div class="info-alert success active" id="info-alert">
-                <div class="close-info">
-                    <a id="close-info"><svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24" width="24px" fill="#ff0000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></a>
-                </div>
-                <svg class="info" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/></svg>
-                <div class="message">
-                    <h2>Sukses</h2>
-                    <p>Data berhasil dihapus</p>
-                </div>
-            </div>
-		    <!-- akhir perkondisian -->
+			<?php if($this->session->flashdata('sukses_hapus_data')): ?>
+            	<div class="info-alert success active" id="info-alert">
+            	    <div class="close-info">
+            	        <a id="close-info"><svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24" width="24px" fill="#ffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></a>
+            	    </div>
+            	    <svg class="info" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/></svg>
+            	    <div class="message">
+            	        <h2>Sukses</h2>
+            	        <p>Data berhasil dihapus</p>
+            	    </div>
+            	</div>
+			<?php endif; ?>
+			<?php $this->session->set_flashdata('sukses_hapus_data', null); ?>
             <div class="detail-pendaftar">
                 <div class="close-btn">
                     <a class="close detail"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></a>
@@ -334,7 +337,7 @@
                         </button>
                     </form>
                 </div>
-                <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3) ?>/export" class="btn btn-success">
+                <a href="<?= base_url() ?>admin/data-pendaftar/<?= $this->uri->segment(3) ?>/export" class="btn btn-success export">
                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><g><rect fill="none" height="24" width="24"/></g><g><path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M17,11l-1.41-1.41L13,12.17V4h-2v8.17L8.41,9.59L7,11l5,5 L17,11z"/></g></svg>
                     Export ke Excel
                 </a>

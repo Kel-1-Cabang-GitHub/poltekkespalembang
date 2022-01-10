@@ -14,7 +14,9 @@ tombol_batal.addEventListener("click", () => {
 	kotak_alert.classList.remove("active");
 	block.classList.remove("active");
 });
-tombol_close.addEventListener("click", () => {
-	kotak_alert_info.classList.remove("active");
-	block_info.classList.remove("active");
-});
+if(tombol_close){
+	tombol_close.addEventListener("click", () => {
+		kotak_alert_info.classList.remove("active");
+		block_info.classList.remove("active");
+	});
+}

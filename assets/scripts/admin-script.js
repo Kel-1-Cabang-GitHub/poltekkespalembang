@@ -26,10 +26,12 @@ tombol_batal.addEventListener("click", () => {
 	kotak_alert.classList.remove("active");
 	block.classList.remove("active");
 });
-close_info.addEventListener("click", () => {
-	kotak_alert_info.classList.remove("active");
-	block_info.classList.remove("active");
-});
+if(close_info){
+	close_info.addEventListener("click", () => {
+		kotak_alert_info.classList.remove("active");
+		block_info.classList.remove("active");
+	});
+}
 
 // Modal Detail Data
 const tombol_detail = document.querySelectorAll("a.detail-data");

@@ -413,8 +413,6 @@
 					kota_kabupaten.innerHTML = "<option disabled>--Pilih Kota/Kabupaten--</option>";
 					for (const data_kota_kabupaten of kota_kabupaten_arr) {
 						if (data_kota_kabupaten.nama === "<?= $data_pendaftar['kota_kabupaten_asal_sekolah'] ?>") {
-							console.log(data_kota_kabupaten.nama);
-							console.log("<?= $data_pendaftar['kota_kabupaten_asal_sekolah'] ?>");
 						kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}" selected>${data_kota_kabupaten.nama}</option>`;
 						} else {
 							kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}">${data_kota_kabupaten.nama}</option>`;
@@ -431,8 +429,6 @@
 					kota_kabupaten.innerHTML = "<option disabled>--Pilih Kota/Kabupaten--</option>";
 					for (const data_kota_kabupaten of kota_kabupaten_arr) {
 						if (data_kota_kabupaten.nama === "<?= $data_pendaftar['kota_kabupaten_asal_sekolah'] ?>") {
-							console.log(data_kota_kabupaten.nama);
-							console.log("<?= $data_pendaftar['kota_kabupaten_asal_sekolah'] ?>");
 						kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}" selected>${data_kota_kabupaten.nama}</option>`;
 						} else {
 							kota_kabupaten.innerHTML += `<option value="${data_kota_kabupaten.nama}">${data_kota_kabupaten.nama}</option>`;

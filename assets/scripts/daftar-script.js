@@ -37,7 +37,6 @@ tombol_halaman.forEach((btn) => {
 });
 
 if (tombol_halaman_lanjut_ktmse && tombol_halaman_kembali_ktmse) {
-	// console.log(tombol_halaman_lanjut_ktmse);
 	tombol_halaman_lanjut_ktmse.addEventListener("click", () => {
 		disableform();
 		select_data.forEach((el) => {

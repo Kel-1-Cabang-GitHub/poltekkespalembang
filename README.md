@@ -30,7 +30,7 @@ Tambahkan ekstensi CORS unblocker pada browser yang anda gunakan
 
 Desain UI/UX pada repository ini dapat dilihat melalui link di bawah ini
 
-[UI/UX](https://www.figma.com/file/BmzCaE3g6ZDkJtRu3lTQeL/Pendaftaran-Mahasiswa-Poltekkes?node-id=0%3A1)
+[Figma](https://www.figma.com/file/BmzCaE3g6ZDkJtRu3lTQeL/Pendaftaran-Mahasiswa-Poltekkes?node-id=0%3A1)
 
 ### Credits
 
